@@ -1,0 +1,138 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Fwd: mailing list thingy (jay@jays.net: trusted sender for your account) -->
+<!--X-From-R13: bznun.cz.xavggreNerphefbe.arg -->
+<!--X-Date: Mon, 5 Jan 2004 23:14:07 &#45;0600 -->
+<!--X-Message-Id: 3.0.6.32.20040105231403.0092e330@pop.radiks.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: A95AA416&#45;4002&#45;11D8&#45;916A&#45;000A95E317B8@jays.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Fwd: mailing list thingy (jay@jays.net: trusted sender for your account)</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00007.html">Date Prev</a>][<a href="msg00009.html">Date Next</a>][<a href="msg00006.html">Thread Prev</a>][<a href="msg00010.html">Thread Next</a>][<a href="maillist.html#00008">Date Index</a>][<a href="threads.html#00008">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Fwd: mailing list thingy (jay@jays.net: trusted sender for your account)</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>, <a href="mailto:tech@DOMAIN.HIDDEN">tech@xxxxxx</a></li>
+<li><em>Subject</em>: Re: Fwd: mailing list thingy (jay@jays.net: trusted sender for your account)</li>
+<li><em>From</em>: <a href="mailto:omaha.pm.knitter@DOMAIN.HIDDEN">omaha.pm.knitter@xxxxxxxxxxxx</a></li>
+<li><em>Date</em>: Mon, 05 Jan 2004 23:14:03 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00006.html">A95AA416-4002-11D8-916A-000A95E317B8@jays.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>At 10:41 PM 1/5/2004 -0600, Jay Hannah  - jay@xxxxxxxx wrote:
+&gt;Howdy, &quot;tech@xxxxxx&quot;...
+
+Well, that's not me, but.... 
+
+&gt;Is there any way we could get Majordomo configured w/ a Subject line 
+&gt;tag? Like &quot;[Omaha.pm] &quot; or something?
+
+Yup. 
+
+Send a message to majordomo@xxxxxx with just the following line in the body
+of the message:
+
+config omaha-list &lt;your password here&gt; 
+
+making the appropriate substitution, of course. 
+
+You will get a rather long message back from majordomo. Redirect it back to
+majordomo. Do not &quot;reply.&quot; 
+
+At the top of the message change the command 
+config omaha-list &lt;your password here&gt; 
+to 
+newconfig omaha-list &lt;your password here&gt; 
+
+At the bottom of the message, remove the update date and type 
+EOF
+on a line by itself immediately following the last line in the message. 
+
+Then search for the phrase &quot;subject_prefix      =&quot; in the message. When you
+find it, type in the tag you want for the list. 
+
+I suggest as strongly as possible you keep it short, prefereably 3 letters,
+and enclose it in [ ] 
+
+Then go look for the phrase &quot;message_headers     &lt;&lt;  END&quot; which is probably
+immediately followed by &quot;END&quot; on a line by itself (aka a here document)
+
+Between the two lines, on a line by itself, type: 
+X-Loop: $LIST email list
+
+Send the message. 
+
+You should get a message back saying the new config for omaha-list was
+accepted. 
+
+Then those of us who care to can filter on the X-Loop header instead of the
+subject line tag {spit}.
+
+-Sidney
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00010" href="msg00010.html">[Omaha.pm] Re: mailing list thingy</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00006" href="msg00006.html">Fwd: mailing list thingy</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00007.html">Fwd: Daily Perl FAQ - Can I write useful perl programs on the command line?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00009.html">Test::Harness rocks!</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00006.html">Fwd: mailing list thingy</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00010.html">[Omaha.pm] Re: mailing list thingy</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00008"><strong>Date</strong></a></li>
+<li><a href="threads.html#00008"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

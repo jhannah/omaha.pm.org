@@ -1,0 +1,114 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: WWW::MECHANIZE::SHELL and PeopleSoft -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Thu, 30 Oct 2003 17:23:03 &#45;0600 -->
+<!--X-Message-Id: 137ED442&#45;0B30&#45;11D8&#45;8F80&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: OF2237C726.9030A60B&#45;ON86256DC7.006AC0CC&#45;86256DC7.006DC4CC@dtn.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: WWW::MECHANIZE::SHELL and PeopleSoft</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00254.html">Date Prev</a>][<a href="msg00256.html">Date Next</a>][<a href="msg00254.html">Thread Prev</a>][<a href="msg00258.html">Thread Next</a>][<a href="maillist.html#00255">Date Index</a>][<a href="threads.html#00255">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: WWW::MECHANIZE::SHELL and PeopleSoft</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:Dean.Nicholson@DOMAIN.HIDDEN">Dean.Nicholson@xxxxxxx</a></li>
+<li><em>Subject</em>: Re: WWW::MECHANIZE::SHELL and PeopleSoft</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 30 Oct 2003 17:23:32 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;OF2237C726.9030A60B-ON86256DC7.006AC0CC-86256DC7.006DC4CC@dtn.com&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Wednesday, October 22, 2003, at 02:56 PM, Dean.Nicholson@xxxxxxx  
+wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I list 'links'. 114 of them so I open 'WEST,FRANK'. ?Oh, the feeling  
+you get when your ego ballon is popped. ?Any idea what this error  
+means???? Do I need to enable cookies?? What does the cookie command  
+do? Doing &gt; 'cookies cookies.txt' does not work. Creates a file  
+'cookies' but I get the same error.</tt><br>
+<br>
+<tt>&gt;open WEST,FRANK<br>
+Can't locate object method &quot;host&quot; via package &quot;URI::_foreign&quot; at  
+D:/Perl/site/lib/HTTP/Cookies.pm line 725, &lt;FIN&gt; line 40.<br>
+<a  href="http://isdevpsapp:8088/psc/PSCRMFIX/EMPLOYEE/CRM/c/">http://isdevpsapp:8088/psc/PSCRMFIX/EMPLOYEE/CRM/c/</a> 
+RI_CIC_HOME.RI_AGENT_HOME.GBL
+</tt></blockquote><tt><br>What does line 725 of your D:/Perl/site/lib/HTTP/Cookies.pm say?  
+Perhaps you'll see something like $base-&gt;host. Then, perhaps higher in  
+your program there's something like</tt><br>
+<br>
+<tt>   use base qw(PPM::Repository::WWW);</tt><br>
+<br>
+<tt>Only PPM::Repository::WWW could be any module. Do you see things  
+similar to that? What module is in the &quot;use base&quot; command? Is that  
+module installed on the system you're making this attempt from?</tt><br>
+<br>
+<tt>See &quot;perldoc base&quot; for an explanation of what &quot;use base&quot; is. If you're  
+not too OO Perly that might not help, but I think that's the root of  
+the problem...? Just guessing though since I'm not on the box.</tt><br>
+<br>
+<tt>HTH,</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00258" href="msg00258.html">Re: WWW::MECHANIZE::SHELL and PeopleSoft</a></strong>
+<ul><li><em>From:</em> Dean . Nicholson</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00254.html">Re: How to MIME encode</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00256.html">Fwd: Daily Perl FAQ - How can I capture STDERR from an external command?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00254.html">Re: How to MIME encode</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00258.html">Re: WWW::MECHANIZE::SHELL and PeopleSoft</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00255"><strong>Date</strong></a></li>
+<li><a href="threads.html#00255"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [olug] Subnet mask -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Mon, 15 Dec 2003 22:25:29 &#45;0600 -->
+<!--X-Message-Id: F9B47E10&#45;2F7F&#45;11D8&#45;8B38&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 18441.68.13.85.51.1071353469.squirrel@mail.linder.org -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [olug] Subnet mask</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00270.html">Date Prev</a>][<a href="msg00272.html">Date Next</a>][<a href="msg00270.html">Thread Prev</a>][<a href="msg00273.html">Thread Next</a>][<a href="maillist.html#00271">Date Index</a>][<a href="threads.html#00271">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [olug] Subnet mask</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:dan@DOMAIN.HIDDEN">dan@xxxxxxxxxx</a>, Omaha Linux User Group &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [olug] Subnet mask</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 15 Dec 2003 22:26:10 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;18441.68.13.85.51.1071353469.squirrel@mail.linder.org&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre style="margin: 0em;"><br>Subnets for that range:
+<a  href="http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93">http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93</a></pre><br>
+<pre style="margin: 0em;">Source code:
+<a  href="http://jays.net/ipr.pl.txt">http://jays.net/ipr.pl.txt</a></pre><br>
+<pre style="margin: 0em;">Omaha Perl Mongers:*
+<a  href="http://omaha.pm.org">http://omaha.pm.org</a></pre><br>
+<tt>j</tt><br>
+<br>
+<tt>* Anyone sick of me plugging this yet? If so I'll quit.</tt><br>
+<br>
+<tt><br>On Saturday, December 13, 2003, at 04:11 PM, Daniel Linder wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I am having a brain freeze and I cannot for the life of me figure this<br>
+out.  I have been given a range of numbers to use at my job and I 
+cannot<br>
+figure out the subnet mask...Help!<br>
+The numbers are 205.202.101.64-205.202.101.93.  Class C address from<br>
+authority.  I know that by thinking about it, it is divided into 4<br>
+subnets, right? (30 numbers into 128 is 4 times+).  ugh.  My head 
+hurts<br>
+today...
+</tt></blockquote><pre style="margin: 0em;"><br>Here is a handy perl code snippet to help in times like these...
+(Might need to run &quot;perl -MCPAN -e 'install Net::CIDR'&quot; to install the
+Net::CIDR module.)</pre><br>
+<pre style="margin: 0em;">--- Begin perl code ---
+#!/usr/bin/perl
+use Net::CIDR;
+use Net::CIDR ':all';</pre><br>
+<pre style="margin: 0em;"><br>@list2=();
+$x=64;
+while ($x &lt;= 93) {
+        $line = &quot;205.202.101.&quot;.$x;
+        push(@list2,$line);
+        $x++;
+}</pre><br>
+<pre style="margin: 0em;">printf (&quot;These addresses:\n&quot;);
+foreach (@list2) {
+        @cidr_list=Net::CIDR::cidradd($_, @cidr_list);
+        printf (&quot;$_, &quot;);
+}
+printf (&quot;\n\nSummarize to the following:\n&quot;);</pre><br>
+<pre style="margin: 0em;">foreach (@cidr_list) {
+                printf (&quot;--&gt;$_\n&quot;);
+}
+--- End perl code ---</pre><br>
+<pre style="margin: 0em;">This program roduces this output:
+--- Begin output ---
+These addresses:
+205.202.101.64, 205.202.101.65, 205.202.101.66, 205.202.101.67,
+205.202.101.68, 205.202.101.69, 205.202.101.70, 205.202.101.71,
+205.202.101.72, 205.202.101.73, 205.202.101.74, 205.202.101.75,
+205.202.101.76, 205.202.101.77, 205.202.101.78, 205.202.101.79,
+205.202.101.80, 205.202.101.81, 205.202.101.82, 205.202.101.83,
+205.202.101.84, 205.202.101.85, 205.202.101.86, 205.202.101.87,
+205.202.101.88, 205.202.101.89, 205.202.101.90, 205.202.101.91,
+205.202.101.92, 205.202.101.93,</pre><br>
+<pre style="margin: 0em;">Summarize to the following:
+--&gt;205.202.101.64/28
+--&gt;205.202.101.80/29
+--&gt;205.202.101.88/30
+--&gt;205.202.101.92/31
+--- End output ---</pre><br>
+<pre style="margin: 0em;">So, these are the four subnet ranges that cover the .64 through .93
+inclusively.</pre><br>
+<pre style="margin: 0em;">Dan
+_______________________________________________
+OLUG mailing list
+OLUG@xxxxxxxx
+<a  href="http://lists.olug.org/mailman/listinfo/olug">http://lists.olug.org/mailman/listinfo/olug</a>
+</pre></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00273" href="msg00273.html">RE: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Bob McCoy</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00270.html">Re: [olug] How to remove ^M's from files?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00272.html">Re: ssl with perl</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00270.html">Re: [olug] How to remove ^M's from files?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00273.html">RE: [olug] Subnet mask</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00271"><strong>Date</strong></a></li>
+<li><a href="threads.html#00271"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

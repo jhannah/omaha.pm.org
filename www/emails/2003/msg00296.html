@@ -1,0 +1,123 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Help! -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Wed, 31 Dec 2003 13:45:24 &#45;0600 -->
+<!--X-Message-Id: B688122A&#45;3BC9&#45;11D8&#45;BFE7&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000e01c3cef7$ef1dd6e0$21c8a8c0@lunargravity.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Help!</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00295.html">Date Prev</a>][<a href="msg00297.html">Date Next</a>][<a href="msg00295.html">Thread Prev</a>][<a href="msg00297.html">Thread Next</a>][<a href="maillist.html#00296">Date Index</a>][<a href="threads.html#00296">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Help!</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Josh Kleensang&quot; &lt;<a href="mailto:jkleensang@DOMAIN.HIDDEN">jkleensang@xxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Help!</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 31 Dec 2003 13:44:14 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;000e01c3cef7$ef1dd6e0$21c8a8c0@lunargravity.net&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>That's not straight Perl. What kind of Perly HTML templating system are 
+you using?</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<tt><br>On Tuesday, December 30, 2003, at 11:11 AM, Josh Kleensang wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">In this chunk of camel, I would like message (line 2) to be set to
+whatever standard input was.  Do I Do something like STDIN-&gt;$message ?</pre><br>
+<tt>&lt;%ARGS&gt;<br>
+$message<br>
+$queue =&gt; 1<br>
+$action =&gt; &quot;correspond&quot;<br>
+$ticket =&gt; undef<br>
+&lt;/%ARGS&gt;<br>
+&lt;%init&gt;<br>
+use RT::Interface::Email;<br>
+my ( $status, $error, $Ticket ) = 
+RT::Interface::Email::Gateway(\%ARGS);<br>
+&lt;/%init&gt;<br>
+&lt;%flags&gt;<br>
+inherit =&gt; undef # inhibit UTF8 conversion done in /autohandler<br>
+&lt;/%flags&gt;<br>
+% if ($status == -75 ) {<br>
+temporary failure<br>
+% }<br>
+%    elsif ($status == 1) {<br>
+ok<br>
+%        if ( $Ticket-&gt;Id ) {<br>
+Ticket: &lt;% $Ticket-&gt;Id %&gt;<br>
+Queue: &lt;% $Ticket-&gt;QueueObj-&gt;Name %&gt;<br>
+Owner: &lt;% $Ticket-&gt;OwnerObj-&gt;Name %&gt;<br>
+Status: &lt;% $Ticket-&gt;Status %&gt;<br>
+Subject: &lt;% $Ticket-&gt;Subject %&gt;<br>
+Requestor: &lt;% $Ticket-&gt;Requestors-&gt;MemberEmailAddressesAsString %&gt;<br>
+%        }<br>
+% }   else {<br>
+not ok - &lt;%$error%&gt;<br>
+% }</tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00297" href="msg00297.html">using stdin</a></strong>
+<ul><li><em>From:</em> Mat Caughron</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00295.html">Re: Dinner w/ Jeff Bisbee (the sequel)</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00297.html">using stdin</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00295.html">Re: Dinner w/ Jeff Bisbee (the sequel)</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00297.html">using stdin</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00296"><strong>Date</strong></a></li>
+<li><a href="threads.html#00296"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

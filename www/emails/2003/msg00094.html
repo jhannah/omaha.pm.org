@@ -1,0 +1,130 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: [Fwd: Daily Perl FAQ &#45; How can I access/change the first N letters of a string?] -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Fri, 6 Jun 2003 08:10:25 &#45;0500 -->
+<!--X-Message-Id: 3EE09206.FDF4F559@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[Fwd: Daily Perl FAQ - How can I access/change the first N letters of a string?]</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00093.html">Date Prev</a>][<a href="msg00095.html">Date Next</a>][<a href="msg00093.html">Thread Prev</a>][<a href="msg00095.html">Thread Next</a>][<a href="maillist.html#00094">Date Index</a>][<a href="threads.html#00094">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Fwd: Daily Perl FAQ - How can I access/change the first N letters of a string?]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: [Fwd: Daily Perl FAQ - How can I access/change the first N letters of a string?]</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 06 Jun 2003 08:07:18 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+&gt;         substr($a, 0, 3) = &quot;Tom&quot;;
+
+Oh, neat! I didn't know you could do assignments w/ substr!
+
+j
+
+
+
+perlreply@xxxxxxxxxxxxxx wrote:
+&gt; 
+&gt; This is a daily mailing from the Perl FAQ a Day website.
+&gt; For subscription info, or to have your address removed from
+&gt; the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a>
+&gt; 
+&gt; Question:
+&gt; How can I access/change the first N letters of a string?
+&gt; 
+&gt;     There are many ways. If you just want to grab a copy, use substr():
+&gt; 
+&gt;         $first_byte = substr($a, 0, 1);
+&gt; 
+&gt;     If you want to modify part of a string, the simplest way is often
+&gt;     to use substr() as an lvalue:
+&gt; 
+&gt;         substr($a, 0, 3) = &quot;Tom&quot;;
+&gt; 
+&gt;     Although those with a pattern matching kind of thought process will
+&gt;     likely prefer:
+&gt; 
+&gt;         $a =~ s/^.../Tom/;
+&gt; 
+&gt; --
+&gt; The contents of this message are part of the Perl FAQ:
+&gt; Please note that &quot;I&quot; below refers to FAQ authors, and *not* Jeff Yoak or Perl FAQ a Day.
+&gt; 
+&gt; Where to get this document [the Perl FAQ]
+&gt;    This document is posted regularly to comp.lang.perl.announce and
+&gt;    several other related newsgroups. It is available in a variety of
+&gt;    formats from CPAN in the /CPAN/doc/FAQs/FAQ/ directory, or on the web
+&gt;    at <a  href="http://www.perl.com/perl/faq/">http://www.perl.com/perl/faq/</a> .
+&gt; 
+&gt; CREDITS
+&gt;    When I first began the Perl FAQ in the late 80s, I never realized it
+&gt;    would have grown to over a hundred pages, nor that Perl would ever
+&gt;    become so popular and widespread. This document could not have been
+&gt;    written without the tremendous help provided by Larry Wall and the
+&gt;    rest of the Perl Porters.
+&gt; 
+&gt; AUTHOR AND COPYRIGHT INFORMATION
+&gt;    Copyright (c) 1997 Tom Christiansen and Nathan Torkington. All rights
+&gt;    reserved.
+&gt; 
+&gt; --
+&gt; 84
+&gt; .
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00093.html">[Fwd: Daily Perl FAQ - How do I change the Nth occurrence of something?]</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00095.html">Re: [olug] Unix Tip: TEST TROUBLES IF STRING IS EMPTY</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00093.html">[Fwd: Daily Perl FAQ - How do I change the Nth occurrence of something?]</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00095.html">Re: [olug] Unix Tip: TEST TROUBLES IF STRING IS EMPTY</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00094"><strong>Date</strong></a></li>
+<li><a href="threads.html#00094"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

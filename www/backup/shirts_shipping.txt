@@ -1,0 +1,52 @@
+[ABE]
+Ricardo Signes
+730 Center St #2
+Bethlehem, PA 18018
+
+[AOL]
+Les Peters
+C/O AOL Perl Mongers
+12100 Sunrise Valley Dr
+Reston VA 20191 
+
+[AUS] 
+Christopher Connally
+9126 Edwardson Lane
+Austin, TX 78749
+United States
+
+[BRA]
+Jeremy Fluhmann
+706 Llano Pl
+College Station, TX  77840
+(254) 493-8446
+
+[ERL]
+horshack@lisa.franken.de
+Perlmongers Erlangen
+c/o Richard Lippmann
+Linder Weg 2
+90522 Oberasbach
+Germany
+
+[HOU]
+G. Wade Johnson
+5035 Jackwood St.
+Houston, TX 77096
+
+[ISR]
+szabgab@gmail.com
+Gabor Szabo
+Migdal HaLevanon 23 app 18
+Modiin
+71700
+ISRAEL
+
+[OMA] 
+Attn: Jay Hannah
+Omni Hotels Reservation Center
+11819 Miami St, 3rd Floor
+Omaha, NE  68164
+402-578-3976
+
+

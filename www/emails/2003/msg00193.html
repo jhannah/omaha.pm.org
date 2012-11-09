@@ -1,0 +1,139 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Another tiny Perl hack -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 2 Sep 2003 15:04:24 &#45;0500 -->
+<!--X-Message-Id: Pine.LNX.4.33.0309021453050.18617&#45;100000@hannibal.mammoth.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Another tiny Perl hack</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00192.html">Date Prev</a>][<a href="msg00194.html">Date Next</a>][<a href="msg00188.html">Thread Prev</a>][<a href="msg00194.html">Thread Next</a>][<a href="maillist.html#00193">Date Index</a>][<a href="threads.html#00193">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Another tiny Perl hack</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;, &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Another tiny Perl hack</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 2 Sep 2003 15:04:16 -0500 (CDT)</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+My friend called his local Perl support hotline (me) today. I gave his
+this little Perl snippet, in case anyone is interested.
+
+He has a file like this (LDAP ldiff):
+
+------------
+dn: uid=eshoes,ou=People,o=Lunar Gravity,c=US
+accountStatus: active
+deliveryMode: normal
+
+dn: uid=ilab,ou=People,o=Lunar Gravity,c=US
+accountStatus: active
+deliveryMode: normal
+
+dn: uid=oslc,ou=People,o=Lunar Gravity,c=US
+accountStatus: active
+deliveryMode: normal
+------------
+
+He needs to add a line of text after every dn: line. That line of text
+must contain the uid from the dn: line. So, I wrote him this:
+
+#!/usr/bin/perl
+while (&lt;&gt;) {
+   print;
+   next unless /^dn:/;
+   ($uid) = /uid=(\w+),/;
+   print &quot;mailmessagestore: /var/spool/maildirs/$uid\n&quot;;
+}
+
+Which spits out this output:
+
+------------
+dn: uid=eshoes,ou=People,o=Lunar Gravity,c=US
+mailmessagestore: /var/spool/maildirs/eshoes
+accountStatus: active
+deliveryMode: normal
+
+dn: uid=ilab,ou=People,o=Lunar Gravity,c=US
+mailmessagestore: /var/spool/maildirs/ilab
+accountStatus: active
+deliveryMode: normal
+
+dn: uid=oslc,ou=People,o=Lunar Gravity,c=US
+mailmessagestore: /var/spool/maildirs/oslc
+accountStatus: active
+deliveryMode: normal
+-------------
+
+Which is what he needed. The &lt;&gt; operator is cool because of it's inherent
+magical flexibility. If he called the program above &quot;j.pl&quot; (by far my
+favorite program name -- I use it all the time -grin-), he could create an
+output file &quot;outputfile&quot; either of these ways:
+
+cat inputfile | j.pl &gt; outputfile
+j.pl inputfile &gt; outputfile
+
+Neat huh? Anyhoo, just another Perly two cents...
+
+Jay Hannah
+JAOPH (Just Another Omaha Perl Hacker)
+Omaha Perl Mongers: <a  href="http://omaha.pm.org">http://omaha.pm.org</a>
+-- Join out mailing list! --
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00192.html">Re: WWW::Mechanize problems</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00194.html">Hello...</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00188.html">Daily Perl FAQ - How can I hide the source for my Perl program?(fwd)</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00194.html">Hello...</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00193"><strong>Date</strong></a></li>
+<li><a href="threads.html#00193"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

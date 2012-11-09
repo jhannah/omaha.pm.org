@@ -1,0 +1,149 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Hazzah! Up 25%! -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Fri, 16 May 2003 08:26:39 &#45;0500 -->
+<!--X-Message-Id: 3EC4E6F5.A2538237@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Hazzah! Up 25%!</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00077.html">Date Prev</a>][<a href="msg00079.html">Date Next</a>][<a href="msg00077.html">Thread Prev</a>][<a href="msg00079.html">Thread Next</a>][<a href="maillist.html#00078">Date Index</a>][<a href="threads.html#00078">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Hazzah! Up 25%!</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Hazzah! Up 25%!</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 16 May 2003 08:26:13 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+Attendance was up a staggering 25% this meeting! Thanks to Tim, Paul,
+Chris, and Bob for coming out to our 2nd 2003 Perl Mongers meeting. We
+laughed! We cried! We quoted www.homestarrunner.com again. It was better
+than &quot;Cats.&quot;
+
+With such an amazing increase in attendance, I took it upon myself as
+the defacto Ways and Means Committee chairman to run a
+quickextrapolation of our future attendance through 2010. Starting with
+last month, with monthly 25% growth here is our projected attendance:
+
+---
+#!/usr/bin/perl
+
+use Date::Calc qw( Add_Delta_YMD );
+
+my $a = 4;                 # number of attendees
+my ($y, $m) = (2003, 4);   # year, month
+
+while ($y &lt; 2011) {
+   print &quot;$y-$m:$a &quot;;
+   $a = int($a * 1.25);
+   ($y, $m) = Add_Delta_YMD($y, $m, 1, 0, 1, 0);
+}
+---
+
+2003-4:4 2003-5:5 2003-6:6 2003-7:7 2003-8:8 2003-9:10 2003-10:12
+2003-11:15 2003-12:18 2004-1:22 2004-2:27 2004-3:33 2004-4:41 2004-5:51
+2004-6:63 2004-7:78 2004-8:97 2004-9:121 2004-10:151 2004-11:188
+2004-12:235 2005-1:293 2005-2:366 2005-3:457 2005-4:571 2005-5:713
+2005-6:891 2005-7:1113 2005-8:1391 2005-9:1738 2005-10:2172 2005-11:2715
+2005-12:3393 2006-1:4241 2006-2:5301 2006-3:6626 2006-4:8282
+2006-5:10352 2006-6:12940 2006-7:16175 2006-8:20218 2006-9:25272
+2006-10:31590 2006-11:39487 2006-12:49358 2007-1:61697 2007-2:77121
+2007-3:96401 2007-4:120501 2007-5:150626 2007-6:188282 2007-7:235352
+2007-8:294190 2007-9:367737 2007-10:459671 2007-11:574588 2007-12:718235
+2008-1:897793 2008-2:1122241 2008-3:1402801 2008-4:1753501
+2008-5:2191876 2008-6:2739845 2008-7:3424806 2008-8:4281007
+2008-9:5351258 2008-10:6689072 2008-11:8361340 2008-12:10451675
+2009-1:13064593 2009-2:16330741 2009-3:20413426 2009-4:25516782
+2009-5:31895977 2009-6:39869971 2009-7:49837463 2009-8:62296828
+2009-9:77871035 2009-10:97338793 2009-11:121673491 2009-12:152091863
+2010-1:190114828 2010-2:237643535 2010-3:297054418 2010-4:371318022
+2010-5:464147527 2010-6:580184408 2010-7:725230510 2010-8:906538137
+2010-9:1133172671 2010-10:1416465838 2010-11:1770582297
+2010-12:2213227871
+
+As you can see, we have some planning to do. 
+- By August we'll have a mandatory 18% gratuity added to our bill.
+- By January 2004 we'll need a party room.
+- By September 2004 we'll need a *big* party room.
+- By February 2005 we'll need a banquet hall.
+- By November 2007 each of our meetings wills be bigger than Woodstock.
+- By February 2008 we'll have to start worrying about renting out a lot
+of hotels since everyone in Omaha, Council Bluffs, Lincoln, and
+surrounding areas (everyone that can just drive home) will already be
+attending.
+- By May 2010 we'll need to start building communes since everyone in
+the US will be attending. 
+- By the end of 2010 1/3 of Earth's population will be attending. We
+should probably think about serving hor d'oeuvres.
+
+References from the meeting (that I remember):
+<a  href="http://www.homestarrunner.com/sbemail.html">http://www.homestarrunner.com/sbemail.html</a> - Strong Bad Emails
+<a  href="http://www.homestarrunner.com/systemisdown.html">http://www.homestarrunner.com/systemisdown.html</a> - System is Down
+<a  href="http://www.homestarrunner.com/sbemail58.html">http://www.homestarrunner.com/sbemail58.html</a> - Who is Trogdor?
+<a  href="http://www.homestarrunner.com/trogdor.html">http://www.homestarrunner.com/trogdor.html</a> - Trogdor video game
+<a  href="http://perl.meetup.com/">http://perl.meetup.com/</a> - Perl meetup
+<a  href="http://www.meetup.com/locale/?localeId=332&amp;fulltop=1">http://www.meetup.com/locale/?localeId=332&amp;fulltop=1</a> - All Omaha Meetups
+
+It was fun! Thanks for coming out!
+
+Next meeting June 19th @ 7pm, location TBD.
+
+j
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00077.html">FW: Q: LOAD a table using the DBI (newbie again)?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00079.html">Re: [olug] slightly OT: IBM RS6000 backup tapes</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00077.html">FW: Q: LOAD a table using the DBI (newbie again)?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00079.html">Re: [olug] slightly OT: IBM RS6000 backup tapes</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00078"><strong>Date</strong></a></li>
+<li><a href="threads.html#00078"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

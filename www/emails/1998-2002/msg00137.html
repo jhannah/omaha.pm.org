@@ -1,0 +1,185 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Text Matching. -->
+<!--X-From-R13: Renmnx <qenmnxNzngrevnzntvpn.pbz> -->
+<!--X-Date: Thu, 1 Jun 2000 14:57:47 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.LNX.4.20.0006011400050.1230&#45;100000@moongate.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: l03110704b556d1517e44@[205.242.158.198] -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Text Matching.</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00136.html">Date Prev</a>][<a href="msg00138.html">Date Next</a>][<a href="msg00136.html">Thread Prev</a>][<a href="msg00138.html">Thread Next</a>][<a href="maillist.html#00137">Date Index</a>][<a href="threads.html#00137">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Text Matching.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Greenblatt &amp; Seay &lt;<a href="mailto:g-s@DOMAIN.HIDDEN">g-s@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Text Matching.</li>
+<li><em>From</em>: Drazak &lt;<a href="mailto:drazak@DOMAIN.HIDDEN">drazak@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 1 Jun 2000 14:00:55 -0500 (CDT)</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00136.html">l03110704b556d1517e44@[205.242.158.198]</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Thanks much for the example code.  You have some good ideas there, as well
+as some syntax that I was not familiar with before.  Great!
+
+Thanks,
+
+_Drew
+
+On Sun, 28 May 2000, Greenblatt &amp; Seay wrote:
+
+&gt; &gt;I'm doing a project where I have two seperate databases that have no key
+&gt; &gt;fields in common between them, but they represent records that could be
+&gt; &gt;linked.  The only field in common contains a customer name.  However, the
+&gt; &gt;name could have been entered slightly differently.  For example:
+&gt; &gt;
+&gt; &gt;Ron C. Jones
+&gt; &gt;Ron Jones
+&gt; &gt;Dr. Ron C Jones.
+&gt; &gt;
+&gt; &gt;These all (most likely) represent the same person in the different
+&gt; &gt;databases.  I'm writing some Perl software that will search the two
+&gt; &gt;different databases and return a set of likely matches that can then be
+&gt; &gt;verified by a real human in cases where there is still
+&gt; &gt;ambiguity.  Currently, I am breaking the name fields from the two
+&gt; &gt;different databases up into a set of tokens (and discarding tokens that
+&gt; &gt;are too short) and doing compares in this fashion.
+&gt; &gt;
+&gt; &gt;My question is, has anyone handled a function like this in Perl
+&gt; &gt;before?  Are there any modules that can scan fields like this and return a
+&gt; &gt;probability of match?
+&gt; &gt;
+&gt; 
+&gt; The following code might serve as a start. I recommend thourough testing.
+&gt; 
+&gt; David Seay
+&gt; <a  href="http://www.mastercall.com/g-s/">http://www.mastercall.com/g-s/</a>
+&gt; 
+&gt; 
+&gt; #!perl
+&gt; 
+&gt; $list1 = &lt;&lt;&quot;EOF&quot;;
+&gt; Ron Jones
+&gt; Ronnie Jones
+&gt; Don C. Jones
+&gt; Ron C. Smith
+&gt; Rod C. Jones
+&gt; Ron C Jones
+&gt; Ron C. Jones
+&gt; Ron D. Jones
+&gt; Ron C. Jones Sr
+&gt; Ron C. Jones, Jr.
+&gt; Ron Tones
+&gt; Dr. Ron C Jones.
+&gt; EOF
+&gt;  @names1 =  split(/\n/, $list1);
+&gt; 
+&gt;  $list2 = &lt;&lt;&quot;EOF&quot;;
+&gt; Ron Jones
+&gt; Dr. Ron C Jones
+&gt; Mr. Ron Z. Tones, III
+&gt; Ron C. Jones, Sr.
+&gt; EOF
+&gt;  @names2 =  split(/\n/, $list2);
+&gt; 
+&gt; 
+&gt;   N1: for $n1 (0..$#names1) {
+&gt;         print &quot;CHECKING $names1[$n1]\n&quot;;
+&gt;         ($words1,$suffix1) = split(/,/, $names1[$n1]);
+&gt;         @words1 = split(/\s/, $words1);
+&gt;         N2: for $n2 (0..$#names2) {
+&gt;               ($words2,$suffix2) = split(/,/, $names2[$n2]);
+&gt;               @words2 = split(/\s/, $words2);
+&gt;               W2: for $w2 (0..$#words2) {
+&gt;                     if ($w2 == 0 &amp;&amp; $words2[0] =~ /\./) { next W2 }
+&gt;                     $words2[$w2] =~ s/\.//g;
+&gt;                     if (length($words2[$w2]) == 1) {
+&gt;                         W1: for $w1 (0..$#words1) {
+&gt;                               $words1[$w1] =~ s/\.//g;
+&gt;                               if (length($words1[$w1]) != 1) { next W1 }
+&gt;                               if($words1[$w1] ne $words2[$w2]) {
+&gt;                                   print &quot;NO MATCH $names2[$n2]\t(INITIAL
+&gt; doesn't match)\n&quot;;
+&gt;                                   next N2;
+&gt;                               }
+&gt;                             }
+&gt;                             next W2;
+&gt;                     }
+&gt;                     $words2[$w2] =~ s/,//g;
+&gt;                     if ($names1[$n1] !~ /$words2[$w2]/i) {
+&gt;                         print &quot;NO MATCH $names2[$n2]\t($names1[$n1] doesn't
+&gt; contain $words2[$w2])\n&quot;;
+&gt;                         next N2;
+&gt;                     }
+&gt;                   }
+&gt;                   print &quot; MATCHES $names2[$n2]\n&quot;;
+&gt;             }
+&gt;             print &quot;\n------------------\n\n&quot;;
+&gt;       }
+&gt; 
+&gt; 
+&gt; __END__
+&gt; 
+&gt; 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00136" href="msg00136.html">Re: Text Matching.</a></strong>
+<ul><li><em>From:</em> Greenblatt &amp; Seay</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00136.html">Re: Text Matching.</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00138.html">Quick question.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00136.html">Re: Text Matching.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00138.html">Quick question.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00137"><strong>Date</strong></a></li>
+<li><a href="threads.html#00137"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

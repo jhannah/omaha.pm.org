@@ -1,0 +1,103 @@
+package ADOConnection;
+use Win32::OLE;
+require Exporter;
+require ADOResultset;
+require ADOCommand;
+
+@ISA = qw(Exporter, ADOResultset, ADOCommand);
+@EXPORT=qw(setDB,closeConnection,openConnection,begin,commit,rollback,connectionTimeOut,commandTimeOut, newCommand);
+
+
+sub new
+{
+	my $class = shift;
+	my %params = @_;
+	my $this = {};
+	bless $this, $class;
+
+	$this->{adoConnection}=Win32::OLE->new('ADODB.Connection');
+	if($params{'dsn'}){
+		$this->openConnection('dsn'=>$params{'dsn'},
+		'uid'=>$params{'uid'},
+		'pwd'=>$params{'pwd'},
+		'database'=>$params{'database'})
+	}
+	return $this;
+}
+
+sub setDB
+{
+	my $this = shift;
+	my ($database)=@_;
+
+	$this->{adoConnection}->{DefaultDatabase}=$database;
+}
+
+sub closeConnection
+{
+	my $this=shift;
+	$this->{adoConnection}->Close();
+}
+
+sub openConnection
+{
+	my $this=shift;
+	my %params=@_;
+
+	if($params{'dsn'}){
+		$this->{adoConnectionString}="DSN=".$params{'dsn'}.";UID=".$params{'uid'}.";PWD=".$params{'pwd'};
+	}
+	$this->{adoConnection}->Open($this->{adoConnectionString});
+
+
+	if($params{'database'}){
+		$this->{adoConnection}->{DefaultDatabase}=$params{'database'};
+	}
+
+}
+
+sub begin
+{
+	my $this=shift;
+	$this->{adoConnection}->BeginTrans();
+}
+
+sub commit
+{
+	my $this=shift;
+	$this->{adoConnection}->CommitTrans();
+}
+
+sub rollback
+{
+	my $this=shift;
+	$this->{adoConnection}->RollbackTrans();
+}
+
+sub connectionTimeOut
+{
+	my $this=shift;
+	my ($timeOut)=@_;
+	$this->{adoConnection}->{'ConnectionTimeout'}=$timeOut;
+}
+
+sub commandTimeOut
+{
+	my $this=shift;
+	my ($timeOut)=@_;
+	$this->{adoConnection}->{'CommandTimeout'}=$timeOut;
+}
+
+sub newCommand
+{
+	my ($this)=shift;
+	my ($command)=shift;
+	my $t=ADOCommand->new();
+
+
+	if($command){
+		$t->{command}->{CommandText}=$command;
+	}
+	$t->{command}->{ActiveConnection}=$this->{adoConnection};
+	return $t;
+}

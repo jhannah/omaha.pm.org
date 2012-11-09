@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Bug Hunt</title>
+</head>
+<body>
+<h1>Bug Hunt: Jay's IP Optimum Bitmask Thingy</h1>
+
+If you're familiar with and interested in IP subnet calculators, you may
+find one I wrote in 2000 worth a look:
+
+<blockquote>
+<a href="http://jays.net/cgi-bin/ipr.pl">http://jays.net/cgi-bin/ipr.pl</a>
+</blockquote>
+
+If you're interested in Perl and/or bug hunting and/or the mathematics 
+behind IP subnet calculators (at least the way I did it) 
+you may find it interesting
+that there's a bug in my script: 
+<p>
+
+The optimum bitmask for the IP range 10.0.0.0 - 10.0.63.255 is 10.0.0.0/18, 
+but my script reports 2 /19 networks instead:
+
+<blockquote>
+<a href="http://jays.net/cgi-bin/ipr.pl?ip1=10.0.0.0&ip2=10.0.63.255">http://jays.net/cgi-bin/ipr.pl?ip1=10.0.0.0&ip2=10.0.63.255</a>
+</blockquote>
+
+Where's the bug? Beats me. I haven't taken the time to try and find it yet.
+Since I'm looking for another Perl Mongers topic anyway, I figured I demo 
+the Perl debugger. Perhaps as part of that demo I'll try to delve into the
+inner workings of this script and find the buggy.
+<p>
+
+Here's the source code (my CVS is broken):
+
+<blockquote>
+<a href="http://jays.net/ipr.pl.txt">http://jays.net/ipr.pl.txt</a>
+</blockquote>
+
+If you want to beat me to it, feel free to post your solution to the Omaha
+Perl Mongers mailing list.
+<p>
+
+Enjoy! (Or ignore! -grin-)
+<p>
+
+Jay Hannah<br>
+Omaha Perl Mongers: <a href="http://omaha.pm.org">http://omaha.pm.org</a><br>
+jay(at)jays(dot)net<br>
+12/04/2003
+
+
+</body>
+</html>
+

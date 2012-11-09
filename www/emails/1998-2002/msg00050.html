@@ -1,0 +1,131 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: RE: uninitialized value -->
+<!--X-From-R13: "Dba, Rvnar, &#38; Flyre Vnjxvaf" <eunjxvafNanivk.arg> -->
+<!--X-Date: Sun, 16 May 1999 02:03:24 &#45;0400 (EDT) -->
+<!--X-Message-Id: 01BE9F36.B90649C0@HAWK233 -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>RE: uninitialized value</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00049.html">Date Prev</a>][<a href="msg00051.html">Date Next</a>][<a href="msg00049.html">Thread Prev</a>][<a href="msg00051.html">Thread Next</a>][<a href="maillist.html#00050">Date Index</a>][<a href="threads.html#00050">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: uninitialized value</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: OPM &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;, &quot;'ktb'&quot; &lt;<a href="mailto:xyf@DOMAIN.HIDDEN">xyf@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: uninitialized value</li>
+<li><em>From</em>: &quot;Ron, Diane, &amp; Tyler Hawkins&quot; &lt;<a href="mailto:rhawkins@DOMAIN.HIDDEN">rhawkins@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sun, 16 May 1999 00:54:50 -0700</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>My guess is that you have a line(s) in your file without a tab (\t) delimiter.  After the split, $parts[1] would be undefined in that case.
+
+Ron Hawkins
+rhawkins@xxxxxxxxx
+Home: <a  href="http://ron.hawkins.net/">http://ron.hawkins.net/</a>      Work: <a  href="http://www.infoUSA.com/">http://www.infoUSA.com/</a>
+
+To some it's half empty.  To some it's half full.
+To me it's time for a beer run!
+
+
+----------
+From:  ktb
+Sent:  Friday, May 14, 1999 9:44 PM
+To:  OPM
+Subject:  uninitialized value
+
+Hi, I'm writing this script to search a database.  It works fine when I
+search the first split, &quot;$parts[0]&quot; but if I try to search &quot;$parts[1]&quot; I
+get the following errors:
+
+Use of uninitialized value at ./testst line 19, &lt;BottleFile&gt; chunk
+11461.
+Use of uninitialized value at ./testst line 19, &lt;BottleFile&gt; chunk
+11461.
+COOLEY'S/34 NEWBURY ST./BOSTON. Fike 1987:159
+
+The error messages seem to occur on lines not containing the word
+searched for, in this case, &quot;fike.&quot;  I don't understand what the error
+is exactly or how to correct this.  If anyone can help I would
+appreciate it.  I've included the script below.
+Thanks,
+kent  
+---------------------------------------------------------------------------------
+#!/usr/bin/perl -w
+
+print &quot;Enter string to search: &quot;;
+$SearchString = &lt;STDIN&gt;;
+chomp($SearchString);
+$SearchString =~ tr/a-z/A-Z/;
+
+
+open(BottleFile, &quot;botglass.txt&quot;);
+@bottle = &lt;BottleFile&gt;;
+    foreach $line (@bottle) {  
+        @parts = split(/\t/, $line ); 
+        $PartsFile = $parts[1];
+        
+          } continue {  
+
+        foreach ($PartsFile) {
+            if (/\Q$SearchString/i) {
+                print join(&quot;\t&quot;, @parts, &quot;\n&quot;); 
+	      }
+	  }
+      }
+--------------------------------------------------------------------------------
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00049.html">uninitialized value</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00051.html">Re: uninitialized value</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00049.html">uninitialized value</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00051.html">Re: uninitialized value</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00050"><strong>Date</strong></a></li>
+<li><a href="threads.html#00050"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

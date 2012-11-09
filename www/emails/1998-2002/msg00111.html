@@ -1,0 +1,125 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Read() -->
+<!--X-From-R13: "Dba Vnjxvaf" <eunjxvafNanivk.arg> -->
+<!--X-Date: Fri, 19 Nov 1999 13:08:05 &#45;0500 (EST) -->
+<!--X-Message-Id: 00b601bf32b3$82396ec0$01c8a8c0@hawk233 -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.3.96.991119102601.3958A&#45;100000@moongate.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Read()</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00110.html">Date Prev</a>][<a href="msg00112.html">Date Next</a>][<a href="msg00110.html">Thread Prev</a>][<a href="msg00092.html">Thread Next</a>][<a href="maillist.html#00111">Date Index</a>][<a href="threads.html#00111">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Read()</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Drazak&quot; &lt;<a href="mailto:drazak@DOMAIN.HIDDEN">drazak@xxxxxxxxxxxx</a>&gt;, &quot;mongers&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Read()</li>
+<li><em>From</em>: &quot;Ron Hawkins&quot; &lt;<a href="mailto:rhawkins@DOMAIN.HIDDEN">rhawkins@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 19 Nov 1999 11:25:44 -0600</li>
+<li><em>Organization</em>: </li>
+<li><em>References</em>: &lt;<a href="msg00110.html">Pine.LNX.3.96.991119102601.3958A-100000@moongate.net</a>&gt;</li>
+<li><em>Reply-to</em>: &quot;Ron Hawkins&quot; &lt;<a href="mailto:rhawkins@DOMAIN.HIDDEN">rhawkins@xxxxxxxxx</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I always use the FileHandle module for file operations.  It looks more like
+'C' to me (what I was used to).
+
+Here is an example.
+~~~~~~~~~~ start code ~~~~~~~~~~~~~
+use FileHandle;
+
+my($Fh) = new FileHandle(&quot;./temp.txt&quot;, &quot;r&quot;);
+if (defined($Fh)) {
+  my($InLine);
+  while ($InLine = $Fh-&gt;getline()) {
+    print($InLine);
+  }
+  undef($Fh);             ## close the file
+}
+~~~~~~~~~~ end code ~~~~~~~~~~~~~
+
+Ron Hawkins
+ron@xxxxxxxxxxx
+<a  href="http://ron.hawkins.net/">http://ron.hawkins.net/</a>
+
+----- Original Message -----
+From: Drazak &lt;drazak@xxxxxxxxxxxx&gt;
+To: mongers &lt;omaha-list@xxxxxxxxxxxxxxxxxxx&gt;
+Sent: Friday, November 19, 1999 12:48 PM
+Subject: Read()
+
+
+Hrm, I cant believe Im asking this, but my 4 perl books dont have the
+answer, and Im not finding it in the online docs either...
+
+How do I call read to return just the data on a line up to a newline(\n)?
+I generally use the diamond operator on a filehandle which gives the
+operation I desire, but I have a situation where that is not adequate.
+
+Thanks,
+
+_Andrew
+
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00110" href="msg00110.html">Read()</a></strong>
+<ul><li><em>From:</em> Drazak</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00110.html">Read()</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00112.html">Error message I can't get rid of.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00110.html">Read()</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00092.html">Perl Compiler</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00111"><strong>Date</strong></a></li>
+<li><a href="threads.html#00111"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [Omaha.pm] cutting/clipping MP3 files in Perl -->
+<!--X-From-R13: [ng Qnhtueba <zngNcucpbafhygvat.pbz> -->
+<!--X-Date: Mon, 19 Jan 2004 17:00:13 &#45;0600 -->
+<!--X-Message-Id: Pine.BSF.4.58.0401191650001.64463@phpconsulting.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 8097BE65&#45;491F&#45;11D8&#45;97E7&#45;000A95E317B8@jays.net -->
+<!--X-Reference: 45742.12.160.138.6.1074550932.squirrel@webmail.linder.org -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [Omaha.pm] cutting/clipping MP3 files in Perl</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00034.html">Date Prev</a>][<a href="msg00036.html">Date Next</a>][<a href="msg00034.html">Thread Prev</a>][<a href="msg00036.html">Thread Next</a>][<a href="maillist.html#00035">Date Index</a>][<a href="threads.html#00035">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [Omaha.pm] cutting/clipping MP3 files in Perl</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Daniel Linder &lt;<a href="mailto:dan@DOMAIN.HIDDEN">dan@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [Omaha.pm] cutting/clipping MP3 files in Perl</li>
+<li><em>From</em>: Mat Caughron &lt;<a href="mailto:mat@DOMAIN.HIDDEN">mat@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 19 Jan 2004 17:13:49 -0600 (CST)</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00034.html">45742.12.160.138.6.1074550932.squirrel@webmail.linder.org</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00033.html">8097BE65-491F-11D8-97E7-000A95E317B8@jays.net</a>&gt;&lt;<a href="msg00034.html">45742.12.160.138.6.1074550932.squirrel@webmail.linder.org</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Daniel:
+
+First observation: Compressed binary streams aren't easily editable.
+It is possible, if you can edit frames directly, to cut in pieces but not
+much else.  For fading in and out, though, you'll have to re-encode.
+These aren't tasks that belong to Perl, per se.
+
+Perl module to handle resampling:
+   <a  href="http://search.cpan.org/~lds/Apache-MP3-3.05/MP3/Resample.pm">http://search.cpan.org/~lds/Apache-MP3-3.05/MP3/Resample.pm</a>
+
+I think the first question you should ask yourself is what library you
+want to be using for re-encoding and/or editing of the MP3 format.
+Here's a good starting place.
+  <a  href="http://lame.sourceforge.net/links.html">http://lame.sourceforge.net/links.html</a>
+
+Sox can give you a fadeout taper after you've got it uncompressed.
+
+For clipping/cutting without re-encoding, see:
+  <a  href="http://mp3asm.sourceforge.net/">http://mp3asm.sourceforge.net/</a>
+
+MPEG Frame module is the closest pure-perl code that is relevent to
+the problem you have proposed to solve:
+  <a  href="http://search.cpan.org/~nuffin/MPEG-Audio-Frame-0.08/Frame.pm">http://search.cpan.org/~nuffin/MPEG-Audio-Frame-0.08/Frame.pm</a>
+
+Please let me know how it turns out.
+
+
+Mat Caughron
+PHP Consulting
+
+
+On Mon, 19 Jan 2004, Daniel Linder wrote:
+
+&gt; Hello!
+&gt;
+&gt;   I am thinking about writing a quick and dirty Perl program to split up
+&gt; some large MP3 files into 5 minute chunks (some of the originals are 45+
+&gt; minutes long).  There are quite a few hits on Google for MP3 tag and
+&gt; attribute modules, but nothing that can edit the audio directly (i.e.
+&gt; fade in/out, equalize the volume, etc).
+&gt;
+&gt;   Has anyone ever tried doing this in Perl?
+&gt;
+&gt; Dan
+&gt;
+&gt; P.S. For background, this is a follow-on to my post to the OLUG list
+&gt; regarding news audio sites that I can download to my MP3 player.  Since my
+&gt; Creative MuVo doesn't do fast-forward/rewind it just jumps to the
+&gt; beginning of the next MP3 file, if I get interrupted 1/2 way through an
+&gt; hour long show and can't pause, I have to start at the beginning the next
+&gt; time.  If I could break them up into 5minute chunks (with some fade in and
+&gt; fade out) I could make it clean enough to listen to, but still be able to
+&gt; get close to where I stopped listening to it the last time.
+&gt;
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00033" href="msg00033.html">[Omaha.pm] YAPC::NA::2004 CFP</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+<li><strong><a name="00034" href="msg00034.html">[Omaha.pm] Working with MP3 files in Perl</a></strong>
+<ul><li><em>From:</em> Daniel Linder</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00034.html">[Omaha.pm] Working with MP3 files in Perl</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00036.html">[Omaha.pm] cgi browser based telnet</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00034.html">[Omaha.pm] Working with MP3 files in Perl</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00036.html">[Omaha.pm] cgi browser based telnet</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00035"><strong>Date</strong></a></li>
+<li><a href="threads.html#00035"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

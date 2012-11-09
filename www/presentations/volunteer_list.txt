@@ -1,0 +1,79 @@
+
+----------------------------------------
+----------------------------------------
+Omaha Perl Mongers
+Presentation Volunteer List
+http://omaha.pm.org/presentations.txt
+Last update: 4/11/2003 by jhannah
+----------------------------------------
+----------------------------------------
+
+
+
+
+---------------------------------
+Volunteer presenter: Jay Hannah
+---------------------------------
+
+Rudimentary presentations I could give. Presentations would by highly
+interactive, highly informal. We'd take or leave any of the bullet points
+as interests dictated. If you have bullet points to suggest in advance, 
+I'd be happy to do a little research and take a crack at it.
+
+
+"Intro to Perl"
+- Hello, world.
+- TIMTOWTDI.
+- perldoc is your friend. So are -w and $^W.
+- Scalars, arrays, hashes.
+- Command line parameters, STDIN.
+- File I/O.
+- Subroutines.
+- Regular expressions.
+- (s)printf is your friend.
+- Modules. CPAN is your friend, and the pearl of Perl.
+- What can't you do? Jay's halfbaked opinions on Perl, Java, and .NET.
+- Perl: The king of the command line one-liner. -e, -p, -i, oh my!
+
+
+"Intro to Writing Web Scripts with CGI.pm"
+- Writing forms. Reading submitted values.
+- Building self-referencing web scripts.
+- Let CGI.pm do the heavy lifting!
+  - form values are sticky
+  - don't try to string your own parameters, use $q->param(), $q->self_url
+  - using /^(url)?(un)?escape$/
+- CGI::Carp qw( fatalsToBrowser ) is your friend.
+- Watching your error logs.
+- Cookies.
+
+
+"Intro to Database Interaction with DBI.pm"
+- Installing DBD::Informix.
+- Installing DBD::Sybase and freetds to talk to MS-SQL.
+- Basic select/update/insert/delete
+- $sth->fetchrow_hashref is your friend.
+- AutoCommit, RaiseError, PrintError, and you.
+- Error trapping/handling. 
+- $sth->execute("x", "y", "z") is your friend, (if your database supports it.)
+ 
+
+"Intro to Object Oriented Programming in Perl"
+- Recommended reading.
+- Why OO? OO, procedural programming, software maintenance lifecycles,
+  encapsulation, self documentation, etc.
+- Create your first class. Constructors, destructors.
+- Inheritance, polymorphism. @ISA, baby.
+- Classes with attributes. Defaults, set_*, get_*, the amazing world
+  of AUTOLOAD.
+
+
+"OO Perl Case Study: OO'ing Omni Hotels Airline Mileage Program"
+- I wrote a walkthrough for our internal use at my company. Since it
+  contains no senstitive information, I've posted a PDF burn of it here:
+  http://omaha.pm.org/sg_rewards.pdf
+  This would be the general framework for the presentation, discussing
+  our concrete procedural to OO transformation with this source code.
+
+
+

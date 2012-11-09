@@ -1,0 +1,160 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: [Fwd: Daily Perl FAQ &#45; What's the difference between require and use?] -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 22 Jul 2003 07:36:01 &#45;0500 -->
+<!--X-Message-Id: 3F1D2FAA.62BFBEB2@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[Fwd: Daily Perl FAQ - What's the difference between require and use?]</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00153.html">Date Prev</a>][<a href="msg00155.html">Date Next</a>][<a href="msg00156.html">Thread Prev</a>][<a href="msg00157.html">Thread Next</a>][<a href="maillist.html#00154">Date Index</a>][<a href="threads.html#00154">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Fwd: Daily Perl FAQ - What's the difference between require and use?]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: [Fwd: Daily Perl FAQ - What's the difference between require and use?]</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 22 Jul 2003 07:35:54 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+I thought this was a good little brush-up.
+
+I always &quot;use&quot; everything...
+
+j
+
+
+
+-------- Original Message --------
+Subject: Daily Perl FAQ - What's the difference between require and use?
+Date: 20 Jul 2003 10:59:20 -0000
+From: perlreply@xxxxxxxxxxxxxx
+To: jay@xxxxxxxx
+
+
+
+This is a daily mailing from the Perl FAQ a Day website.
+For subscription info, or to have your address removed from 
+the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a>
+
+Question:
+What's the difference between require and use?
+
+    Perl offers several different ways to include code from one file
+    into another. Here are the deltas between the various inclusion
+    constructs:
+
+        1)  do $file is like eval `cat $file`, except the former:
+            1.1: searches @INC and updates %INC.
+            1.2: bequeaths an *unrelated* lexical scope on the eval'ed 
+	         code.
+
+        2)  require $file is like do $file, except the former:
+            2.1: checks for redundant loading, skipping already loaded 
+		 files.
+            2.2: raises an exception on failure to find, compile, or
+		 execute $file.
+
+        3)  require Module is like require &quot;Module.pm&quot;, except the
+former:
+            3.1: translates each &quot;::&quot; into your system's directory
+		 separator.
+            3.2: primes the parser to disambiguate class Module as an
+		 indirect object.
+
+        4)  use Module is like require Module, except the former:
+            4.1: loads the module at compile time, not run-time.
+            4.2: imports symbols and semantics from that package to the
+		 current one.
+
+    In general, you usually want `use' and a proper Perl module.
+
+
+-- 
+The contents of this message are part of the Perl FAQ:
+Please note that &quot;I&quot; below refers to FAQ authors, and *not* Jeff Yoak or
+Perl FAQ a Day.
+
+Where to get this document [the Perl FAQ]
+   This document is posted regularly to comp.lang.perl.announce and
+   several other related newsgroups. It is available in a variety of
+   formats from CPAN in the /CPAN/doc/FAQs/FAQ/ directory, or on the web
+   at <a  href="http://www.perl.com/perl/faq/">http://www.perl.com/perl/faq/</a> .
+
+CREDITS
+   When I first began the Perl FAQ in the late 80s, I never realized it
+   would have grown to over a hundred pages, nor that Perl would ever
+   become so popular and widespread. This document could not have been
+   written without the tremendous help provided by Larry Wall and the
+   rest of the Perl Porters.
+
+AUTHOR AND COPYRIGHT INFORMATION
+   Copyright (c) 1997 Tom Christiansen and Nathan Torkington. All rights
+   reserved.
+
+
+
+-- 
+256
+.
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00157" href="msg00157.html">Re: [Fwd: Daily Perl FAQ - What's the difference between require and use?]</a></strong>
+<ul><li><em>From:</em> Jeff Bisbee</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00153.html">Re: Meeting this Thr July 17th?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00155.html">[Fwd: [olug] Unix Tip: Rename files script]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00156.html">Perl IPS for the BofH in all of us</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00157.html">Re: [Fwd: Daily Perl FAQ - What's the difference between require and use?]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00154"><strong>Date</strong></a></li>
+<li><a href="threads.html#00154"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

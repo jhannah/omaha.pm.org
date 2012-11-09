@@ -1,0 +1,165 @@
+
+EXAMPLE OUTPUT (uname -a) if you don't provide the 3rd parameter:
+> ./pscrawl.pl jhannah mypwd
+AIX ifs-apps 1 5 0003826F4C00
+AIX ifs-data 3 4 0001570F4C00
+Linux king 2.4.3-12 #1 Fri Jun 8 15:05:56 EDT 2001 i686 unknown
+Linux rockhopper 2.2.14-12 #1 Tue Apr 25 13:04:07 EDT 2000 i686 unknown
+Linux little-blue.omnihotels.com 2.4.18-17.7.x #1 Tue Oct 8 13:33:14 EDT 2002 i686 unknown
+Linux magellan.omnihotels.com 2.4.18-17.7.x #1 Tue Oct 8 13:33:14 EDT 2002 i686 unknown
+Linux royal.omnihotels.com 2.4.20-18.7 #1 Thu May 29 08:32:50 EDT 2003 i686 unknown
+AIX omni-res 3 4 006490974C00
+SunOS charm.omnihotels.com 5.7 Generic_106541-14 sun4u sparc SUNW,Ultra-Enterprise
+AIX gentoo 3 4 000B7DAD4C00
+Linux emperor.omnihotels.com 2.4.9-31 #1 Tue Feb 26 07:11:02 EST 2002 i686 unknown
+
+===========================================================================================
+
+EXAMPLE OUTPUT looking for inetd processes:
+> ./pscrawl.pl jhannah mypwd inet
+-----
+king
+-----
+  597 ?        S      0:02 xinetd -stayalive -reuse -pidfile /var/run/xinetd.pid
+
+-----
+rockhopper
+-----
+  496 ?        S      0:25 inetd
+29774 pts/0    S      0:00 grep inet
+
+-----
+little-blue
+-----
+  869 ?        S      0:01 xinetd -stayalive -reuse -pidfile /var/run/xinetd.pid
+31316 pts/0    S      0:00 grep inet
+
+-----
+magellan
+-----
+  986 ?        S      1:43 xinetd -stayalive -reuse -pidfile /var/run/xinetd.pid
+
+-----
+royal
+-----
+  931 ?        S      0:12 xinetd -stayalive -pidfile /var/run/xinetd.pid
+
+-----
+omni-res
+-----
+  10076      - A     2:34 /usr/sbin/inetd 
+  26096 pts/20 A     0:00 grep inet 
+ 205652 pts/16 A     0:00 perl ./pscrawl.pl jhannah xxxxxxxx inet 
+
+-----
+charm
+-----
+
+-----
+gentoo
+-----
+  4388      - A     0:49 /usr/sbin/inetd 
+
+-----
+emperor
+-----
+  871 ?        S      0:04 xinetd -stayalive -reuse -pidfile /var/run/xinetd.pid
+15674 pts/2    S      0:00 grep inet
+
+===========================================================================================
+
+THE SOURCE CODE - see the usage() subroutine for usage...
+
+#!/usr/bin/perl
+# Hackery by Jay Hannah <jay(at)jays(dot)net> October, 2003. http://jays.net
+# $Id: pscrawl.pl,v 1.5 2003/10/11 18:33:00 jhannah Exp $
+#
+# I wrote this program as a demo of the flexibility of Expect.pm. We use Expect.pm at work to control
+# our tape libraries, automating all sorts of arbitrary interactions with all sorts of different
+# utility programs on different boxes. All of those examples, though, would have been dead slow
+# and obscure to anyone trying to follow them. So I wrote this "telnet all over the place" demo instead.
+# Expect is probably not the ideal tool if the only thing you want to do is telnet, though. Check
+# out Net::Telnet and/or Net::SSH if you specifically need a robust and easier telnet/ssh solution.
+# -jhannah 10/11/2003
+
+use Expect;
+
+my @servers = qw( ifs-apps ifs-data king rockhopper little-blue magellan royal omni-res charm gentoo emperor );
+my $server;
+
+usage() unless ($ARGV[0] and $ARGV[1]);
+
+my ($cmd, $filter, $format);
+if ($ARGV[2]) {
+   $cmd = "ps axw | grep $ARGV[2]\n";
+   $filter = qr/^ *\d+/;
+   $format = "ps";
+} else {
+   $cmd = "uname -a\n";
+   $filter = qr/\d/;
+}
+
+foreach $server (@servers) {
+   if ($format eq "ps") {
+      print "\n-----\n$server\n-----\n";
+   }
+   my $exp = login($server);
+   $exp->send($cmd);
+   wait_for_prompt($exp);
+   my $before = $exp->before();
+   foreach (split "\n", $before) {
+      next unless (/$filter/);
+      print "$_\n";
+   }
+   print $exp "exit\n";
+   $exp->soft_close();
+}
+
+sub wait_for_prompt {
+   my ($exp) = @_;
+   $exp->expect(3, 
+         '.com) > ', 
+         "$ARGV[0]]\$ ", 
+         "$ARGV[0]>", 
+         '-re', '^\$ ',
+         '-re', '^bash-\d+\.\d+\$ '
+   ) or die "Never got a command line prompt.";
+}
+
+sub login {
+   my ($server) = @_;
+   my $exp = new Expect;
+   $exp->raw_pty(1);
+   $exp->spawn("telnet $server");
+   $exp->log_stdout(0);
+   $exp->log_file("log");
+   $exp->expect(3, 'login:')
+      or die "I didn't get a login prompt.";
+   $exp->send("$ARGV[0]\n");
+   $exp->expect(3, 'Password:')
+      or die "I didn't get a password prompt.";
+   $exp->send("$ARGV[1]\n");
+   wait_for_prompt($exp);
+   return $exp;
+}
+
+sub usage {
+   die <<EOT;
+
+pscrawl.pl myusername mypassword [process]
+
+   Crawl over servers via telnet as username "myusername" with password "mypassword" running
+   "ps axw | grep process" and showing you the output.
+
+   The third parameter is optional. If you don't provide anything, I'll just run "uname -a" 
+   on all the servers, just for fun.
+
+e.g.:
+pscrawl.pl jhannah pass123 perl
+
+   Show me all the Perl processes running on all my servers.
+
+EOT
+}
+
+

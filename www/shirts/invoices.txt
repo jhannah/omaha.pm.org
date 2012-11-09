@@ -1,0 +1,641 @@
+-----------------------------------------------------------------------
+FINAL. All quantities and colors were locked in on 2006-09-04.
+-----------------------------------------------------------------------
+
+This is the invoice report that will tell group leaders how much they need to pay Jay
+so that he can place the order... It'll list shirts cost calculations, shipping 
+estimate, PayPal overhead, payments received, total due...
+
+----------------------------
+Ricardo Signes
+730 Center St #2
+Bethlehem, PA 18018
+----------------------------
+2    XL     black    $ 13.30                        
+2    XL     ash      $ 11.90                        
+1    L      black    $  6.65                        
+1    L      ash      $  5.95                        
+2    M      black    $ 13.30                        
+1    M      ash      $  5.95                        
+----------------------------
+           Subtotal  $ 57.05
+      Shipping act.  $  7.08
+        PayPal act.  $  2.40
+            payment -$ 72.38                        
+          Total Due  $ -5.85 USD
+
+
+----------------------------
+Les Peters
+C/O AOL Perl Mongers
+12100 Sunrise Valley Dr
+Reston, VA 20191
+----------------------------
+1    XL     black    $  6.65                        
+1    L      black    $  6.65                        
+----------------------------
+           Subtotal  $ 13.30
+      Shipping act.  $  4.92
+        PayPal act.  $  1.09
+            payment -$ 27.36                        
+          Total Due  $ -8.05 USD
+
+
+----------------------------
+Russ Thomas
+505 Maxwell Road
+Roswell, GA 30075-3727
+Phone: 1-770-993-6365
+----------------------------
+1    L      ash      $  5.95    Les Howard          
+1    L      black    $  6.65    Les Howard          
+1    L      ash      $  5.95    Elliot Holden       
+1    L      black    $  6.65    Elliot Holden       
+1    2XL    black    $  8.75    Simon Welper        
+1    2XL    black    $  8.75    Alan Fausel         
+2    L      black    $ 13.30    Christopher Fowler  
+3    XL     black    $ 19.95    Russ Thomas         
+1    L      black    $  6.65    Russ Thomas         
+1    XL     ash      $  5.95    Russ Thomas         
+2    4XL    black    $ 22.20    Rob Osattin         
+1    3XL    ash      $  8.95    Rob Elsworth        
+1    3XL    black    $  9.50    Rob Elsworth        
+2    XL     ash      $ 11.90    Keith Ledford       
+----------------------------
+           Subtotal  $141.10
+      Shipping act.  $  9.71
+        PayPal act.  $  5.55
+            payment -$138.34                        
+            payment -$ 16.78                        
+            payment -$  5.10                        
+          Total Due  $ -3.86 USD
+
+
+----------------------------
+David Bluestein II
+8 Cicero Lane
+Austin, TX 78746
+Phone: 512-477-4837
+----------------------------
+5    XL     ash      $ 29.75                        
+1    2XL    black    $  8.75    Bryan K. Reed       
+1    4XL    black    $ 11.10    Chris Connally      
+1    4XL    ash      $ 10.45    Chris Connally      
+1    XL     ash      $  5.95    John Lupton         
+1    2XL    black    $  8.75    Mark Lehmann        
+1    2XL    ash      $  8.15    Mark Lehmann        
+2    2XL    black    $ 17.50    Douglas Stevenson   
+1    L      black    $  6.65    Ian Remmler         
+1    M      black    $  6.65    Sam Foster          
+----------------------------
+           Subtotal  $113.70
+      Shipping act.  $ 10.94
+        PayPal act.  $  7.06
+            payment -$ 10.25    Bryan K. Reed       
+            payment -$ 25.00    Chris Connally      
+            payment -$  8.00    John Lupton         
+            payment -$ 22.00    Mark Lehmann        
+            payment -$ 20.50    Douglas Stevenson   
+            payment -$  8.15    Ian Remmler         
+            payment -$ 22.35    David Bluestein     
+            payment -$  7.45    Evan Harris         
+            payment -$  7.45    Jim Lacy            
+            payment -$  8.15    Sam Foster          
+          Total Due  $ -7.60 USD
+
+
+----------------------------
+Joel Pinckheard
+Intermon Oxfam
+Roger de Lluria, 15
+Barcelona
+08010
+Spain
+Phone: +34 66009309
+----------------------------
+6    XL     ash      $ 35.70                        
+6    XL     black    $ 39.90                        
+1    L      black    $  6.65                        
+2    M      ash      $ 11.90                        
+1    M      black    $  6.65                        
+1    S      black    $  6.65                        
+----------------------------
+           Subtotal  $107.45
+      Shipping act.  $215.00
+        PayPal act.  $ 13.38
+            payment -$124.24                        
+            payment -$203.36                        
+          Total Due  $  8.23 USD
+
+
+----------------------------
+Ronald J Kimball
+7 Pelham Ter Fl 1
+Arlington, MA 02476-6403
+----------------------------
+1    S      ash      $  5.95                        
+2    M      ash      $ 11.90                        
+6    L      ash      $ 35.70                        
+6    XL     ash      $ 35.70                        
+1    2XL    ash      $  8.15                        
+1    S      black    $  6.65                        
+2    M      black    $ 13.30                        
+3    L      black    $ 19.95                        
+8    XL     black    $ 53.20                        
+2    2XL    black    $ 17.50                        
+----------------------------
+           Subtotal  $208.00
+      Shipping act.  $  9.67
+        PayPal act.  $  6.77
+            payment -$222.98                        
+          Total Due  $  1.46 USD
+
+
+----------------------------
+Jeremy Fluhmann
+706 Llano Pl
+College Station, TX 77840
+Phone: 1-254-493-8446
+----------------------------
+1    2XL    black    $  8.75                        
+1    L      black    $  6.65                        
+----------------------------
+           Subtotal  $ 15.40
+      Shipping act.  $  7.43
+        PayPal act.  $  0.54
+            payment -$ 29.52                        
+          Total Due  $ -6.15 USD
+
+
+----------------------------
+Daniel Magnuszewski
+378 McKinley Ave
+Kenmore NY, 14217
+----------------------------
+2    2XL    black    $ 17.50                        
+1    M      black    $  6.65                        
+----------------------------
+           Subtotal  $ 24.15
+      Shipping act.  $  6.85
+        PayPal act.  $  1.42
+            payment -$ 38.53                        
+          Total Due  $ -6.11 USD
+
+
+----------------------------
+Josh McAdams
+Performics
+180 N LaSalle St.
+Suite 1100
+Chicago, IL 60601
+Phone: 312-224-8558
+----------------------------
+3    M      black    $ 19.95                        
+3    L      black    $ 19.95                        
+8    XL     black    $ 53.20                        
+1    2XL    black    $  8.75                        
+1    3XL    black    $  9.50                        
+1    S      ash      $  5.95                        
+3    M      ash      $ 17.85                        
+3    L      ash      $ 17.85                        
+8    XL     ash      $ 47.60                        
+1    2XL    ash      $  8.15                        
+1    3XL    ash      $  8.95                        
+----------------------------
+           Subtotal  $217.70
+      Shipping act.  $ 10.14
+        PayPal act.  $  7.49
+            payment -$248.08                        
+          Total Due  $-12.75 USD
+
+
+----------------------------
+Jonas B. Nielsen
+logicLAB
+Skalbakken 8B
+2720 Vanlose
+Denmark
+Phone: +45 26787275
+----------------------------
+1    XL     ash      $  5.95                        
+3    L      black    $ 19.95                        
+2    L      ash      $ 11.90                        
+2    2XL    ash      $ 16.30                        
+----------------------------
+           Subtotal  $ 54.10
+      Shipping act.  $140.00
+        PayPal act.  $  8.28
+            payment -$ 69.35                        
+            payment -$127.75                        
+          Total Due  $  5.28 USD
+
+
+----------------------------
+Paul Visscher
+1263 Captains Bridge
+Dayton, OH 45458-5712
+----------------------------
+1    L      black    $  6.65                        
+1    L      ash      $  5.95                        
+1    XL     black    $  6.65                        
+3    XL     ash      $ 17.85                        
+1    2XL    ash      $  8.15                        
+2    2XL    black    $ 17.50                        
+----------------------------
+           Subtotal  $ 62.75
+      Shipping act.  $  8.28
+        PayPal est.  $  2.36
+            payment -$ 75.75                        
+          Total Due  $ -2.36 USD
+
+
+----------------------------
+Zachary Zebrowski
+c/o The MITRE Corporation
+7515 Colshire Drive
+Mail Stop: H317
+McLean, VA 22102-7508
+----------------------------
+3    M      ash      $ 17.85                        
+1    M      black    $  6.65                        
+2    L      black    $ 13.30                        
+2    L      ash      $ 11.90                        
+2    XL     ash      $ 11.90                        
+3    XL     black    $ 19.95                        
+3    2XL    ash      $ 24.45                        
+2    2XL    black    $ 17.50                        
+1    4XL    ash      $ 10.45                        
+2    L      ash      $ 11.90    Gerald Williams     
+----------------------------
+           Subtotal  $145.85
+      Shipping act.  $  7.00
+        PayPal act.  $  5.46
+            payment -$ 15.90    Gerald Williams     
+            payment -$151.82    Zachary Zebrowski   
+          Total Due  $ -9.41 USD
+
+
+----------------------------
+Richard Lippmann
+Perlmongers Erlangen
+Linder Weg 2
+90522 Oberasbach
+Germany
+Phone: +49+911+9600190
+----------------------------
+10   2XL    black    $ 87.50    Richard Lippmann    
+10   2XL    ash      $ 81.50    Richard Lippmann    
+5    XL     black    $ 33.25    Richard Lippmann    
+5    XL     ash      $ 29.75    Richard Lippmann    
+5    L      black    $ 33.25    Richard Lippmann    
+1    S      black    $  6.65    (Berlin|Dresden).pm 
+3    M      black    $ 19.95    (Berlin|Dresden).pm 
+1    L      black    $  6.65    (Berlin|Dresden).pm 
+4    XL     black    $ 26.60    (Berlin|Dresden).pm 
+1    S      ash      $  5.95    (Berlin|Dresden).pm 
+3    XL     ash      $ 17.85    (Berlin|Dresden).pm 
+4    2XL    black    $ 35.00    Stuttgart.pm        
+2    XL     black    $ 13.30    Stuttgart.pm        
+6    L      black    $ 39.90    Stuttgart.pm        
+1    S      black    $  6.65    Stuttgart.pm        
+1    M      black    $  6.65    (Amsterdam|Groningen)
+3    L      black    $ 19.95    (Amsterdam|Groningen)
+6    XL     black    $ 39.90    (Amsterdam|Groningen)
+1    XL     ash      $  5.95    (Amsterdam|Groningen)
+5    2XL    black    $ 43.75    (Amsterdam|Groningen)
+1    2XL    ash      $  8.15    (Amsterdam|Groningen)
+1    3XL    black    $  9.50    (Amsterdam|Groningen)
+2    4XL    black    $ 22.20    (Amsterdam|Groningen)
+----------------------------
+           Subtotal  $599.80
+      Shipping act.  $308.00
+        PayPal act.  $ 39.16
+            payment -$135.00    Johan Vromans - Amsterdam.pm
+            payment -$ 40.00    Johan Vromans - Amsterdam.pm (2nd payment)
+            payment -$285.25    Richard Lippmann - Erlangen.pm
+            payment -$104.65    Tina Müllr - (Berlin|Dresden).pm
+            payment -$105.00    Christian Renz - Stuttgart.pm
+            payment -$153.90    Richard Lippmann - Erlangen.pm
+            payment -$ 42.00    Christian Renz - Stuttgart.pm
+            payment -$ 62.00    Johan Vromans - Amsterdam.pm (3rd payment)
+          Total Due  $ 19.16 USD
+
+
+----------------------------
+G. Wade Johnson
+5035 Jackwood St.
+Houston, TX 77096
+----------------------------
+3    XL     black    $ 19.95                        
+1    S      black    $  6.65                        
+1    M      black    $  6.65                        
+2    XL     ash      $ 11.90                        
+----------------------------
+           Subtotal  $ 45.15
+      Shipping act.  $  8.54
+        PayPal act.  $  2.04
+            payment -$ 60.14                        
+          Total Due  $ -4.41 USD
+
+
+----------------------------
+Gabor Szabo
+Migdal HaLevanon 23 app 18
+Modiin
+71700
+ISRAEL
+Phone: +972-54-4624648
+----------------------------
+3    3XL    black    $ 28.50                        
+3    2XL    black    $ 26.25                        
+5    XL     black    $ 33.25                        
+3    L      black    $ 19.95                        
+2    M      black    $ 13.30                        
+3    3XL    ash      $ 26.85                        
+1    2XL    ash      $  8.15                        
+3    XL     ash      $ 17.85                        
+1    L      ash      $  5.95                        
+----------------------------
+           Subtotal  $180.05
+      Shipping act.  $225.00
+        PayPal act.  $ 16.72
+            payment -$202.86                        
+            payment -$210.40                        
+          Total Due  $  8.51 USD
+
+
+----------------------------
+Michele Beltrame
+Via San Francesco, 16
+Maniago PN 30085
+Italy
+Phone: +39 0427 71649
+----------------------------
+2    S      black    $ 13.30                        
+1    M      black    $  6.65                        
+1    L      black    $  6.65                        
+1    XL     ash      $  5.95                        
+3    XL     black    $ 19.95                        
+----------------------------
+           Subtotal  $ 52.50
+      Shipping act.  $120.00
+        PayPal act.  $  7.92
+            payment -$ 67.70                        
+            payment -$120.00                        
+          Total Due  $ -7.28 USD
+
+
+----------------------------
+JT Smith
+MadMongers
+1360 Regent St #145
+Madison, WI 53715
+----------------------------
+2    M      black    $ 13.30                        
+2    L      black    $ 13.30                        
+1    XL     black    $  6.65                        
+2    3XL    black    $ 19.00                        
+----------------------------
+           Subtotal  $ 52.25
+      Shipping act.  $  5.96
+        PayPal est.  $  1.99
+            payment -$ 90.00                        
+          Total Due  $-29.80 USD
+
+
+----------------------------
+Adam Clarke
+Strategic Data Pty Ltd
+Level 2 / 174-6 Bouverie St
+Carlton VIC 3053
+Australia
+Phone: +61.393409000
+----------------------------
+1    S      ash      $  5.95                        
+2    S      black    $ 13.30                        
+1    M      ash      $  5.95                        
+2    M      black    $ 13.30                        
+2    L      ash      $ 11.90                        
+3    L      black    $ 19.95                        
+3    XL     ash      $ 17.85                        
+6    XL     black    $ 39.90                        
+----------------------------
+           Subtotal  $128.10
+      Shipping act.  $202.00
+        PayPal act.  $  8.10
+            payment -$139.00                        
+            payment -$200.00                        
+          Total Due  $ -0.80 USD
+
+
+----------------------------
+Eric Miller
+-Jay has on file-
+----------------------------
+3    XL     black    $ 19.95                        
+1    L      ash      $  5.95                        
+1    S      black    $  6.65                        
+----------------------------
+           Subtotal  $ 32.55
+      Shipping act.  $  8.40
+        PayPal act.  $  1.67
+            payment -$ 47.17                        
+          Total Due  $ -4.55 USD
+
+
+----------------------------
+Jay Hannah
+Omni Hotels Reservation Center
+11819 Miami St, 3rd Floor
+Omaha, NE 68164
+Phone: 1-402-578-3976
+----------------------------
+1    2XL    black    $  8.75    Jay Hannah          
+2    2XL    ash      $ 16.30    Jay Hannah          
+2    2XL    ash      $ 16.30    Trey Bianchini      
+1    2XL    black    $  8.75    Dave M              
+1    XL     ash      $  5.95    Herb Wolfe, Jr.     
+1    L      black    $  6.65    Ryan Stille         
+1    M      black    $  6.65    Ryan Stille         
+1    M      black    $  6.65    Matthew Heller      
+1    2XL    black    $  8.75    Richard Norton      
+1    2XL    ash      $  8.15    Richard Norton      
+1    3XL    ash      $  8.95    Dave Thacker        
+1    3XL    black    $  9.50    Dave Thacker        
+----------------------------
+           Subtotal  $111.35
+      Shipping act.  $  8.07
+        PayPal act.  $  1.64
+            payment -$ 20.00    Trey Bianchini      
+            payment -$ 14.00    Dave M              
+            payment -$ 16.00    Ryan Stille         
+            payment -$  8.00    Matthew Heller      
+            payment -$ 20.00    Richard Norton      
+          Total Due  $ 43.06 USD
+
+
+----------------------------
+Michael Toren
+Symantec, Michael Toren
+100 Four Falls Corporate Center, Suite 408
+West Conshohocken, PA 19428
+Phone: 1-610-832-3546
+----------------------------
+2    XL     black    $ 13.30    John Karr           
+1    2XL    ash      $  8.15    Michael Toren       
+----------------------------
+           Subtotal  $ 21.45
+      Shipping act.  $  4.48
+        PayPal act.  $  1.46
+            payment -$ 40.00                        
+          Total Due  $-12.61 USD
+
+
+----------------------------
+Mark Senn
+2316 Bennett Rd
+Lafayette IN 47909-2315
+----------------------------
+1    2XL    black    $  8.75                        
+3    2XL    ash      $ 24.45                        
+2    XL     black    $ 13.30                        
+1    L      black    $  6.65                        
+1    L      ash      $  5.95                        
+----------------------------
+           Subtotal  $ 59.10
+      Shipping act.  $  8.07
+        PayPal est.  $  2.25
+            payment -$ 80.00                        
+          Total Due  $-10.58 USD
+
+
+----------------------------
+Brad Oaks
+McClatchy Interactive
+1101 Haynes Street; Suite 220
+Raleigh NC 27604
+----------------------------
+2    4XL    ash      $ 20.90                        
+2    4XL    black    $ 22.20                        
+2    3XL    ash      $ 17.90                        
+2    3XL    black    $ 19.00                        
+3    2XL    ash      $ 24.45                        
+1    XL     ash      $  5.95                        
+3    M      ash      $ 17.85                        
+2    M      black    $ 13.30                        
+1    S      ash      $  5.95                        
+----------------------------
+           Subtotal  $147.50
+      Shipping act.  $  7.22
+        PayPal act.  $  5.10
+            payment -$165.45                        
+          Total Due  $ -5.63 USD
+
+
+----------------------------
+Bob Kleemann
+Motricity
+9605 Sranton Rd, Suite 550
+San Diego, CA 92121
+Phone: 858-200-3463
+----------------------------
+1    2XL    ash      $  8.15                        
+7    XL     ash      $ 41.65                        
+6    L      ash      $ 35.70                        
+----------------------------
+           Subtotal  $ 85.50
+      Shipping act.  $  8.99
+        PayPal est.  $  3.04
+            payment -$ 98.50                        
+          Total Due  $ -0.97 USD
+
+
+----------------------------
+Daniel Sherer
+3050 Wildwood Ave
+Thousand Oaks, CA 91360
+Phone: 1-805-402-5659
+----------------------------
+1    L      ash      $  5.95                        
+1    2XL    black    $  8.75                        
+1    2XL    ash      $  8.15                        
+1    XL     black    $  6.65                        
+1    XL     ash      $  5.95                        
+----------------------------
+           Subtotal  $ 35.45
+      Shipping act.  $  8.82
+        PayPal act.  $  1.40
+            payment -$ 22.78    Juan Natera         
+            payment -$  9.00    Daniel Sherer       
+            payment -$ 18.48    Sean Gallagher      
+          Total Due  $ -4.59 USD
+
+
+----------------------------
+Walter Pienciak
+4615 Tally Ho Trail
+Boulder, CO 80301
+----------------------------
+3    XL     black    $ 19.95                        
+3    3XL    black    $ 28.50                        
+----------------------------
+           Subtotal  $ 48.45
+      Shipping act.  $  8.54
+        PayPal est.  $  1.95
+            payment -$ 63.53                        
+          Total Due  $ -4.59 USD
+
+
+----------------------------
+Geoffrey Scholl
+316 Highland Lane
+Bryn Mawr, PA 19010
+----------------------------
+1    L      ash      $  5.95                        
+1    L      black    $  6.65                        
+----------------------------
+           Subtotal  $ 12.60
+      Shipping act.  $  6.41
+        PayPal act.  $  1.07
+            payment -$ 26.64                        
+          Total Due  $ -6.56 USD
+
+
+----------------------------
+Jim Martinez
+6510 NW 29th Terr
+Gainesville, FL 32653
+Phone: 1-352-336-0248
+----------------------------
+4    L      black    $ 26.60                        
+1    M      black    $  6.65                        
+2    L      ash      $ 11.90                        
+1    2XL    ash      $  8.15                        
+----------------------------
+           Subtotal  $ 53.30
+      Shipping act.  $  8.28
+        PayPal act.  $  2.29
+            payment -$ 68.52                        
+          Total Due  $ -4.65 USD
+
+
+
+   GRAND TOTALS
+       Price            $  2825.65
+       Shipping est.    $ 
+       Shipping act.    $  1383.80
+       PayPal est.      $    11.59
+       PayPal act.      $   148.01
+       Total paid       $ -4442.51
+       Total due        $   -85.05
+
+
+   Jay's wallet:
+       -4209.45   payment to shirt company
+         +43.06   Omaha "Total Due" is Jay's problem :)
+                  + Total paid above
+                  - PayPal act. above
+        -128.11   donation to Perl Foundation
+       --------
+           0.00
+

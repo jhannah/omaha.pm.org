@@ -1,0 +1,112 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: HTML::Template parameter problem solved -->
+<!--X-From-R13: DO@UOPOPG QVOYDOHODFVGZO <epunxenineguhynNznvy.habznun.rqh> -->
+<!--X-Date: Thu, 18 Dec 2003 10:42:17 &#45;0600 -->
+<!--X-Message-Id: OFDAB6D24B.7BED5B09&#45;ON86256E00.005BF591&#45;86256E00.005BF5C2@unomaha.edu -->
+<!--X-Content-Type: text/html -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: HTML::Template parameter problem solved</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00286.html">Date Prev</a>][<a href="msg00288.html">Date Next</a>][<a href="msg00285.html">Thread Prev</a>][<a href="msg00288.html">Thread Next</a>][<a href="maillist.html#00287">Date Index</a>][<a href="threads.html#00287">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: HTML::Template parameter problem solved</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: HTML::Template parameter problem solved</li>
+<li><em>From</em>: RANGABABU CHAKRAVARTHULA &lt;<a href="mailto:rchakravarthula@DOMAIN.HIDDEN">rchakravarthula@xxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 18 Dec 2003 10:44:26 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Importance</em>: </li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>Sensitivity</em>: </li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 V5DOTBL="true">
+
+<TR vAlign=top>
+<TD width="53%" bgColor=#e1e1e1 rowSpan=5><IMG height=1 alt="" src="" width=1 border=0><BR>
+<DIV align=center>
+<P><B><FONT >Jay Hannah &lt;jay@xxxxxxxx&gt;</FONT></B><BR><FONT >Sent by: </FONT><FONT >owner-omaha-list@xxxxxx</FONT> 
+<P><FONT >12/17/2003 07:00 PM</FONT></P></DIV></TD>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >To</FONT><IMG height=1 alt="" src="" width=16><FONT > </FONT></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT >RANGABABU CHAKRAVARTHULA &lt;rchakravarthula@xxxxxxxxxxxxxxxx&gt;</FONT></TD></TR>
+<TR vAlign=top>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >cc</FONT><IMG height=1 alt="" src="" width=16></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT >omaha-list@xxxxxxxxxxxxxxxxxxx</FONT></TD></TR>
+<TR vAlign=top>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >bcc</FONT><IMG height=1 alt="" src="" width=16></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR></TD></TR>
+<TR vAlign=top>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >Subject</FONT><IMG height=1 alt="" src="" width=16></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT >Re: HTML::Template parameter problem</FONT></TD></TR>
+<TR vAlign=top>
+<TD width=0% bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT size=-1></FONT></TD></TR></TABLE>
+<P>Thanks Jay.</P>
+<P>I was able to get the output how I wanted by using &lt;TMPL_LOOP&gt; and &lt;TMPL_IF&gt;.&nbsp; i will give the solution here so that it might help somebody.</P>
+<P>TMPL_IF only works with parameters, so I thought the parameter name should be given&nbsp;within the param() braces. there is a workaround. I created a hash with key as the parameter name that I wanted and then pushed the hash into an array and sent the array to the template.&nbsp;In the template file I used TMPL_LOOP.&nbsp; I was able to catch the parameter with &lt;TMPL_IF name=parametername&gt; but because the array passed all values&nbsp;to the &lt;TMPL_LOOP&gt;, &nbsp;i had to dummy other parameters that I dont want with empty &lt;tmpl_if&gt; tags.</P>
+<P>Babu</P>
+<P><BR><TT>Howdy --<BR></TT><BR><TT>I read this quickly:<BR></TT></P>
+<UL><TT><A href="http://html-template.sourceforge.net/article.html">http://html-template.sourceforge.net/article.html</A><BR></TT><TT>(excellent HTML::Template intro document!)</TT><BR></UL><TT>Have you tried using the &lt;TMPL_LOOP&gt; tag to solve your problem? If I'm<BR></TT><TT>understanding your issue (and HTML::Template) correctly perhaps you could<BR></TT><TT>&lt;TMPL_LOOP&gt; across whatever your getvalues() returns and then nest &lt;TMPL_IF&gt;<BR></TT><TT>tags inside that if necessary?<BR></TT><BR><TT>Does that help? If not, perhaps you could throw a real-world example of what<BR></TT><TT>you're getting vs. what you wanted at me?<BR></TT><BR><TT>j<BR></TT><BR><BR><BR><TT>Quoting RANGABABU CHAKRAVARTHULA &lt;rchakravarthula@xxxxxxxxxxxxxxxx&gt;:<BR></TT><TT>&gt; Jay,<BR></TT><TT>&gt; Here is the code<BR></TT><TT>&gt; my @array = getvalues();<BR></TT><TT>&gt; my $Template = HTML::Template-&gt;new(filename =&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp; "filename.tmpl");<BR></TT><TT>&gt; $Template-&gt;param(<BR></TT><TT>&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;if i have<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;a =&gt; 1,<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;b =&gt; 0<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp; );<BR></TT><TT>&gt; open FH, &gt;outputhtml<BR></TT><TT>&gt; print FH $Template-&gt;output<BR></TT><TT>&gt; close FH<BR></TT><TT>&gt;<BR></TT><TT>&gt; sub getValues{<BR></TT><TT>&gt; based on conditions returns values<BR></TT><TT>&gt; for eg. a,b,c or d,e,f<BR></TT><TT>&gt; }<BR></TT><TT>&gt;<BR></TT><TT>&gt; filename.tmpl<BR></TT><TT>&gt; &lt;TMPL_IF name=a&gt;<BR></TT><TT>&gt; &lt;tr valign="top"&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="30"&gt; some text if a&lt;/td&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="168"&gt;some text if a&lt;/td&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<BR></TT><TT>&gt; &lt;/TMPL_IF&gt;<BR></TT><TT>&gt;<BR></TT><TT>&gt; &lt;TMPL_IF name=b&gt;<BR></TT><TT>&gt; &lt;tr valign="top"&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="30"&gt; some text if b&lt;/td&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<BR></TT><TT>&gt; &lt;/TMPL_IF&gt;<BR></TT><TT>&gt;<BR></TT><TT>&gt; outputHTML will have because there is a parameter named "a"<BR></TT><TT>&gt; &lt;tr valign="top"&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="30"&gt; some text if a&lt;/td&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="168"&gt;some text if a&lt;/td&gt;<BR></TT><TT>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<BR></TT><TT>&gt;<BR></TT><TT>&gt; ideally i should have values stored in @array in the param( ), but because<BR></TT><TT>&gt; the values in the array are generated run time i dont have the "parameter"<BR></TT><TT>&gt; part in the "parameter =&gt; value"<BR></TT><TT>&gt; Let me know if my explanation was clear enough.<BR></TT><TT>&gt; Babu<BR></TT><TT>&gt;<BR></TT><BR><BR><TT>-------------------------------------------------<BR></TT><TT>This mail sent through Lunar Gravity Webmail:<BR></TT><TT><A href="http://www.lunargravity.com">http://www.lunargravity.com</A></TT><BR>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00288" href="msg00288.html">Re: HTML::Template parameter problem solved</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00286.html">Re: Dinner w/ Jeff Bisbee (the sequel), T-shirts</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00288.html">Re: HTML::Template parameter problem solved</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00285.html">Next mtg: Wednesday January 14 @ 7:00pm.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00288.html">Re: HTML::Template parameter problem solved</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00287"><strong>Date</strong></a></li>
+<li><a href="threads.html#00287"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

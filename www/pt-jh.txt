@@ -1,0 +1,125 @@
+Date: Thu, 06 Feb 2003 16:27:59 -0600
+From: Patrick Timmins <ptimmins@alltel.net>
+To: Jay Hannah <jay@jays.net>
+Subject: Re: Who's up for food/beer(/meeting)?
+
+Hello Jay ...
+
+How would you like to take over the Omaha Perl Mongers?  You would have 
+a shell account on omaha.pm.org for secure shell / FTP access, you would 
+  have the web site to play around with, and the mailing list to manage 
+(which has been incredibly easy, since a message hadn't been posted for 
+over a year :)
+
+Let me know if you're interested ... if not, I'll post to the group and 
+see if anyone else might be interested
+
+Thanks,
+
+Pat
+
+Jay Hannah wrote:
+> ktegels wrote:
+> 
+>>The 5th more than likely. It's national hockey night. :)
+>>
+>>Having said that, if you're planning a PM event, it's really Patrick's
+>>responsibility to take the reins and plan it.
+> 
+> 
+> I'm certainly not trying to muscle anybody, I'm just a big fan of Perl
+> (and beer). -grin-
+> 
+> Patrick: Want to take over and rally the troops? Old Chicago on Cass on
+> March 5th?
+> 
+> Thanks,
+> 
+> Jay Hannah
+> mobile: 578-3976
+> http://jays.net
+> 
+
+
+
+
+Date: Thu, 06 Feb 2003 21:44:40 -0600
+From: Jay Hannah <jay@jays.net>
+To: Patrick Timmins <ptimmins@alltel.net>
+Subject: Re: Who's up for food/beer(/meeting)?
+
+Sure, I can give a term in office a whirl. Is there a swearing in or
+knighting ceremony of some kind? -grin-
+
+If we get organized I hope you can come to the meetings! I'd hate to
+miss meeting you. We'll have to put up a Hall of Honor for Past
+Presidents...
+
+I promise to defend the honor of Omaha.pm, and make you proud! -grin-
+
+Cheers,
+
+Jay Hannah
+mobile: 578-3976
+http://jays.net
+
+
+
+
+
+Date: Thu, 06 Feb 2003 23:29:02 -0600
+From: Patrick Timmins <ptimmins@alltel.net>
+To: Jay Hannah <jay@jays.net>
+Subject: Re: Who's up for food/beer(/meeting)?
+
+Jay Hannah wrote:
+
+> Sure, I can give a term in office a whirl. Is there a swearing in or
+> knighting ceremony of some kind? -grin-
+
+Sure there's a swearing in:
+
+Dammit Jay, take over! :)
+
+
+[snip]
+> I promise to defend the honor of Omaha.pm, and make you proud! -grin-
+
+The future of the free and open source world is in your hands.
+
+I will work on getting things shifted over to you at omaha.pm.org ... 
+this will probably take a few days, based on how busy the sys admin is 
+... he's a good guy, though
+
+I'll be in touch
+
+Pat
+
+
+
+
+
+
+
+Date: Fri, 21 Feb 2003 16:52:49 -0600
+From: Patrick Timmins <ptimmins@alltel.net>
+To: omaha-list@pm.org
+Subject: News
+
+The "Omaha Perl Mongers" group needs some new life.  To that end, Jay 
+Hannah will be taking over all things monger-related in Omaha.
+
+We are in the process of getting the omaha.pm.org web-site and this 
+mailing list transferred over to him.
+
+The rule of law has prevailed.  A peaceful transition has enveloped the 
+threat of mayhem and bloodshed.
+
+God Bless America, and God Bless the Omaha Perl Mongers!
+
+Pat
+
+
+
+
+

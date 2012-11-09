@@ -1,0 +1,361 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: WWW::Mechanize problems -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 26 Aug 2003 04:16:36 &#45;0500 -->
+<!--X-Message-Id: Pine.LNX.4.33.0308260411200.17729&#45;100000@hannibal.mammoth.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: OF2E565E69.06A00395&#45;ON86256D8D.0055AEF7&#45;86256D8D.00573018@dtn.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: WWW::Mechanize problems</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00186.html">Date Prev</a>][<a href="msg00188.html">Date Next</a>][<a href="msg00185.html">Thread Prev</a>][<a href="msg00189.html">Thread Next</a>][<a href="maillist.html#00187">Date Index</a>][<a href="threads.html#00187">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: WWW::Mechanize problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:Dean.Nicholson@DOMAIN.HIDDEN">Dean.Nicholson@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: WWW::Mechanize problems</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 26 Aug 2003 04:15:13 -0500 (CDT)</li>
+<li><em>Cc</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;OF2E565E69.06A00395-ON86256D8D.0055AEF7-86256D8D.00573018@dtn.com&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+On Mon, 25 Aug 2003 Dean.Nicholson@xxxxxxx wrote:
+
+&gt; What does this error mean?
+&gt; Error
+&gt; D:\Perl\Code&gt;perl -d wwwtest.pl
+&gt; Win32::OLE operating in debugging mode: _Unique =&gt; 1
+&gt; Can't even get the home page: 500 Can't report tag lists yet at wwwtest.pl
+&gt; line 22.
+
+Hi Dean. I think the relevant part of your code below is:
+
+   $agent-&gt;get(&quot;<a  href="http://XXXX:8087/psp/PSCRMTST/?cmd=login&quot">http://XXXX:8087/psp/PSCRMTST/?cmd=login&quot</a>;);
+   die &quot;Can't even get the home page: &quot;, $agent-&gt;response-&gt;status_line
+      unless $agent-&gt;success;
+
+Do you really have a host on your network with the DNS name &quot;XXXX&quot;? If
+not, try replacing &quot;XXXX&quot; with the DNS name of the server you're trying to
+hit.
+
+(Does that URL work in a web browser on your network?)
+
+HTH,
+
+j
+
+
+
+&gt; Code
+&gt; #!/usr/bin/perl
+&gt;     # Provides an rss feed of a paid user's LiveJournal friends list
+&gt;     # Full entries, protected entries, etc.
+&gt;     # Add to your favorite rss reader as
+&gt;     #
+&gt; <a  href="http://your.site.com/cgi-bin/lj_friends.cgi?user=USER&amp;;password=PASSWORD">http://your.site.com/cgi-bin/lj_friends.cgi?user=USER&amp;;password=PASSWORD</a>
+&gt;     use warnings;
+&gt; #    use strict;
+&gt;     use WWW::Mechanize;
+&gt;     use CGI;
+&gt;    # use Time::HiRes;
+&gt;     use Time::HiRes qw(gettimeofday tv_interval);
+&gt;
+&gt;     my $cgi = CGI-&gt;new();
+&gt;     my $form = $cgi-&gt;Vars;
+&gt;     my $agent = WWW::Mechanize-&gt;new();
+&gt;
+&gt;   $t0 = [gettimeofday];
+&gt; #Neither of these lines work.  What is a tag list??
+&gt;     #$agent-&gt;get(&quot;<a  href="http://XXXX:8087/PSCRMTST/signon.html&quot">http://XXXX:8087/PSCRMTST/signon.html&quot</a>;);
+&gt;     $agent-&gt;get(&quot;<a  href="http://XXXX:8087/psp/PSCRMTST/?cmd=login&quot">http://XXXX:8087/psp/PSCRMTST/?cmd=login&quot</a>;);
+&gt;     die &quot;Can't even get the home page: &quot;, $agent-&gt;response-&gt;status_line
+&gt;         unless $agent-&gt;success;
+&gt;     $agent-&gt;form_number(&quot;1&quot;);
+&gt;     $agent-&gt;field(&quot;MyUser1&quot;,$form-&gt;{user});
+&gt;     $agent-&gt;field(&quot;MyPW1&quot;,$form-&gt;{password});
+&gt;     $agent-&gt;submit();
+&gt;     die &quot;Can't Login: &quot;, $agent-&gt;response-&gt;status_line
+&gt;         unless $agent-&gt;success;
+&gt;   $t1 = [gettimeofday];
+&gt;
+&gt;   $t0_t1 = tv_interval $t0, $t1;
+&gt; print $t0_t1;
+&gt; #
+&gt; $agent-&gt;get('<a  href="http://XXXX:8087/psp/PSCRMTST/EMPLOYEE/CRM/c/RI_CIC_HOME.RI_AGENT_HOME.GBL">http://XXXX:8087/psp/PSCRMTST/EMPLOYEE/CRM/c/RI_CIC_HOME.RI_AGENT_HOME.GBL</a>');
+&gt;
+&gt;
+&gt; Source
+&gt; &lt;html&gt;
+&gt; &lt;head&gt;
+&gt; &lt;!--* ******************************************************************
+&gt; *   Confidentiality Information:
+&gt; *
+&gt; *   This module is the confidential and proprietary information of
+&gt; *   PeopleSoft, Inc.; it is not to be copied, reproduced, or
+&gt; *   transmitted in any form, by any means, in whole or in part,
+&gt; *   nor is it to be used for any purpose other than that for which
+&gt; *   it is expressly provided without the written permission of
+&gt; *   PeopleSoft, Inc.
+&gt; *
+&gt; *   Copyright (c) 1988-2002 PeopleSoft, Inc. All Rights Reserved
+&gt; * ******************************************************************
+&gt; *
+&gt; *   SourceSafe Information:
+&gt; *
+&gt; * $Header:: /SHIPPED_PRODUCT/PT840/pt840Base/WEB/PIA_psftdocs/sign $
+&gt; * ******************************************************************
+&gt; *
+&gt; ********************************************************************--&gt;
+&gt; &lt;title&gt;PeopleSoft 8 Sign-in&lt;/title&gt;
+&gt; &lt;LINK REL=&quot;SHORTCUT ICON&quot; HREF=&quot;/PSCRMTST/favicon.ico&quot;&gt;
+&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;/PSCRMTST/signin.css&quot;&gt;
+&gt; &lt;meta http-equiv=refresh content=7200&gt;
+&gt;
+&gt; &lt;style type=&quot;text/css&quot;&gt;
+&gt; .signInTable {  padding-top: 5px}
+&gt; &lt;/style&gt;
+&gt; &lt;/head&gt;
+&gt; &lt;script LANGUAGE=&quot;JavaScript&quot;&gt;
+&gt;     function signin(form)
+&gt;       {
+&gt;       var now=new Date();
+&gt;       form.timezoneOffset.value=now.getTimezoneOffset();
+&gt;       return ;
+&gt;       }
+&gt; &lt;/script&gt;
+&gt; &lt;body topmargin=&quot;0&quot; leftmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;
+&gt; bgcolor=&quot;#ffffff&quot; link=&quot;#0000FF&quot; vlink=&quot;#0000FF&quot; alink=&quot;#0000FF&quot;
+&gt;  onLoad=&quot;document.login.userid.focus(); if (top != self) top.location =
+&gt; location&quot;&gt;
+&gt; &lt;form action=&quot;?cmd=login&amp;languageCd=ENG&quot; method=&quot;post&quot; id=&quot;login&quot;
+&gt; name=&quot;login&quot; autocomplete=off onSubmit=&quot;signin(document.login)&quot;&gt;
+&gt;     &lt;input type=&quot;hidden&quot; name=&quot;httpPort&quot; value=&quot;&quot;&gt;
+&gt;     &lt;input type=&quot;hidden&quot; name=&quot;timezoneOffset&quot; value=&quot;0&quot;&gt;
+&gt;     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;
+&gt; height=&quot;100%&quot;&gt;
+&gt;     &lt;tr valign=&quot;top&quot;&gt;
+&gt;       &lt;td&gt;
+&gt;         &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&gt;           &lt;tr&gt;
+&gt;             &lt;td background=&quot;/PSCRMTST/images/topGradientBarBgStripe.gif&quot;
+&gt; colspan=&quot;2&quot; height=&quot;17&quot; valign=&quot;top&quot;&gt;&lt;img
+&gt; src=&quot;/PSCRMTST/images/topGradientBar.gif&quot; width=&quot;504&quot; height=&quot;17&quot;&gt;&lt;/td&gt;
+&gt;           &lt;/tr&gt;
+&gt;           &lt;tr valign=&quot;top&quot;&gt;
+&gt;             &lt;td background=&quot;/PSCRMTST/images/tallBgStripe.gif&quot; colspan=&quot;2&quot;
+&gt; height=&quot;196&quot;&gt;&lt;img src=&quot;/PSCRMTST/images/topPSFTLogo.gif&quot; width=&quot;449&quot;
+&gt; height=&quot;196&quot; alt=&quot;&quot;&gt;&lt;/td&gt;
+&gt;           &lt;/tr&gt;
+&gt;           &lt;tr valign=&quot;top&quot;&gt;
+&gt;             &lt;td width=&quot;342&quot;&gt; &lt;img
+&gt; src=&quot;/PSCRMTST/images/topPSFTLogoDescender.gif&quot; width=&quot;159&quot; height=&quot;54&quot;
+&gt; border=&quot;0&quot;&gt;
+&gt;             &lt;/td&gt;
+&gt;             &lt;td&gt;
+&gt;               &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&gt;                 &lt;tr&gt;
+&gt;                   &lt;td colspan=&quot;4&quot;&gt;&amp;nbsp; &lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr&gt;
+&gt;                   &lt;td
+&gt; class=&quot;PSEDITBOXLABEL&quot;&gt;Language:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=ENG&quot;&gt;English&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=ESP&quot;&gt;Espa&amp;ntilde;ol&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=FRA&quot;&gt;Fran&amp;ccedil;ais&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr height=&quot;5&quot;&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr&gt;
+&gt;                   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=ITA&quot;&gt;Italiano&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=GER&quot;&gt;Deutsch&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=CFR&quot;&gt;Fran&amp;ccedil;ais&amp;nbsp;du&amp;nbsp;Canada&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr height=&quot;5&quot;&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr&gt;
+&gt;                   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td&gt;&lt;a HREF=&quot;?cmd=login&amp;languageCd=JPN&quot;&gt;&lt;img
+&gt; src=&quot;/PSCRMTST/images/kanji.gif&quot; width=&quot;37&quot; height=&quot;15&quot; align=&quot;bottom&quot;
+&gt; border=&quot;0&quot;&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=POR&quot;&gt;Portugu&amp;ecirc;s&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=DUT&quot;&gt;Nederlands&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr height=&quot;5&quot;&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr&gt;
+&gt;                   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=ZHT&quot;&gt;&lt;img src=&quot;/PSCRMTST/images/tchinese.gif&quot;
+&gt; width=&quot;55&quot; height=&quot;16&quot; align=&quot;bottom&quot;
+&gt; border=&quot;0&quot;&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=ZHS&quot;&gt;&lt;img src=&quot;/PSCRMTST/images/schinese.gif&quot;
+&gt; width=&quot;55&quot; height=&quot;16&quot; align=&quot;bottom&quot;
+&gt; border=&quot;0&quot;&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td class=&quot;PSHYPERLINK&quot;&gt;&lt;a
+&gt; HREF=&quot;?cmd=login&amp;languageCd=SVE&quot;&gt;Svenska&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr height=&quot;5&quot;&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr class=&quot;signInTable&quot;&gt;
+&gt;                   &lt;td class=&quot;PSEDITBOXLABEL&quot;&gt;User ID:&lt;/td&gt;
+&gt;                   &lt;td colspan=&quot;3&quot;&gt;
+&gt;                     &lt;input type=&quot;text&quot; id=&quot;userid&quot; name=&quot;userid&quot;
+&gt; value=&quot;MyUser1&quot; class=&quot;PSEDITBOX&quot;&gt;
+&gt;                   &lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr class=&quot;signInTable&quot;&gt;
+&gt;                   &lt;td class=&quot;PSEDITBOXLABEL&quot;&gt;Password:&lt;/td&gt;
+&gt;                   &lt;td colspan=&quot;3&quot;&gt;
+&gt;                     &lt;input TYPE=&quot;password&quot; id=&quot;pwd&quot; name=&quot;pwd&quot;
+&gt; class=&quot;PSEDITBOX&quot;&gt;
+&gt;                   &lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr class=&quot;signInTable&quot;&gt;
+&gt;                   &lt;td class=&quot;signInTable&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td colspan=&quot;3&quot;&gt;
+&gt;                   &lt;input type=&quot;submit&quot; name=&quot;Submit&quot; value=&quot;Sign In&quot;
+&gt; class=&quot;PSPUSHBUTTON&quot; &gt;
+&gt;                 &lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr height=&quot;5&quot;&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                 &lt;tr class=&quot;PSHYPERLINK&quot;&gt;
+&gt;                     &lt;td colspan=&quot;4&quot; class=&quot;PSHYPERLINK&quot;&gt;
+&gt;
+&gt;                     &lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;                  &lt;tr class=&quot;signInTable&quot;&gt;
+&gt;                 &lt;td width=&quot;310&quot; colspan=&quot;4&quot; class=&quot;PSERRORTEXT&quot;&gt;
+&gt;
+&gt;                 &lt;/td&gt;&lt;/tr&gt;
+&gt;               &lt;/table&gt;
+&gt;             &lt;/td&gt;
+&gt;           &lt;/tr&gt;
+&gt;
+&gt;         &lt;/table&gt;
+&gt;       &lt;/td&gt;
+&gt;     &lt;/tr&gt;
+&gt;     &lt;tr valign=&quot;bottom&quot;&gt;
+&gt;       &lt;td&gt;
+&gt;         &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&gt;           &lt;tr&gt;
+&gt;             &lt;td&gt; &lt;/td&gt;
+&gt;             &lt;td&gt; &lt;/td&gt;
+&gt;           &lt;/tr&gt;
+&gt;           &lt;tr&gt;
+&gt;             &lt;td class=&quot;PSTFOOTTXT&quot; valign=&quot;bottom&quot;&gt; &amp;nbsp;&amp;copy; 1988-2002
+&gt; PeopleSoft Incorporated. All rights reserved.
+&gt;               &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&gt;                 &lt;tr&gt;
+&gt;                   &lt;td width=&quot;88&quot;&gt;&lt;img
+&gt; src=&quot;/PSCRMTST/images/footerLeft.jpg&quot; width=&quot;88&quot; height=&quot;25&quot; alt=&quot;&quot;&gt;&lt;/td&gt;
+&gt;                   &lt;td width=&quot;35&quot; bgcolor=&quot;#FF9900&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td width=&quot;107&quot;&gt;&lt;img
+&gt; src=&quot;/PSCRMTST/images/footerMiddle.jpg&quot; width=&quot;107&quot; height=&quot;25&quot;
+&gt; alt=&quot;&quot;&gt;&lt;/td&gt;
+&gt;                   &lt;td bgcolor=&quot;#0099CC&quot; width=&quot;40&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td bgcolor=&quot;#CCCC00&quot; width=&quot;57&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&gt;                   &lt;td width=&quot;136&quot;&gt;&lt;img
+&gt; src=&quot;/PSCRMTST/images/footerRight.jpg&quot; width=&quot;136&quot; height=&quot;25&quot;
+&gt; alt=&quot;&quot;&gt;&lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;               &lt;/table&gt;
+&gt;             &lt;/td&gt;
+&gt;             &lt;td valign=&quot;bottom&quot;&gt;
+&gt;               &lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;
+&gt; align=&quot;right&quot;&gt;
+&gt;                 &lt;tr&gt;
+&gt;                   &lt;td&gt;&lt;img
+&gt; src=&quot;/PSCRMTST/images/customerEmployeeSupplier.gif&quot; width=&quot;120&quot;
+&gt; height=&quot;11&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+&gt;                     &lt;img name=&quot;underline&quot;
+&gt; src=&quot;/PSCRMTST/images/tagLineSeparator.gif&quot; width=&quot;172&quot; height=&quot;8&quot;
+&gt; border=&quot;0&quot;&gt;&lt;br&gt;
+&gt;                     &lt;img name=&quot;tag_line&quot;
+&gt; src=&quot;/PSCRMTST/images/tagLine.gif&quot; width=&quot;120&quot; height=&quot;22&quot; border=&quot;0&quot;
+&gt; align=&quot;top&quot; alt=&quot;People Power the Internet&quot;&gt;&lt;img
+&gt; src=&quot;/PSCRMTST/images/secondaryPSFTLogo.gif&quot; width=&quot;52&quot; height=&quot;40&quot;
+&gt; align=&quot;top&quot; alt=&quot;&quot;&gt;&lt;/td&gt;
+&gt;                 &lt;/tr&gt;
+&gt;               &lt;/table&gt;
+&gt;             &lt;/td&gt;
+&gt;           &lt;/tr&gt;
+&gt;         &lt;/table&gt;
+&gt;       &lt;/td&gt;
+&gt;     &lt;/tr&gt;
+&gt;   &lt;/table&gt;
+&gt; &lt;/form&gt;
+&gt; &lt;/body&gt;
+&gt; &lt;/html&gt;
+&gt;
+&gt;
+&gt;
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00186.html">Re: Perl and XML download</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00188.html">Daily Perl FAQ - How can I hide the source for my Perl program?(fwd)</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00185.html">Thanks Justin!, J the Librarian, Next mtg: Thr Sep 18!</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00189.html">Re: WWW::Mechanize problems</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00187"><strong>Date</strong></a></li>
+<li><a href="threads.html#00187"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

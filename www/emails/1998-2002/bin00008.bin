@@ -1,0 +1,77 @@
+package ADOCommand;
+use Win32::OLE;
+require Exporter;
+
+@ISA = qw(Exporter);
+@EXPORT=qw(setText, setConnection, commandTimeOut, execute, createParameter, setParameter, getParameter);
+
+
+sub new
+{
+	my $class = shift;
+	my $this = {};
+	bless $this, $class;
+	$this->{command}=Win32::OLE->new('ADODB.Command');
+	return $this;
+}
+
+sub setText
+{
+	my $this=shift;
+	my $command=$shift;
+
+	$this->{command}->{CommandText}=$command;
+}
+
+sub setConnection
+{
+	my $this=shift;
+	my $conn=shift;
+
+	$this->{command}->{ActiveConnection}=$conn->{adoConnection};
+}
+
+sub commandTimeOut
+{
+	my $this=shift;
+	my $timeOut=shift;
+
+	$this->{command}->{CommandTimeout}=$timeOut;
+}
+
+sub execute
+{
+	my $this=shift;
+	my $rs=ADOResultset->new();
+	$rs->{resultSet}=$this->{command}->Execute();
+
+	return $rs;
+}
+
+sub createParameter
+{
+	my $this=shift;
+	my %params=@_;
+
+	$this->{command}->Parameters->Append($this->{command}->CreateParameter($params{'name'}, $params{'type'}, $params{'direction'}));
+
+	if($params{'value'}){
+		$this->{command}->Parameters->Item($params{'name'})->{Value}=$params{'value'};
+	}
+}
+
+sub setParameter
+{
+	my $this=shift;
+	my %params=@_;
+
+	$this->{command}->Parameters->Item($params{'name'})->{Value}=$params{'value'};
+}
+
+sub getParameter
+{
+	my $this=shift;
+	my ($param)=shift;
+
+	return $this->{command}->Parameters->($param)->{Value};
+}

@@ -1,0 +1,92 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: need to 'link' URL's in text -->
+<!--X-From-R13: Dlna <elnaNr&#45;rgp.pbz> -->
+<!--X-Date: Wed, 16 Feb 2000 11:24:09 &#45;0500 (EST) -->
+<!--X-Message-Id: 38AAD071.75A2@e&#45;etc.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>need to 'link' URL's in text</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00120.html">Date Prev</a>][<a href="msg00122.html">Date Next</a>][<a href="msg00120.html">Thread Prev</a>][<a href="msg00122.html">Thread Next</a>][<a href="maillist.html#00121">Date Index</a>][<a href="threads.html#00121">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>need to 'link' URL's in text</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: need to 'link' URL's in text</li>
+<li><em>From</em>: Ryan &lt;<a href="mailto:ryan@DOMAIN.HIDDEN">ryan@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 16 Feb 2000 10:29:37 -0600</li>
+<li><em>Reply-to</em>: <a href="mailto:ryan@DOMAIN.HIDDEN">ryan@xxxxxxxxx</a></li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hello. I was hoping someone might have an idea to solve
+this problem. I need to take a block of text that may
+contain URL's, and make them into actual links by putting
+&lt;A HREF...&lt;/A&gt; around them. Is there a perl module to
+do this or something? I've been looking at HTML::Parser,
+URI, etc, but havn't found anything. Right now I've got
+it working with this:
+$text =~ s/(http:\/\/\S+)(\s|$)/&lt;A HREF=\&quot;$1\&quot;&gt;$1&lt;\/A&gt;$2/g;
+But this will include a trailing period or comma with the
+link. Any ideas? Thanks,
+
+Ryan
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00122" href="msg00122.html">Re: need to 'link' URL's in text - got it</a></strong>
+<ul><li><em>From:</em> Ryan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00120.html">Re: [OLUG] Q: Using vim to save HTML version of a C++ program</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00122.html">Re: need to 'link' URL's in text - got it</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00120.html">Re: [OLUG] Q: Using vim to save HTML version of a C++ program</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00122.html">Re: need to 'link' URL's in text - got it</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00121"><strong>Date</strong></a></li>
+<li><a href="threads.html#00121"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

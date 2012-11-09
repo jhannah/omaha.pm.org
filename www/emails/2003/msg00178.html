@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Prototype mismatch? -->
+<!--X-From-R13: Xhfgva Vbcxvaf <wubcxvafNbzavubgryf.pbz> -->
+<!--X-Date: Thu, 21 Aug 2003 10:15:01 &#45;0500 -->
+<!--X-Message-Id: 20030821151110.GB21048@jhopkins.omnihotels.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20030821143835.GA36239@binary.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Prototype mismatch?</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00177.html">Date Prev</a>][<a href="msg00179.html">Date Next</a>][<a href="msg00177.html">Thread Prev</a>][<a href="msg00179.html">Thread Next</a>][<a href="maillist.html#00178">Date Index</a>][<a href="threads.html#00178">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Prototype mismatch?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Mike Hostetler &lt;<a href="mailto:thehaas@DOMAIN.HIDDEN">thehaas@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Prototype mismatch?</li>
+<li><em>From</em>: Justin Hopkins &lt;<a href="mailto:jhopkins@DOMAIN.HIDDEN">jhopkins@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 21 Aug 2003 10:11:10 -0500</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00177.html">20030821143835.GA36239@binary.net</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00177.html">20030821143835.GA36239@binary.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>User-agent</em>: Mutt/1.4i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Thu, Aug 21, 2003 at 09:38:35AM -0500, Mike Hostetler wrote:
+&gt; 
+&gt; I'm writing a script that looks at time frames,  and I get a message
+&gt; every time I run it like this:
+&gt; 
+&gt; Subroutine main::ctime redefined at /usr/lib/perl5/5.8.0/Exporter.pm line 59.
+&gt;  at /usr/lib/perl5/5.8.0/i686-linux/POSIX.pm line 19
+&gt; Prototype mismatch: sub main::ctime (;$) vs none at
+&gt; /usr/lib/perl5/5.8.0/Exporter.pm line 59.
+&gt;  at /usr/lib/perl5/5.8.0/i686-linux/POSIX.pm line 19
+&gt; 
+&gt; But the script does run correctly.
+&gt; 
+&gt; I've narrowed down the cause to the &quot;use&quot; statements:
+&gt; #################
+&gt; #!/usr/bin/perl -w
+&gt; 
+&gt; use Time::Local;
+&gt; use Time::localtime;
+&gt; use POSIX;
+&gt; ###############3
+
+Both POSIX.pm and Time/localtime.pm are defining and exporting sub ctime() (one
+with a prototype, one without). 
+
+According to Time::localtime's pod docs, you can pass it an empty export
+list to play more diplomatically with the global namespace.
+
+use Time::localtime qw();
+use POSIX;
+
+But, from there on out you'll need to prefix Time::localtime package
+name to all of its subroutines. So, for example, you'll need to call
+Time::localtime::asctime instead of asctime (or whatever you're using
+Time/localtime.pm for).
+
+-- 
+Justin Hopkins
+Programmer/Analyst
+Omni Hotels
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00179" href="msg00179.html">Re: Prototype mismatch?</a></strong>
+<ul><li><em>From:</em> Mike Hostetler</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00177" href="msg00177.html">Prototype mismatch?</a></strong>
+<ul><li><em>From:</em> Mike Hostetler</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00177.html">Prototype mismatch?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00179.html">Re: Prototype mismatch?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00177.html">Prototype mismatch?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00179.html">Re: Prototype mismatch?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00178"><strong>Date</strong></a></li>
+<li><a href="threads.html#00178"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

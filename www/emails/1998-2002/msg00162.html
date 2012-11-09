@@ -1,0 +1,107 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Update and Questions... -->
+<!--X-From-R13: Ilngg Renttbb <qenttbbjNargfpncr.arg> -->
+<!--X-Date: Sat, 4 Nov 2000 00:03:28 &#45;0500 (EST) -->
+<!--X-Message-Id: 20001104050326.3940.qmail@wwcst270.netaddress.usa.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Update and Questions...</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00161.html">Date Prev</a>][<a href="msg00163.html">Date Next</a>][<a href="msg00161.html">Thread Prev</a>][<a href="msg00163.html">Thread Next</a>][<a href="maillist.html#00162">Date Index</a>][<a href="threads.html#00162">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Update and Questions...</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Matt Arnold&quot; &lt;<a href="mailto:marnold@DOMAIN.HIDDEN">marnold@xxxxxxxxx</a>&gt;, &quot;Wyatt Draggoo&quot; &lt;<a href="mailto:draggoow@DOMAIN.HIDDEN">draggoow@xxxxxxxxxxxx</a>&gt;,       &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Update and Questions...</li>
+<li><em>From</em>: Wyatt Draggoo &lt;<a href="mailto:draggoow@DOMAIN.HIDDEN">draggoow@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: 3 Nov 00 23:03:25 CST</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Ahhh... That makes sense.  And here I was just about to recode all of my
+projects! ;)
+
+Thanks!
+Wyatt
+
+&quot;Matt Arnold&quot; &lt;marnold@xxxxxxxxx&gt; wrote:
+&gt; Good question.  But please don't learn to code by looking at CGI.pm.  :-)
+&gt; 
+&gt; In an effort to make the monolithic CGI.pm module load as quickly as
+&gt; possible, many of the functions are initially read in as strings.
+&gt; (Apparantly Perl can do this faster than parsing/compiling the code.)  Then
+&gt; some hacks and black magic are applied to compile the various functions
+&gt; on-demand at the time they're needed.  It's all done for the sake of speed.
+&gt; And if you use all the functions in CGI.pm anyway, you're effectively just
+&gt; delaying compilation until later since all the code will eventually get
+&gt; compiled anyway.  But if you only use a few functions in CGI.pm, then
+you'll
+&gt; come to appreciate the time savings.
+&gt; 
+&gt; But the best way to make your web pages fast -- particularly for
+&gt; apps/modules consisting of hundreds of thousands of lines of Perl -- is to
+&gt; use mod_perl.  This Apache module allows your Perl code to be compiled once
+&gt; at server startup and persist.  Although, it can be a bit of a hassle to
+&gt; build/compile a mod_perl-enabled Apache -- particularly if you didn't build
+&gt; your own Perl installation.  See perl.apache.org for more info.
+&gt; 
+&gt; M@
+&gt; 
+
+
+____________________________________________________________________
+Get your own FREE, personal Netscape WebMail account today at <a  href="http://home.netscape.com/webmail">http://home.netscape.com/webmail</a>
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00161.html">Update and Questions...</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00163.html">Is there anybody out there?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00161.html">Update and Questions...</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00163.html">Is there anybody out there?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00162"><strong>Date</strong></a></li>
+<li><a href="threads.html#00162"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: RE: [olug] Subnet mask -->
+<!--X-From-R13: "Pbo [pQbl" <oboNzppbl.arg> -->
+<!--X-Date: Tue, 16 Dec 2003 07:13:58 &#45;0600 -->
+<!--X-Message-Id: 20031216131342.OLDT2432.lakemtao07.cox.net@bobnet01 -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: F9B47E10&#45;2F7F&#45;11D8&#45;8B38&#45;000A95E317B8@jays.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>RE: [olug] Subnet mask</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00272.html">Date Prev</a>][<a href="msg00274.html">Date Next</a>][<a href="msg00271.html">Thread Prev</a>][<a href="msg00274.html">Thread Next</a>][<a href="maillist.html#00273">Date Index</a>][<a href="threads.html#00273">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: [olug] Subnet mask</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Omaha Linux User Group'&quot; &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;, &lt;<a href="mailto:dan@DOMAIN.HIDDEN">dan@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: [olug] Subnet mask</li>
+<li><em>From</em>: &quot;Bob McCoy&quot; &lt;<a href="mailto:bob@DOMAIN.HIDDEN">bob@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 16 Dec 2003 07:13:56 -0600</li>
+<li><em>Cc</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;, &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00271.html">F9B47E10-2F7F-11D8-8B38-000A95E317B8@jays.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>Thread-index</em>: AcPDjKPzX47IN5bkQN+iKYheBXzTTAASEAog</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>The problem is that the answer is wrong.  The answer is wrong because
+the question was wrong.  
+
+You will not have a subnet end with a 93 -- ever.  The reason?  As you
+look at the output, you'll notice that the last subnet only has two
+addresses, 92 &amp; 93, which is invalid -- you end up with a network
+address and a broadcast address an no usable host addresses.  If you use
+95 as the top-end address, you end up with a 32-address network with 30
+usable addresses.  I suspect 94 was taken out of the range of addresses
+since it would probably serve as the default gateway for that net.
+
+Remember, he was working with *one* subnet.  The way the tool has to
+carve it up to fit within the original stated range, you end up with
+four subnets (each with a unique mask), with only 22 usable addresses
+(as opposed to 30).
+
+Otherwise, it's a very cool tool.  But you have to start with some valid
+assumptions about subnet boundaries.
+
+Bob
+
+-----Original Message-----
+From: olug-bounces@xxxxxxxx [<a  href="mailto:olug-bounces@xxxxxxxx">mailto:olug-bounces@xxxxxxxx</a>] On Behalf Of
+Jay Hannah
+Sent: Monday, December 15, 2003 10:26 PM
+To: dan@xxxxxxxxxx; Omaha Linux User Group
+Cc: omaha-list@xxxxxxxxxxxxxxxxxxx
+Subject: Re: [olug] Subnet mask
+
+
+Subnets for that range:
+<a  href="http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93">http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93</a>
+
+Source code:
+<a  href="http://jays.net/ipr.pl.txt">http://jays.net/ipr.pl.txt</a>
+
+Omaha Perl Mongers:*
+<a  href="http://omaha.pm.org">http://omaha.pm.org</a>
+
+j
+
+* Anyone sick of me plugging this yet? If so I'll quit.
+
+
+On Saturday, December 13, 2003, at 04:11 PM, Daniel Linder wrote:
+
+&gt;&gt; I am having a brain freeze and I cannot for the life of me figure
+this
+&gt;&gt; out.  I have been given a range of numbers to use at my job and I 
+&gt;&gt; cannot
+&gt;&gt; figure out the subnet mask...Help!
+&gt;&gt; The numbers are 205.202.101.64-205.202.101.93.  Class C address from
+&gt;&gt; authority.  I know that by thinking about it, it is divided into 4
+&gt;&gt; subnets, right? (30 numbers into 128 is 4 times+).  ugh.  My head 
+&gt;&gt; hurts
+&gt;&gt; today...
+&gt;
+&gt; Here is a handy perl code snippet to help in times like these...
+&gt; (Might need to run &quot;perl -MCPAN -e 'install Net::CIDR'&quot; to install the
+&gt; Net::CIDR module.)
+&gt;
+&gt; --- Begin perl code ---
+&gt; #!/usr/bin/perl
+&gt; use Net::CIDR;
+&gt; use Net::CIDR ':all';
+&gt;
+&gt;
+&gt; @list2=();
+&gt; $x=64;
+&gt; while ($x &lt;= 93) {
+&gt;         $line = &quot;205.202.101.&quot;.$x;
+&gt;         push(@list2,$line);
+&gt;         $x++;
+&gt; }
+&gt;
+&gt; printf (&quot;These addresses:\n&quot;);
+&gt; foreach (@list2) {
+&gt;         @cidr_list=Net::CIDR::cidradd($_, @cidr_list);
+&gt;         printf (&quot;$_, &quot;);
+&gt; }
+&gt; printf (&quot;\n\nSummarize to the following:\n&quot;);
+&gt;
+&gt; foreach (@cidr_list) {
+&gt;                 printf (&quot;--&gt;$_\n&quot;);
+&gt; }
+&gt; --- End perl code ---
+&gt;
+&gt; This program roduces this output:
+&gt; --- Begin output ---
+&gt; These addresses:
+&gt; 205.202.101.64, 205.202.101.65, 205.202.101.66, 205.202.101.67,
+&gt; 205.202.101.68, 205.202.101.69, 205.202.101.70, 205.202.101.71,
+&gt; 205.202.101.72, 205.202.101.73, 205.202.101.74, 205.202.101.75,
+&gt; 205.202.101.76, 205.202.101.77, 205.202.101.78, 205.202.101.79,
+&gt; 205.202.101.80, 205.202.101.81, 205.202.101.82, 205.202.101.83,
+&gt; 205.202.101.84, 205.202.101.85, 205.202.101.86, 205.202.101.87,
+&gt; 205.202.101.88, 205.202.101.89, 205.202.101.90, 205.202.101.91,
+&gt; 205.202.101.92, 205.202.101.93,
+&gt;
+&gt; Summarize to the following:
+&gt; --&gt;205.202.101.64/28
+&gt; --&gt;205.202.101.80/29
+&gt; --&gt;205.202.101.88/30
+&gt; --&gt;205.202.101.92/31
+&gt; --- End output ---
+&gt;
+&gt; So, these are the four subnet ranges that cover the .64 through .93
+&gt; inclusively.
+&gt;
+&gt; Dan
+&gt; _______________________________________________
+&gt; OLUG mailing list
+&gt; OLUG@xxxxxxxx
+&gt; <a  href="http://lists.olug.org/mailman/listinfo/olug">http://lists.olug.org/mailman/listinfo/olug</a>
+
+_______________________________________________
+OLUG mailing list
+OLUG@xxxxxxxx
+<a  href="http://lists.olug.org/mailman/listinfo/olug">http://lists.olug.org/mailman/listinfo/olug</a>
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00274" href="msg00274.html">Re: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+<li><strong><a name="00275" href="msg00275.html">RE: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Daniel Linder</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00271" href="msg00271.html">Re: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00272.html">Re: ssl with perl</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00274.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00271.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00274.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00273"><strong>Date</strong></a></li>
+<li><a href="threads.html#00273"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

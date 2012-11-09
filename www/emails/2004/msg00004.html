@@ -1,0 +1,164 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Three characters, no more, no less -->
+<!--X-From-R13: "Urbetr @rvyy" <trbetrNarvyyarg.pbz> -->
+<!--X-Date: Sun, 4 Jan 2004 16:14:24 &#45;0600 -->
+<!--X-Message-Id: 1136.192.168.10.32.1073258643.squirrel@www.gnuked.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200401041410.44515.dthacker9@cox.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Three characters, no more, no less</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00003.html">Date Prev</a>][<a href="msg00005.html">Date Next</a>][<a href="msg00003.html">Thread Prev</a>][<a href="msg00005.html">Thread Next</a>][<a href="maillist.html#00004">Date Index</a>][<a href="threads.html#00004">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Three characters, no more, no less</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:dthacker9@DOMAIN.HIDDEN">dthacker9@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Three characters, no more, no less</li>
+<li><em>From</em>: &quot;George Neill&quot; &lt;<a href="mailto:george@DOMAIN.HIDDEN">george@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sun, 4 Jan 2004 17:24:03 -0600 (CST)</li>
+<li><em>Cc</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Importance</em>: Normal</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00003.html">200401041410.44515.dthacker9@cox.net</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00003.html">200401041410.44515.dthacker9@cox.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Dave,
+
+You could do it a couple of ways (I am sure there are more).
+
+/^[A-Za-z][A-Za-z][A-Za-z]$/
+/^[A-Za-z]{3,3}$/
+
+$ cat r
+ABC
+DEF
+ABCDEF
+
+$ perl -n -e 'print &quot;found ($1)\n&quot; if(/^([A-Za-z]{3,3})$/)' &lt; r
+found (ABC)
+found (DEF)
+
+Hope that helps,
+George.
+
+
+
+&gt; Hello,
+&gt; I'm back on the perlmongers list after a very extended absence.  In my
+&gt; real  life I'm a DBA/SysAdmin for Omni Hotels.   (I work for Jay...)  In
+&gt; my spare  time I play with computers, referee soccer games, and
+&gt; generally try and do as  much cool stuff as possible.   Which brings me
+&gt; to my current  problem
+&gt;
+&gt; The fantasy soccer league I belong too puts out game results in a text
+&gt; file.   Sample follows:
+&gt; Min. 94 :(bff) W_diCarlo slides the ball across to C_Fenway
+&gt;           ...  C_Fenway with the shot !
+&gt;           ...  Over the bar
+&gt;
+&gt; *************  FULL TIME  ****************
+&gt;
+&gt;
+&gt;
+&gt; Shots off target     : bff  8 sfy 14
+&gt; Shots on target      : bff  2 sfy 4
+&gt;
+&gt; Score                : bff  1 sfy 0
+&gt;
+&gt;
+&gt; bff
+&gt; Name          Pos  St  Tk  Ps  Sh  Ag | Min Sav Ktk Kps Ass Sht Gls Yel
+&gt; Red  KAb TAb PAb SAb
+&gt; -------------------------------------------------------------------------------------------
+&gt; R_Williams     GK   9   2   5   3  12 |  90   4   0   0   0   0   0   0
+&gt;  0   32   0   0   0
+&gt; C_Fenway       DF   3   9   5   6  28 |  90   0   3   2   1   1   0   0
+&gt;  0    0  12  18   1
+&gt; Q_Gilmar       DF   1   8   5   6  16 |  90   0   0   0   0   0   0   0
+&gt;  0    0   0   0   0
+&gt;
+&gt; When I read through the file I want to find the line with the team code
+&gt; &quot;bff&quot;  and set a variable to the team name.  I've determined that the
+&gt; teamcode is on  a line by itself and is only 3 chars long.  No numbers.
+&gt; No Spaces.
+&gt;
+&gt; I've been using this
+&gt; if ($_ =~ /^(\w{3})/) {
+&gt;              $team_code = $_;
+&gt;              print &quot;$team_code\n&quot;;
+&gt;           }
+&gt; but that's pulling in other lines.  How do I regex to match a line that
+&gt; has 3  chars and no more, at the beginning of the line.
+&gt;
+&gt; Thanks in Advance
+&gt;
+&gt; --
+&gt; Dave Thacker
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00005" href="msg00005.html">Re: Three characters, no more, no less</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00003" href="msg00003.html">Three characters, no more, no less</a></strong>
+<ul><li><em>From:</em> Dave Thacker</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00003.html">Three characters, no more, no less</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00005.html">Re: Three characters, no more, no less</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00003.html">Three characters, no more, no less</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00005.html">Re: Three characters, no more, no less</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00004"><strong>Date</strong></a></li>
+<li><a href="threads.html#00004"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

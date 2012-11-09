@@ -1,0 +1,264 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: WWW::MECHANIZE::SHELL and PeopleSoft -->
+<!--X-From-R13: Rrna.@vpubyfbaNqga.pbz -->
+<!--X-Date: Thu, 6 Nov 2003 10:49:18 &#45;0600 -->
+<!--X-Message-Id: OF16B758C3.47BD1938&#45;ON86256DD6.005314F9&#45;86256DD6.005C654C@dtn.com -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Reference: 137ED442&#45;0B30&#45;11D8&#45;8F80&#45;000A95E317B8@jays.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: WWW::MECHANIZE::SHELL and PeopleSoft</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00257.html">Date Prev</a>][<a href="msg00259.html">Date Next</a>][<a href="msg00255.html">Thread Prev</a>][<a href="msg00256.html">Thread Next</a>][<a href="maillist.html#00258">Date Index</a>][<a href="threads.html#00258">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: WWW::MECHANIZE::SHELL and PeopleSoft</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a></li>
+<li><em>Subject</em>: Re: WWW::MECHANIZE::SHELL and PeopleSoft</li>
+<li><em>From</em>: <a href="mailto:Dean.Nicholson@DOMAIN.HIDDEN">Dean.Nicholson@xxxxxxx</a></li>
+<li><em>Date</em>: Thu, 6 Nov 2003 10:47:35 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>, <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00255.html">137ED442-0B30-11D8-8F80-000A95E317B8@jays.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+
+<br><font size=2 face="sans-serif">I didn't find any '</font><font size=2><tt>use
+base</tt></font><font size=2 face="sans-serif">' anywhere in the HTTP pm's</font>
+<br>
+<br><font size=2 face="sans-serif">This is the sub it failed in</font>
+<br>
+<br><font size=2 face="sans-serif">sub _host</font>
+<br><font size=2 face="sans-serif">{</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; my($request, $url) = @_;</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; if (my $h = $request-&gt;header(&quot;Host&quot;))
+{ &nbsp; &nbsp; &nbsp; &nbsp; <b>&nbsp; #line 725</b></font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; $h
+=~ s/:\d+$//; &nbsp;# might have a port as well</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; return
+$h;</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; }</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; return $url-&gt;host;</font>
+<br><font size=2 face="sans-serif">}</font>
+<br>
+<br><font size=2 face="sans-serif">This is a blurb from Headers.pm</font>
+<br>
+<br><font size=2 face="sans-serif"><b>This is where I found 'Host'</b></font>
+<br><font size=2 face="sans-serif">my @header_order = qw(</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Cache-Control Connection
+Date Pragma Trailer Transfer-Encoding Upgrade</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Via Warning</font>
+<br>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Accept Accept-Charset Accept-Encoding
+Accept-Language</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Authorization Expect From
+Host</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;If-Match If-Modified-Since
+If-None-Match If-Range If-Unmodified-Since</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Max-Forwards Proxy-Authorization
+Range Referer TE User-Agent</font>
+<br>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Accept-Ranges Age ETag
+Location Proxy-Authenticate Retry-After Server</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Vary WWW-Authenticate</font>
+<br>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Allow Content-Encoding
+Content-Language Content-Length Content-Location</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp;Content-MD5 Content-Range
+Content-Type Expires Last-Modified</font>
+<br><font size=2 face="sans-serif">);</font>
+<br>
+<br><font size=2 face="sans-serif"><b>This is before the sub header</b></font>
+<br><font size=2 face="sans-serif">Get or set the value of one or more
+header fields. &nbsp;The header field name</font>
+<br><font size=2 face="sans-serif">($field) is not case sensitive. &nbsp;To
+make the life easier for perl</font>
+<br><font size=2 face="sans-serif">users who wants to avoid quoting before
+the =&gt; operator, you can use</font>
+<br><font size=2 face="sans-serif">'_' as a replacement for '-' in header
+names (this behaviour can be</font>
+<br><font size=2 face="sans-serif">suppressed by setting the $HTTP::Headers::TRANSLATE_UNDERSCORE</font>
+<br><font size=2 face="sans-serif">variable to a FALSE value).</font>
+<br>
+<br><font size=2 face="sans-serif">The header() method accepts multiple
+($field =&gt; $value) pairs, which</font>
+<br><font size=2 face="sans-serif">means that you can update several fields
+with a single invocation.</font>
+<br>
+<br><font size=2 face="sans-serif">The $value argument may be a plain string
+or a reference to an array</font>
+<br><font size=2 face="sans-serif">of strings for a multi-valued field.
+If the $value is undefined or not</font>
+<br><font size=2 face="sans-serif">given, then that header field will remain
+unchanged.</font>
+<br>
+<br><font size=2 face="sans-serif">The old value (or values) of the last
+of the header fields is returned.</font>
+<br><font size=2 face="sans-serif">If no such field exists C&lt;undef&gt;
+will be returned.</font>
+<br>
+<br><font size=2 face="sans-serif">A multi-valued field will be retuned
+as separate values in list</font>
+<br><font size=2 face="sans-serif">context and will be concatenated with
+&quot;, &quot; as separator in scalar</font>
+<br><font size=2 face="sans-serif">context. &nbsp;The HTTP spec (RFC 2616)
+promise that joining multiple</font>
+<br><font size=2 face="sans-serif">values in this way will not change the
+semantic of a header field, but</font>
+<br><font size=2 face="sans-serif">in practice there are cases like old-style
+Netscape cookies (see</font>
+<br><font size=2 face="sans-serif">L&lt;HTTP::Cookies&gt;) where &quot;,&quot;
+is used as part of the syntax of a single</font>
+<br><font size=2 face="sans-serif">field value.</font>
+<br>
+<br><font size=2 face="sans-serif">Examples:</font>
+<br>
+<br><font size=2 face="sans-serif">&nbsp;$header-&gt;header(MIME_Version
+=&gt; '1.0',</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;User_Agent &nbsp; =&gt; 'My-Web-Client/0.01');</font>
+<br><font size=2 face="sans-serif">&nbsp;$header-&gt;header(Accept =&gt;
+&quot;text/html, text/plain, image/*&quot;);</font>
+<br><font size=2 face="sans-serif">&nbsp;$header-&gt;header(Accept =&gt;
+[qw(text/html text/plain image/*)]);</font>
+<br><font size=2 face="sans-serif">&nbsp;@accepts = $header-&gt;header('Accept');
+&nbsp;# get multiple values</font>
+<br><font size=2 face="sans-serif">&nbsp;$accepts = $header-&gt;header('Accept');
+&nbsp;# get values as a single string</font>
+<br>
+<br><font size=2 face="sans-serif">=cut</font>
+<br>
+<br><font size=2 face="sans-serif">sub header</font>
+<br><font size=2 face="sans-serif">{</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; my $self = shift;</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; my(@old);</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; while (my($field, $val)
+= splice(@_, 0, 2)) {</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; @old
+= $self-&gt;_header($field, $val);</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; }</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; return @old if wantarray;</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; return $old[0] if @old
+&lt;= 1;</font>
+<br><font size=2 face="sans-serif">&nbsp; &nbsp; join(&quot;, &quot;, @old);</font>
+<br><font size=2 face="sans-serif">}</font>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table width=100%>
+<tr valign=top>
+<td>
+<td><font size=1 face="sans-serif"><b>Jay Hannah &lt;jay@xxxxxxxx&gt;</b></font>
+<br><font size=1 face="sans-serif">Sent by: owner-omaha-list@xxxxxx</font>
+<p><font size=1 face="sans-serif">10/30/2003 05:23 PM</font>
+<td><font size=1 face="Arial">&nbsp; &nbsp; &nbsp; &nbsp; </font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; To:
+&nbsp; &nbsp; &nbsp; &nbsp;Dean.Nicholson@xxxxxxx</font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; cc:
+&nbsp; &nbsp; &nbsp; &nbsp;omaha-list@xxxxxxxxxxxxxxxxxxx</font>
+<br><font size=1 face="sans-serif">&nbsp; &nbsp; &nbsp; &nbsp; Subject:
+&nbsp; &nbsp; &nbsp; &nbsp;Re: WWW::MECHANIZE::SHELL and PeopleSoft</font></table>
+<br>
+<br>
+<br><font size=2><tt><br>
+On Wednesday, October 22, 2003, at 02:56 PM, Dean.Nicholson@xxxxxxx &nbsp;<br>
+wrote:<br>
+&gt; I list 'links'. 114 of them so I open 'WEST,FRANK'. &nbsp;Oh, the
+feeling &nbsp;<br>
+&gt; you get when your ego ballon is popped. &nbsp;Any idea what this error
+&nbsp;<br>
+&gt; means???? Do I need to enable cookies?? What does the cookie command
+&nbsp;<br>
+&gt; do? Doing &gt; 'cookies cookies.txt' does not work. Creates a file
+&nbsp;<br>
+&gt; 'cookies' but I get the same error.<br>
+&gt;<br>
+&gt; &gt;open WEST,FRANK<br>
+&gt; Can't locate object method &quot;host&quot; via package &quot;URI::_foreign&quot;
+at &nbsp;<br>
+&gt; D:/Perl/site/lib/HTTP/Cookies.pm line 725, &lt;FIN&gt; line 40.<br>
+&gt; http://isdevpsapp:8088/psc/PSCRMFIX/EMPLOYEE/CRM/c/ <br>
+&gt; RI_CIC_HOME.RI_AGENT_HOME.GBL<br>
+<br>
+What does line 725 of your D:/Perl/site/lib/HTTP/Cookies.pm say? &nbsp;<br>
+Perhaps you'll see something like $base-&gt;host. Then, perhaps higher
+in &nbsp;<br>
+your program there's something like<br>
+<br>
+ &nbsp; &nbsp;use base qw(PPM::Repository::WWW);<br>
+<br>
+Only PPM::Repository::WWW could be any module. Do you see things &nbsp;<br>
+similar to that? What module is in the &quot;use base&quot; command? Is
+that &nbsp;<br>
+module installed on the system you're making this attempt from?<br>
+<br>
+See &quot;perldoc base&quot; for an explanation of what &quot;use base&quot;
+is. If you're &nbsp;<br>
+not too OO Perly that might not help, but I think that's the root of &nbsp;<br>
+the problem...? Just guessing though since I'm not on the box.<br>
+<br>
+HTH,<br>
+<br>
+j<br>
+<br>
+<br>
+</tt></font>
+<br>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00255" href="msg00255.html">Re: WWW::MECHANIZE::SHELL and PeopleSoft</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00257.html">Fwd: Daily Perl FAQ - How can I read in a file by paragraphs?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00259.html">Re: Daily Perl FAQ - How can I read in a file by paragraphs?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00255.html">Re: WWW::MECHANIZE::SHELL and PeopleSoft</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00256.html">Fwd: Daily Perl FAQ - How can I capture STDERR from an external command?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00258"><strong>Date</strong></a></li>
+<li><a href="threads.html#00258"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

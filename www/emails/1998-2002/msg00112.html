@@ -1,0 +1,131 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Error message I can't get rid of. -->
+<!--X-From-R13: xgo <klsNvargaroe.pbz> -->
+<!--X-Date: Mon, 22 Nov 1999 19:57:33 &#45;0500 (EST) -->
+<!--X-Message-Id: 3839E812.17021EA0@inetnebr.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Error message I can't get rid of.</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00111.html">Date Prev</a>][<a href="msg00113.html">Date Next</a>][<a href="msg00109.html">Thread Prev</a>][<a href="msg00113.html">Thread Next</a>][<a href="maillist.html#00112">Date Index</a>][<a href="threads.html#00112">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Error message I can't get rid of.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: mongers &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Error message I can't get rid of.</li>
+<li><em>From</em>: ktb &lt;<a href="mailto:xyf@DOMAIN.HIDDEN">xyf@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 22 Nov 1999 19:04:18 -0600</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi, I've been working on this little part of a search script and can't
+get around an error message.
+
+The relevant part of the code is below.  What I'm trying to do is make
+the program able to catch user error.  The &quot;if&quot; statement works fine. 
+If someone entered a space at the beginning of a word it will exit to
+the subroutine YESORNO.  The second part keeps someone from entering
+just a return (when that happens without the &quot;elsif&quot; below the program
+cycles through the whole text file it is searching, which is large).  So
+this part of the code works but I get the following error when a match
+is successful:
+
+
+###
+Use of uninitialized value at ./DB2.pl line 26, &lt;STDIN&gt; chunk 1 (#1)
+    
+    (W) An undefined value was used as if it were already defined.  It
+was
+    interpreted as a &quot;&quot; or a 0, but maybe it was a mistake.  To suppress
+this
+    warning assign an initial value to your variables.
+###
+
+
+How do I assign an initial value to this?  I tried assigning &quot;1&quot; to
+$SearchString and that didn't work.  I don't understand this at all.
+thanks,
+kent
+
+
+
+________________________________________________________________________
+&lt;snip&gt;
+
+print &quot;Enter string to search: &quot;;
+chomp($SearchString = &lt;STDIN&gt;);
+
+if($SearchString =~ /^\s/) { # Makes sure you don't add a space.
+    print &quot;Sorry you must enter a character.\n&quot;;
+
+YESORNO ();
+          
+} elsif($SearchString eq /^\r/) { #Give error if only hit return.
+
+    print &quot;You must enter a word.\n&quot;;
+
+YESORNO ();
+
+} 
+
+&lt;snip&gt;
+________________________________________________________________________
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00113" href="msg00113.html">Re: Error message I can't get rid of.</a></strong>
+<ul><li><em>From:</em> Ron Hawkins (hawkins.net)</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00111.html">Re: Read()</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00113.html">Re: Error message I can't get rid of.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00109.html">Re: Can't return with an error.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00113.html">Re: Error message I can't get rid of.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00112"><strong>Date</strong></a></li>
+<li><a href="threads.html#00112"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,421 @@
+-----------------------------------------------------------------------
+FINAL. All quantities and colors were locked in on 2006-09-04.
+-----------------------------------------------------------------------
+
+This is the shipping report that will go to the shipper...
+
+----------------------------
+Ricardo Signes
+730 Center St #2
+Bethlehem, PA 18018
+----------------------------
+2    M      black                        
+2    XL     black                        
+1    L      black                        
+1    M      ash                          
+2    XL     ash                          
+1    L      ash                          
+----------------------------
+
+
+----------------------------
+Les Peters
+C/O AOL Perl Mongers
+12100 Sunrise Valley Dr
+Reston, VA 20191
+----------------------------
+1    XL     black                        
+1    L      black                        
+----------------------------
+
+
+----------------------------
+Russ Thomas
+505 Maxwell Road
+Roswell, GA 30075-3727
+Phone: 1-770-993-6365
+----------------------------
+1    3XL    black                        
+2    2XL    black                        
+2    4XL    black                        
+3    XL     black                        
+5    L      black                        
+1    3XL    ash                          
+3    XL     ash                          
+2    L      ash                          
+----------------------------
+
+
+----------------------------
+David Bluestein II
+8 Cicero Lane
+Austin, TX 78746
+Phone: 512-477-4837
+----------------------------
+1    M      black                        
+4    2XL    black                        
+1    4XL    black                        
+1    L      black                        
+1    2XL    ash                          
+1    4XL    ash                          
+6    XL     ash                          
+----------------------------
+
+
+----------------------------
+Joel Pinckheard
+Intermon Oxfam
+Roger de Lluria, 15
+Barcelona
+08010
+Spain
+Phone: +34 66009309
+----------------------------
+1    S      black                        
+1    M      black                        
+6    XL     black                        
+1    L      black                        
+2    M      ash                          
+6    XL     ash                          
+----------------------------
+
+
+----------------------------
+Ronald J Kimball
+7 Pelham Ter Fl 1
+Arlington, MA 02476-6403
+----------------------------
+1    S      black                        
+2    2XL    black                        
+2    M      black                        
+8    XL     black                        
+3    L      black                        
+1    S      ash                          
+1    2XL    ash                          
+2    M      ash                          
+6    XL     ash                          
+6    L      ash                          
+----------------------------
+
+
+----------------------------
+Jeremy Fluhmann
+706 Llano Pl
+College Station, TX 77840
+Phone: 1-254-493-8446
+----------------------------
+1    2XL    black                        
+1    L      black                        
+----------------------------
+
+
+----------------------------
+Daniel Magnuszewski
+378 McKinley Ave
+Kenmore NY, 14217
+----------------------------
+1    M      black                        
+2    2XL    black                        
+----------------------------
+
+
+----------------------------
+Josh McAdams
+Performics
+180 N LaSalle St.
+Suite 1100
+Chicago, IL 60601
+Phone: 312-224-8558
+----------------------------
+1    3XL    black                        
+1    2XL    black                        
+3    M      black                        
+8    XL     black                        
+3    L      black                        
+1    S      ash                          
+1    3XL    ash                          
+1    2XL    ash                          
+3    M      ash                          
+8    XL     ash                          
+3    L      ash                          
+----------------------------
+
+
+----------------------------
+Jonas B. Nielsen
+logicLAB
+Skalbakken 8B
+2720 Vanlose
+Denmark
+Phone: +45 26787275
+----------------------------
+3    L      black                        
+2    2XL    ash                          
+1    XL     ash                          
+2    L      ash                          
+----------------------------
+
+
+----------------------------
+Paul Visscher
+1263 Captains Bridge
+Dayton, OH 45458-5712
+----------------------------
+2    2XL    black                        
+1    XL     black                        
+1    L      black                        
+1    2XL    ash                          
+3    XL     ash                          
+1    L      ash                          
+----------------------------
+
+
+----------------------------
+Zachary Zebrowski
+c/o The MITRE Corporation
+7515 Colshire Drive
+Mail Stop: H317
+McLean, VA 22102-7508
+----------------------------
+2    2XL    black                        
+1    M      black                        
+3    XL     black                        
+2    L      black                        
+3    2XL    ash                          
+3    M      ash                          
+1    4XL    ash                          
+2    XL     ash                          
+4    L      ash                          
+----------------------------
+
+
+----------------------------
+Richard Lippmann
+Perlmongers Erlangen
+Linder Weg 2
+90522 Oberasbach
+Germany
+Phone: +49+911+9600190
+----------------------------
+2    S      black                        
+1    3XL    black                        
+4    M      black                        
+19   2XL    black                        
+2    4XL    black                        
+17   XL     black                        
+15   L      black                        
+1    S      ash                          
+11   2XL    ash                          
+9    XL     ash                          
+----------------------------
+
+
+----------------------------
+G. Wade Johnson
+5035 Jackwood St.
+Houston, TX 77096
+----------------------------
+1    S      black                        
+1    M      black                        
+3    XL     black                        
+2    XL     ash                          
+----------------------------
+
+
+----------------------------
+Gabor Szabo
+Migdal HaLevanon 23 app 18
+Modiin
+71700
+ISRAEL
+Phone: +972-54-4624648
+----------------------------
+2    M      black                        
+3    2XL    black                        
+3    3XL    black                        
+5    XL     black                        
+3    L      black                        
+1    2XL    ash                          
+3    3XL    ash                          
+3    XL     ash                          
+1    L      ash                          
+----------------------------
+
+
+----------------------------
+Michele Beltrame
+Via San Francesco, 16
+Maniago PN 30085
+Italy
+Phone: +39 0427 71649
+----------------------------
+2    S      black                        
+1    M      black                        
+3    XL     black                        
+1    L      black                        
+1    XL     ash                          
+----------------------------
+
+
+----------------------------
+JT Smith
+MadMongers
+1360 Regent St #145
+Madison, WI 53715
+----------------------------
+2    3XL    black                        
+2    M      black                        
+1    XL     black                        
+2    L      black                        
+----------------------------
+
+
+----------------------------
+Adam Clarke
+Strategic Data Pty Ltd
+Level 2 / 174-6 Bouverie St
+Carlton VIC 3053
+Australia
+Phone: +61.393409000
+----------------------------
+2    S      black                        
+2    M      black                        
+6    XL     black                        
+3    L      black                        
+1    S      ash                          
+1    M      ash                          
+3    XL     ash                          
+2    L      ash                          
+----------------------------
+
+
+----------------------------
+Eric Miller
+-Jay has on file-
+----------------------------
+1    S      black                        
+3    XL     black                        
+1    L      ash                          
+----------------------------
+
+
+----------------------------
+Jay Hannah
+Omni Hotels Reservation Center
+11819 Miami St, 3rd Floor
+Omaha, NE 68164
+Phone: 1-402-578-3976
+----------------------------
+1    3XL    black                        
+2    M      black                        
+3    2XL    black                        
+1    L      black                        
+1    3XL    ash                          
+5    2XL    ash                          
+1    XL     ash                          
+----------------------------
+
+
+----------------------------
+Michael Toren
+Symantec, Michael Toren
+100 Four Falls Corporate Center, Suite 408
+West Conshohocken, PA 19428
+Phone: 1-610-832-3546
+----------------------------
+2    XL     black                        
+1    2XL    ash                          
+----------------------------
+
+
+----------------------------
+Mark Senn
+2316 Bennett Rd
+Lafayette IN 47909-2315
+----------------------------
+1    2XL    black                        
+2    XL     black                        
+1    L      black                        
+3    2XL    ash                          
+1    L      ash                          
+----------------------------
+
+
+----------------------------
+Brad Oaks
+McClatchy Interactive
+1101 Haynes Street; Suite 220
+Raleigh NC 27604
+----------------------------
+2    M      black                        
+2    3XL    black                        
+2    4XL    black                        
+1    S      ash                          
+3    M      ash                          
+3    2XL    ash                          
+2    3XL    ash                          
+2    4XL    ash                          
+1    XL     ash                          
+----------------------------
+
+
+----------------------------
+Bob Kleemann
+Motricity
+9605 Sranton Rd, Suite 550
+San Diego, CA 92121
+Phone: 858-200-3463
+----------------------------
+1    2XL    ash                          
+7    XL     ash                          
+6    L      ash                          
+----------------------------
+
+
+----------------------------
+Daniel Sherer
+3050 Wildwood Ave
+Thousand Oaks, CA 91360
+Phone: 1-805-402-5659
+----------------------------
+1    2XL    black                        
+1    XL     black                        
+1    2XL    ash                          
+1    XL     ash                          
+1    L      ash                          
+----------------------------
+
+
+----------------------------
+Walter Pienciak
+4615 Tally Ho Trail
+Boulder, CO 80301
+----------------------------
+3    3XL    black                        
+3    XL     black                        
+----------------------------
+
+
+----------------------------
+Geoffrey Scholl
+316 Highland Lane
+Bryn Mawr, PA 19010
+----------------------------
+1    L      black                        
+1    L      ash                          
+----------------------------
+
+
+----------------------------
+Jim Martinez
+6510 NW 29th Terr
+Gainesville, FL 32653
+Phone: 1-352-336-0248
+----------------------------
+1    M      black                        
+4    L      black                        
+1    2XL    ash                          
+2    L      ash                          
+----------------------------
+
+

@@ -1,0 +1,25 @@
+-----------------------------------------------------------------------
+FINAL. All quantities and colors were locked in on 2006-09-04.
+-----------------------------------------------------------------------
+
+This is the production report that will go to the printer...
+
+7    4XL    black                        $   77.70
+14   3XL    black                        $  133.00
+43   2XL    black                        $  376.25
+78   XL     black                        $  518.70
+53   L      black                        $  352.45
+28   M      black                        $  186.20
+10   S      black                        $   66.50
+
+4    4XL    ash                          $   41.80
+8    3XL    ash                          $   71.60
+36   2XL    ash                          $  293.40
+65   XL     ash                          $  386.75
+34   L      ash                          $  202.30
+15   M      ash                          $   89.25
+5    S      ash                          $   29.75
+
+
+
+Grand total: 400 shirts (2825.65)

@@ -1,0 +1,110 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: retrieving email with Perl -->
+<!--X-From-R13: Uerraoyngg &#38; Ernl <t&#45;fNanivk.arg> -->
+<!--X-Date: Mon, 15 May 2000 16:53:16 &#45;0400 (EDT) -->
+<!--X-Message-Id: l0311070cb5459f8cac1a@[207.91.7.104] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: retrieving email with Perl</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00133.html">Date Prev</a>][<a href="msg00135.html">Date Next</a>][<a href="msg00133.html">Thread Prev</a>][<a href="msg00139.html">Thread Next</a>][<a href="maillist.html#00134">Date Index</a>][<a href="threads.html#00134">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: retrieving email with Perl</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Tom Cooper&quot; &lt;<a href="mailto:tcooper@DOMAIN.HIDDEN">tcooper@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: retrieving email with Perl</li>
+<li><em>From</em>: Greenblatt &amp; Seay &lt;<a href="mailto:g-s@DOMAIN.HIDDEN">g-s@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 15 May 2000 15:33:54 +0100</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>&gt;    You can use the Mail::POP3Client module to access POP3  mailboxes.
+&gt;There's also a Mail::IMAPClient module as well. 
+&gt;I'll  include a quick script from the code that prints out the subject and
+&gt;from  lines.  You could easily modify it to only print out the FROM: lines,
+&gt;and  remove those from your list.   As for the mailer, I would reccommend
+&gt;using the Mail::Bulkmail  module, which allows you to send mail to a list of
+&gt;addresses contained in a  file.
+
+&gt;Take a look at all the Mail modules available at :
+&gt;<a  href="http://theoryx5.uwinnipeg.ca/mod_perl/cpan-search?join=and;arrange=file;download">http://theoryx5.uwinnipeg.ca/mod_perl/cpan-search?join=and;arrange=file;download</a>
+&gt;=auto;stem=no;case=clike;site=ftp.funet.fi;age=&amp;request=mod&amp;letter=Mail  
+&gt;--Tom
+
+
+&gt;   From the Mail::POP3Client Docs:
+&gt;
+&gt;#!/usr/local/bin/perl
+&gt;   use Mail::POP3Client;
+&gt;$pop = new Mail::POP3Client( USER      =&gt; &quot;me&quot;,
+&gt;       PASSWORD =&gt;  &quot;mypassword&quot;,
+&gt;       HOST      =&gt; &quot;pop3.do.main&quot; );
+&gt;for ($i = 1; $i &lt;= $pop-&gt;Count(); $i++)  {
+&gt;    foreach ( $pop-&gt;Head( $i ) )  {
+&gt;        /^(From|Subject):\s+/i and print  $_, &quot;\n&quot;;
+&gt;    }
+&gt;    print &quot;\n&quot;; }  
+&gt;
+&gt;
+
+Thanks to all who responded! The examples are especially appreciated.
+
+David Seay
+<a  href="http://www.mastercall.com/g-s/">http://www.mastercall.com/g-s/</a>
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00133.html">Re: retrieving email with Perl</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00135.html">Text Matching.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00133.html">Re: retrieving email with Perl</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00139.html">Re: Quick question.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00134"><strong>Date</strong></a></li>
+<li><a href="threads.html#00134"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

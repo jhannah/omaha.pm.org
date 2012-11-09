@@ -1,0 +1,230 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: ping -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 4 Feb 2003 07:23:11 &#45;0600 -->
+<!--X-Message-Id: 3E3FBE95.34A0C985@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000401c2cbf5$f5ab1050$6601a8c0@orac -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: ping</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00003.html">Date Prev</a>][<a href="msg00005.html">Date Next</a>][<a href="msg00003.html">Thread Prev</a>][<a href="msg00006.html">Thread Next</a>][<a href="maillist.html#00004">Date Index</a>][<a href="threads.html#00004">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: ping</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: ping</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 04 Feb 2003 07:22:29 -0600</li>
+<li><em>References</em>: &lt;<a href="msg00003.html">000401c2cbf5$f5ab1050$6601a8c0@orac</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+Andrew Embury wrote:
+&gt; I'm here.  I don't recally any traffic at all in at least a year.
+
+Sorry to disturb the zenful meditation! -grin-
+
+kent tegels wrote:
+&gt; Who's up to speed on Perl6?
+
+Not I. I've &quot;read&quot; through most of the Apocolypses (sp?). I'm a little
+scared about it since we started a massive OOP Perl project at work a
+couple months ago.
+
+Since nobody knows me, here's my Perl bio: 
+
+I've been hacking Perl for about 10 years now. When I say that I feel
+really old. I'm 28, I've lived in Omaha for 5 years. For 3 years I've
+been Applications Development Manager for Omni Hotels' Central
+Reservation Center in Old Mill. We have 5 programmers that are versed in
+Perl to varying degrees. We sit on 1/4 million lines of Informix 4GL
+source code which we're migrating to Perl and VB.NET if my latest plot
+for global domination comes to fruition. -grin-
+
+My strongest Perly skill sets are in DBI.pm (DBD::Informix and
+DBD::Sybase (freetds to MS-SQL) primarily) and CGI.pm. I'm pretty much a
+professional data monkey, bending largish database to whatever purpose
+and building misc. connectivity conduits to them. We're hell bent on OOP
+Perl lately (rewriting our core business engines), so that's been fun.
+
+I was curious, so I wrote the little diddy below, which pulls the 'use
+XXX;' statements out of our CVS repository. I have a good to passing
+familiarity with most of those modules. Please forgive the fodder.
+
+What are the plans for Omaha.pm? I'd love to see some basic membership
+info and bios on the website. I think it'd be great to have meetings to
+help newbies, teach misc. modules, get to know a bunch of people, etc...
+I'd love to pull a Perl celebrity to Omaha some day if we can get the
+head count up...
+
+Of course I'm the new guy, so feel free to tell me to shut up and sit
+down. -grin-
+
+Cheers,
+
+Jay Hannah
+<a  href="http://jays.net">http://jays.net</a>
+
+
+
+open (IN, &quot;find /cvs |&quot;);
+while (&lt;IN&gt;) {
+   next unless (/\.(pl|pm),v$/);
+   open (IN2, $_);
+   while (&lt;IN2&gt;) {
+      next unless (($used) = (/^use (.*?)[ ;]/));
+      next if (/(Omni|Model|Control)/);  # Skip these (Omni OOP)
+      $cnt{$used}++;
+   }
+   close IN2;
+}
+close IN;
+
+foreach (sort keys %cnt) {
+   print &quot;$_ $cnt{$_}\n&quot;;
+}
+
+
+AnyDBM_File 1
+Apache::Session 1
+Apache::Session::File 1
+BB_vars 20
+CGI 144
+CGI::Carp 51
+CRS 3
+Carp 133
+Class::DBI 1
+Convert::EBCDIC 2
+Crypt::PasswdMD5 1
+Crypt::Rot13 1
+Crypt::SSLeay 1
+Cwd 3
+DBD::Informix 1
+DBD::Sybase 1
+DBI 140
+DBI::DBD 107
+Data::Dumper 1
+Date::Calc 294
+Date::Calc(Today_and_Now) 1
+Expect 5
+Fcntl 2
+File::Copy 1
+File::Find 4
+FileHandle 106
+FileHandle() 5
+GD 1
+GD::Graph::area 1
+GD::Graph::bars 3
+GD::Text 1
+Getopt::Long 2
+HotelResRQ 1
+HotelResRS 1
+HotelReservations 1
+IO::Handle 2
+IO::Socket::INET 1
+IPC::Open2 1
+Informix_env 126
+LWP::Simple 1
+MD5 1
+MIME::Base64 1
+Mail::Folder::Mbox 1
+Mail::POP3Client 1
+Net::DNS 1
+Net::Domain 5
+Net::FTP 30
+Net::LDAP 2
+Net::LDAP::Constant 1
+OTA 1
+PDF::Create 5
+POSIX 3
+Proc::ProcessTable 1
+SOAP::Lite 2
+Socket 8
+Spreadsheet::ParseExcel 1
+Spreadsheet::WriteExcel 2
+Sybase_env 33
+Sys::Hostname 1
+Term::ANSIColor 1
+Term::Cap 1
+Term::ReadKey 1
+Time::HiRes 3
+Time::localtime 1
+VCS::Rcs::Parser 1
+View::OTA::HotelResRQ 6
+View::OTA::HotelResRS 4
+Win32 2
+XBase 1
+XML::Parser 1
+XML::Twig 7
+base 1
+constant 2
+diagnostics 1
+strict 416
+the 1
+vars 131
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00006" href="msg00006.html">ping becomes pong</a></strong>
+<ul><li><em>From:</em> Virtual Joe</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00003" href="msg00003.html">RE: ping</a></strong>
+<ul><li><em>From:</em> kent tegels</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00003.html">RE: ping</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00005.html">RE: ping</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00003.html">RE: ping</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00006.html">ping becomes pong</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00004"><strong>Date</strong></a></li>
+<li><a href="threads.html#00004"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

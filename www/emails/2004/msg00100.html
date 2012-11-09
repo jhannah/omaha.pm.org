@@ -1,0 +1,141 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: [Omaha.pm] perl &#45;pi, zero&#45;width negative look&#45;behind assertions (oh my!) -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Fri, 2 Apr 2004 17:22:33 &#45;0600 -->
+<!--X-Message-Id: C76C63AA&#45;84FC&#45;11D8&#45;BD97&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[Omaha.pm] perl -pi, zero-width negative look-behind assertions (oh my!)</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00099.html">Date Prev</a>][<a href="msg00101.html">Date Next</a>][<a href="msg00099.html">Thread Prev</a>][<a href="msg00101.html">Thread Next</a>][<a href="maillist.html#00100">Date Index</a>][<a href="threads.html#00100">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Omaha.pm] perl -pi, zero-width negative look-behind assertions (oh my!)</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Omaha.pm'&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: [Omaha.pm] perl -pi, zero-width negative look-behind assertions (oh my!)</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 2 Apr 2004 17:23:41 -0600</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>I had a bunch of files in a directory that needed &quot;hop@xxxxxxxx&quot; 
+changed to &quot;jhop@xxxxxxxx&quot;...</tt><br>
+<br>
+<pre style="margin: 0em;">$ grep hop@xxxxxxxx *
+august2.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+august3.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+july1.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+july2.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+july3.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+july4.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+july5august1.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+june2.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+june3.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+june4.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+main.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+may1.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+may2.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+may3june1.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;
+template.html:&lt;A HREF=&quot;<a  href="mailto:hop@xxxxxxxx&quot">mailto:hop@xxxxxxxx&quot</a>;&gt;hop@xxxxxxxx&lt;/A&gt;</pre><br>
+<tt>The trick is that some of the occurences may *already* be changed. How 
+do you change</tt><br>
+<br>
+<tt>   hop@xxxxxxxx -&gt; jhop@xxxxxxxx</tt><br>
+<br>
+<tt>without accidentally changing</tt><br>
+<br>
+<tt>   jhop@xxxxxxxx -&gt; jjhop@xxxxxxxx</tt><br>
+<br>
+<tt>or, worse yet</tt><br>
+<br>
+<pre style="margin: 0em;">   jjhop@xxxxxxxx   -&gt; jjjhop@xxxxxxxx
+   jjjhop@xxxxxxxx  -&gt; jjjjhop@xxxxxxxx
+   jjjjhop@xxxxxxxx -&gt; jjjjjhop@xxxxxxxx</pre><br>
+<tt>How? With a zero-width negative look-behind assertion, of course! -grin-</tt><br>
+<br>
+<tt>$ perl -pi -e 's/(?&lt;!j)hop\@jays.net/jhop\@jays.net/g' *</tt><br>
+<br>
+<pre style="margin: 0em;">$ grep hop@xxxxxxxx *
+august2.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+august3.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+july1.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+july2.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+july3.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+july4.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+july5august1.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+june2.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+june3.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+june4.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+main.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+may1.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+may2.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+may3june1.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;
+template.html:&lt;A HREF=&quot;<a  href="mailto:jhop@xxxxxxxx&quot">mailto:jhop@xxxxxxxx&quot</a>;&gt;jhop@xxxxxxxx&lt;/A&gt;</pre><br>
+<tt>Gotta love Perl!</tt><br>
+<br>
+<tt>perldoc perlre:<br>
+       &quot;(?&lt;!pattern)&quot;<br>
+                 A zero-width negative look-behind assertion.  For 
+example<br>
+                 &quot;/(?&lt;!bar)foo/&quot; matches any occurrence of &quot;foo&quot; that 
+does not<br>
+                 follow &quot;bar&quot;.  Works only for fixed-width look-behind.</tt><br>
+<br>
+<tt>Cheers,</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00099.html">[Omaha.pm] Sun goes perl way</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00101.html">[Omaha.pm] T-shirts!</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00099.html">[Omaha.pm] Sun goes perl way</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00101.html">[Omaha.pm] T-shirts!</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00100"><strong>Date</strong></a></li>
+<li><a href="threads.html#00100"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [olug] Subnet mask -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 16 Dec 2003 22:15:51 &#45;0600 -->
+<!--X-Message-Id: C9385D32&#45;3047&#45;11D8&#45;B9CA&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20031216191049.GB27343@jhopkins.omnihotels.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [olug] Subnet mask</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00276.html">Date Prev</a>][<a href="msg00278.html">Date Next</a>][<a href="msg00276.html">Thread Prev</a>][<a href="msg00272.html">Thread Next</a>][<a href="maillist.html#00277">Date Index</a>][<a href="threads.html#00277">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [olug] Subnet mask</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Omaha Linux User Group'&quot; &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;, <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: [olug] Subnet mask</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 16 Dec 2003 22:16:28 -0600</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00276.html">20031216191049.GB27343@jhopkins.omnihotels.com</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Tuesday, December 16, 2003, at 01:10 PM, Justin Hopkins wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>On Tue, Dec 16, 2003 at 12:35:35PM -0600, Daniel Linder wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Jay wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Subnets for that range:
+<a  href="http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93">http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93</a></pre><br>
+<pre style="margin: 0em;">Source code:
+<a  href="http://jays.net/ipr.pl.txt">http://jays.net/ipr.pl.txt</a>
+</pre></blockquote><tt><br>Handy tool Jay, but could you have leveraged &quot;divide by 2&quot; and/or<br>
+bit-shifting in Perl (never done that myself) rather than using 
+&quot;X/log(2)&quot;<br>
+mathmatics?  (My Calc and binary math are rusty right now, can't 
+remember<br>
+the relationships between those functions.)</tt><br>
+<br>
+<tt>Dan
+</tt></blockquote><tt><br>He probably could have. I remember when Jay wrote that thing a few 
+years<br>
+ago, and the subject of integers and bit-shift operations came up.<br>
+I think its no mistake that an IPv4 address can be tightly represented<br>
+as a 32-bit integer (just like an IPv6 can be tightly represented as a<br>
+128-bit integer). I assume all of those highly optimized network 
+devices<br>
+do nothing but bitwise and/or/shift operations on their IP addresses 
+to make<br>
+their network operations lightning fast.</tt><br>
+<br>
+<tt>For some reason, I came up with the log_base2() thing. Change-of-base 
+logarithm<br>
+rule from Calc:</tt><br>
+<br>
+<tt>log_a(b) = log_x(b) / log_x(a)</tt><br>
+<br>
+<tt>because the perl log function is base 10.</tt><br>
+<br>
+<tt>log_2(b) = log_10(b) / log_10(2)</tt><br>
+<br>
+<tt>I now wait for some genius of bit operations to thoroughly blow us 
+away with<br>
+an elegant solution.
+</tt></blockquote><tt><br>Note that to_bin() in the code does use bit-shifting, which Justin 
+explained to me at the time, and I promptly forgot (years ago -grin-). 
+I don't remember why I performed all the subnet finding operations in 
+decimal. I guess that's the only way writing it made sense to me at the 
+time. Therefore, log_base2() wasn't Justin's fault -- I specifically 
+asked him how to do that w/o telling him why.</tt><br>
+<br>
+<tt>Look, bit-shifting in the code:</tt><br>
+<br>
+<tt>sub to_bin {<br>
+   $_ = $_[0];<br>
+   my @bs;<br>
+   unshift @bs, ($_ &amp; 1);<br>
+   for (my $j = 0; $j &lt; 31; $j++) {<br>
+      unshift @bs, (($_ &gt;&gt;= 1) &amp; 1);  # More of Justin's mojo: 
+bit-shifting.<br>
+   }<br>
+   return (join &quot;&quot;, @bs);<br>
+}</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<tt>Omaha Perl Mongers: <a  href="http://omaha.pm.org">http://omaha.pm.org</a></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00276" href="msg00276.html">Re: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Justin Hopkins</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00276.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00278.html">HTML::Template parameter problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00276.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00272.html">Re: ssl with perl</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00277"><strong>Date</strong></a></li>
+<li><a href="threads.html#00277"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

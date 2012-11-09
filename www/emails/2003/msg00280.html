@@ -1,0 +1,125 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: HTML::Template parameter problem -->
+<!--X-From-R13: DO@UOPOPG QVOYDOHODFVGZO <epunxenineguhynNznvy.habznun.rqh> -->
+<!--X-Date: Wed, 17 Dec 2003 18:24:32 &#45;0600 -->
+<!--X-Message-Id: OFB0862838.98A78C4B&#45;ON86256E00.00027131&#45;86256E00.0002717F@unomaha.edu -->
+<!--X-Content-Type: text/html -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: HTML::Template parameter problem</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00279.html">Date Prev</a>][<a href="msg00281.html">Date Next</a>][<a href="msg00279.html">Thread Prev</a>][<a href="msg00281.html">Thread Next</a>][<a href="maillist.html#00280">Date Index</a>][<a href="threads.html#00280">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: HTML::Template parameter problem</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: HTML::Template parameter problem</li>
+<li><em>From</em>: RANGABABU CHAKRAVARTHULA &lt;<a href="mailto:rchakravarthula@DOMAIN.HIDDEN">rchakravarthula@xxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 17 Dec 2003 18:26:41 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Importance</em>: </li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>Sensitivity</em>: </li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<P>Jay,</P>
+<P>Here is the code</P>
+<P>my @array = getvalues();</P>
+<P>my $Template = HTML::Template-&gt;new(filename =&gt; <BR>&nbsp;&nbsp;&nbsp; "filename.tmpl");<BR>$Template-&gt;param(<BR>&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;if i have <BR>&nbsp;&nbsp;&nbsp;a =&gt; 1,<BR>&nbsp;&nbsp;&nbsp;b =&gt; 0<BR>&nbsp;&nbsp;&nbsp;&nbsp; );</P>
+<P>open FH, &gt;outputhtml<BR>print FH $Template-&gt;output<BR>close FH</P>
+<P><BR>sub getValues{</P>
+<P>based on conditions returns values<BR>for eg. a,b,c or d,e,f </P>
+<P>}</P>
+<P>&nbsp;</P>
+<P>filename.tmpl</P>
+<P>&lt;TMPL_IF name=a&gt;<BR>&lt;tr valign="top"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="30"&gt; some text if a&lt;/td&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="168"&gt;some text if a&lt;/td&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<BR>&lt;/TMPL_IF&gt;</P>
+<P><BR>&lt;TMPL_IF name=b&gt;<BR>&lt;tr valign="top"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="30"&gt; some text if b&lt;/td&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<BR>&lt;/TMPL_IF&gt;</P>
+<P><BR>outputHTML will have because there is a parameter named "a"</P>
+<P>&lt;tr valign="top"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="30"&gt; some text if a&lt;/td&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td width="168"&gt;some text if a&lt;/td&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<BR></P>
+<P>ideally i should have values stored in @array in the param( ), but because the values in the array are generated run time i dont have the "parameter" part in the "parameter =&gt; value"&nbsp;&nbsp;&nbsp;&nbsp; </P>
+<P>Let me know if my explanation was clear enough.</P>
+<P>Babu</P>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 V5DOTBL="true">
+
+<TR vAlign=top>
+<TD width="53%" bgColor=#e1e1e1 rowSpan=5><IMG height=1 alt="" src="" width=1 border=0><BR>
+<DIV align=center>
+<P><B><FONT >Jay Hannah &lt;jay@xxxxxxxx&gt;</FONT></B><BR><FONT >Sent by: </FONT><FONT >owner-omaha-list@xxxxxx</FONT> 
+<P><FONT >12/17/2003 05:09 PM</FONT></P></DIV></TD>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >To</FONT><IMG height=1 alt="" src="" width=16><FONT > </FONT></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT >RANGABABU CHAKRAVARTHULA &lt;rchakravarthula@xxxxxxxxxxxxxxxx&gt;</FONT></TD></TR>
+<TR vAlign=top>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >cc</FONT><IMG height=1 alt="" src="" width=16></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT >omaha-list@xxxxxxxxxxxxxxxxxxx</FONT></TD></TR>
+<TR vAlign=top>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >bcc</FONT><IMG height=1 alt="" src="" width=16></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR></TD></TR>
+<TR vAlign=top>
+<TD width="1%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=102 border=0><BR>
+<DIV align=right><FONT >Subject</FONT><IMG height=1 alt="" src="" width=16></DIV></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT >Re: HTML::Template parameter problem</FONT></TD></TR>
+<TR vAlign=top>
+<TD width=0% bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0></TD>
+<TD width="47%" bgColor=#e1e1e1><IMG height=1 alt="" src="" width=1 border=0><BR><FONT size=-1></FONT></TD></TR></TABLE><BR><TT>Quoting RANGABABU CHAKRAVARTHULA &lt;rchakravarthula@xxxxxxxxxxxxxxxx&gt;:<BR></TT><TT>&gt; I am using HTML::Template and I have a &lt;TMPL_IF name=parametername&gt;<BR></TT><TT>&gt; .......&lt;/TMPL_IF&gt; to have a block of html print only if the parameter name<BR></TT><TT>&gt; is passed.<BR></TT><TT>&gt; in the perl file<BR></TT><TT>&gt; i guess I have to give in this format $obj-&gt;param(parametername =&gt; value)<BR></TT><TT>&gt; but I have the "parametername" dynamically generated and stored in an array<BR></TT><TT>&gt; and everytime the array is generated it has different elements. so I dont<BR></TT><TT>&gt; know before hand to put it in the code that ("this is the specific<BR></TT><TT>&gt; parametername" =&gt; value)<BR></TT><TT>&gt; I tried writing a forloop in the param() to spit the array elements but it<BR></TT><TT>&gt; doesn't work.<BR></TT><BR><TT>I've never used HTML::Template, but I could give it a whirl. Can you post a<BR></TT><TT>code snippet that you expect to work that doesn't so I can play with it?<BR></TT><BR><TT>Cheers,<BR></TT><BR><TT>j<BR></TT><BR><BR><BR><TT>-------------------------------------------------<BR></TT><TT>This mail sent through Lunar Gravity Webmail:<BR></TT><TT><A href="http://www.lunargravity.com">http://www.lunargravity.com</A></TT><BR>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00281" href="msg00281.html">Re: HTML::Template parameter problem</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+<li><strong><a name="00282" href="msg00282.html">Re: HTML::Template parameter problem</a></strong>
+<ul><li><em>From:</em> omaha . pm . knitter</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00279.html">Re: HTML::Template parameter problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00281.html">Re: HTML::Template parameter problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00279.html">Re: HTML::Template parameter problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00281.html">Re: HTML::Template parameter problem</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00280"><strong>Date</strong></a></li>
+<li><a href="threads.html#00280"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

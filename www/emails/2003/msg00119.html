@@ -1,0 +1,176 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: RE: elements in an array -->
+<!--X-From-R13: "xgrtryf" <xgrtryfNzfa.pbz> -->
+<!--X-Date: Wed, 18 Jun 2003 09:06:46 &#45;0500 -->
+<!--X-Message-Id: BDF66A6EBE36D248945F584BCC5B4FCD01192430@exchomaha.intranet.hdr -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20030618131639.GA316@gideon.cox.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>RE: elements in an array</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00118.html">Date Prev</a>][<a href="msg00120.html">Date Next</a>][<a href="msg00123.html">Thread Prev</a>][<a href="msg00116.html">Thread Next</a>][<a href="maillist.html#00119">Date Index</a>][<a href="threads.html#00119">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: elements in an array</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:thehaas@DOMAIN.HIDDEN">thehaas@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: elements in an array</li>
+<li><em>From</em>: &quot;ktegels&quot; &lt;<a href="mailto:ktegels@DOMAIN.HIDDEN">ktegels@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 18 Jun 2003 08:55:08 -0500</li>
+<li><em>Cc</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Importance</em>: Normal</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00114.html">20030618131639.GA316@gideon.cox.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I suppose you could munge the array into a single delimited string and use a
+regex on it. Bonus points for using regexs, but not overly efficient.
+
+You could try sorting the array if $bad was close to the top or bottom of
+the array. Assumes a lot.
+
+Last is your friend too. In this case it could save 0 to 99 iterations of
+the loop, depending on where bad is in the array. Again, works best if $bad
+is found early.
+
+    	$flag = 0;
+	foreach $item (@array) {
+	if ($item eq $bad) {
+		$flag = 1;
+		last;
+		}
+	}
+	if ($flag) {
+		## do something
+	}
+
+Being completely evil, if the values in the array must be unique, why not
+use a hash where the key and the value are the same? That makes finding
+element $bad as easy as:
+
+If ($arry{$bad} eq $bad) {
+	### do something
+}
+
+Double bonus points for using hashes. &lt;grin&gt;
+
+Kt
+
+-----Original Message-----
+From: thehaas@xxxxxxxxxx [<a  href="mailto:thehaas@xxxxxxxxxx">mailto:thehaas@xxxxxxxxxx</a>] 
+Sent: Wednesday, June 18, 2003 8:17 AM
+To: Kent Tegels
+Cc: omaha-list@xxxxxxxxxxxxxxxxxxx
+Subject: Re: elements in an array
+
+
+On Wed, Jun 18, 2003 at 08:00:11AM -0500, Kent Tegels wrote:
+&gt; My guess is not -- at least for standard arrays. Somebody might have
+&gt; developed a package featuring an improved array with a method to this end.
+
+&gt; Some of the collections in Perl.NET do do that.
+
+Well that makes me feel better -- I was thinking that I was missing
+something pretty easy. I can't use another package though (this is for a
+customer, less dependencies, yadda, yadda).
+ 
+&gt; Are you asking because you don't want duplicate elements or for some 
+&gt; other
+&gt; reason that eludes me... &lt;grin&gt;
+
+Methinks it would be faster, and a little more succint if that functionality
+was available.
+
+say that @array has 100 elements, and $bad is the scalar I'm looking for.
+
+How I would want to do it is something like this:
+    if ($bad in @array) {
+			 ### do something
+		}
+
+Which is better than:
+    $flag = 0;
+		foreach $item (@array) {
+			if ($item eq $bad) {
+				$flag = 1;
+			}
+		}
+		if ($flag) {
+			## do something
+		}
+
+Less code is a Good Thing, IMHO.
+
+&gt; Thanks!
+&gt; kt
+
+-- mikeh
+
+-- 
+Mike Hostetler          
+thehaas@xxxxxxxxxx 
+<a  href="http://www.binary.net/thehaas">http://www.binary.net/thehaas</a> 
+
+Windows NT crashed.
+I am the Blue Screen of Death.
+No one hears your screams.
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00114" href="msg00114.html">Re: elements in an array</a></strong>
+<ul><li><em>From:</em> thehaas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00118.html">Re: elements in an array</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00120.html">Re: elements in an array</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00123.html">Re: elements in an array</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00116.html">RE: elements in an array</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00119"><strong>Date</strong></a></li>
+<li><a href="threads.html#00119"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

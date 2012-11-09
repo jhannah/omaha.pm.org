@@ -1,0 +1,153 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Can't return with an error. -->
+<!--X-From-R13: xgo <klsNvargaroe.pbz> -->
+<!--X-Date: Mon, 15 Nov 1999 13:52:18 &#45;0500 (EST) -->
+<!--X-Message-Id: 383057BB.397711E0@inetnebr.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Can't return with an error.</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00104.html">Date Prev</a>][<a href="msg00106.html">Date Next</a>][<a href="msg00104.html">Thread Prev</a>][<a href="msg00106.html">Thread Next</a>][<a href="maillist.html#00105">Date Index</a>][<a href="threads.html#00105">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Can't return with an error.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Can't return with an error.</li>
+<li><em>From</em>: ktb &lt;<a href="mailto:xyf@DOMAIN.HIDDEN">xyf@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 15 Nov 1999 12:58:03 -0600</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi I've put together this little script to search a file and it works
+fine but I can't get it to print out a statement such as, &quot;Sorry match
+not successful.&quot; if in fact the search returns nothing.  At this point
+the program just exits if the search is not successful.
+
+Here is the relavant piece of code, I will include the full program
+below:
+
+#####
+while (&lt;BOTTLEFILE&gt;) {
+   if (/\Q$SearchString/i) {#If the search word is found.
+
+       print &quot;\n$_\n&quot;;   #..print the output.
+
+}
+}
+#####
+
+I've tried several different things (I have forgotten many) such as
+adding a print statement after an &quot;else&quot; to this &quot;while&quot; loop.  That
+just printed the &quot;print&quot; statement (No search found.) into infinity no
+matter if the search should be successful or not.  I tried using a
+conditional such as,
+
+if ($_ != &lt;BOTTLEFILE&gt;) {
+    print &quot;No search found.&quot;;
+}
+
+That resulted in the print statement being printed a few times if the
+search was unsuccessful and if the search was successful it printed out
+one of the matches along with a bunch of &quot;No search found.&quot; statements
+even though there are three successful matches corresponding to the word
+I was searching for.
+
+Anyway I hope someone can help me here.  I haven't been playing with
+Perl long as is probably evident.
+Thanks,
+kent
+
+
+###############################################
+!# -w
+
+print &quot;Enter string to search: &quot;;
+chomp($SearchString = &lt;STDIN&gt;);
+
+if ($SearchString eq /\W/i) {
+    print &quot;
+           Sorry you must enter a character.\n&quot;;
+    print &quot;
+           press &lt;Enter&gt; to quit...&quot;;
+    &lt;&gt;;
+last;
+
+}
+
+open(BOTTLEFILE, 'C:\Windows\Desktop\botglass.txt') || die print &quot;Can't
+open
+\'C:\Windows\Desktopbotglass.txt.\'&quot;;
+
+while (&lt;BOTTLEFILE&gt;) {
+   if (/\Q$SearchString/i) {#If the search word is found.
+
+       print &quot;\n$_\n&quot;;   #..print the output.
+
+}
+}
+
+######################################################
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00106" href="msg00106.html">Re: Can't return with an error.</a></strong>
+<ul><li><em>From:</em> Josh Mathias Capp</li></ul></li>
+<li><strong><a name="00108" href="msg00108.html">Re: Can't return with an error.</a></strong>
+<ul><li><em>From:</em> George Rapp</li></ul></li>
+<li><strong><a name="00109" href="msg00109.html">Re: Can't return with an error.</a></strong>
+<ul><li><em>From:</em> Wyatt Draggoo</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00104.html">Re: perlmonth #6 (and Perl/GTK)</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00106.html">Re: Can't return with an error.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00104.html">Re: perlmonth #6 (and Perl/GTK)</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00106.html">Re: Can't return with an error.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00105"><strong>Date</strong></a></li>
+<li><a href="threads.html#00105"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,159 @@
+<html>
+<head>
+<title>Perl Monger T-shirts</title>
+</head>
+
+<body>
+<img src="shirts.png" align=right border=0></a>
+
+This file last updated:
+<!--#flastmod file="shirts.shtml" --><p>
+
+<h2>Status</h2>
+<p>
+The lastest status info is always here and on the Omaha.pm mailing list. Or contact me
+directly: Jay Hannah &lt;jay(at)jays(dot)net&gt; 1-402-578-3976.
+<p>
+
+<b>[2006-08-02]</b> Well, we're starting to get our bearings on the order
+size. 95 shirts on the books so far. I'll send this list off to our vendor
+so he knows what he got himself into and maybe he can put some S&H numbers
+together for the groups that have their preliminary counts in. I'll also
+pin him down on toddler sizes (sorry for the delay, I've been sick).<p>
+
+<b>[2006-07-08]</b> Firing up another order! Luckily the company
+still has our screen on file so we save $150 setup or something. 
+The printer is saying that Hanes Beefy shirts are a lot more expensive now, so
+he'll be quoting me those and some other quality equivalent (but cheaper). The printer
+is also saying their shipping cost is quite a bit higher than it was 2 years ago.
+I personally ate the shipping costs last time, maybe we'll figure something else 
+out this time. :)
+<p>
+I'm sending to an email announcement to Omaha.pm mailing list, and to the Perl Mongers
+group leader mailing list (all group leaders around the world). Each group leader 
+(if any groups are interested) will need to organize their group's orders and work
+out payment with their members however they want to handle that.
+Once we've got our total order pieced together each group leader will pay me,
+I'll pay the grand total bill on my personal credit card, and instruct the printer 
+to drop ship directly to each group leader.
+
+<h2>The Order So Far (cut off is 2006-08-08) </h2>
+<blockquote>
+<!--#include virtual="shirts.pl"-->
+<a href="shirts.txt">[source code]</a><br>
+<a href="shirts_shipping.txt">[shipping info]</a>
+</blockquote>
+
+<h2>Colors</h2>
+Based on past experience, only these two choices are popular enough to 
+bother with:
+<ul>
+<li>"BLACK": white print on black shirt
+<li>"ASH": black print on ash (grey) shirt
+</ul>
+The printer will do a million color combinations, but they charge $20 or something every time they have to change color setup during their print run.
+So unless someone drums up enough interest for another scheme (perhaps navy on white? black on white?) we'll stick with the two above. 
+<h2>Money</h2>
+<ul>
+<li>Prices: I haven't received any official quote yet. It will vary based on
+quantity, but we're probably talking
+$8 USD per shirt for XXL+, $6 USD for any smaller size.
+Plus shipping, which will depend on where you are and how many shirts are
+ordered there. I'll work out shipping details w/ each group leader.
+Feel free to throw in donations to the Perl Foundation and I'll pass those along. 
+<li>Omaha: How to pay:
+  <ul>
+  <li>PayPal me (Jay Hannah) now: jay(at)jays(dot)net.
+  <li>Pay me in person. I work near 120th and Maple. Just give me a call: 578-3976.
+  <li>Swing by Reboot The User and pay now or when you pick up the shirts.
+  </ul>
+</ul>
+
+<h2>Interested Group Leaders</h2>
+
+You are all on a temporary email mailing list: shirts(at)jays(dot)net
+
+<pre>
+Gabor Szabo       Israel
+Veit Wahlich      Essen, Germany
+Richard Lippmann  Erlangen, Germany  (ship all Germany here?)
+Christian Renz    Stuttgart, Germany
+Tina Mueller      Berlin, Germany
+Jonas B. Nielsen  Copenhagen, Denmark
+Scott Penrose     Melbourne, Australia
+Adam Clarke       "
+Jan-Pieter Cornet Amsterdam
+Robert Elsworth   Atlanta, USA
+Mark Senn         Indiana, USA
+Ricardo Signes    Pennsylvania, USA
+Zak Zebrowski     DC, USA
+Bob Kleemann      San Diego, USA
+Jim Martinez      Gainesville, FL USA
+G. Wade Johnson   Houston, USA
+Jeremy Fluhmann   College Station, TX USA
+</pre>
+
+<h2>Omaha Shirt Pickup (once the order comes in)</h2>
+
+<a href="http://www.reboottheuser.com/">Reboot the User</a> (RTU)<br>
+Jay Swackhamer, proprietor<br>
+<a href="http://maps.google.com/maps?f=q&hl=en&q=13416+A+Street,+Omaha+ne&btnG=Search&ll=41.224763,-96.123075&spn=0.033375,0.085917">13416 A Street</a><br>
+Omaha, NE 68144<br>
+(402) 933-6449<p>
+
+Store hours (from his website):<br>
+Tuesday through Friday 6:00pm to 11:00pm<br>
+Saturday 4:00pm to 9:00pm<br>
+Sunday, Monday Closed.
+
+<h2>Image / Trademark Info</h2>
+
+<pre>
+> Is the design available electronically, and
+> would it be free for me to use that design, copyright-wise?
+</pre>
+
+I do not have an electronic version of the shirts. We're riding the coattails of a screen that was set up years ago at the printing company below. I do not have specific permission to use these logos for these shirts, I'm assuming that the permission was granted years ago when the first screen was established for the first print run. 
+<p> 
+I have asked for and received camel and onion permissions in the past. All of that info is here:<p>
+
+<a href="http://omaha.pm.org/kwiki/index.cgi?BusinessCards">http://omaha.pm.org/kwiki/index.cgi?BusinessCards</a>
+<p>
+Click the "originals are available here" link to get all the electronic stuff I have. The largest electronic camel I have is not very big so I don't think you could make very good shirts out of it. The shirts would probably end up looking terribly pixelated.  
+<p>
+
+I don't know if my current printing company would turn over an electronic version of the artwork or not. And/or if you're going to get a new printer set up or rework the camel artwork you should probably add O'Reilly's tag:
+<p>
+
+"The Perl camel image is a trademark of O'Reilly Media, Inc. Used with permission."
+<p>
+Per their FAQ, which is linked from the link above.
+<p>
+And/or you might want to use TPF's onion instead of the camel. I DO have a *HUGE* onion in the link above, so that certainly wouldn't pixelate. :)
+<p>
+Neither O'Reilly nor The Perl Foundation have ever asked me (or any other non-profit as far as I know) for any fee to use their trademarks for stuff like
+these shirts.
+
+
+
+<h2>For Future Reference</h2>
+
+These are the nice folks that keep printing our shirts every couple of years.
+They'll keep the screen on file for two years after each order.
+Getting the screen generated is a big cost of 
+getting shirts printed, so them having the screen already on file is a big
+cost saver.
+
+<pre>Mike Balcom
+All Star Incentive Marketing
+mike(at)incentiveusa(dot)com 
+508-347-7672
+www.incentiveusa.com 
+</pre>
+
+
+</body>
+</html>
+
+
+

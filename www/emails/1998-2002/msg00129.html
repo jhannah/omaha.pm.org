@@ -1,0 +1,170 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: CGI.pm &#38; IE Cookies -->
+<!--X-From-R13: [ngg Bnlar <cnlarNnpz.bet> -->
+<!--X-Date: Sat, 6 May 2000 22:19:43 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.LNX.4.10.10005062124510.817&#45;100000@payne.pinko.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20000505185414.31121.qmail@hotmail.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: CGI.pm &amp; IE Cookies</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00128.html">Date Prev</a>][<a href="msg00130.html">Date Next</a>][<a href="msg00128.html">Thread Prev</a>][<a href="msg00130.html">Thread Next</a>][<a href="maillist.html#00129">Date Index</a>][<a href="threads.html#00129">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: CGI.pm &amp; IE Cookies</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Robert Fulkerson &lt;<a href="mailto:rfulkerson@DOMAIN.HIDDEN">rfulkerson@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: CGI.pm &amp; IE Cookies</li>
+<li><em>From</em>: Matt Payne &lt;<a href="mailto:payne@DOMAIN.HIDDEN">payne@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 6 May 2000 21:26:13 -0500 (CDT)</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00128.html">20000505185414.31121.qmail@hotmail.com</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Thanks George &amp; Bob!!!   In the stock CGI.pm Animal crackers example
+it says right on the page that it's not compatible with IE.  But
+adding two lines from Bob's example made it work with IE4!
+# Add new animals to old, and put them in a cookie
+$the_cookie = cookie(-name=&gt;'animals',
+                     -value=&gt;\%zoo,
+                     -path=&gt;'/~payne/',          # Added
+                     -domain=&gt;'payne.pinko.net', # Added
+                     -expires=&gt;'+1h');
+
+Thank you **VERY** much! -Matt
+
+On Fri, 5 May 2000, Robert Fulkerson wrote:
+
+&gt; Matt,
+&gt; 
+&gt;    <a  href="http://squishy.ist.unomaha.edu/~robert/class2.cgi">http://squishy.ist.unomaha.edu/~robert/class2.cgi</a>
+&gt; 
+&gt;    The first time you load it, it won't print anything, because the cookie 
+&gt; is being set.  When you reload it, it should display the cookie and it's 
+&gt; value.
+&gt; 
+&gt; Here's the very simple code:
+&gt; 
+&gt; #!/usr/bin/perl
+&gt; # <a  href="http://squishy.ist.unomaha.edu/~robert/class2.cgi">http://squishy.ist.unomaha.edu/~robert/class2.cgi</a>
+&gt; 
+&gt; use strict;
+&gt; use CGI qw(:all);
+&gt; 
+&gt; my $query = new CGI;
+&gt; 
+&gt; my $cookie = $query-&gt;cookie(-name=&gt;'bobID',
+&gt;                             -value=&gt;'xyzzy',
+&gt;                             -expires=&gt;'+1h',
+&gt;                             -path=&gt;'/~robert/',
+&gt;                             -domain=&gt;'squishy.ist.unomaha.edu') ;
+&gt; 
+&gt; print $query-&gt;header(-cookie=&gt;$cookie);
+&gt; 
+&gt; foreach ( $query-&gt;cookie() ) {
+&gt;       print &quot;Well, cookie '$_' appears to be &quot; . $query-&gt;cookie($_) . p;
+&gt; }
+&gt; 
+&gt; ----------------------------------------------------------------
+&gt; 
+&gt; Or, for doing multiple cookies:
+&gt; 
+&gt;    <a  href="http://squishy.ist.unomaha.edu/~robert/class3.cgi">http://squishy.ist.unomaha.edu/~robert/class3.cgi</a>
+&gt; 
+&gt; Here's the code for setting multiple cookies:
+&gt; 
+&gt; #!/usr/bin/perl
+&gt; # <a  href="http://squishy.unomaha.edu/~rfulk/class3.cgi">http://squishy.unomaha.edu/~rfulk/class3.cgi</a>
+&gt; 
+&gt; use strict;
+&gt; use CGI qw(:all);
+&gt; 
+&gt; my $query = new CGI;
+&gt; my $cookie = $query-&gt;cookie(-name=&gt;'bobID', -value=&gt;'xyzzy',
+&gt;                             -expires=&gt;'+1h', -path=&gt;'/~robert/',
+&gt;                             -domain=&gt;'squishy.ist.unomaha.edu') ;
+&gt; my $cook2 = $query-&gt;cookie(-name=&gt;'Huh', -value=&gt;'yupyup',
+&gt;                            -path=&gt;'/', -domain=&gt;'.unomaha.edu');
+&gt; 
+&gt; my $cook3 = $query-&gt;cookie(-name=&gt;'HelpMePlease', -value=&gt;'YoYo',
+&gt;                            -path=&gt;'/', -domain=&gt;'.unomaha.edu');
+&gt; print $query-&gt;header(-cookie=&gt;[$cookie,$cook2,$cook3]);
+&gt; 
+&gt; foreach ($query-&gt;cookie() ) {
+&gt;       print &quot;Well, cookie '$_' appears to be &quot; . $query-&gt;cookie($_) . p;
+&gt; }
+&gt; 
+&gt; ----------------------------------------------------------------
+&gt; 
+&gt; Hope that helps,
+&gt;   -- b
+&gt; 
+&gt; 
+&gt; ________________________________________________________________________
+&gt; Get Your Private, Free E-mail from MSN Hotmail at <a  href="http://www.hotmail.com">http://www.hotmail.com</a>
+&gt; 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00130" href="msg00130.html">C Sources for Perl Functions.</a></strong>
+<ul><li><em>From:</em> Drazak</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00128" href="msg00128.html">Re: CGI.pm &amp; IE Cookies</a></strong>
+<ul><li><em>From:</em> Robert Fulkerson</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00128.html">Re: CGI.pm &amp; IE Cookies</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00130.html">C Sources for Perl Functions.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00128.html">Re: CGI.pm &amp; IE Cookies</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00130.html">C Sources for Perl Functions.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00129"><strong>Date</strong></a></li>
+<li><a href="threads.html#00129"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

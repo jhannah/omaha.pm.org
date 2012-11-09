@@ -1,0 +1,152 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: ADO goodies -->
+<!--X-From-R13: "xrag grtryf" <xragNgrtryf.bet> -->
+<!--X-Date: Tue, 27 Apr 1999 22:44:36 &#45;0400 (EDT) -->
+<!--X-Message-Id: 001f01be9121$c6c5e980$020110ac@tegels.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Derived: bin00006.bin -->
+<!--X-Derived: bin00007.bin -->
+<!--X-Derived: pl00002.pl -->
+<!--X-Derived: bin00008.bin -->
+<!--X-Derived: p7s00002.p7s -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>ADO goodies</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00041.html">Date Prev</a>][<a href="msg00043.html">Date Next</a>][<a href="msg00041.html">Thread Prev</a>][<a href="msg00043.html">Thread Next</a>][<a href="maillist.html#00042">Date Index</a>][<a href="threads.html#00042">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>ADO goodies</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: ADO goodies</li>
+<li><em>From</em>: &quot;kent tegels&quot; &lt;<a href="mailto:kent@DOMAIN.HIDDEN">kent@xxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 27 Apr 1999 21:49:42 -0500</li>
+<li><em>Cc</em>: &lt;<a href="mailto:john.d.thomas@DOMAIN.HIDDEN">john.d.thomas@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Gang,
+
+John D. Thomas, a Gateway staffer, send me the following e-mail and mods for
+using ADO in PerlWin32. I've invited John to join us on the list and at our
+next meeting. Enjoy, and, big thanks John!
+
+$mongers{&quot;Omaha&quot;}[13];
+Kent Tegels, MCP+I
+&quot;Any sufficiently advanced bug is indistinguishable from a feature.&quot;
+
+
+</pre><p><strong>Attachment:
+<a href="bin00006.bin" ><tt>ADOResultset.pm</tt></a></strong><br>
+<em>Description:</em> Binary data</p>
+<p><strong>Attachment:
+<a href="bin00007.bin" ><tt>ADOConnection.pm</tt></a></strong><br>
+<em>Description:</em> Binary data</p>
+<p><strong>Attachment:
+<a href="pl00002.pl" ><tt>adoConstant.pl</tt></a></strong><br>
+<em>Description:</em> Perl program</p>
+<pre>ADOConnection
+	$conn=ADOConnection-&gt;new();
+	$conn-&gt;setDB('database name');
+	$conn-&gt;closeConnection();
+	$conn-&gt;openConnection('DSN'-&gt;'', 'UID'-&gt;'', 'PWD'-&gt;'', ['database'-&gt;'']);
+	$conn-&gt;begin();
+	$conn-&gt;commit();
+	$conn-&gt;rollback();
+	$conn-&gt;connectionTimeOut(#);
+	$conn-&gt;commandTimeOut(#);
+	$cmd=$conn-&gt;newCommand(['command text']);		Returns ADOCommand Ojbect
+
+ADOCommand
+	$cmd-&gt;setText('command text');
+	$cmd-&gt;setConnection($conn);
+	$cmd-&gt;commandTimeOut(#);
+	$rs=$cmd-&gt;execute();					Returns ADOResultset Object
+	$cmd-&gt;createParameter('name'-&gt;'',
+		'type'-&gt;$adEmpty
+		$adTinyInt $adSmallInt $adInteger $adBigInt
+		$adUnsignedTinyInt $adUnsignedSmallInt $adUnsignedInt $adUnsignedBigInt
+		$adSingle $adDouble $adCurrency $adDecimal $adNumeric $adBoolean
+		$adError $adUserDefined $adVariant $adIDispatch $adIUnknown $adGUID
+		$adDate $adDBDate $adDBTime $adDBTimeStamp
+		$adBSTR $adChar $adVarChar $adLongVarChar $adWChar $adVarWChar
+		$adLongVarWChar $adBinary $adVarBinary $adLongVarBinary,
+		'direction'-&gt;$adParamUnknown $adParamInput $adParamOutput $adParamInputOutput $adParamReturnValue,
+		['value'-&gt;'']);
+	$cmd-&gt;getParameter('name');			returns scalar with value specified by name
+	$cmd-&gt;setParameter('name'=&gt;'', 'value'=&gt;'');
+
+ADOResultset
+	$rs-&gt;field('');					returns scalar with value specified by name
+	%fields=$rs-&gt;fields();				returns hash of fields for current record only
+	$rs-&gt;setConnection($conn);			Requires a connection object
+	$rs-&gt;addNew();
+	$rs-&gt;update();
+	$rs-&gt;delete();
+	$rs-&gt;move([#]);						default is move forward one
+	$rs-&gt;moreResults();				returns boolean indicating weather or not there were more results
+	$rs-&gt;eof();						boolean true for end of result set
+	$rs-&gt;bof();						boolean true for beginning of result set that means that you are before first record
+	$rs-&gt;closeResultset();
+	$rs-&gt;source('resultset source');
+	$rs-&gt;open(['resultset source']);
+
+
+</pre><p><strong>Attachment:
+<a href="bin00008.bin" ><tt>ADOCommand.pm</tt></a></strong><br>
+<em>Description:</em> Binary data</p>
+<p><strong>Attachment:
+<a href="p7s00002.p7s" ><tt>smime.p7s</tt></a></strong><br>
+<em>Description:</em> S/MIME cryptographic signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00041.html">text editor w/perl syntax highlighting</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00043.html">Activating Num Lock</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00041.html">text editor w/perl syntax highlighting</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00043.html">Activating Num Lock</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00042"><strong>Date</strong></a></li>
+<li><a href="threads.html#00042"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

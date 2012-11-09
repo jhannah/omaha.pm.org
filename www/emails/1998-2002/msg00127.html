@@ -1,0 +1,146 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: CGI.pm &#38; IE Cookies -->
+<!--X-From-R13: Urbetr Dncc <tjeNbnfvf.abivn.arg> -->
+<!--X-Date: Fri, 5 May 2000 14:43:26 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.GSO.4.21.0005051323540.4023&#45;100000@oasis.novia.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.10.10005051248030.16601&#45;100000@payne.pinko.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: CGI.pm &amp; IE Cookies</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00126.html">Date Prev</a>][<a href="msg00128.html">Date Next</a>][<a href="msg00126.html">Thread Prev</a>][<a href="msg00128.html">Thread Next</a>][<a href="maillist.html#00127">Date Index</a>][<a href="threads.html#00127">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: CGI.pm &amp; IE Cookies</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Matt Payne &lt;<a href="mailto:payne@DOMAIN.HIDDEN">payne@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: CGI.pm &amp; IE Cookies</li>
+<li><em>From</em>: George Rapp &lt;<a href="mailto:gwr@DOMAIN.HIDDEN">gwr@xxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 5 May 2000 13:48:42 -0500 (CDT)</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00126.html">Pine.LNX.4.10.10005051248030.16601-100000@payne.pinko.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Fri, 5 May 2000, Matt Payne wrote:
+
+&gt; I'd like to write CGI that handles cookies for both netscape
+&gt; and internet explorer.  CGI.pm supports NS nicely, but doesn't
+&gt; work with IE.
+&gt; 
+&gt; <a  href="http://stein.cshl.org/WWW/software/CGI/#cookies">http://stein.cshl.org/WWW/software/CGI/#cookies</a>
+&gt; 
+&gt; Specifically there are two example programs:
+&gt; 	<a  href="http://stein.cshl.org/WWW/software/CGI/examples/cookie.cgi">http://stein.cshl.org/WWW/software/CGI/examples/cookie.cgi</a>
+&gt; 	<a  href="http://stein.cshl.org/WWW/software/CGI/examples/customize.cgi">http://stein.cshl.org/WWW/software/CGI/examples/customize.cgi</a>
+&gt; 
+&gt; Would you please post (or send me) pointers to code that will
+&gt; support cookies on both IE as well as NS?
+
+Matt -
+
+We use CGI.pm for a couple of production Web applications, and have
+had no trouble with its support of cookies using either Netscape or
+Incarnate Evil^W^WInternet Explorer 4.X / 5.X.  ISTR that I read
+some caveats about using CGI.pm cookies with earlier IE versions,
+and the CGI.pm perldoc is rather Netscape-centric, but whatever was
+broken in IE is fixed as of IE 4.
+
+Our basic code to create the cookie looks like this:
+
+# WARNING: untested code -- for illustrative purposes only!
+$cgi = new CGI;
+# Set up a hash containing the cookie contents:
+$cookie_contents{&quot;field1&quot;} = $value1;
+$cookie_contents{&quot;field2&quot;} = $value2;
+# Create a cookie object called FooBar, referencing the hash:
+$cookie = $cgi-&gt;cookie(-name =&gt; &quot;FooBar&quot;,
+  -value =&gt; \%cookie_contents);
+# Finally, print the HTTP header, including the cookie:
+print $cgi-&gt;header(-cookie =&gt; $cookie), &quot;\n&quot;;
+
+This creates a cookie that lives for as long as the user has
+his/her browser open, which is what we wanted (but there are other
+options for expiration of cookies).  Here's how we use the cookie:
+
+%cookie_contents = $cgi-&gt;cookie(-name =&gt; &quot;FooBar&quot;);
+die &quot;Awwww ... no cookie!&quot; unless $cookie_contents{&quot;field1&quot;};
+
+Perl version (FWIW, running under HP-UX 10.20):
+
+This is perl, version 5.005_02 built for PA-RISC1.1
+
+We're using the CGI.pm that comes with the full 5.005_02
+distribution:
+
+$CGI::revision = '$Id: CGI.pm,v 1.32 1998/05/28 21:55:43\
+lstein Exp lstein $';
+$CGI::VERSION='2.42';
+
+HTH.
+
+George
+--
+           George Rapp  (Bellevue, NE)  Go 'Huskers!!!
+       Home: gwr@xxxxxxxxx    ICQ: 14583674  AIM: gwrboing
+  Work: grapp01@xxxxxxxxxxxxxxxxxxxxx (or) george.rapp@xxxxxxxx
+  Why is it called &quot;after dark&quot; when it really is &quot;after light&quot;?
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00126" href="msg00126.html">CGI.pm &amp; IE Cookies</a></strong>
+<ul><li><em>From:</em> Matt Payne</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00126.html">CGI.pm &amp; IE Cookies</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00128.html">Re: CGI.pm &amp; IE Cookies</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00126.html">CGI.pm &amp; IE Cookies</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00128.html">Re: CGI.pm &amp; IE Cookies</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00127"><strong>Date</strong></a></li>
+<li><a href="threads.html#00127"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

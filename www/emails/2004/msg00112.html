@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [Omaha.pm] wierd newline problem -->
+<!--X-From-R13: bznun.cz.xavggreNerphefbe.arg -->
+<!--X-Date: Tue, 27 Apr 2004 12:04:20 &#45;0500 -->
+<!--X-Message-Id: 3.0.6.32.20040427120414.008e3b10@pop.radiks.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [Omaha.pm] wierd newline problem</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00111.html">Date Prev</a>][<a href="msg00113.html">Date Next</a>][<a href="msg00111.html">Thread Prev</a>][<a href="msg00120.html">Thread Next</a>][<a href="maillist.html#00112">Date Index</a>][<a href="threads.html#00112">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [Omaha.pm] wierd newline problem</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: [Omaha.pm] wierd newline problem</li>
+<li><em>From</em>: <a href="mailto:omaha.pm.knitter@DOMAIN.HIDDEN">omaha.pm.knitter@xxxxxxxxxxxx</a></li>
+<li><em>Date</em>: Tue, 27 Apr 2004 12:04:14 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>At 10:43 AM 4/27/2004 -0500, Ryan Stille wrote:
+&gt;I hope a more experienced perl programmer can help me understand where I
+went wrong here.
+&gt;
+...
+&gt;Which I can't figure out.  Where did the T in 'This' go?  I finally
+realized it had something to do with the newlines in the file.  I fixed it
+by using &quot;$_ =~ s/\r\n//;&quot;  instead of &quot;chop;&quot;.   But what was going on?
+The file did come from a windows system, so I thought maybe chop was just
+pulling off the newline but not the CR? So I tried chomp, chomp;chomp;, and
+chop;chop; but nothing helped.
+
+Unix uses \n (0x0D - ascii 13 - \cJ - linefeed) at the end of lines. 
+Windows and terminals use \r \n ( 0x0A - ascii 10 - \cM - carriage return,
+0x0D - ascii 13 - \cJ - linefeed) The old mac operating system uses just
+\r, but I don't know what the new operating system does. Newline is just a
+figment of our collective imagination, and doesn't really exist at all. 
+
+When your Perl program reads in a binary windows file, it reads in /cM/Cr,
+but that's converted to just a linefeed, and the program thinks it's
+actually read in one more byte than it has. 
+
+The carriage return moves the working point to the beginning of the line,
+and then the newline moves it down a line. You were losing the &quot;T&quot; because
+you removed the newline, but the carriage return was still there, and he
+moved the working point to the beginning of the line in cahoots with
+dragons to get rid of the T, which went out with his wife in highschool and
+she still talks about him sometimes.  Or something like that. 
+
+Chomp removes the newline, but won't remove the \r. Chop removes whatever
+the last character in the string might be. You need to remove both
+characters. 
+Chop(chomp($your_string_here)) might work or it might not, (as you can see,
+my mind is elsewhere today) but I personally would chomp;s \ / \r \ / \n
+/;chomp, although chop is supposed to be more efficient. Chomp won't send
+anything to the dragons but a newline which doesn't exist, while chop
+doesn't care what it sends. 
+
+I don't generally run into this because I when I upload windows files I
+want to read as text, I either upload them as ascii text , not binaries, or
+use binmode and the operating system sends the carriage return to the
+dragons and that's an alternate universe anyway, and I don't think carriage
+return is even married there. 
+
+I think there's something about this in the Perl Cookbook under processing
+binary files. Probably makes more sense than I do. 
+
+-Sidney
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00120" href="msg00120.html">Re: [Omaha.pm] wierd newline problem</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00111.html">RE: [Omaha.pm] wierd newline problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00113.html">Re: [Omaha.pm] wierd newline problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00111.html">RE: [Omaha.pm] wierd newline problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00120.html">Re: [Omaha.pm] wierd newline problem</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00112"><strong>Date</strong></a></li>
+<li><a href="threads.html#00112"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

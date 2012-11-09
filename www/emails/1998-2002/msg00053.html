@@ -1,0 +1,176 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Perl/cgi -->
+<!--X-From-R13: "[ngg Oeabyq" <zneabyqNabivn.arg> -->
+<!--X-Date: Mon, 24 May 1999 21:36:52 &#45;0400 (EDT) -->
+<!--X-Message-Id: 000c01bea651$70f94a20$361428d8@g&#45;kar -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Perl/cgi</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00052.html">Date Prev</a>][<a href="msg00054.html">Date Next</a>][<a href="msg00052.html">Thread Prev</a>][<a href="msg00054.html">Thread Next</a>][<a href="maillist.html#00053">Date Index</a>][<a href="threads.html#00053">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Perl/cgi</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;ktb&quot; &lt;<a href="mailto:xyf@DOMAIN.HIDDEN">xyf@xxxxxxxxxxxx</a>&gt;, &quot;OPM&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Perl/cgi</li>
+<li><em>From</em>: &quot;Matt Arnold&quot; &lt;<a href="mailto:marnold@DOMAIN.HIDDEN">marnold@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 24 May 1999 20:53:50 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Dear ktb,
+
+&gt;The other thing I've been trying unsuccessfully is to use
+&gt;a subroutine called &quot;ReadParse.&quot;
+
+ReadParse is a method in CGI.pm intended to offer backward compatibility
+with scripts made with the (inferior) cgi-lib.pl package.  Avoid the use of
+ReadParse.  Use CGI.pm's param() method instead.
+
+&gt;use CGI qw(:standard);
+
+&gt;print header;
+
+While not immediately related to the problem at hand, you may want to
+consider reading up on the &quot;object oriented&quot; interface to CGI.pm.  This OO
+approach is one of the first things covered on the CGI.pm web page.
+
+Most of the CGI.pm examples that I encounter on-line use the OO approach, so
+it would be a good thing to be able to understand.  (But it's certainly not
+required.)
+
+&gt;print start_html('A Simple Example'),
+&gt;    h1('Bottle Search'),
+&gt;    start_form,
+&gt;    &quot;Enter word: &quot;,textfield('name'),
+&gt;
+&gt;    p,
+&gt;    submit,
+&gt;    end_form,
+&gt;    hr;
+
+You don't necessary have to use CGI.pm to create your HTML form.  As a
+matter of fact, if you're just starting out, I think it's much easier to
+understand things if your form is in a static HTML file.  Using CGI.pm to
+create HTML just makes things uneccesarily hard, in my humble opinion.
+
+&gt;$SearchString = (param('name'));
+&gt;
+&gt;$Searchstring = &lt;STDIN&gt;;
+
+
+I'm not sure what this is accomplishing.  CGI.pm is responsible for reading
+and parsing all input, so I'm not sure why you're also checking STDIN.
+Perhaps you're checking STDIN because you also want to run this same program
+from the command line?  If so, DON'T.  One of the nice features of CGI.pm is
+that you can debug scripts from the command line.  Learn how to leverage
+this feature instead.
+
+Anyway, you say your problem is that your program prints your file the first
+time you load the page.  This is probably because param('name') is
+&quot;undefined&quot; this first time around -- param('name') doesn't exist because
+the value was never submitted from anyone's browser.  This will cause us
+problems later.
+
+&gt;chomp($SearchString);
+&gt;$SearchString =~ tr/a-z/A-Z/;
+&gt;
+&gt;if ($SearchString eq $SearchString) {
+
+I'll wager $SearchString will always equal $SearchString.  :-)
+
+&gt;open (BottleFile, &quot;botglass.txt&quot;) || die &quot;Can't open botglass.txt.\n&quot;;
+&gt;while (&lt;BottleFile&gt;)
+
+&gt;    @parts = split(/\t/);
+&gt;    next unless defined ($PartsFile = $parts[0]);
+&gt;
+&gt;
+&gt;  if ($PartsFile =~ /\Q$SearchString/i){
+
+The first time you run your program $SearchString is undefined.  I'm not
+sure why, but this makes your if condition true.  The end result is that
+everything matches.  Whee!
+
+&gt;      $PrintOutput = (join (&quot;\t&quot;, @parts));
+&gt;         print &quot;&lt;br&gt;$PrintOutput&lt;br&gt;&quot;;
+&gt;
+&gt;    }
+&gt;  }
+&gt;}
+
+&gt;
+&gt;print end_html;
+
+
+To help guard against undefined values, use perl's warn (-w) option.  I
+noticed that you're running with the -w option already.  Perl should be
+printing it's warnings to STDERR.  And since this program is being run as a
+CGI, the web server is directing STDERR to your web server's error_log.  So
+check your error_log for warnings while running your script.  Try using the
+following command:
+
+  tail -f /path/to/apache/logs/error_log
+
+This will echo errors to the screen as they're added to the error log.  This
+is quite handy when debugging CGI scripts.
+
+I hope that helps.
+
+Matt Arnold
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00052.html">Perl/cgi</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00054.html">How to run with out '&quot;perl&quot; script'</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00052.html">Perl/cgi</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00054.html">How to run with out '&quot;perl&quot; script'</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00053"><strong>Date</strong></a></li>
+<li><a href="threads.html#00053"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

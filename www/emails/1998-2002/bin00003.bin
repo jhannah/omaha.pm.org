@@ -1,0 +1,150 @@
+package ADOResultset;
+use Win32::OLE;
+require Exporter;
+
+@ISA = qw(Exporter);
+@EXPORT=qw(field, fields, setConnection, addNew, update, delete, move, moreResults, eof, bof, closeResultset, source, open);
+
+
+sub new
+{
+	my $class = shift;
+	my $this = {};
+	bless $this, $class;
+	$this->{resultSet}=Win32::OLE->new('ADODB.Recordset');
+	return $this;
+}
+
+sub field
+{
+	my $this=shift;
+	my ($param)=shift;
+	my $f,$type,$r;
+
+	$f=$this->{resultSet}->Fields->Item($param);
+
+	$type=$f->{Type};
+	if( ($type==201) || ($type==203) || ($type==205) ){
+		$r=$f->GetChunk($f->{ActualSize});
+	}else{
+		$r=$f->{Value};
+	}
+	return $r;
+}
+
+sub fields
+{
+	my $this=shift;
+	my %field, $i, $type, $f;
+
+	$f=$this->{resultSet}->Fields;
+
+	for($i=0;$i<$f->{Count};$i++){
+		$type=$f->Item($i)->{Type};
+		if( ($type==201) || ($type==203) || ($type==205) ){
+			$field{$f->Item($i)->{Name}} = $f->Item($i)->GetChunk($f->Item($i)->{ActualSize});
+		}else{
+			$field{$f->Item($i)->{Name}} = $f->Item($i)->{Value};
+		}
+	}
+
+	return %field;
+}
+
+sub setConnection
+{
+	my $this=shift;
+	my $conn=shift;
+
+	$this->{resultSet}->{ActiveConnection}=$conn;
+}
+
+sub addNew
+{
+	my $this=shift;
+
+	$this->{resultSet}->AddNew();
+}
+
+sub update
+{
+	my $this=shift;
+
+	$this->{resultSet}->Update();
+}
+
+sub delete
+{
+	my $this=shift;
+
+	$this->{resultSet}->Delete();
+}
+
+sub move
+{
+	my $this=shift;
+	my $direction=shift;
+
+	if(!($direction)){
+		$direction=1;
+	}
+
+	$this->{resultSet}->Move($direction);
+}
+
+sub moreResults
+{
+	my $this=shift;
+	my $return;
+
+	$this->{resultSet}=$this->{resultSet}->NextRecordset();
+
+	if($this->{resultSet}->{EOF}==""){
+		$return=0;
+	}else{
+		$return=1;
+	}
+
+	return $return;
+}
+
+sub eof
+{
+	my $this=shift;
+
+	return $this->{resultSet}->{EOF};
+}
+
+sub bof
+{
+	my $this=shift;
+
+	return $this->{resultSet}->{BOF};
+}
+
+sub closeResultset
+{
+	my $this=shift;
+
+	$this->{resultSet}->Close();
+}
+
+sub source
+{
+	my $this=shift;
+	$source=shift;
+
+	$this->{resultSet}->{Source}=$source;
+}
+
+sub open
+{
+	my $this=shift;
+	my $source=shift;
+
+	if($source){
+		$this->{resultSet}->{Source}=$source;
+	}
+
+	$this->{resultSet}->Open();
+}

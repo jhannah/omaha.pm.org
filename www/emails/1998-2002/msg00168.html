@@ -1,0 +1,147 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: FW: Help with a transpose script (included) -->
+<!--X-From-R13: "Rnir Funpxre" <qgunpxre9Nubzr.pbz> -->
+<!--X-Date: Sat, 1 Dec 2001 08:10:07 &#45;0600 -->
+<!--X-Message-Id: NFBBKKKLGLFACABMEEEOCEBBDCAA.dthacker9@home.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>FW: Help with a transpose script (included)</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00167.html">Date Prev</a>][<a href="msg00169.html">Date Next</a>][<a href="msg00167.html">Thread Prev</a>][<a href="msg00169.html">Thread Next</a>][<a href="maillist.html#00168">Date Index</a>][<a href="threads.html#00168">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>FW: Help with a transpose script (included)</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: FW: Help with a transpose script (included)</li>
+<li><em>From</em>: &quot;Dave Thacker&quot; &lt;<a href="mailto:dthacker9@DOMAIN.HIDDEN">dthacker9@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 1 Dec 2001 08:10:35 -0600</li>
+<li><em>Importance</em>: Normal</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hmmmmm,
+The omaha-list seems very quiet.  If you haven't gotten a response yet
+(I'm not qualified to respond on this one)  you may want to register and
+post a node at www.perlmonks.org 
+
+dthacker
+
+
+-----Original Message-----
+From: owner-omaha-list@xxxxxx [<a  href="mailto:owner-omaha-list@xxxxxx]On">mailto:owner-omaha-list@xxxxxx]On</a> Behalf
+Of Nielsen, Aaron M
+Sent: Thursday, November 29, 2001 1:03 PM
+To: 'omaha-list@xxxxxxxxxxxxxxxxxxx'
+Subject: Help with a transpose script (included)
+
+
+I'm working on large pattern data in column format and am using the
+following sub to transpose the file so I cant do pattern matching on
+columns.  I then call the transpose sub again to return the file to column
+format.  The problem I'm running into is that the code is very slow and
+thought it will finish on small patterns it dies on large ones (around
+10Meg).  Any ideas on more efficient transpose scripts or a more efficient
+way to match patterns on column data? 
+
+------------------------------------------------
+transpose($file,$file_transposed);
+
+sub transpose {
+
+    package transpose;
+    my (@ops) = @_;
+    my $linesm1 = undef;
+    my @line = undef;
+    my $j = undef;
+    my $i = undef;
+    open (IN, $ops[0]) || die &quot;1 $!\n&quot;;
+    open (OUT,&quot;&gt; $ops[1]&quot;) || die &quot;2 $!\n&quot;;
+    while ( &lt;IN&gt; ) {   
+	$j = 0;    
+	chomp;    
+	@_ = split //;      
+	for ( @_ ) {   
+	    if ( $j &gt; $linesm1 ) {          
+		$line[$j] = &quot; &quot; x $i;
+		$linesm1++;   
+	    }         
+	    $line[$j] .= $_;
+	    $j++; 
+	}  
+	for ( $j .. $linesm1 ) {  
+	    $line[$_] .= ' ';
+	}       
+	$i++; 
+    } 
+    for ( 0 .. $linesm1 ){
+	$line[$_] =~ s/(.)/$1/g;
+	print OUT &quot;$line[$_]\n&quot;;
+    }
+    close OUT;
+    close IN;
+}
+
+------------------------------------------------
+
+Thanks
+
+
+Aaron Nielsen                      PNG/CMO/PE&amp;TE
+                                                   503-712-1822
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00167.html">Help with a transpose script (included)</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00169.html">odd fix to transpose code memory problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00167.html">Help with a transpose script (included)</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00169.html">odd fix to transpose code memory problem</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00168"><strong>Date</strong></a></li>
+<li><a href="threads.html#00168"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

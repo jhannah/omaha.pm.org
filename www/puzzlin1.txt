@@ -1,0 +1,73 @@
+Date: Tue, 29 Jul 2003 15:40:59 -0400 (EDT)
+From: Vamsi <vamsi@warta.bio.psu.edu>
+To: jay@jays.net
+Subject: Recursive substitution
+
+Hi,
+
+Came across your site omaha.pm.org. Here is a solution to the recursive
+modification of keys and values - not compact but seems to work and doesn't
+create any new structures.... You might find it useful.
+
+Attached are a package and a sample test program. Let me know if you
+have any questions.
+
+Regards,
+Vamsi
+
+===================
+package RecSubs;
+
+sub scalar_subs {
+    my ($v, $s) = @_;
+    $_ = $v;
+    foreach my $p (@$s) {
+        eval "$p";
+    }
+    return $_;
+}
+    
+# $s is a reference to an array containing all substitution etc.
+# $r is the thingie to b modified
+sub rec_subs {
+    my ($r, $s) = @_;
+
+    # If $r is a scalar
+    unless (ref($r)) {
+        return scalar_subs($r, $s);
+    }
+
+    # If it is an arrayref have to examine all values
+    if (ref($r) eq 'ARRAY') {
+        for (my $i = 0; $i < scalar(@$r); $i++) {
+            $r->[$i] = rec_subs($r->[$i], $s);
+        }
+    }
+
+    # If it a hash have to examine both keys and values
+    if (ref($r) eq 'HASH') {
+        foreach my $k (keys %$r) {
+            my $v = $r->{$k};
+            my $k_mod = scalar_subs($k, $s);
+            unless ($k_mod eq $k) {
+                $r->{$k_mod} = $v;
+                delete $r->{$k};
+            }
+            $r->{$k_mod} = rec_subs($v, $s);
+        }
+    }
+
+    return $r;
+}
+
+1;
+===================         
+
+use RecSubs;
+use Data::Dumper;
+
+my $h = {'A' => 1, 'B' => {'D' => 3}, 'C' => ['E', 'F', 'G']};
+$h = RecSubs::rec_subs($h, ["tr/A-Z/a-z/", "tr/3/4/"]);
+print Dumper($h);
+
+

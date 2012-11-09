@@ -1,0 +1,193 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: [Fwd: Daily Perl FAQ &#45; What good is `\G' in a regular expression?] -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Thu, 25 Sep 2003 08:40:24 &#45;0500 -->
+<!--X-Message-Id: 3F72EE20.A897E338@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[Fwd: Daily Perl FAQ - What good is `\G' in a regular expression?]</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00225.html">Date Prev</a>][<a href="msg00227.html">Date Next</a>][<a href="msg00223.html">Thread Prev</a>][<a href="msg00229.html">Thread Next</a>][<a href="maillist.html#00226">Date Index</a>][<a href="threads.html#00226">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Fwd: Daily Perl FAQ - What good is `\G' in a regular expression?]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: [Fwd: Daily Perl FAQ - What good is `\G' in a regular expression?]</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 25 Sep 2003 08:31:12 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+Wow! I need to read up on \G! I've never used it...
+
+Seeing a typo below, I went to patch bleadperl, but Daniel beat me to it
+in 2000...
+
+<a  href="http://public.activestate.com/cgi-bin/perlbrowse?patch=7027">http://public.activestate.com/cgi-bin/perlbrowse?patch=7027</a>
+
+Wow. The Daily Perl FAQ is using *old* versions of the FAQ's... -grin-
+
+j
+
+
+
+-------- Original Message --------
+From: perlreply@xxxxxxxxxxxxxx
+Subject: Daily Perl FAQ - What good is `\G' in a regular expression?
+To: jay@xxxxxxxx
+
+
+This is a daily mailing from the Perl FAQ a Day website.
+For subscription info, or to have your address removed from 
+the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a>
+
+Question:
+What good is `\G' in a regular expression?
+
+    The notation `\G' is used in a match or substitution in conjunction
+    the `/g' modifier (and ignored if there's no `/g') to anchor the
+    regular expression to the point just past where the last match
+    occurred, i.e. the pos() point.
+
+    For example, suppose you had a line of text quoted in standard mail
+    and Usenet notation, (that is, with leading `&gt;' characters), and
+    you want change each leading `&gt;' into a corresponding `:'. You
+    could do so in this way:
+
+         s/^(&gt;+)/':' x length($1)/gem;
+
+    Or, using `\G', the much simpler (and faster):
+
+        s/\G&gt;/:/g;
+
+    A more sophisticated use might involve a tokenizer. The following
+    lex-like example is courtesy of Jeffrey Friedl. It did not work in
+    5.003 due to bugs in that release, but does work in 5.004 or
+    better. (Note the use of `/c', which prevents a failed match with
+    `/g' from resetting the search position back to the beginning of
+    the string.)
+
+        while (&lt;&gt;) {
+          chomp;
+          PARSER: {
+               m/ \G( \d+\b    )/gcx    &amp;&amp; do { print &quot;number: $1\n&quot;; 
+redo; };
+               m/ \G( \w+      )/gcx    &amp;&amp; do { print &quot;word:   $1\n&quot;; 
+redo; };
+               m/ \G( \s+      )/gcx    &amp;&amp; do { print &quot;space:  $1\n&quot;; 
+redo; };
+               m/ \G( [^\w\d]+ )/gcx    &amp;&amp; do { print &quot;other:  $1\n&quot;; 
+redo; };
+          }
+        }
+
+    Of course, that could have been written as
+
+        while (&lt;&gt;) {
+          chomp;
+          PARSER: {
+               if ( /\G( \d+\b    )/gcx  {
+                    print &quot;number: $1\n&quot;;
+                    redo PARSER;
+               }
+               if ( /\G( \w+      )/gcx  {
+                    print &quot;word: $1\n&quot;;
+                    redo PARSER;
+               }
+               if ( /\G( \s+      )/gcx  {
+                    print &quot;space: $1\n&quot;;
+                    redo PARSER;
+               }
+               if ( /\G( [^\w\d]+ )/gcx  {
+                    print &quot;other: $1\n&quot;;
+                    redo PARSER;
+               }
+          }
+        }
+
+    But then you lose the vertical alignment of the regular
+    expressions.
+
+
+-- 
+The contents of this message are part of the Perl FAQ:
+Please note that &quot;I&quot; below refers to FAQ authors, and *not* Jeff Yoak or
+Perl FAQ a Day.
+
+Where to get this document [the Perl FAQ]
+   This document is posted regularly to comp.lang.perl.announce and
+   several other related newsgroups. It is available in a variety of
+   formats from CPAN in the /CPAN/doc/FAQs/FAQ/ directory, or on the web
+   at <a  href="http://www.perl.com/perl/faq/">http://www.perl.com/perl/faq/</a> .
+
+CREDITS
+   When I first began the Perl FAQ in the late 80s, I never realized it
+   would have grown to over a hundred pages, nor that Perl would ever
+   become so popular and widespread. This document could not have been
+   written without the tremendous help provided by Larry Wall and the
+   rest of the Perl Porters.
+
+AUTHOR AND COPYRIGHT INFORMATION
+   Copyright (c) 1997 Tom Christiansen and Nathan Torkington. All rights
+   reserved.
+
+
+
+-- 
+181
+.
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00225.html">Re: Daily Perl FAQ - How do I extract URLs?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00227.html">RE: Daily Perl FAQ - How do I extract URLs?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00223.html">FW: I've finally figured out how Jarkko intends to get 5.8.1 out ofthe door...</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00229.html">Help Wanted: Omaha Perl/XML/SQL Monger</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00226"><strong>Date</strong></a></li>
+<li><a href="threads.html#00226"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

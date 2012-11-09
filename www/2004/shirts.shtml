@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Perl Monger T-shirts</title>
+</head>
+
+<body>
+<a href="http://southflorida.pm.org/t-shirts/"><img src="http://southflorida.pm.org/images/pm-shirt-small.png" align=right border=0></a>
+
+This file last updated:
+<!--#flastmod file="shirts.shtml" --><p>
+
+<b>Status: [05/13/2004]</b> Hmm... I just emailed the printing company and Jeff
+because our order hasn't arrived yet and they said we'd have them by 5/7.<br>
+<b>Status: [03/25/2004]</b> Tweaked Sidney's order. What's our 
+status Jeff? Are you placing the order soon or what?<br>
+<b>Status: [02/21/2004]</b> Tweaked a couple orders per emails. Wrote summary program (source code link below). Jeff says he will send me the SouthFlorida order count so I will keep the master list. He's working through the ink-change issue.<br>
+<b>Status: [02/15/2004]</b> Tweaked Brian Wiese's order for him. I don't think it's too late.<br>
+<b>Status: [02/14/2004]</b> Jeff is placing the order any day now (maybe yesterday),
+so the order list is now final. Now it's just a question of getting money from
+folks, getting the shirts to Omaha, and people picking them up. Jay (Omaha.pm) will
+be paying Jeff (SouthFlorida.pm) one lump sum.
+<p>
+The last info is always on the Omaha.pm mailing list.
+
+<h3>The Order</h3>
+<blockquote>
+Color preference is not guaranteed. We may have to order
+one color for all shirts. (e.g. Minimum order for any color is 6 
+shirts, so we'll have to trim colors that don't make that cut.)
+<p>
+<!--#include virtual="shirts.pl"-->
+<a href="shirts.txt">[source code]</a>
+</blockquote>
+
+<h3>Colors</h3>
+<ul>
+<li><a href="http://www.hanesbullseye.com/colorsProduct.asp?Style=5180">Color grid 1</a>
+<li><a href="http://www.hanesprintables.com/Productdetail.asp?Style=5180">Colors grid 2</a>
+</ul>
+
+<h3>Money</h3>
+<ul>
+<li>Prices: <a href="http://omaha.pm.org/emails/2004/msg00011.html">http://omaha.pm.org/emails/2004/msg00011.html</a>. Feel free to throw in donations for the Perl Foundation.
+<li> How to pay: 
+  <ul>
+  <li>PayPal me (Jay Hannah) now: jay(at)jays(dot)net
+  <li>Pay me in person. I work near 120th and Maple. Just give me a call: 578-3976
+  <li>Swing by Reboot The User and pay now or when you pick up the shirts
+  </ul>
+</ul>
+
+<h3>Pick up the Shirts</h3>
+<pre>
+  <A href="http://www.reboottheuser.com/">Reboot the User</a>
+  Jay Swackhamer, proprietor
+  15791 West Dodge Road
+  (SW corner of 156th & Dodge, behind Taco Johns)
+  Suite 135, Omaha, NE 68118
+  (402) 933-6449
+</pre>
+
+<h3>For Future Reference</h3>
+
+These are the nice folks that printed up the shirts. They'll keep the screen
+on file for two years. Getting the screen generated is a big cost of 
+getting shirts printed, so them having the screen already on file is a big
+cost saver.
+
+<pre>From: kim(at)incentiveusa(dot)com
+Date: May 14, 2004 2:41:34 PM CDT
+To: "Jay Hannah"
+Subject: RE: Perl Monger T-Shirt Order
+
+Hi Jay,
+
+Glad to hear everything went smoothly.  Screens are typically kept for 2
+years.  You should be fine to place an order next year.  Have a nice
+weekend.
+
+Kim Sewart
+Program Manager
+All Star Incentive Marketing
+(508)347-7672 phone
+(508)347-1393 fax
+www.incentiveusa.com 
+</pre>
+
+
+<p>
+
+</body>
+</html>
+
+
+

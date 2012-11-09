@@ -1,0 +1,192 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Puzzlin? -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 9 Sep 2003 04:50:10 &#45;0500 -->
+<!--X-Message-Id: 3F5DA090.154D99F5@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1F7C0C8F4BD7C54A8BC55012FEF3DF6D013DBC4B@omaexc11.americas.cpqcorp.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Puzzlin?</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00200.html">Date Prev</a>][<a href="msg00202.html">Date Next</a>][<a href="msg00198.html">Thread Prev</a>][<a href="msg00204.html">Thread Next</a>][<a href="maillist.html#00201">Date Index</a>][<a href="threads.html#00201">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Puzzlin?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Miller, Scott L (Omaha Networks)&quot; &lt;<a href="mailto:scott.l.miller@DOMAIN.HIDDEN">scott.l.miller@xxxxxx</a>&gt;,  <a href="mailto:vamsi@DOMAIN.HIDDEN">vamsi@xxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: Puzzlin?</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 09 Sep 2003 04:42:40 -0500</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>References</em>: &lt;1F7C0C8F4BD7C54A8BC55012FEF3DF6D013DBC4B@omaexc11.americas.cpqcorp.net&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+Re: <a  href="http://omaha.pm.org/">http://omaha.pm.org/</a> &quot;Puzzlin'&quot;
+
+&quot;Miller, Scott L (Omaha Networks)&quot; wrote:
+&gt; 1)  To make it more general, you'll need to make it recursive.  Then, 
+&gt; the substitutions should only need to exist once.  Actually, those 
+&gt; three lines might just need to be in their own subroutine so you can 
+&gt; send any string in, and get a clean one out.
+
+Indeed. The trick was actually *writing* the code to recurse. I couldn't
+figure it out...
+ 
+&gt; 2)  Since you are actually fixing KEYS to the hashes, you can't 
+&gt; simply fix them in place.  It is possible (possibly easy?) to delete 
+&gt; the bad entry, and create the new fixed entry, but it's not possible 
+&gt; to simply fix the key in place.  The values are fixable in place.  
+&gt; If you're going to end up fixing almost all keys and values of the 
+&gt; recursive hash, it is probably cleaner to just create a new hash, 
+&gt; and delete the original...
+
+All agreed. For memory and speed I was hoping I wouldn't have to create
+new copies of complex nested data structures (CNDS), but didn't see a
+good way around it. Fixing the key in place gets wacky when the value is
+a CNDS too...? Or does it? 
+
+&gt; I do have some arrays of hashes of arrays of hashes etc. recursive 
+&gt; code laying around.  I'll try to dig it up for you if you're 
+&gt; interested...
+
+Back in July I got the message below from Vamsi. I haven't had a chance
+to play with it yet, but it looks like a brilliant chunk of recursive
+wizardry to me!
+
+Vamsi: Did you write that? Awesome! I'll give you props on omaha.pm.org.
+
+Cheers,
+
+j
+
+
+
+
+---------- Forwarded message ----------
+Date: Tue, 29 Jul 2003 15:40:59 -0400 (EDT)
+From: Vamsi &lt;vamsi@xxxxxxxxxxxxxxxxx&gt;
+To: jay@xxxxxxxx
+Subject: Recursive substitution
+
+Hi,
+
+Came across your site omaha.pm.org. Here is a solution to the recursive
+modification of keys and values - not compact but seems to work and
+doesn't
+create any new structures.... You might find it useful.
+
+Attached are a package and a sample test program. Let me know if you
+have any questions.
+
+Regards,
+Vamsi
+
+===================
+package RecSubs;
+
+sub scalar_subs {
+    my ($v, $s) = @_;
+    $_ = $v;
+    foreach my $p (@$s) {
+	eval &quot;$p&quot;;
+    }
+    return $_;
+}
+    
+# $s is a reference to an array containing all substitution etc.
+# $r is the thingie to b modified
+sub rec_subs {
+    my ($r, $s) = @_;
+
+    # If $r is a scalar
+    unless (ref($r)) {
+	return scalar_subs($r, $s);
+    }
+
+    # If it is an arrayref have to examine all values
+    if (ref($r) eq 'ARRAY') {
+	for (my $i = 0; $i &lt; scalar(@$r); $i++) {
+	    $r-&gt;[$i] = rec_subs($r-&gt;[$i], $s);
+	}
+    }
+
+    # If it a hash have to examine both keys and values
+    if (ref($r) eq 'HASH') {
+	foreach my $k (keys %$r) {
+	    my $v = $r-&gt;{$k};
+	    my $k_mod = scalar_subs($k, $s);
+	    unless ($k_mod eq $k) {
+		$r-&gt;{$k_mod} = $v;
+		delete $r-&gt;{$k};
+	    }
+	    $r-&gt;{$k_mod} = rec_subs($v, $s);
+	}
+    }
+
+    return $r;
+}
+
+1;
+===================	    
+
+use RecSubs;
+use Data::Dumper;
+
+my $h = {'A' =&gt; 1, 'B' =&gt; {'D' =&gt; 3}, 'C' =&gt; ['E', 'F', 'G']};
+$h = RecSubs::rec_subs($h, [&quot;tr/A-Z/a-z/&quot;, &quot;tr/3/4/&quot;]);
+print Dumper($h);
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00200.html">Re: September 25-28</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00202.html">Re: September 25-28</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00198.html">[Fwd: Daily Perl FAQ - How can I do approximate matching?]</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00204.html">Net::FTP 2.71 POD suggestion</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00201"><strong>Date</strong></a></li>
+<li><a href="threads.html#00201"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

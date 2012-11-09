@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [Omaha.pm] cgi browser based telnet -->
+<!--X-From-R13: "Rnavry Zvaqre" <qnaNyvaqre.bet> -->
+<!--X-Date: Fri, 23 Jan 2004 20:46:50 &#45;0600 -->
+<!--X-Message-Id: 19710.68.13.85.51.1074913584.squirrel@webmail.linder.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1074892109.7447.429.camel@localhost.localdomain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [Omaha.pm] cgi browser based telnet</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00036.html">Date Prev</a>][<a href="msg00038.html">Date Next</a>][<a href="msg00036.html">Thread Prev</a>][<a href="msg00038.html">Thread Next</a>][<a href="maillist.html#00037">Date Index</a>][<a href="threads.html#00037">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [Omaha.pm] cgi browser based telnet</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Ryan O'Rourke&quot; &lt;<a href="mailto:ryano@DOMAIN.HIDDEN">ryano@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [Omaha.pm] cgi browser based telnet</li>
+<li><em>From</em>: &quot;Daniel Linder&quot; &lt;<a href="mailto:dan@DOMAIN.HIDDEN">dan@xxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 23 Jan 2004 21:06:24 -0600 (CST)</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Importance</em>: Normal</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00036.html">1074892109.7447.429.camel@localhost.localdomain</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00036.html">1074892109.7447.429.camel@localhost.localdomain</a>&gt;</li>
+<li><em>Reply-to</em>: <a href="mailto:dan@DOMAIN.HIDDEN">dan@xxxxxxxxxx</a></li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>User-agent</em>: SquirrelMail/1.4.2-1</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Ryan wrote:
+&gt; I want the browser to ask the user for username and password input, but
+&gt; instead it just times out with these error messages showing up in my
+&gt; Apache error_log:
+&gt; stty: standard input: Invalid argument
+&gt; stty: standard input: Invalid argument
+&gt; login failed: bad name or password at
+&gt; /usr/local/apache/cgi-bin/telnet.pl line 29
+[snip]
+&gt; The code:
+&gt; ------- Begin 'telnet.pl' -------
+[snip]
+&gt; print &quot;Enter the username for the $HOST account: &quot;;
+&gt; $username = &lt;STDIN&gt;;
+&gt; chomp $username;
+
+I believe the problem is that there is no &quot;&lt;STDIN&gt;&quot; available from a Perl
+CGI script -- i.e. there is no user interaction with the script until the
+script has completed and closed the output stream.
+
+As a test, if you hard-coded the $username and other information, does it
+log in and send back what you want?  You'll have to write your script so
+that it runs in 'chunks'.  I.E. the first run would put the HTML form
+information up for the Username and password with a &quot;submit&quot; button.  The
+submit button would then call the script with the Username and Password
+variables set from the form, and continue executing.
+
+It will be tricky if you are trying to make an HTML interface to an
+interactive program, but I believe I have seen some implementations done
+before.  Basically, you will take in some input (a command to run) in a
+form and have the user &quot;submit&quot; it, let the command run and capture the
+output, send that output back to the user in a new form and wait for
+another command.  You'll probably also want/need to setup some sort of
+session handlling on the server side.
+
+Good luck!
+
+Dan
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00038" href="msg00038.html">Re: [Omaha.pm] cgi browser based telnet</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00036" href="msg00036.html">[Omaha.pm] cgi browser based telnet</a></strong>
+<ul><li><em>From:</em> Ryan O'Rourke</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00036.html">[Omaha.pm] cgi browser based telnet</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00038.html">Re: [Omaha.pm] cgi browser based telnet</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00036.html">[Omaha.pm] cgi browser based telnet</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00038.html">Re: [Omaha.pm] cgi browser based telnet</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00037"><strong>Date</strong></a></li>
+<li><a href="threads.html#00037"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [Fwd: Daily Perl FAQ &#45; How do I automate an HTML form submission?] -->
+<!--X-From-R13: Bngevpx Fvzzvaf <cgvzzvafNnyygry.arg> -->
+<!--X-Date: Sat, 17 May 2003 11:10:28 &#45;0500 -->
+<!--X-Message-Id: 3EC66D7D.6060105@alltel.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3EC6507D.EF45CDE7@jays.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00080.html">Date Prev</a>][<a href="msg00082.html">Date Next</a>][<a href="msg00080.html">Thread Prev</a>][<a href="msg00082.html">Thread Next</a>][<a href="maillist.html#00081">Date Index</a>][<a href="threads.html#00081">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxx</a></li>
+<li><em>Subject</em>: Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</li>
+<li><em>From</em>: Patrick Timmins &lt;<a href="mailto:ptimmins@DOMAIN.HIDDEN">ptimmins@xxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 17 May 2003 12:12:29 -0500</li>
+<li><em>References</em>: &lt;<a href="msg00080.html">3EC6507D.EF45CDE7@jays.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>User-agent</em>: Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US; rv:1.0.2) Gecko/20030208 Netscape/7.02</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Jay Hannah wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I wouldn't suggest either of those. </tt><br>
+<br>
+<pre style="margin: 0em;">use CGI;
+my $q = new CGI;</pre><br>
+<pre style="margin: 0em;">Now your magical $q object has everything you could possibly want to do
+w/ an HTML form already in it.</pre><br>
+<tt>j</tt><br>
+<br>
+<tt> </tt><br>
+<br>
+</blockquote><tt>I don't think CGI.pm does user agents, does it?  It didn't used to, 
+anyway.  I can't imagine anyone offering a more complete user agent 
+package than Gisle Aas has with LWP ... redirect handling, cookie 
+handling, authentication handling, proxy handling, SSL, etc, etc.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt></tt><br>
+<br>
+<pre style="margin: 0em;">-------- Original Message --------
+Subject: Daily Perl FAQ - How do I automate an HTML form submission?
+Date: 17 May 2003 10:58:52 -0000
+From: perlreply@xxxxxxxxxxxxxx
+To: jay@xxxxxxxx</pre><br>
+<tt><br>This is a daily mailing from the Perl FAQ a Day website.<br>
+For subscription info, or to have your address removed from 
+the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a></tt><br>
+<br>
+<pre style="margin: 0em;">Question:
+How do I automate an HTML form submission?</pre><br>
+<pre style="margin: 0em;">   If you're submitting values using the GET method, create a URL and
+   encode the form using the `query_form' method:</pre><br>
+<pre style="margin: 0em;">       use LWP::Simple;
+       use URI::URL;</pre><br>
+<pre style="margin: 0em;">       my $url = url('<a  href="http://www.perl.com/cgi-bin/cpan_mod">http://www.perl.com/cgi-bin/cpan_mod</a>');
+       $url-&gt;query_form(module =&gt; 'DB_File', readme =&gt; 1);
+       $content = get($url);</pre><br>
+<pre style="margin: 0em;">   If you're using the POST method, create your own user agent and
+   encode the content appropriately.</pre><br>
+<pre style="margin: 0em;">       use HTTP::Request::Common qw(POST);
+       use LWP::UserAgent;</pre><br>
+<pre style="margin: 0em;">       $ua = LWP::UserAgent-&gt;new();
+       my $req = POST '<a  href="http://www.perl.com/cgi-bin/cpan_mod">http://www.perl.com/cgi-bin/cpan_mod</a>',
+                      [ module =&gt; 'DB_File', readme =&gt; 1 ];
+       $content = $ua-&gt;request($req)-&gt;as_string;</pre><br>
+<tt><br> </tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00082" href="msg00082.html">Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00080" href="msg00080.html">[Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00080.html">[Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00082.html">Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00080.html">[Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00082.html">Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00081"><strong>Date</strong></a></li>
+<li><a href="threads.html#00081"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

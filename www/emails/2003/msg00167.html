@@ -1,0 +1,137 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [olug] Challenge With Perl Module Tk -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Sat, 2 Aug 2003 10:13:44 &#45;0500 -->
+<!--X-Message-Id: 3F2BD522.7FF44149@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20030729043738.62543.qmail@web80510.mail.yahoo.com -->
+<!--X-Reference: 3F2A67B7.119E87EB@jays.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [olug] Challenge With Perl Module Tk</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00166.html">Date Prev</a>][<a href="msg00168.html">Date Next</a>][<a href="msg00145.html">Thread Prev</a>][<a href="msg00170.html">Thread Next</a>][<a href="maillist.html#00167">Date Index</a>][<a href="threads.html#00167">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [olug] Challenge With Perl Module Tk</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cmmiller1973@DOMAIN.HIDDEN">cmmiller1973@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: [olug] Challenge With Perl Module Tk</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 02 Aug 2003 10:13:38 -0500</li>
+<li><em>Cc</em>: Omaha Linux User Group &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;, <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>References</em>: &lt;20030729043738.62543.qmail@web80510.mail.yahoo.com&gt; &lt;3F2A67B7.119E87EB@jays.net&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+I downloaded the source (version: 2.0.0). &quot;bastille&quot; is a shell script. 
+The relevant bit appears to start on line 248:
+
+--------
+        for mod in &quot;Tk&quot;
+          do
+        # see if perl can find the module
+          ${CURRENT_PERL_PATH}/perl -M$mod &lt; /dev/null &gt; /dev/null 2&gt;&amp;1
+          if [ $? != 0 ]; then
+        # Cannot find module
+              retval=2
+              if [ $missingmod = 0 ]; then
+            # First error message printed here
+                  missingmod=1;
+                  echo &gt;&amp;2 &quot;$ERRORWARN ${CURRENT_PERL_PATH}/perl cannot find Perl module $mod.&quot;
+              else
+                  echo &gt;&amp;2 &quot;$ERRSPACES ${CURRENT_PERL_PATH}/perl cannot find Perl module $mod.&quot;
+              fi
+          fi
+        done
+--------
+
+And your stuff is here (previous email):
+
+---
+[root at phoenix root]# whereis perl
+perl: /usr/bin/perl
+
+[root at phoenix root]# find / -name Tk.pm -print
+/usr/lib/perl5/site_perl/5.6.1/i386-linux/Tk.pm
+---
+
+When you type &quot;perl -V&quot; is one of the paths in @INC 
+
+   /usr/lib/perl5/site_perl/5.6.1/i386-linux
+
+? If not, you could 
+
+   export PERL5_LIB=/usr/lib/perl5/site_perl/5.6.1/i386-linux
+
+If you type this
+
+   /usr/bin/perl -MTk -e ''
+
+do you get an error?
+
+You could reproduce the shell behavior w/ a little script like this:
+
+/usr/bin/perl -MTk &lt; /dev/null &gt; /dev/null 2&gt;&amp;1
+if [ $? != 0 ]; then
+   echo &quot;Error&quot;
+fi
+
+Call that test.sh or whatever. Does it print &quot;Error&quot;?
+
+HTH,
+
+j
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00166.html">Re: @INC incomplete</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00168.html">[Fwd: Daily Perl FAQ - How do I learn about object-oriented Perl programming?]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00145.html">Re: [olug] Challenge With Perl Module Tk</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00170.html">Re: [olug] Challenge With Perl Module Tk</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00167"><strong>Date</strong></a></li>
+<li><a href="threads.html#00167"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

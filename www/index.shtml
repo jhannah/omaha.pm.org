@@ -1,0 +1,231 @@
+<html>
+<head>
+<title>omaha.pm.org - The Perl Mongers of Omaha, Nebraska USA</title>
+
+<!--- link rel="stylesheet" type="text/css" href="opm.css" title="default" --->
+<!--- 
+Yeah, yeah. I should be using CSS instead of <font> tags. The problem
+is that CSS doesn't work worth a diddle in Netscape 4.73, and since all later
+versions of Netscape have screwed up IMAP, I'm on an old (and aging) browser.
+   -jhannah 3/18/03 -->
+
+</head>
+<body bgcolor="#ffffff">
+
+<img src="omaha.pm.jpg" align=right>
+<a href="http://www.pm.org"><img src="pm.png" border=0></a>
+
+<!--
+<center>
+<p>
+<table width=60% border=10><tr><td align=center>
+<font face="Verdana,Geneva,Arial" size="1">
+<b>Next Meeting: <!--#include virtual="nextmtg.pl" --> @ 6:30pm!</b><br>
+(2nd Wednesday of every month, but June meeting has been merged with <a href="nextmtg_pl.txt">Source code.</a>)
+</font>
+</td></tr>
+</table>
+
+<br>
+<a href="http://conferences.oreilly.com/oscon/"><img src="http://ug.oreilly.com/banners/oscon/OSCON06_usergroup_468x60.gif" border=0></a>
+</center>
+-->
+
+<font face="Verdana,Geneva,Arial" size="2">
+<h2>Omaha.pm</h2>
+
+Welcome! Omaha.pm is the Omaha, Nebraska, USA Perl users group.
+<p>
+
+<a href="http://www.perl.org">Perl</a> is a computer programming language
+popular for a wide variety of tasks.
+<a href="http://www.pm.org">Perl Mongers</a> are programmers/dabblers of all skill
+levels interested in learning more about programming Perl, programming other
+languages, and general computer geekiness.
+<p>
+Join our mailing
+list and come to our meetings! We welcome new members of all skill levels. 
+New to computer programming and motivated to learn? You're in luck!
+Perl is free, and so are our meetings, mailing list, etc.
+<p>
+
+<h3>Mailing List</h3>
+
+Our email mailing list is the primary vehicle for monger chat. To subscribe, unsubscribe, see the archive, 
+get help, etc, click here:
+
+<blockquote>
+<a href="http://www.pm.org/mailman/listinfo/omaha-pm">http://www.pm.org/mailman/listinfo/omaha-pm</a>
+</blockquote>
+
+If you just subscribed, go ahead and introduce yourself to the list --
+we won't bite and we like to know when people join up.
+
+<blockquote>
+<table bgcolor="#eeeeee" border=1><tr><td>
+<font face="Verdana,Geneva,Arial" size="1">
+<b>Before 5/24/2004</b> we used Majordomo instead of MailMain. Archives:
+<ul>
+<li><a href="emails/2004/maillist.html">1/1/2004 - 5/24/2004</a>
+<li><a href="emails/2003/maillist.html">2003</a>
+<li><a href="emails/1998-2002/maillist.html">1998-2002</a> re-live those 
+memories! -grin-
+</ul>
+</font>
+</td></tr></table>
+</blockquote>
+
+<table width=100%>
+<tr><td><font face="Verdana,Geneva,Arial" size="2">
+
+<a name="meetings">
+<h3>Meetings</h3>
+
+We organize Perl-specific meetings whenever anyone requests that we do so on the mailing list.
+<p>
+Every month we crash the <a href="http://www.blainebuxton.com/odynug/">Omaha 
+Dynamic Language Users Group</a> meetings and sneak Perl into every solution. :)
+<p>
+Lost? Jay's mobile phone: 402-578-3976
+
+<!--
+<table>
+<tr><td align=center>
+<a href="http://www.paragondm.com"><img src="paragon.jpg" border=0></a></td>
+<td align="center">
+<font face="Verdana,Geneva,Arial" size="1">
+Meetings are sponsored by <a href="http://www.paragondm.com/">Paragon IT Professionals</a><br> 
+Thanks Jimmy Smith!!</font>
+</td></tr>
+</table>
+-->
+
+<h3>Misc</h3>
+
+There may or may not be all kinds of cool stuff on <a href="/kwiki/">our wiki</a>.
+<p>
+<a href="http://www.reboottheuser.com">Reboot The User</a> hosts our <a href="http://library.reboottheuser.com">book library</a>. Borrow some books!
+<p>
+
+</font></td><td valign=top width=180><font face="Verdana,Geneva,Arial" size="1">
+Partial support by:<br>
+<script language="JavaScript" src="http://www.perl.org/misc/site-sponsor-js.html?notext=1" align=right></script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Thanks!
+
+</font></td></tr>
+</table>
+
+<!--
+<a href="http://conferences.oreilly.com/etech"><img src="http://ug.oreilly.com/banners/etech2006/graphics/etech_ug_120x240.gif" alt="O'Reilly Emerging Technology Conference 2006"  title="O'Reilly Emerging Technology Conference 2006" width="120" height="240" border="0" align="right"/></a>
+-->
+
+<h3>Past Events of Note</h3>
+
+<font face="Verdana,Geneva,Arial" size="1">
+<ul>
+<li><b>12/04/2007</b> - Meeting! <a href="http://www.blainebuxton.com/odynug/">ODynUG</a>: <a href="http://processing.org/">Processing</a>.
+<li><b>11/06/2007</b> - Meeting! <a href="http://www.blainebuxton.com/odynug/">ODynUG</a>
+<li><b>10/02/2007</b> - Meeting! <a href="http://www.blainebuxton.com/odynug/">ODynUG</a>: Erlang. Awesome stuff for SNMP, phone switches, MMORPGs, distributed processing, etc.
+<li><b>09/04/2007</b> - Meeting! <a href="http://www.blainebuxton.com/odynug/">ODynUG</a>: Rexx. Many examples in text processing are, naturally, compared to Perl. Pretty neat set of default behaviors. Rexx is huge in the mainframe space.
+<li><b>08/12/2007</b> - Jay's first contribution hits CPAN: <a href="http://search.cpan.org/~szabgab/Devel-Timer-0.04/lib/Devel/Timer.pm">Devel-Timer-0.04</a>.
+<li><b>08/07/2007</b> - Meeting! Hanging out at Omaha Dynamic Language Users Group (<a href="http://www.blainebuxton.com/odynug/">ODynUG</a>). Jay wrote a Perl proof of concept for <a href="http://vc.jays.net/viewvc.cgi/carwash/?root=dynamic_omaha">Blaine's car wash challenge</a>.
+<li><b>07/10/2007</b> - Meeting! Jay presents intro to Genetics, BioPerl, and SeqLab.net @ Omaha Dynamic Language Users Group.
+<li><b>05/08/2007</b> - Meeting! Mike, Kiran, and Jay BioPerl geekery.
+<li><b>04/24/2007</b> - Perl+ lightning talks @ UNO!
+<li><b>04/10/2007</b> - Meeting! Ryan gets all a<a href="http://twittervision.com/">twitter</a>, Kiran and Jay GBrowse Staph stuff.
+<li><b>03/13/2007</b> - Meeting! Kiran and Jay BioPerl geekery.
+<li><b>02/13/2007</b> - Meeting! <a href="http://seqlab.net">SeqLab</a> goes public. BioPerl in Omaha.
+Bioinformatics will never be the same. :)
+<li><b>01/09/2007</b> - Meeting! 6 mongers tip and trick exchange. 
+<li><b>12/12/2006</b> - Meeting! An extraveganza of miscellanous computer nerdery.
+<li><b>12/05/2006</b> - Perl+ lightning talks @ UNO!
+<li><b>11/14/2006</b> - Meeting! Kiran and Jay geek out all BioPerly style.
+<li><b>10/10/2006</b> - Meeting! Ryan Stille, Dave M., Kiran, and Mike gather around as Jay presents Object Oriented Perl 101.
+<li><b>09/12/2006</b> - Meeting! Dave M. and Jay trick Matt into coming out to his first Omaha user group meeting ever. -mwoo hahahaha-
+<li><b>08/08/2006</b> - Meeting! Dave M. <a href="http://clamtk.sourceforge.net/recognition.html">ClamTk news</a>, BlackHat, DEFCON, gtk2. Jay OSCON.
+<li><b>07/25/2006</b> - OSCON 2006! In a staggering clerical error, Jay Hannah 
+(defacto Omaha.pm group leader) is awarded a 
+<a href="http://www.perl.org/advocacy/white_camel/">2006 white camel award</a>.
+<li><b>07/11/2006</b> - Meeting! Miscellaneous BioPerly goo.
+<li><b>06/13/2006</b> - Meeting! <a href="http://openlab.jays.net">OpenLab</a>, 
+<a href="http://onthisdate.net">onthisdate.net</a>, Perl "vs." Ruby on Rails, 
+<a href="http://search.cpan.org/~pvandry/gettext-1.00/gettext.pod">gettext</a>, 
+<a href="http://sourceforge.net/projects/clamtk/">ClamTk</a>.
+<li><b>05/09/2006</b> - Meeting! Tons of random Perl+ hackery!
+<li><b>04/25/2006</b> - Perl+ lightning talks @ UNO!
+<li><b>04/18/2006</b> - Perl+ lightning talks @ UNO!
+<li><b>03/14/2006</b> - Meeting! Random Perl hackery.
+<li><b>02/26/2006</b> - BioPerl lab! Brainstorming primer/primer groups extensions to toolsets. Launch a web portal project on sourceforge?
+<li><b>02/22/2006</b> - BioPerl lab! Kiran and Jay discover the CVS repository which already had a patch for their Bio::SeqIO::gedcom problem. We're on the bleeding edge now, baby!
+<li><b>02/14/2006</b> - Meeting! BioPerl neophytism, Mac stuff, PHP props, pizza, etc. 
+<li><b>01/28/2006</b> - Meeting! BioPerl blitz: Bio::Seq, Bio::SeqIO, Bio::DB::BioDB, Bio::Tools::Run::Alignment::Clustalw!
+<li><b>01/17/2006</b> - Meeting! Lots of BioPerl hackery! Check out our new books/magazines.
+<li><b>12/15/2005</b> - Meeting! 5 mongers munch pizza, operator overloading, Class::Date, geek knitting, etc.
+<li><b>12/06/2005</b> - Perl+ lightning talks @ UNO! Jay presents Operator Overloading & Class::Date.
+<li><b>11/29/2005</b> - Perl+ lightning talks @ UNO!
+<li><b>10/21/2005</b> - Meeting! 5 mongers munch pizza, Google maps, Template Toolkit, XML::Twig, etc.
+<li><b>09/15/2005</b> - Meeting! Ron, Sidney, and Jay play hookey @ Cheesburgers in Paradise. ... /(Was that|I saw) a(nother)? mouse[?!]/
+<li><b>08/25/2005</b> - Meeting! Turned into Java user group chat night. Sign up for NoFluffJustStuff conference!
+<li><b>07/21/2005</b> - Meeting! Jay and Dave muck w/ Template Toolkit.
+<li><b>05/17/2005</b> - Meeting! Just shooting the Perly breeze. CGI.pm 101.
+<li><b>04/15/2005</b> - Meeting! Jay presents OO Practicum #2: 5 fixed width file formats in one OO structure.
+<li><b>03/18/2005</b> - Meeting! Misc OO design pattern discussions.
+<li><b>02/17/2005</b> - Meeting! Jay does a quick OO demo. Conversations range from beginner Perl to OO Perl to IBM pSeries to poker.
+<li><b>01/20/2005</b> - Meeting! 4 mongers do secret stuff. Jay wasn't there... What <b>did</b> happen, anyway?
+<li><b>12/16/2004</b> - Meeting! Ron, Sidney and Jay wax philosophic about log4perl then diddle w/ deep Tie::STDERR and Handler black magic.
+<li><b>11/18/2004</b> - Meeting! 5 mongers hack out a latitude/longitude spidering program to help the Perl Mongers master XML file.
+<li><b>10/21/2004</b> - Meeting! Jay demos packages, objects, nested complex data structures, references, and CGI.pm.
+<li><b>09/30/2004</b> - Jay's 2nd core Perl patch is applied! 
+<a href="http://public.activestate.com/cgi-bin/perlbrowse?patch=23341&action=patch">[patch#23341]</a>
+<li><b>09/20/2004</b> - Emergency Perl tutoring session held for a UNO student.
+<li><b>09/16/2004</b> - Dinner! Quoting Homer Simpson: Sooo lazy...
+<li><b>08/19/2004</b> - Meeting! Sidney gives a tour of her Perly animal rescue websites & associated flat-file databases.
+<li><b>05/25/2004</b> - Meeting! 2 mongers drove 90 miles to attend! That's a new record -- never before has 360 man-miles been expended for remote attendance. 
+WWW::Mechanize again, and misc other topics.
+<li><b>02/23/2004</b> - Meeting! Presentation: WWW::Mechanize, Time::HiRes, and fork(): How to spider the FAA's web site when your boss' boss' boss' boss' personal pilot calls you.
+<li><b>01/14/2004</b> - Meeting! JayH, Dean, JayS and Scott socialize, diddle around with pipes to sendmail, Scott's patch to core perl (below), and MIME::QuotedPrint. They don't get around to chatting about Test::Harness.
+<li><b>12/16/2003</b> - Meeting! Jay Hannah gave a Perl debugger demo, almost 
+none of which was new to Richard, who taught about stack traces. We explored
+some new commands in the 5.8.0 debugger.
+<li><b>10/21/2003</b> - Meeting! Jay Hannah gave a presentation on Expect.pm: <a href="presentations/pscrawl_pl.txt">pscrawl.pl</a>
+<li><b>09/26/2003</b> - Dinnner! Jeff Bisbee of <a href="http://southflorida.pm.org">SouthFlorida.pm</a>
+drops by to have dinner w/ 5 local mongers. Conversation ranged from 
+<a href="http://www.yapc.org/">YAPC::NA</a> to
+WWW::Mechanize shell to <a href="http://poe.perl.org/">POE</a>.
+<li><b>08/21/2003</b> - Meeting! Justin Hopkins gives intro to building
+ automated test suites with Test::Simple and WWW::Mechanize.
+<li><b>07/24/2003</b> - Meeting! Kent Tegels shows off his XML wizardry.
+<li><b>06/19/2003</b> - Meeting! 10 Mongers showed up to Mojo's Coffeehouse!
+A new record!  After many A/V problems, Jay Hannah gave a 
+quick and informal Intro to Perl / Intro to Object Oriented Perl presentation.
+<li><b>05/15/2003</b> - Meeting! <a href="/emails/2003/msg00078.html">Attendance was up 25%!</a>
+<li><b>04/02/2003</b> - Meeting! Mongers from the four corners of the Earth
+came, saw, and conquered. (Or was it four Mongers from the corners of Omaha?
+-grin-)
+<li><b>03/17/2003</b> - Supreme executive power (which should be derived from a mandate of the masses)
+transferred from long-time group lead Patrick Timmins to Jay Hannah. Trumpets blared, jets screamed
+overhead, etc. <a href="2003/pt-jh.txt">[emails]</a>
+<li><b>02/11/2003</b> - After 10 years of Perl hacking, Jay gets his 
+first patch to <a href="http://simon-cozens.org/writings/p5p-faq">core Perl</a> applied! 
+<a href="http://public.activestate.com/cgi-bin/perlbrowse?patch=18683&action=patch">[patch#18683]</a>
+Sure, it's just a 9 line addition to .pod, but Jay was pretty excited none the less.
+<li><b>05/27/2001</b> - Scott L Miller (loyal Omaha Perl Monger) gets <a href="http://public.activestate.com/cgi-bin/perlbrowse?patch=10696">[patch#10696]</a> applied to core Perl.
+<li><b>04/??/1997</b> - Jim Lawless (loyal Omaha Perl Monger) takes 2nd place in the <a href="http://www.foo.be/docs/tpj/issues/vol2_3/tpj0203-0012.html">1st Annual Obfuscated Perl Contest</a>!
+</ul>
+
+<br><br>
+<hr>
+The defacto tweaker of this website is currently Jay Hannah &lt;jay(at)jays(dot)net&gt;
+<a href="http://jays.net">http://jays.net</a><br>
+The use of a camel image in association with Perl is a trademark of 
+<a href="http://www.oreilly.com">O'Reilly Media, Inc.</a>
+Used with permission.<br>
+
+</font>
+
+
+</body>
+</html>
+

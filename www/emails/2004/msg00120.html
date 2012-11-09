@@ -1,0 +1,100 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [Omaha.pm] wierd newline problem -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Fri, 30 Apr 2004 07:57:27 &#45;0500 -->
+<!--X-Message-Id: 1A7BD566&#45;9AA6&#45;11D8&#45;9251&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3.0.6.32.20040427120414.008e3b10@pop.radiks.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [Omaha.pm] wierd newline problem</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00119.html">Date Prev</a>][<a href="msg00121.html">Date Next</a>][<a href="msg00112.html">Thread Prev</a>][<a href="msg00114.html">Thread Next</a>][<a href="maillist.html#00120">Date Index</a>][<a href="threads.html#00120">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [Omaha.pm] wierd newline problem</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Omaha.pm&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [Omaha.pm] wierd newline problem</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 30 Apr 2004 07:58:40 -0500</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00112.html">3.0.6.32.20040427120414.008e3b10@pop.radiks.net</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00112.html">3.0.6.32.20040427120414.008e3b10@pop.radiks.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Apr 27, 2004, at 12:04 PM, omaha.pm.knitter@xxxxxxxxxxxx wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Chomp removes the newline, but won't remove the \r.
+</tt></blockquote><tt><br>I don't think that's right. I believe chomp() removes &quot;\n&quot; on Unix, 
+&quot;\r\n&quot; on Windows.</tt><br>
+<br>
+<tt>   perldoc -f chomp</tt><br>
+<br>
+<tt>99% of the time you should find that chomp() is all you need.</tt><br>
+<br>
+<tt>The exception is if your file is from Windows and you're processing on 
+Unix (or vice versa). In that case, I've done this before:</tt><br>
+<br>
+<tt>   s/[\r\n]+$//;</tt><br>
+<br>
+<tt>$0.02,</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00112" href="msg00112.html">Re: [Omaha.pm] wierd newline problem</a></strong>
+<ul><li><em>From:</em> omaha . pm . knitter</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00119.html">Re: [Omaha.pm] PPM install issues</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00121.html">[Omaha.pm] return sort (@ary) --- sort() bug?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00112.html">Re: [Omaha.pm] wierd newline problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00114.html">[Omaha.pm] PPM install issues</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00120"><strong>Date</strong></a></li>
+<li><a href="threads.html#00120"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

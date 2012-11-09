@@ -1,0 +1,165 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: [Fwd: Daily Perl FAQ &#45; How do I efficiently match many regular expressions at once?] -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Sun, 20 Apr 2003 09:36:54 &#45;0500 -->
+<!--X-Message-Id: 3EA2AF43.3E256B4A@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[Fwd: Daily Perl FAQ - How do I efficiently match many regular expressions at once?]</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00045.html">Date Prev</a>][<a href="msg00047.html">Date Next</a>][<a href="msg00045.html">Thread Prev</a>][<a href="msg00047.html">Thread Next</a>][<a href="maillist.html#00046">Date Index</a>][<a href="threads.html#00046">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Fwd: Daily Perl FAQ - How do I efficiently match many regular expressions at once?]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: [Fwd: Daily Perl FAQ - How do I efficiently match many regular expressions at once?]</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sun, 20 Apr 2003 09:31:31 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+Wow. I've never been a big fan of map. It seems to exceed my comfort
+zone in terms of hard-to-understand over lines-of-code-saved ratio. I'm
+also not sure how this is more efficient -- does eval'ing &quot;in advance&quot;
+cause Perl to never have to spend time evaluating the regex's again? Is
+that the point?
+
+I'd have to have a *lot* of regex's and input data before I'd go down
+the road suggested by the author... Interesting, none the less.
+
+j
+
+
+
+perlreply@xxxxxxxxxxxxxx wrote:
+&gt; 
+&gt; This is a daily mailing from the Perl FAQ a Day website.
+&gt; For subscription info, or to have your address removed from
+&gt; the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a>
+&gt; 
+&gt; Question:
+&gt; How do I efficiently match many regular expressions at once?
+&gt; 
+&gt;     The following is super-inefficient:
+&gt; 
+&gt;         while (&lt;FH&gt;) {
+&gt;             foreach $pat (@patterns) {
+&gt;                 if ( /$pat/ ) {
+&gt;                     # do something
+&gt;                 }
+&gt;             }
+&gt;         }
+&gt; 
+&gt;     Instead, you either need to use one of the experimental Regexp
+&gt;     extension modules from CPAN (which might well be overkill for your
+&gt;     purposes), or else put together something like this, inspired from
+&gt;     a routine in Jeffrey Friedl's book:
+&gt; 
+&gt;         sub _bm_build {
+&gt;             my $condition = shift;
+&gt;             my @regexp = @_;  # this MUST not be local(); need my()
+&gt;             my $expr = join $condition =&gt; map { &quot;m/\$regexp[$_]/o&quot; } (0..$#regexp);
+&gt;             my $match_func = eval &quot;sub { $expr }&quot;;
+&gt;             die if $@;  # propagate $@; this shouldn't happen!
+&gt;             return $match_func;
+&gt;         }
+&gt; 
+&gt;         sub bm_and { _bm_build('&amp;&amp;', @_) }
+&gt;         sub bm_or  { _bm_build('||', @_) }
+&gt; 
+&gt;         $f1 = bm_and qw{
+&gt;                 xterm
+&gt;                 (?i)window
+&gt;         };
+&gt; 
+&gt;         $f2 = bm_or qw{
+&gt;                 \b[Ff]ree\b
+&gt;                 \bBSD\B
+&gt;                 (?i)sys(tem)?\s*[V5]\b
+&gt;         };
+&gt; 
+&gt;         # feed me /etc/termcap, prolly
+&gt;         while ( &lt;&gt; ) {
+&gt;             print &quot;1: $_&quot; if &amp;$f1;
+&gt;             print &quot;2: $_&quot; if &amp;$f2;
+&gt;         }
+&gt; 
+&gt; --
+&gt; The contents of this message are part of the Perl FAQ:
+&gt; Please note that &quot;I&quot; below refers to FAQ authors, and *not* Jeff Yoak or Perl FAQ a Day.
+&gt; 
+&gt; Where to get this document [the Perl FAQ]
+&gt;    This document is posted regularly to comp.lang.perl.announce and
+&gt;    several other related newsgroups. It is available in a variety of
+&gt;    formats from CPAN in the /CPAN/doc/FAQs/FAQ/ directory, or on the web
+&gt;    at <a  href="http://www.perl.com/perl/faq/">http://www.perl.com/perl/faq/</a> .
+&gt; 
+&gt; CREDITS
+&gt;    When I first began the Perl FAQ in the late 80s, I never realized it
+&gt;    would have grown to over a hundred pages, nor that Perl would ever
+&gt;    become so popular and widespread. This document could not have been
+&gt;    written without the tremendous help provided by Larry Wall and the
+&gt;    rest of the Perl Porters.
+&gt; 
+&gt; AUTHOR AND COPYRIGHT INFORMATION
+&gt;    Copyright (c) 1997 Tom Christiansen and Nathan Torkington. All rights
+&gt;    reserved.
+&gt; 
+&gt; --
+&gt; 178
+&gt; .
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00045.html">Turn a pipe delimited file into a fixed width file</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00047.html">regex tips</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00045.html">Turn a pipe delimited file into a fixed width file</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00047.html">regex tips</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00046"><strong>Date</strong></a></li>
+<li><a href="threads.html#00046"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: FW: Collecting critical Eventlog events -->
+<!--X-From-R13: "Yriva Tynantna" <xsynantnaNubzr.pbz> -->
+<!--X-Date: Wed, 3 Mar 1999 20:15:47 &#45;0500 (EST) -->
+<!--X-Message-Id: 000901be65dd$28681480$90ef0318@omhaw1.ne.home.com -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>FW: Collecting critical Eventlog events</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00020.html">Date Prev</a>][<a href="msg00022.html">Date Next</a>][<a href="msg00019.html">Thread Prev</a>][<a href="msg00022.html">Thread Next</a>][<a href="maillist.html#00021">Date Index</a>][<a href="threads.html#00021">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>FW: Collecting critical Eventlog events</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;mongers&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: FW: Collecting critical Eventlog events</li>
+<li><em>From</em>: &quot;Kevin Flanagan&quot; &lt;<a href="mailto:kflanagan@DOMAIN.HIDDEN">kflanagan@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 3 Mar 1999 19:20:15 -0600</li>
+<li><em>Importance</em>: Normal</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Interesting stuff happening in the Win32 world....
+
+-----Original Message-----
+From: bounce-perl-win32-admin-46230@xxxxxxxxxxxxxxxxxxxxxxxx
+[<a  href="mailto:bounce-perl-win32-admin-46230@xxxxxxxxxxxxxxxxxxxxxxxx]On">mailto:bounce-perl-win32-admin-46230@xxxxxxxxxxxxxxxxxxxxxxxx]On</a> Behalf
+Of Dave Roth
+Sent: Wednesday, March 03, 1999 12:34 PM
+To: Perl-Win32-Admin Mailing List
+Cc: perl-win32-admin@xxxxxxxxxxxxxxxxxxxxxxxx
+Subject: Re: Collecting critical Eventlog events
+
+
+For my book I had written a script that uses OLE to populate a spreadsheet
+which hits on all the DCs in a domain reporting warnings and errors.
+I use this in my own domain. This allows me (or other admins) to check out
+the AdminReport.xls every day with a list of details over the past 24
+hours. I am attaching this script to this message.
+dave
+
+At 10:40 AM 3/3/99 +0100, you wrote:
+&gt;
+&gt;Hi List !
+&gt;
+&gt;Has someone seen or written a script which collects all critical events of
+&gt;several NTServers ... 
+&gt;and eventually e-mails them to the administrators ... (something like
+&gt;SYSLOG)
+</pre><pre>#  Example 5.24. Using Win32::OLE to populate a spreadsheet with 
+#  server errors. 
+#  ----------------------------------------
+#  From &quot;Win32 Perl Programming: The Standard Extensions&quot; by Dave Roth
+#  Published by Macmillan Technical Publishing.
+#  ISBN # 1-57870-067-1
+
+use Win32::OLE qw( with );
+use Win32::OLE::Variant;
+use Win32::EventLog;
+use Win32::NetAdmin;
+use Win32::OLE::Const 'Microsoft Excel';
+
+$DateFormat = &quot;DDD mmm dd, yyyy -- hh:mm:ss&quot;;
+$Class = &quot;Excel.Application&quot;;
+$Domain = &quot;&quot;;
+
+@EVENT_SOURCES = ( &quot;System&quot;, &quot;Application&quot; );
+$EVENT_TYPE = EVENTLOG_ERROR_TYPE | EVENTLOG_WARNING_TYPE;
+
+$Dir = &quot;c:\\temp&quot;;
+$FileName = &quot;AdminReport.xls&quot;;
+$File = &quot;$Dir\\$FileName&quot;;
+
+$SecPerDay = 24 * 60 * 60;
+$Now = time();
+$TimeLimit = $Now - ( $SecPerDay * 7);
+
+$Excel = GetApplication( $Class ) || Error( &quot;Could not start $Class&quot; );
+$Book = GetWorkbook( $Excel ) || Error( &quot;Could not obtain a workbook&quot; );
+$Sheet = GetWorksheet( $Book ) || Error( &quot;Could not obtain a worksheet&quot; );
+
+print &quot;Fetching list of servers...\n&quot;;
+Win32::NetAdmin::GetServers( '', $Domain, SV_TYPE_DOMAIN_CTRL |  SV_TYPE_DOMAIN_BAKCTRL , \@Servers );
+
+$Row = 3;
+foreach $Machine ( sort( @Servers ) )
+{
+  print &quot;Processing $Machine.\n&quot;;
+  $Sheet-&gt;Range( &quot;A&quot; . ++$Row )-&gt;{Value} = $Machine;
+  $Sheet-&gt;Range( &quot;A$Row&quot; )-&gt;{Font}-&gt;{Bold} = 1;
+
+  map{ ProcessLog( $Machine, $_, $EVENT_TYPE ); } ( @EVENT_SOURCES );
+
+  $Row++;
+}
+
+ShutDownSheet( $Sheet );
+
+print &quot;Finished\n&quot;;
+
+
+sub ProcessLog
+{
+  my ( $Machine, $Source, $Type )= @_;
+  my $Flag, $Num, %Hash;
+
+  my $Event = new Win32::EventLog( $Source, $Machine ) || 
+    sub
+    { 
+      $Sheet-&gt;Range( &quot;B&quot; . ++$Row )-&gt;{Value} = &quot;Unable to connect.&quot;;
+      return; 
+    };
+  if( $Event-&gt;GetNumber( $Num ) )
+  {
+    $Flag = EVENTLOG_BACKWARDS_READ | EVENTLOG_SEQUENTIAL_READ;
+    do
+    {
+      if( $Event-&gt;Read( $Flag, $Num, \%Hash ) )
+      {
+        if( $Hash{EventType} &amp; $Type )
+        {
+          my ( $EventType, $Color, $Time );
+
+          if( $Hash{EventType} == EVENTLOG_ERROR_TYPE )
+          {
+            $EventType = &quot;Error&quot;;
+            $Color = 3;     # Red
+          }
+          elsif( $Hash{EventType} == EVENTLOG_WARNING_TYPE )
+          {
+            $EventType = &quot;Warning&quot;;
+            $Color = 53;     # Red-Orange
+          }
+          elsif( $Hash{EventType} == EVENTLOG_INFORMATION_TYPE )
+          {
+            $EventType = &quot;Information&quot;;
+            $Color = 1;     # Black
+          }
+          $Row++;
+            # Format the time so that we can create a date based variant
+          $Time = &quot;&quot; . localtime( $Hash{TimeGenerated} );
+          $Time =~ s/^.*?\s+(.*?)\s+(.*?)\s+(.*?)\s+(.*)/$1 $2 $4 $3/;
+          $Sheet-&gt;Range( &quot;B$Row:G$Row&quot; )-&gt;{Value} = [
+                                   &quot;$Source: $EventType&quot;,
+                                   $Hash{Source},
+                                   ($Hash{Event}) ? $Hash{Event}:&quot;None&quot;,
+                                   ($Hash{User}) ? $Hash{User}:&quot;N/A&quot;,
+                                   $Hash{Computer},
+                                   new Win32::OLE::Variant( VT_DATE, $Time )
+                                   ];
+          $Sheet-&gt;Range( &quot;B$Row&quot; )-&gt;{Font}-&gt;{ColorIndex} = $Color;
+        }
+      }
+      else
+      {
+        undef %Hash;
+      }
+      # This will cause the next reading of the registry to move to the
+      # next record automatically.
+      $Num = 0;
+    } while( $TimeLimit &lt; $Hash{TimeGenerated} );
+    Win32::EventLog::CloseEventLog( $Event-&gt;{handle} );
+  }
+}
+
+sub GetApplication
+{
+  my( $Class ) = @_;
+  my( $Application );
+
+  $Application = Win32::OLE-&gt;GetActiveObject( $Class );
+  if( Win32::OLE-&gt;QueryObjectType( $Application ) ne &quot;Excel_Application&quot; )
+  {
+    $Application = new Win32::OLE( $Class , &quot;Quit&quot; );
+  }
+  $Application-&gt;{Visible} = 1 if( $Application );
+
+  return( $Application );
+}
+
+sub GetWorkbook
+{
+  my( $Application ) = @_;
+  my( $Book, $Temp );
+
+  if( ! ( $Book = $Application-&gt;Workbooks( $FileName ) ) )
+  {
+    if( ! ( $Book = $Application-&gt;Workbooks-&gt;Open( $File ) ) )
+    {
+      $Temp = $Application-&gt;{SheetsInNewWorkbook};
+      $Application-&gt;{SheetsInNewWorkbook} = 1;
+
+      $Book = $Application-&gt;Workbooks-&gt;Add();
+      $Book-&gt;SaveAs( $File );
+
+      $Application-&gt;{SheetsInNewWorkbook} = $Temp;
+      $UseSheetNumber = 1;
+    }
+  }
+  return( $Book );
+}
+
+sub GetWorksheet
+{
+  my( $Book ) = @_;
+  my( $Sheet );
+  if( $UseSheetNumber )
+  {
+    $Sheet = $Book-&gt;Worksheets( $UseSheetNumber );
+  }
+  else
+  {
+    $Sheet = $Book-&gt;Worksheets()-&gt;Add();
+  }
+  SetupWorksheet( $Sheet );
+  return( $Sheet );
+}
+
+sub SetupWorksheet
+{
+  my( $Sheet ) = @_;
+  my( $Range );
+  my( $Date, $Name, $iCount, @Date );
+  @Date = localtime();
+  $Date = sprintf( &quot;%04d.%02d.%02d&quot;, $Date[5] + 1900, $Date[4] + 1, $Date[3] );
+  $Name = $Date;
+  $iCount = 1;
+  while( $Sheet-&gt;{Parent}-&gt;Worksheets( $Name ) )
+  {
+    $Name = &quot;$Date #&quot; . ++$iCount;
+  }
+
+  $Sheet-&gt;{Name} = $Name;
+  $Range = $Sheet-&gt;Range( &quot;A1&quot; );
+  $Range-&gt;{Value} = &quot;Server Error Logs for the morning of $Date&quot;;
+  $Range-&gt;{Font}-&gt;{Size}=24;
+  $Range-&gt;{Font}-&gt;{ColorIndex} = 6;    # Yellow
+  $Sheet-&gt;Rows(&quot;1:1&quot;)-&gt;{Interior}-&gt;{ColorIndex} = 5;  # Blue
+  $Range = $Sheet-&gt;Range(&quot;A3:G3&quot;);
+  $Range-&gt;{Value} = [ &quot;Server&quot;, &quot;Type&quot;, &quot;Source&quot;, &quot;Event&quot;, &quot;User&quot;, &quot;Computer&quot;, &quot;Time&quot; ];
+  with( $Range-&gt;{Font},
+      Bold  =&gt; 1,
+      Italic =&gt; 1,
+      Size  =&gt; 16
+    );
+  $Range-&gt;{HorizontalAlignment} =&gt; xlCenter;
+  $Range-&gt;Columns()-&gt;AutoFit();
+  with( $Sheet-&gt;Columns( &quot;G&quot; ),
+      NumberFormat    =&gt; $DateFormat,
+      HorizontalAlignment =&gt; xlCenter
+    );
+}
+
+sub ShutDownSheet
+{
+  my( $Sheet ) = @_;
+  $Sheet-&gt;Columns( &quot;B:G&quot; )-&gt;AutoFit();
+  $Sheet-&gt;{Parent}-&gt;Save();
+  $Sheet-&gt;{Parent}-&gt;Close();
+}
+
+sub Error
+{
+  my( $Error ) = @_;
+  print &quot;$Error\n&quot;;
+  exit();
+}
+</pre><pre>=================================================================
+Dave Roth                                ...glittering prizes and
+Roth Consulting                      endless compromises, shatter
+rothd@xxxxxxxx                          the illusion of integrity
+Win32, Perl, C++, ODBC, Training
+<a  href="http://www.roth.net">http://www.roth.net</a>
+
+Our latest Perl book is now available:
+&quot;Win32 Perl Programming: The Standard Extensions&quot;
+You can find it at Amazon.com:
+<a  href="http://www.amazon.com/exec/obidos/ASIN/1578700671/rothconsulting/">http://www.amazon.com/exec/obidos/ASIN/1578700671/rothconsulting/</a></pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00020.html">Re: Next Omaha Perl Monger Meeting</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00022.html">Microsoft puzzle.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00019.html">RE: Next Omaha Perl Monger Meeting</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00022.html">Microsoft puzzle.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00021"><strong>Date</strong></a></li>
+<li><a href="threads.html#00021"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

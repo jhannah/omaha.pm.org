@@ -1,0 +1,199 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Fwd: Daily Perl FAQ &#45; How can I capture STDERR from an external command? -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Thu, 6 Nov 2003 05:40:11 &#45;0600 -->
+<!--X-Message-Id: 0BB46DAA&#45;104E&#45;11D8&#45;A3AA&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Fwd: Daily Perl FAQ - How can I capture STDERR from an external command?</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00255.html">Date Prev</a>][<a href="msg00257.html">Date Next</a>][<a href="msg00258.html">Thread Prev</a>][<a href="msg00257.html">Thread Next</a>][<a href="maillist.html#00256">Date Index</a>][<a href="threads.html#00256">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Fwd: Daily Perl FAQ - How can I capture STDERR from an external command?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Fwd: Daily Perl FAQ - How can I capture STDERR from an external command?</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 6 Nov 2003 05:40:39 -0600</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Here's a good little rundown of system, backticks, and open().</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<tt><br>Begin forwarded message:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>From: perlreply@xxxxxxxxxxxxxx<br>
+Date: Sat Oct 25, 2003  5:59:36 AM America/Chicago<br>
+To: jay@xxxxxxxx<br>
+Subject: Daily Perl FAQ - How can I capture STDERR from an external 
+command?</tt><br>
+<br>
+<pre style="margin: 0em;"><br>This is a daily mailing from the Perl FAQ a Day website.
+For subscription info, or to have your address removed from
+the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a></pre><br>
+<pre style="margin: 0em;">Question:
+How can I capture STDERR from an external command?</pre><br>
+<tt>    There are three basic ways of running external commands:</tt><br>
+<br>
+<pre style="margin: 0em;">        system $cmd;                # using system()
+        $output = `$cmd`;           # using backticks (``)
+        open (PIPE, &quot;cmd |&quot;);       # using open()</pre><br>
+<pre style="margin: 0em;">    With system(), both STDOUT and STDERR will go the same place as the
+    script's versions of these, unless the command redirects them.
+    Backticks and open() read only the STDOUT of your command.</pre><br>
+<tt>    With any of these, you can change file descriptors before the call:</tt><br>
+<br>
+<pre style="margin: 0em;">        open(STDOUT, &quot;&gt;logfile&quot;);
+        system(&quot;ls&quot;);</pre><br>
+<tt>    or you can use Bourne shell file-descriptor redirection:</tt><br>
+<br>
+<pre style="margin: 0em;">        $output = `$cmd 2&gt;some_file`;
+        open (PIPE, &quot;cmd 2&gt;some_file |&quot;);</pre><br>
+<pre style="margin: 0em;">    You can also use file-descriptor redirection to make STDERR a
+    duplicate of STDOUT:</pre><br>
+<pre style="margin: 0em;">        $output = `$cmd 2&gt;&amp;1`;
+        open (PIPE, &quot;cmd 2&gt;&amp;1 |&quot;);</pre><br>
+<pre style="margin: 0em;">    Note that you *cannot* simply open STDERR to be a dup of STDOUT in
+    your Perl program and avoid calling the shell to do the
+    redirection. This doesn't work:</pre><br>
+<pre style="margin: 0em;">        open(STDERR, &quot;&gt;&amp;STDOUT&quot;);
+        $alloutput = `cmd args`;  # stderr still escapes</pre><br>
+<pre style="margin: 0em;">    This fails because the open() makes STDERR go to where STDOUT was
+    going at the time of the open(). The backticks then make STDOUT go
+    to a string, but don't change STDERR (which still goes to the old
+    STDOUT).</pre><br>
+<pre style="margin: 0em;">    Note that you *must* use Bourne shell (sh(1)) redirection syntax in
+    backticks, not csh(1)! Details on why Perl's system() and backtick
+    and pipe opens all use the Bourne shell are in
+    <a  href="http://www.perl.com/CPAN/doc/FMTEYEWTK/versus/csh.whynot">http://www.perl.com/CPAN/doc/FMTEYEWTK/versus/csh.whynot</a> . To
+    capture a command's STDERR and STDOUT together:</pre><br>
+<tt>        $output = `cmd 2&gt;&amp;1`;                       # either with 
+backticks<br>
+        $pid = open(PH, &quot;cmd 2&gt;&amp;1 |&quot;);              # or with an open 
+pipe<br>
+        while (&lt;PH&gt;) { }                            #    plus a read</tt><br>
+<br>
+<tt>    To capture a command's STDOUT but discard its STDERR:</tt><br>
+<br>
+<tt>        $output = `cmd 2&gt;/dev/null`;                # either with 
+backticks<br>
+        $pid = open(PH, &quot;cmd 2&gt;/dev/null |&quot;);       # or with an open 
+pipe<br>
+        while (&lt;PH&gt;) { }                            #    plus a read</tt><br>
+<br>
+<tt>    To capture a command's STDERR but discard its STDOUT:</tt><br>
+<br>
+<tt>        $output = `cmd 2&gt;&amp;1 1&gt;/dev/null`;           # either with 
+backticks<br>
+        $pid = open(PH, &quot;cmd 2&gt;&amp;1 1&gt;/dev/null |&quot;);  # or with an open 
+pipe<br>
+        while (&lt;PH&gt;) { }                            #    plus a read</tt><br>
+<br>
+<pre style="margin: 0em;">    To exchange a command's STDOUT and STDERR in order to capture the
+    STDERR but leave its STDOUT to come out our old STDERR:</pre><br>
+<tt>        $output = `cmd 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3 3&gt;&amp;-`;        # either with 
+backticks<br>
+        $pid = open(PH, &quot;cmd 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3 3&gt;&amp;-|&quot;);# or with an open 
+pipe<br>
+        while (&lt;PH&gt;) { }                            #    plus a read</tt><br>
+<br>
+<pre style="margin: 0em;">    To read both a command's STDOUT and its STDERR separately, it's
+    easiest and safest to redirect them separately to files, and then
+    read from those files when the program is done:</pre><br>
+<tt>        system(&quot;program args 1&gt;/tmp/program.stdout 
+2&gt;/tmp/program.stderr&quot;);</tt><br>
+<br>
+<pre style="margin: 0em;">    Ordering is important in all these examples. That's because the
+    shell processes file descriptor redirections in strictly left to
+    right order.</pre><br>
+<pre style="margin: 0em;">        system(&quot;prog args 1&gt;tmpfile 2&gt;&amp;1&quot;);
+        system(&quot;prog args 2&gt;&amp;1 1&gt;tmpfile&quot;);</pre><br>
+<pre style="margin: 0em;">    The first command sends both standard out and standard error to the
+    temporary file. The second command sends only the old standard
+    output there, and the old standard error shows up on the old
+    standard out.</pre><br>
+<tt><br>--<br>
+The contents of this message are part of the Perl FAQ:<br>
+Please note that &quot;I&quot; below refers to FAQ authors, and *not* Jeff Yoak 
+or Perl FAQ a Day.</tt><br>
+<br>
+<tt>Where to get this document [the Perl FAQ]<br>
+   This document is posted regularly to comp.lang.perl.announce and<br>
+   several other related newsgroups. It is available in a variety of<br>
+   formats from CPAN in the /CPAN/doc/FAQs/FAQ/ directory, or on the 
+web<br>
+   at <a  href="http://www.perl.com/perl/faq/">http://www.perl.com/perl/faq/</a> .</tt><br>
+<br>
+<pre style="margin: 0em;">CREDITS
+   When I first began the Perl FAQ in the late 80s, I never realized it
+   would have grown to over a hundred pages, nor that Perl would ever
+   become so popular and widespread. This document could not have been
+   written without the tremendous help provided by Larry Wall and the
+   rest of the Perl Porters.</pre><br>
+<tt>AUTHOR AND COPYRIGHT INFORMATION<br>
+   Copyright (c) 1997 Tom Christiansen and Nathan Torkington. All 
+rights<br>
+   reserved.</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;">--
+235
+.
+</pre></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00255.html">Re: WWW::MECHANIZE::SHELL and PeopleSoft</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00257.html">Fwd: Daily Perl FAQ - How can I read in a file by paragraphs?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00258.html">Re: WWW::MECHANIZE::SHELL and PeopleSoft</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00257.html">Fwd: Daily Perl FAQ - How can I read in a file by paragraphs?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00256"><strong>Date</strong></a></li>
+<li><a href="threads.html#00256"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

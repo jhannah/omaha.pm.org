@@ -1,0 +1,155 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Fwd: Daily Perl FAQ &#45; Can I write useful perl programs on the command line? -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Mon, 5 Jan 2004 22:44:46 &#45;0600 -->
+<!--X-Message-Id: 29546C58&#45;4003&#45;11D8&#45;916A&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Fwd: Daily Perl FAQ - Can I write useful perl programs on the command line?</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00006.html">Date Prev</a>][<a href="msg00008.html">Date Next</a>][<a href="msg00010.html">Thread Prev</a>][<a href="msg00009.html">Thread Next</a>][<a href="maillist.html#00007">Date Index</a>][<a href="threads.html#00007">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Fwd: Daily Perl FAQ - Can I write useful perl programs on the command line?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Fwd: Daily Perl FAQ - Can I write useful perl programs on the command line?</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 5 Jan 2004 22:45:32 -0600</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Ooo... I never knew -a was out there. Slick. Has anyone used that?</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">        # sum first and last fields
+        perl -lane 'print $F[0] + $F[-1]' *
+</pre></blockquote><pre style="margin: 0em;"><br>       -a   turns on autosplit mode when used with a -n or -p.
+            An implicit split command to the @F array is done as
+            the first thing inside the implicit while loop
+            produced by the -n or -p.</pre><br>
+<tt>                perl -ane 'print pop(@F), &quot;\n&quot;;'</tt><br>
+<br>
+<tt>            is equivalent to</tt><br>
+<br>
+<pre style="margin: 0em;">                while (&lt;&gt;) {
+                    @F = split(' ');
+                    print pop(@F), &quot;\n&quot;;
+                }</pre><br>
+<tt>            An alternate delimiter may be specified using -F.</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<tt><br>Begin forwarded message:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>From: perlreply@xxxxxxxxxxxxxx<br>
+Date: Sun Jan 4, 2004  5:58:40 AM America/Chicago<br>
+To: jay@xxxxxxxx<br>
+Subject: Daily Perl FAQ - Can I write useful perl programs on the 
+command line?</tt><br>
+<br>
+<pre style="margin: 0em;"><br>This is a daily mailing from the Perl FAQ a Day website.
+For subscription info, or to have your address removed from
+the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a></pre><br>
+<pre style="margin: 0em;">Question:
+Can I write useful perl programs on the command line?</pre><br>
+<pre style="margin: 0em;">    Yes. Read the perlrun manpage for more information. Some examples
+    follow. (These assume standard Unix shell quoting rules.)</pre><br>
+<pre style="margin: 0em;">        # sum first and last fields
+        perl -lane 'print $F[0] + $F[-1]' *</pre><br>
+<pre style="margin: 0em;">        # identify text files
+        perl -le 'for(@ARGV) {print if -f &amp;&amp; -T _}' *</pre><br>
+<pre style="margin: 0em;">        # remove (most) comments from C program
+        perl -0777 -pe 's{/\*.*?\*/}{}gs' foo.c</pre><br>
+<tt>        # make file a month younger than today, defeating reaper 
+daemons<br>
+        perl -e '$X=24*60*60; utime(time(),time() + 30 * $X,@ARGV)' *</tt><br>
+<br>
+<pre style="margin: 0em;">        # find first unused uid
+        perl -le '$i++ while getpwuid($i); print $i'</pre><br>
+<pre style="margin: 0em;">        # display reasonable manpath
+        echo $PATH | perl -nl -072 -e '
+            s![^/+]*$!man!&amp;&amp;-d&amp;&amp;!$s{$_}++&amp;&amp;push@x,$_;END{print&quot;@m&quot;}'</pre><br>
+<tt>    Ok, the last one was actually an obfuscated perl entry. :-)</tt><br>
+<br>
+<tt><br>--<br>
+The contents of this message are part of the Perl FAQ:<br>
+Please note that &quot;I&quot; below refers to FAQ authors, and *not* Jeff Yoak 
+or Perl FAQ a Day.</tt><br>
+<br>
+<tt>Where to get this document [the Perl FAQ]<br>
+   This document is posted regularly to comp.lang.perl.announce and<br>
+   several other related newsgroups. It is available in a variety of<br>
+   formats from CPAN in the /CPAN/doc/FAQs/FAQ/ directory, or on the 
+web<br>
+   at <a  href="http://www.perl.com/perl/faq/">http://www.perl.com/perl/faq/</a> .</tt><br>
+<br>
+<pre style="margin: 0em;">CREDITS
+   When I first began the Perl FAQ in the late 80s, I never realized it
+   would have grown to over a hundred pages, nor that Perl would ever
+   become so popular and widespread. This document could not have been
+   written without the tremendous help provided by Larry Wall and the
+   rest of the Perl Porters.</pre><br>
+<tt>AUTHOR AND COPYRIGHT INFORMATION<br>
+   Copyright (c) 1997 Tom Christiansen and Nathan Torkington. All 
+rights<br>
+   reserved.</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;">--
+55
+.
+</pre></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00006.html">Fwd: mailing list thingy</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00008.html">Re: Fwd: mailing list thingy (jay@jays.net: trusted sender for your account)</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00010.html">[Omaha.pm] Re: mailing list thingy</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00009.html">Test::Harness rocks!</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00007"><strong>Date</strong></a></li>
+<li><a href="threads.html#00007"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

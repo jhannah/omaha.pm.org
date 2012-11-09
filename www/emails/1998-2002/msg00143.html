@@ -1,0 +1,179 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Next Topics... (was: Quick question.) -->
+<!--X-From-R13: Bngevpx Fvzzvaf <cng.gvzzvafNnsjn.ns.zvy> -->
+<!--X-Date: Fri, 9 Jun 2000 19:33:09 &#45;0400 (EDT) -->
+<!--X-Message-Id: 39417FA8.AEAB3F43@afwa.af.mil -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 001001bfd1cc$eacb7880$0400a8c0@omhaw1.ne.home.om -->
+<!--X-Reference: 39412B6B.D1669DC5@home.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Next Topics... (was: Quick question.)</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00142.html">Date Prev</a>][<a href="msg00144.html">Date Next</a>][<a href="msg00142.html">Thread Prev</a>][<a href="msg00144.html">Thread Next</a>][<a href="maillist.html#00143">Date Index</a>][<a href="threads.html#00143">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Next Topics... (was: Quick question.)</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>, Wyatt Draggoo &lt;<a href="mailto:phraktyl@DOMAIN.HIDDEN">phraktyl@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Next Topics... (was: Quick question.)</li>
+<li><em>From</em>: Patrick Timmins &lt;<a href="mailto:pat.timmins@DOMAIN.HIDDEN">pat.timmins@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 09 Jun 2000 18:37:12 -0500</li>
+<li><em>Organization</em>: Sterling Software</li>
+<li><em>References</em>: &lt;<a href="msg00141.html">001001bfd1cc$eacb7880$0400a8c0@omhaw1.ne.home.om</a>&gt; &lt;<a href="msg00142.html">39412B6B.D1669DC5@home.com</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Wyatt Draggoo wrote:
+
+&gt; Actually, I've tried unsuccessfully to use map on about a gazillion
+&gt; occasions.  How about a meeting devoted to the intricacies and innards
+&gt; of the map function?  I know I would get a lot out of it -- I know
+&gt; there's a lot of power there, I just can't tap it!
+
+map *is* a mind bender in the beginning.
+
+Breaking it into conceptual chunks helps, I think:
+1. The Syntax
+2. The Operation
+2. The Context
+
+
+The Syntax
+
+straight out of perlfunc for map:
+
+map BLOCK LIST 
+map EXPR,LIST
+
+Evaluates the BLOCK or EXPR for each element of LIST (locally setting $_
+to each element) and returns the list value composed of the results of
+each such evaluation.  Evaluates BLOCK or EXPR in a list context, so
+each element of LIST may produce zero, one, or more elements in the
+returned value.
+
+
+The Operation
+
+The function always operates on a list of input (an input list? :), so
+whenever you see 'map', first think about the list that it is operating
+on.  For example, using a variation of Tim's example:
+
+map { print substr($_, 0, 3) . &quot;\n&quot;; } @Array;
+
+This map function is operating on the list represented by '@Array'. This
+is the input to the 'map' function in this example.
+
+OK, now that we have a list of input, now we can do something with it. 
+What we do with the input is the part is represented in the BLOCK/EXPR
+portion of the 'map' syntax.  A good way to think of the BLOCK/EXPR
+portion of the function is to consider it as code you would find in a
+'foreach' loop.  You've got a list of input (represented by @Array) and
+you want to do something with each element of that list.  This is the
+code that you put in the BLOCK/EXPR portion of the 'map' function.
+
+For example, the following two snippets do the same thing:
+
+# 'map' snippet
+map { print substr($_, 0, 3) . &quot;\n&quot;; } @Array;
+
+# 'foreach' snippet
+foreach (@Array) {
+    print substr($_, 0, 3) . &quot;\n&quot;;
+}
+
+In both cases, each element of @Array is loaded into the 'default input
+space' variable '$_', and then used in the '{ BLOCK }' of code.  So up
+to this point, 'map' is really just like an odd way of doing a 'foreach'
+loop ... putting the block of code first, and then trailing it with the
+list that will be used as input to that block.
+
+
+The Context
+
+Now for the really powerful part of 'map' ... the context in which it is
+called. In the example shown above, the 'map' function is called in a
+void context ... we are not trying to assign its output to a variable of
+some sort, or looking for its return value, or anything like that.  As
+shown, when called in a void context, 'map' is really pretty much just
+an odd way of writing a 'foreach' loop.
+
+But called, for example, in a list context, the 'map' function can be
+used to do all kinds of neat things, such as transformations. Stealing
+from Tim's examples, again, consider:
+
+@Array = map { substr($_, 0, 3) } @Array;
+
+This short little line of Perl code converts the original @Array
+elements into the first three letter abbreviation of each of the former
+elements ... pretty cool! ... and, conceptually, pretty easy to
+understand, once you have the proper &quot;Perl mind-set&quot; !
+
+
+Hope this helps
+
+Pat
+-- 
+$monger{Omaha}[0]
+Patrick Timmins
+ptimmins@xxxxxxxxxxxxxxxx
+pat.timmins@xxxxxxxxxxx
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00141" href="msg00141.html">Fw: Quick question.</a></strong>
+<ul><li><em>From:</em> Tim Bornholtz</li></ul></li>
+<li><strong><a name="00142" href="msg00142.html">Next Topics... (was: Quick question.)</a></strong>
+<ul><li><em>From:</em> Wyatt Draggoo</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00142.html">Next Topics... (was: Quick question.)</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00144.html">[no subject]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00142.html">Next Topics... (was: Quick question.)</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00144.html">[no subject]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00143"><strong>Date</strong></a></li>
+<li><a href="threads.html#00143"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

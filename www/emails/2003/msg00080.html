@@ -1,0 +1,156 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: [Fwd: Daily Perl FAQ &#45; How do I automate an HTML form submission?] -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Sat, 17 May 2003 10:09:09 &#45;0500 -->
+<!--X-Message-Id: 3EC6507D.EF45CDE7@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00079.html">Date Prev</a>][<a href="msg00081.html">Date Next</a>][<a href="msg00079.html">Thread Prev</a>][<a href="msg00081.html">Thread Next</a>][<a href="maillist.html#00080">Date Index</a>][<a href="threads.html#00080">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 17 May 2003 10:08:45 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+I wouldn't suggest either of those. 
+
+use CGI;
+my $q = new CGI;
+
+Now your magical $q object has everything you could possibly want to do
+w/ an HTML form already in it.
+
+j
+
+
+
+
+-------- Original Message --------
+Subject: Daily Perl FAQ - How do I automate an HTML form submission?
+Date: 17 May 2003 10:58:52 -0000
+From: perlreply@xxxxxxxxxxxxxx
+To: jay@xxxxxxxx
+
+
+This is a daily mailing from the Perl FAQ a Day website.
+For subscription info, or to have your address removed from 
+the mailing list, please see <a  href="http://perl.faq-by-day.org/">http://perl.faq-by-day.org/</a>
+
+Question:
+How do I automate an HTML form submission?
+
+    If you're submitting values using the GET method, create a URL and
+    encode the form using the `query_form' method:
+
+        use LWP::Simple;
+        use URI::URL;
+
+        my $url = url('<a  href="http://www.perl.com/cgi-bin/cpan_mod">http://www.perl.com/cgi-bin/cpan_mod</a>');
+        $url-&gt;query_form(module =&gt; 'DB_File', readme =&gt; 1);
+        $content = get($url);
+
+    If you're using the POST method, create your own user agent and
+    encode the content appropriately.
+
+        use HTTP::Request::Common qw(POST);
+        use LWP::UserAgent;
+
+        $ua = LWP::UserAgent-&gt;new();
+        my $req = POST '<a  href="http://www.perl.com/cgi-bin/cpan_mod">http://www.perl.com/cgi-bin/cpan_mod</a>',
+                       [ module =&gt; 'DB_File', readme =&gt; 1 ];
+        $content = $ua-&gt;request($req)-&gt;as_string;
+
+
+-- 
+The contents of this message are part of the Perl FAQ:
+Please note that &quot;I&quot; below refers to FAQ authors, and *not* Jeff Yoak or
+Perl FAQ a Day.
+
+Where to get this document [the Perl FAQ]
+   This document is posted regularly to comp.lang.perl.announce and
+   several other related newsgroups. It is available in a variety of
+   formats from CPAN in the /CPAN/doc/FAQs/FAQ/ directory, or on the web
+   at <a  href="http://www.perl.com/perl/faq/">http://www.perl.com/perl/faq/</a> .
+
+CREDITS
+   When I first began the Perl FAQ in the late 80s, I never realized it
+   would have grown to over a hundred pages, nor that Perl would ever
+   become so popular and widespread. This document could not have been
+   written without the tremendous help provided by Larry Wall and the
+   rest of the Perl Porters.
+
+AUTHOR AND COPYRIGHT INFORMATION
+   Copyright (c) 1997 Tom Christiansen and Nathan Torkington. All rights
+   reserved.
+
+
+
+-- 
+267
+.
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00081" href="msg00081.html">Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+<ul><li><em>From:</em> Patrick Timmins</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00079.html">Re: [olug] slightly OT: IBM RS6000 backup tapes</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00081.html">Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00079.html">Re: [olug] slightly OT: IBM RS6000 backup tapes</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00081.html">Re: [Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00080"><strong>Date</strong></a></li>
+<li><a href="threads.html#00080"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

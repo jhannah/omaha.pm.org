@@ -1,0 +1,133 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [Omaha.pm] Accessing Windows scripting objects in PerlScript -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Fri, 6 Feb 2004 18:33:49 &#45;0600 -->
+<!--X-Message-Id: 6BD78160&#45;5905&#45;11D8&#45;A105&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040206170624.GA66520@binary.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [Omaha.pm] Accessing Windows scripting objects in PerlScript</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00048.html">Date Prev</a>][<a href="msg00050.html">Date Next</a>][<a href="msg00046.html">Thread Prev</a>][<a href="msg00047.html">Thread Next</a>][<a href="maillist.html#00049">Date Index</a>][<a href="threads.html#00049">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [Omaha.pm] Accessing Windows scripting objects in PerlScript</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Mike Hostetler &lt;<a href="mailto:thehaas@DOMAIN.HIDDEN">thehaas@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [Omaha.pm] Accessing Windows scripting objects in PerlScript</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 6 Feb 2004 18:34:42 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00046.html">20040206170624.GA66520@binary.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Friday, February 6, 2004, at 11:06 AM, Mike Hostetler wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Are there any PerlScript hackers out there?
+</tt></blockquote><tt><br>Not me. But my ignorance never stops me from giving half baked advice. 
+-grin-</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">We want to get at objects that are availiable via the MS Windows
+Scripting Host.  We can get at them with VBScript and JScript, but we
+cannot with PerlScript.  I've tried the following:</pre><br>
+<pre style="margin: 0em;">				o my $var = $Session;
+				o my $var = Session;
+				o my $var = ${Session};</pre><br>
+<tt>And every time I get the same thing::</tt><br>
+<br>
+<pre style="margin: 0em;">Description: Global symbol &quot;$Session&quot; requires explicit package name at
+(eval 2) line 2.
+Global symbol &quot;$Session&quot; requires explicit package name
+Line: 2' {F:\develop\wp32\WpMTS\ScriptActive.cpp, 245}</pre><br>
+<tt>Anyone have any ideas?  I don't think I should have to do:</tt><br>
+<br>
+<pre style="margin: 0em;">				use Win32::OLE;
+				my $session = Win32::OLE-&gt;new(&quot;WorkPoint.wpSession&quot;);
+every time, since I don't have to do it with VB.
+</pre></blockquote><tt><br>-ponder-  It seems to me that Perl is doing the Right Thing which is to 
+avoid polluting your namespace with junk until you explicitly tell it 
+to do so. Two former lives ago I coded ASP for a living and I remember 
+having all kinds of stuff at my fingertips on line 1 of my program. I 
+think as a general rule that won't be true in Perl environs.</tt><br>
+<br>
+<tt>Under Apache mod_perl I believe you can put arbitrary stuff in Apache 
+startup (httpd.conf) which will be in your namespace, but you probably 
+didn't care about that. -grin- Perhaps there's a PerlScript equivalent.</tt><br>
+<br>
+<tt>Maybe you could &quot;hide&quot; the ugliness in another package. Mike.pm:</tt><br>
+<br>
+<pre style="margin: 0em;">   package Mike;
+   use Win32::OLE;
+   sub session {
+      return Win32::OLE-&gt;new(&quot;WorkPoint.wpSession&quot;);
+   }</pre><br>
+<tt>Then to use that, you'd:</tt><br>
+<br>
+<pre style="margin: 0em;">   use Mike;
+   my $session = Mike::session;</pre><br>
+<tt>That pattern isn't too handy unless you have a bunch of different 
+Win32::OLE+ thingies you want to grab easier than the default way in a 
+bunch of different programs...?</tt><br>
+<br>
+<tt>Ok, I'll shut up now. -grin-</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00046" href="msg00046.html">[Omaha.pm] Accessing Windows scripting objects in PerlScript</a></strong>
+<ul><li><em>From:</em> Mike Hostetler</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00048.html">Re: [Omaha.pm] New member</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00050.html">Re: [Omaha.pm] Bookmark synchornization utility for Netscape/Mozilla/Galleon/etc...</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00046.html">[Omaha.pm] Accessing Windows scripting objects in PerlScript</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00047.html">[Omaha.pm] Bookmark synchornization utility for     Netscape/Mozilla/Galleon/etc...</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00049"><strong>Date</strong></a></li>
+<li><a href="threads.html#00049"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

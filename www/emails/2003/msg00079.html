@@ -1,0 +1,140 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [olug] slightly OT: IBM RS6000 backup tapes -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Fri, 16 May 2003 12:57:58 &#45;0500 -->
+<!--X-Message-Id: Pine.LNX.4.33.0305161247510.26725&#45;100000@hannibal.mammoth.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: OFF178F1D7.809FF563&#45;ON86256D28.005133FB@unmc.edu -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [olug] slightly OT: IBM RS6000 backup tapes</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00078.html">Date Prev</a>][<a href="msg00080.html">Date Next</a>][<a href="msg00078.html">Thread Prev</a>][<a href="msg00080.html">Thread Next</a>][<a href="maillist.html#00079">Date Index</a>][<a href="threads.html#00079">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [olug] slightly OT: IBM RS6000 backup tapes</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Omaha Linux User Group &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [olug] slightly OT: IBM RS6000 backup tapes</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 16 May 2003 12:57:55 -0500 (CDT)</li>
+<li><em>Cc</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;OFF178F1D7.809FF563-ON86256D28.005133FB@unmc.edu&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+On Fri, 16 May 2003 ehaas@xxxxxxxx wrote:
+&gt; Does anyone have experience with these types of changers? There's no
+&gt; model or serial number on it, it just says &quot;IBM&quot;.
+&gt; Can you point me in the direction of a website, or possibly donate your
+&gt; own existing script that does the same thing?
+
+We (I) wrote some object oriented Perl to control our Magstar tape
+libraries for our RS/6000. It's a convenient abstraction which launches
+/usr/bin/tapeutil commands on the back end, making sure to only do &quot;safe&quot;
+things to correct tapes. It groks a tape database w/ serial numbers, slot
+allocations, business purposes (etc.) that we designed so we can do stuff
+like this:
+
+---
+$magstar-&gt;mount($x, $y)
+
+$x is the tape purpose, $y is the tape number. You do not have to know the
+tape volume tag nor assigned slot number to mount a tape (neat, huh?).
+So, if the Tuesday night omni-res level 0 backup takes 3 tapes to
+complete, your program might look like this:
+
+  $magstar-&gt;mount(   &quot;omni-res:level0:2&quot;, 1 );
+  ... start ontape    ... wait for prompt for tape number 2 ...
+  $magstar-&gt;unmount( &quot;omni-res:level0:2&quot;, 1 );
+  $magstar-&gt;mount(   &quot;omni-res:level0:2&quot;, 2 );
+  ... continue ontape ... wait for prompt for tape number 3 ...
+  $magstar-&gt;unmount( &quot;omni-res:level0:2&quot;, 2 );
+  $magstar-&gt;mount(   &quot;omni-res:level0:2&quot;, 3 );
+  ... continue ontape ... wait for exit ...
+  $magstar-&gt;unmount( &quot;omni-res:level0:2&quot;, 3 );
+
+You should know that mount() and unmount() are easily insulted and they
+invoke die() if you upset them. Ways to upset them include attempting to:
+(1) mount a tape in a drive that already has a tape in it, (2,3) un/mount
+a tape which is not registered in the tape database (4) mount a tape for
+which no registered tape in the tape database can be found in the tape
+library, (5) unmount a tape when there is no tape in the drive, (6)
+unmount a tape whose designated slot is not empty.
+
+$magstar-&gt;unmount($x, $y)
+
+See mount(). unmount() undoes that.
+---
+
+Etc... At 2am it's awfully handy to not have to figure out serial numbers,
+slots, etc.
+
+We're baby stepping towards a similar abstraction for an MTX tape changer
+on Solaris.
+
+Dunno if this would help you or not.
+
+Cheers,
+
+Jay Hannah
+Omaha Perl Mongers: <a  href="http://omaha.pm.org">http://omaha.pm.org</a>
+
+
+
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00078.html">Hazzah! Up 25%!</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00080.html">[Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00078.html">Hazzah! Up 25%!</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00080.html">[Fwd: Daily Perl FAQ - How do I automate an HTML form submission?]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00079"><strong>Date</strong></a></li>
+<li><a href="threads.html#00079"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

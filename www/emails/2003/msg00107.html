@@ -1,0 +1,130 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [olug] Unix Tip: USING PERL TO REVERSE -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Fri, 13 Jun 2003 15:23:31 &#45;0500 -->
+<!--X-Message-Id: Pine.LNX.4.33.0306131512510.2036&#45;100000@hannibal.mammoth.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200306131532.IAA18683@ugu.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [olug] Unix Tip: USING PERL TO REVERSE</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00106.html">Date Prev</a>][<a href="msg00108.html">Date Next</a>][<a href="msg00102.html">Thread Prev</a>][<a href="msg00108.html">Thread Next</a>][<a href="maillist.html#00107">Date Index</a>][<a href="threads.html#00107">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [olug] Unix Tip: USING PERL TO REVERSE</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Omaha Linux User Group &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [olug] Unix Tip: USING PERL TO REVERSE</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 13 Jun 2003 15:23:25 -0500 (CDT)</li>
+<li><em>Cc</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;200306131532.IAA18683@ugu.com&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+On Fri, 13 Jun 2003, Unix Guru Universe wrote:
+&gt; Yet another file reversal
+&gt; (I don't know many apps
+&gt; that need this, though!):
+&gt;
+&gt; perl -e 'print reverse &lt;&gt;' filename
+
+Wow. I still learn something new every day. I never took the time to
+&quot;learn&quot; about &lt;&gt; until just now. From perldoc perlop:
+
+       The null filehandle &lt;&gt; is special: it can be used to emu-
+       late the behavior of sed and awk.  Input from &lt;&gt; comes
+       either from standard input, or from each file listed on
+       the command line.  Here's how it works: the first time &lt;&gt;
+       is evaluated, the @ARGV array is checked, and if it is
+       empty, &quot;$ARGV[0]&quot; is set to &quot;-&quot;, which when opened gives
+       you standard input.  The @ARGV array is then processed as
+       a list of filenames.  The loop
+
+
+           while (&lt;&gt;) {
+               ...                     # code for each line
+           }
+
+       is equivalent to the following Perl-like pseudo code:
+
+           unshift(@ARGV, '-') unless @ARGV;
+           while ($ARGV = shift) {
+               open(ARGV, $ARGV);
+               while (&lt;ARGV&gt;) {
+                   ...         # code for each line
+               }
+           }
+
+       except that it isn't so cumbersome to say, and will actu-
+       ally work.  It really does shift the @ARGV array and put
+       the current filename into the $ARGV variable.  It also
+       uses filehandle ARGV internally--&lt;&gt; is just a synonym for
+       &lt;ARGV&gt;, which is magical.  (The pseudo code above doesn't
+       work because it treats &lt;ARGV&gt; as non-magical.)
+
+Neato!
+
+(Neat, but probably not something I'd use except in perl -e command line
+one-liners.)
+
+Jay Hannah
+Omaha Perl Mongers: <a  href="http://omaha.pm.org">http://omaha.pm.org</a>
+
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00106.html">Re: [olug] Perl Debugger</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00108.html">[Fwd: Newsletter from O'Reilly UG Program, June 13]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00102.html">[Fwd: Daily Perl FAQ - How can I split a [character] delimited string except when inside]</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00108.html">[Fwd: Newsletter from O'Reilly UG Program, June 13]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00107"><strong>Date</strong></a></li>
+<li><a href="threads.html#00107"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

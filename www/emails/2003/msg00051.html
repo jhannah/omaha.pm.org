@@ -1,0 +1,167 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Pipes in regex's -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Wed, 23 Apr 2003 13:20:53 &#45;0500 -->
+<!--X-Message-Id: Pine.LNX.4.33.0304231318250.13744&#45;100000@hannibal.mammoth.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Pipes in regex's</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00050.html">Date Prev</a>][<a href="msg00052.html">Date Next</a>][<a href="msg00061.html">Thread Prev</a>][<a href="msg00052.html">Thread Next</a>][<a href="maillist.html#00051">Date Index</a>][<a href="threads.html#00051">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Pipes in regex's</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Pipes in regex's</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 23 Apr 2003 13:20:51 -0500 (CDT)</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+I wrote this up debugging a program today. Thought I'd pass it along.
+
+j
+
+
+--------------------
+
+If you want to test a string to make sure it's &quot;ABC&quot; or &quot;123&quot; or &quot;XYZ&quot;, do
+not use this:
+
+   /ABC|123|XYZ/
+
+and do not use this:
+
+   /^ABC|123|XYZ$/
+
+This is what you should use:
+
+   /^(ABC|123|XYZ)$/
+
+Why?
+
+(1) Parens stop the ambiguities of dynamically greedy matching.
+(2) ^ and $ make sure you don't have &quot;garbage&quot; on either side of what
+you're testing.
+
+Demo:
+
+[jhannah@xxxx monthly]$ cat j2.pl
+#!/usr/bin/perl
+
+printf(&quot;%12s%12s%12s%12s\n&quot;,
+   &quot;Test this&quot;, &quot;badregex1&quot;, &quot;badregex2&quot;, &quot;goodregex&quot;);
+print &quot;-&quot; x 50 . &quot;\n&quot;;
+
+foreach (
+   # I expect these to pass...
+      &quot;ABCD&quot;, &quot;123&quot;,
+   # But none of these should...
+      # These pass because | w/o ()'s is dynamically greedy:
+      &quot;ABC123&quot;,
+      &quot;AB123&quot;,
+      &quot;A123&quot;,
+      # These pass badregex1 because it doesn't limit start/end of the
+string...
+      &quot;---123---&quot;,
+      &quot;---A123---&quot;,
+      # Just checking...
+      &quot; &quot;, undef
+) {
+   printf(&quot;%12s%12s%12s%12s\n&quot;,
+      $_, badregex1($_), badregex2($_), goodregex($_));
+}
+
+sub badregex1 {
+   return $_[0] =~ /ABCD|123/ ? &quot;yes&quot;: &quot;no&quot;;
+}
+
+sub badregex2 {
+   return $_[0] =~ /^ABCD|123$/ ? &quot;yes&quot;: &quot;no&quot;;
+}
+
+sub goodregex {
+   return $_[0] =~ /^(ABCD|123)$/ ? &quot;yes&quot;: &quot;no&quot;;
+}
+
+
+[jhannah@xxxx monthly]$ j2.pl
+   Test this   badregex1   badregex2   goodregex
+--------------------------------------------------
+        ABCD         yes         yes         yes
+         123         yes         yes         yes
+      ABC123         yes         yes          no
+       AB123         yes         yes          no
+        A123         yes         yes          no
+   ---123---         yes          no          no
+  ---A123---         yes          no          no
+                      no          no          no
+                      no          no          no
+
+
+HTH,
+
+j
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00052" href="msg00052.html">Re: Pipes in regex's</a></strong>
+<ul><li><em>From:</em> George Neill</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00050.html">Meeting: May 15th @ 7pm</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00052.html">Re: Pipes in regex's</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00061.html">RE: Meeting: May 15th @ 7pm</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00052.html">Re: Pipes in regex's</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00051"><strong>Date</strong></a></li>
+<li><a href="threads.html#00051"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [olug] Challenge With Perl Module Tk -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Sat, 9 Aug 2003 07:46:22 &#45;0500 -->
+<!--X-Message-Id: 3F34EA95.A7AFAECA@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20030806015404.33998.qmail@web80501.mail.yahoo.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [olug] Challenge With Perl Module Tk</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00169.html">Date Prev</a>][<a href="msg00171.html">Date Next</a>][<a href="msg00167.html">Thread Prev</a>][<a href="msg00146.html">Thread Next</a>][<a href="maillist.html#00170">Date Index</a>][<a href="threads.html#00170">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [olug] Challenge With Perl Module Tk</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: CM Miller &lt;<a href="mailto:cmmiller1973@DOMAIN.HIDDEN">cmmiller1973@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [olug] Challenge With Perl Module Tk</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 09 Aug 2003 07:35:33 -0500</li>
+<li><em>Cc</em>: <a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>, <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>References</em>: &lt;20030806015404.33998.qmail@web80501.mail.yahoo.com&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+CM Miller wrote:
+&gt; &gt; ---
+&gt; &gt; [root at phoenix root]# whereis perl
+&gt; &gt; perl: /usr/bin/perl
+&gt; &gt;
+&gt; &gt; [root at phoenix root]# find / -name Tk.pm -print
+&gt; &gt; /usr/lib/perl5/site_perl/5.6.1/i386-linux/Tk.pm
+&gt; &gt; ---
+&gt; &gt;
+&gt; &gt; When you type &quot;perl -V&quot; is one of the paths in @INC
+&gt; &gt;
+&gt; &gt;    /usr/lib/perl5/site_perl/5.6.1/i386-linux
+&gt; 
+&gt; Didn't see that line in the perl -V output.  BUT, I'm
+&gt; not an expert on Perl either, and not sure what
+&gt; site_perl mean in the line above.
+
+&quot;site_perl&quot; isn't special, it's just a directory name. Our whole goal
+here is to make sure that perl knows where Tk.pm is when it runs. @INC
+is perl's reserved name for the array which stores all the directories
+it should look in for libraries when it needs one. 
+
+So, if your code says &quot;use Acme::Foo::Fighters;&quot;, perl will go through
+each directory in @INC looking for the directory &quot;Acme&quot; containing a
+subdirectory &quot;Foo&quot; containing a module &quot;Fighters.pm&quot;.
+
+In this case, we're trying to make sure that perl can find
+
+   /usr/lib/perl5/site_perl/5.6.1/i386-linux/Tk.pm
+
+when it runs. perl -V shows us @INC, so we can see whether or not perl
+will look in
+
+   /usr/lib/perl5/site_perl/5.6.1/i386-linux
+
+when searching for Tk.pm.
+
+&gt; [root@xxxxxxx root]# perl -V
+-snip!-
+&gt;   %ENV:
+&gt; 
+&gt; PERL5_LIB=&quot;/usr/lib/perl5/site_perl/5.6.1/i386-linux&quot;
+&gt;   @INC:
+&gt;     /usr/lib/perl5/5.8.0/i386-linux-thread-multi
+&gt;     /usr/lib/perl5/5.8.0
+&gt; 
+&gt; /usr/lib/perl5/site_perl/5.8.0/i386-linux-thread-multi
+&gt;     /usr/lib/perl5/site_perl/5.8.0
+&gt;     /usr/lib/perl5/site_perl/5.6.1
+&gt;     /usr/lib/perl5/site_perl
+&gt; 
+&gt; /usr/lib/perl5/vendor_perl/5.8.0/i386-linux-thread-multi
+&gt;     /usr/lib/perl5/vendor_perl/5.8.0
+&gt;     /usr/lib/perl5/vendor_perl
+
+Ok, the first thing to notice here is the directory where Tk.pm was
+installed is not in @INC. When perl (the binary /usr/bin/perl) is
+compiled on your machine a &quot;default&quot; @INC is compiled into it. From that
+point on, whenever you install perl modules (Tk.pm) we hope that the
+install routine for that module is smart enough to install the module
+into a directory which is already in @INC. If not, perl will not find
+the module. That's bad. 
+
+(Apparently the Tk.pm install is broken for your environment. You could
+report to the author and/or patch the problem if you're feeling saucy.
+-grin-)
+
+Luckily, though, perl gives us a few ways of adding to @INC without
+having to recompile /usr/bin/perl. One of those ways is the environment
+variable PERL5LIB.
+
+Doh!! In your &quot;perl -V&quot; above %ENV is a hash of environmental variables
+that are set. See how perl sees &quot;PERL5_LIB&quot;, but that directory still
+isn't in @INC? That's because I gave you the wrong variable name to set.
+There's no underscore. If you 
+
+   export PERL5LIB=/usr/lib/perl5/site_perl/5.6.1/i386-linux
+
+you should see that &quot;perl -V&quot; now includes that directory in @INC. I
+apologize -- that was bad directions from me.
+
+&gt; Can you call this an error?
+&gt; 
+&gt; [root@xxxxxxx root]# /usr/bin/perl -MTK -e ''
+&gt; Can't locate TK.pm in @INC (@INC contains:
+&gt; /usr/lib/perl5/5.8.0/i386-linux-thread-multi
+&gt; /usr/lib/perl5/5.8.0
+&gt; /usr/lib/perl5/site_perl/5.8.0/i386-linux-thread-multi
+&gt; /usr/lib/perl5/site_perl/5.8.0
+&gt; /usr/lib/perl5/site_perl/5.6.1
+&gt; /usr/lib/perl5/site_perl
+&gt; /usr/lib/perl5/vendor_perl/5.8.0/i386-linux-thread-multi
+&gt; /usr/lib/perl5/vendor_perl/5.8.0
+&gt; /usr/lib/perl5/vendor_perl .).
+&gt; BEGIN failed--compilation aborted.
+
+Oh yeah, that's definately an error. perl is not finding Tk.pm in @INC.
+
+&gt; What does @INC mean?
+&gt; 
+&gt; Is @INC only related to Perl?
+
+Yes, @INC is a Perl/perl thing. I hope I explained it OK.
+
+&gt; &gt; You could reproduce the shell behavior w/ a little
+&gt; &gt; script like this:
+&gt; &gt;
+&gt; &gt; /usr/bin/perl -MTk &lt; /dev/null &gt; /dev/null 2&gt;&amp;1
+&gt; &gt; if [ $? != 0 ]; then
+&gt; &gt;    echo &quot;Error&quot;
+&gt; &gt; fi
+&gt; &gt;
+&gt; &gt; Call that test.sh or whatever. Does it print
+&gt; &gt; &quot;Error&quot;?
+&gt; 
+&gt; Yes.
+&gt; 
+&gt; I'm not sure what you are trying to do with the
+&gt; following in the script above?  Please explain.
+
+I was just breaking down the relevant code from how the shell script
+&quot;bastille&quot; is envoking perl, which is failing to find Tk.pm in @INC. 
+
+&gt; &lt; &gt; around /dev/null
+
+Beats me. I didn't write &quot;bastille&quot;. -grin-
+
+&gt; 2&gt; &amp;1
+
+That redirects STDERR to wherever STDOUT is already going.
+
+&gt; $?
+
+That hold the return value of the last program you executed. (I think.)
+
+HTH,
+
+j
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00169.html">[Fwd: Newsletter from O'Reilly UG Program, August 1]</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00171.html">[Fwd: Daily Perl FAQ - What's wrong with using backticks in a void context?]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00167.html">Re: [olug] Challenge With Perl Module Tk</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00146.html">Meeting this Thr July 17th?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00170"><strong>Date</strong></a></li>
+<li><a href="threads.html#00170"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

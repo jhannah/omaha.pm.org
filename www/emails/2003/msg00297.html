@@ -1,0 +1,140 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: using stdin -->
+<!--X-From-R13: [ng Qnhtueba <zngNcucpbafhygvat.pbz> -->
+<!--X-Date: Wed, 31 Dec 2003 13:57:24 &#45;0600 -->
+<!--X-Message-Id: Pine.BSF.4.58.0312311412590.91834@phpconsulting.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: B688122A&#45;3BC9&#45;11D8&#45;BFE7&#45;000A95E317B8@jays.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>using stdin</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00296.html">Date Prev</a>][Date Next][<a href="msg00296.html">Thread Prev</a>][Thread Next][<a href="maillist.html#00297">Date Index</a>][<a href="threads.html#00297">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>using stdin</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: using stdin</li>
+<li><em>From</em>: Mat Caughron &lt;<a href="mailto:mat@DOMAIN.HIDDEN">mat@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 31 Dec 2003 14:14:26 -0600 (CST)</li>
+<li><em>Cc</em>: Josh Kleensang &lt;<a href="mailto:jkleensang@DOMAIN.HIDDEN">jkleensang@xxxxxxxxxxxxxxxx</a>&gt;,  <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00296.html">B688122A-3BC9-11D8-BFE7-000A95E317B8@jays.net</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00296.html">B688122A-3BC9-11D8-BFE7-000A95E317B8@jays.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Josh:
+
+Does the following script answer your question on how to assign stdin
+into a variable?
+
+#!/usr/local/bin/perl -w
+# stdin.pl
+my $input = &lt;STDIN&gt;;
+print &quot;$input&quot;;
+
+
+
+Mat Caughron
+PHP Consulting
+
+
+On Wed, 31 Dec 2003, Jay Hannah wrote:
+
+&gt;
+&gt; That's not straight Perl. What kind of Perly HTML templating system are
+&gt; you using?
+&gt;
+&gt; j
+&gt;
+&gt;
+&gt; On Tuesday, December 30, 2003, at 11:11 AM, Josh Kleensang wrote:
+&gt;
+&gt; &gt; In this chunk of camel, I would like message (line 2) to be set to
+&gt; &gt; whatever standard input was.  Do I Do something like STDIN-&gt;$message ?
+&gt; &gt;
+&gt; &gt; &lt;%ARGS&gt;
+&gt; &gt; $message
+&gt; &gt; $queue =&gt; 1
+&gt; &gt; $action =&gt; &quot;correspond&quot;
+&gt; &gt; $ticket =&gt; undef
+&gt; &gt; &lt;/%ARGS&gt;
+&gt; &gt; &lt;%init&gt;
+&gt; &gt; use RT::Interface::Email;
+&gt; &gt; my ( $status, $error, $Ticket ) =
+&gt; &gt; RT::Interface::Email::Gateway(\%ARGS);
+&gt; &gt; &lt;/%init&gt;
+&gt; &gt; &lt;%flags&gt;
+&gt; &gt; inherit =&gt; undef # inhibit UTF8 conversion done in /autohandler
+&gt; &gt; &lt;/%flags&gt;
+&gt; &gt; % if ($status == -75 ) {
+&gt; &gt; temporary failure
+&gt; &gt; % }
+&gt; &gt; %    elsif ($status == 1) {
+&gt; &gt; ok
+&gt; &gt; %        if ( $Ticket-&gt;Id ) {
+&gt; &gt; Ticket: &lt;% $Ticket-&gt;Id %&gt;
+&gt; &gt; Queue: &lt;% $Ticket-&gt;QueueObj-&gt;Name %&gt;
+&gt; &gt; Owner: &lt;% $Ticket-&gt;OwnerObj-&gt;Name %&gt;
+&gt; &gt; Status: &lt;% $Ticket-&gt;Status %&gt;
+&gt; &gt; Subject: &lt;% $Ticket-&gt;Subject %&gt;
+&gt; &gt; Requestor: &lt;% $Ticket-&gt;Requestors-&gt;MemberEmailAddressesAsString %&gt;
+&gt; &gt; %        }
+&gt; &gt; % }   else {
+&gt; &gt; not ok - &lt;%$error%&gt;
+&gt; &gt; % }
+&gt; &gt;
+&gt;
+&gt;
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00296" href="msg00296.html">Re: Help!</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00296.html">Re: Help!</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00296.html">Re: Help!</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00297"><strong>Date</strong></a></li>
+<li><a href="threads.html#00297"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,230 @@
+<html>
+<head>
+<title>Perl Monger T-shirts</title>
+</head>
+
+<body>
+<img src="shirts.png" align=right border=0></a>
+
+$Id: shirts.shtml 19 2007-11-17 17:24:37Z jhannah $
+
+<h2>Status</h2>
+<p>
+The lastest status info is always here and on the "Interested Group Leaders" 
+mailing list below. Or contact me
+directly: Jay Hannah &lt;jay(at)jays(dot)net&gt; 1-402-578-3976.
+<p>
+<b>[2006-12-30]</b> I donated $128.11 to the Perl Foundation today. That was the overflow
+on this whole project. 400 t-shirts ($4,209.45 USD after S&H), 28 groups in 7 countries.
+Too cool. :)  Thanks, all! See you in 2008! Shutting down the shirts mailing list.
+<p>
+<b>[2006-10-25]</b> Holy buckets. International shipping ran several hundred dollars
+higher than the worst case scenario I had feared. All actual shipping costs are now
+in the XML file and the invoices.txt report is enhanced to show actual shipping 
+and actual PayPal.
+I sent a check for $4,209.45 to the shirt company tonight.
+<p>
+<b>[2006-09-26]</b> All shirts have shipped! 4 groups have received their
+orders so far (Germany was the first to receive! Go figure. -grin-). 
+Everything looking good. Once I get the actual shipping costs
+(this week?) I'll add them to the XML. Ditto on the VAT taxes 
+for non-US groups (2-3 weeks from now).<p>
+<b>[2006-09-04]</b> Shirt quantites and colors locked in. The order has
+been handed over to the printer/shipper.<p>
+<b>[2006-08-24]</b> Payment deadline is Aug 31. On that date any group that has not paid will be removed from the order. Looks like I have received $1700. 
+$1500 is still outstanding. 3 or 4 groups have physical checks in the mail
+to me.<p>
+<b>[2006-08-17]</b> Last night (yikes, I was up until 2am!) I got the XML
+stuff all set (Ronald J Kimball is da bomb!) and the reports roughed out.
+8am candidate interview this morning... Sleep is for the weak! :) 
+We're in the money phase now. I'm trying to keep up with the data entry 
+and special requests and the printer's needs. International issues are
+the weakest chink in my armor -- I'm failing to predict shipping and PayPal
+fees with extreme efficiency. :) No one is screaming at me, so I guess
+I'm not being <b>too</b> slow. The best news is that IMHO I'm getting
+a hell of a cool system for future orders working here...<p>
+
+<b>[2006-08-02]</b> Well, we're starting to get our bearings on the order
+size. 95 shirts on the books so far. I'll send this list off to our vendor
+so he knows what he got himself into and maybe he can put some S&H numbers
+together for the groups that have their preliminary counts in. I'll also
+pin him down on toddler sizes (sorry for the delay, I've been sick).<p>
+
+<b>[2006-07-08]</b> Firing up another order! Luckily the company
+still has our screen on file so we save $150 setup or something. 
+The printer is saying that Hanes Beefy shirts are a lot more expensive now, so
+he'll be quoting me those and some other quality equivalent (but cheaper). The printer
+is also saying their shipping cost is quite a bit higher than it was 2 years ago.
+I personally ate the shipping costs last time, maybe we'll figure something else 
+out this time. :)
+<p>
+I'm sending to an email announcement to Omaha.pm mailing list, and to the Perl Mongers
+group leader mailing list (all group leaders around the world). Each group leader 
+(if any groups are interested) will need to organize their group's orders and work
+out payment with their members however they want to handle that.
+Once we've got our total order pieced together each group leader will pay me,
+I'll pay the grand total bill on my personal credit card, and instruct the printer 
+to drop ship directly to each group leader.
+
+<h2>The Order</h2>
+
+<b>
+2006-08-08: Shirt count cut off<br>
+2006-08-31: Payment cut off
+</b>
+
+<blockquote>
+   <a href="shirts/2006.xml">2006.xml</a> - the data<br>
+   <a href="shirts/invoices.txt">invoices.txt</a> - for group leaders<br>
+   <a href="shirts/production.txt">production.txt</a> - for the printer<br>
+   <a href="shirts/shipping.txt">shipping.txt</a> - for the shipper<br>
+   <a href="http://vc.jays.net/viewvc.cgi/shirts/reports.pl?root=omaha.pm.org&view=log">[source code]</a> - for the geeks
+</blockquote>
+
+<h2>Brand / Colors</h2>
+All shirts are Hanes Beefy-Ts.
+<P>
+Based on past experience, only these two choices are popular enough to 
+bother with:
+<ul>
+<li>"BLACK": white print on black shirt
+<li>"ASH": black print on ash (grey) shirt
+</ul>
+The printer will do a million color combinations, but they charge $20 or something every time they have to change color setup during their print run.
+So unless someone drums up enough interest for another scheme (perhaps navy on white? black on white?) we'll stick with the two above. 
+
+<h2>Sizes / Prices</h2>
+
+These are <b>rough guidelines only</b>. I'm doing the best I can to provide
+as much info as possible as quickly as I have it on shifting sands. 
+Probably best to round up by a dollar or two 
+if you're penny pinchy. :)
+<P>
+Final quote to each group will fluctuate based on:
+<ul>
+<li>Total quantity ordered by all groups. As our total count grows, our
+price per shirt drops.
+<li>Color. Ash is ~ $0.60 USD cheaper per shirt depending on size. The
+prices below are my most recent quote for black.
+<li>If anyone wants any youth shirts someone will have to eat a one time
+$20 USD setup fee.
+<li>Each group will have to pay for shipping from the printer, which they 
+will quote "at cost". They ship via United Postal Service (UPS).
+(So obviously the effective cost for each shirt varies based on how many
+shirts your group orders and how far your group is from MA, USA.)
+</ul>
+<pre>
+   4XL    adult 4X large           See [source code] link above for prices.
+   3XL    adult 3X large           "
+   2XL    adult 2X large           "
+   XL     adult extra large        "
+   L      adult large              "
+   M      adult medium             "
+   S      adult small              "
+   YL     youth L  (size 14-16)    "
+   YM     youth M  (size 10-12)    "
+   YS     youth S  (size 6-8)      "
+   YXS    youth XS (size 2-4)      "
+</pre>
+
+Feel free to throw in donations to the Perl Foundation and I'll pass those along. 
+<p>
+
+
+<h2>Interested Group Leaders</h2>
+
+You are all on a temporary email mailing list: shirts(at)jays(dot)net
+
+<pre>
+   See the XML file above (under "The Order"). Every email address
+   listed in there is on this list, plus other random people that 
+   expressed interest at any point in time.
+</pre>
+
+<h2>Image / Trademark Info</h2>
+
+<pre>
+> Is the design available electronically, and
+> would it be free for me to use that design, copyright-wise?
+</pre>
+
+<ul>
+<li>
+The artwork (JPG): 
+   <a href="shirts/artwork_thumb.jpg">16KB</a> thumbnail, 
+   <a href="shirts/artwork.jpg">1MB</a> "high res"
+<li> The camel is <a href="http://www.oreillynet.com/lpt/a/3157">an O&#39;Reilly trademark</a>. 
+<li> The onion is <a href="http://www.perlfoundation.org/perl_trademark">a Perl Foundation trademark</a>. 
+<li>I have asked for and received camel and onion permissions in the past. All of that info is 
+<a href="http://omaha.pm.org/kwiki/index.cgi?BusinessCards">on the Omaha Perl Mongers wiki</a>.
+</ul>
+
+We're riding the coattails of a screen that was set up years ago (circa 1996!?) at the printing company below. 
+I do not have specific permission to use these logos for these shirts, I'm assuming that permission was granted years ago when the first screen was established for the first print run. 
+<p> 
+AFAIK neither O'Reilly nor The Perl Foundation have ever asked anyone for 
+any fee to use their trademarks for non-profity stuff like these shirts.
+
+
+
+<h2>Omaha Specific Info</h2>
+
+<h3>Omaha How To Pay:</h3>
+
+  <ul>
+  <li>PayPal me (Jay Hannah) now: jay(at)jays(dot)net.
+  <li>Pay me in person. I work near 120th and Maple. Just give me a call: 578-3976.
+  <li>Swing by Reboot The User and pay now or when you pick up the shirts.
+  </ul>
+
+
+<h3>Omaha Shirt Pickup (once the order comes in)</h3>
+
+<a href="http://www.reboottheuser.com/">Reboot the User</a> (RTU)<br>
+Jay Swackhamer, proprietor<br>
+<a href="http://maps.google.com/maps?f=q&hl=en&q=13416+A+Street,+Omaha+ne&btnG=Search&ll=41.224763,-96.123075&spn=0.033375,0.085917">13416 A Street</a><br>
+Omaha, NE 68144<br>
+(402) 933-6449<p>
+
+Store hours (from his website):<br>
+Tuesday through Friday 6:00pm to 11:00pm<br>
+Saturday 4:00pm to 9:00pm<br>
+Sunday, Monday Closed.
+
+
+
+<h2>For Future Reference</h2>
+
+These are the nice folks that keep printing our shirts every couple of years.
+They'll keep the screen on file for two years after each order.
+Getting the screen generated is a big cost of 
+getting shirts printed, so them having the screen already on file is a big
+cost saver.
+
+<pre>Mike Balcom
+All Star Incentive Marketing
+mike(at)incentiveusa(dot)com 
+508-347-7672
+www.incentiveusa.com 
+</pre>
+
+2006-08-19 per Mike: 
+All Star considers shirt orders < 144 shirts to be too small
+for their operation. He suggested that for smaller orders we could contact their
+production partner in Worcester, Mass.:
+<pre>
+   CITY SPORTING GOODS
+   154 BLITHEWOOD AVE.
+   WORCESTER, MA  01604
+   (508)755-3957
+</pre>
+
+
+<br><br>
+<i>-eot-</i>
+
+</body>
+</html>
+
+
+

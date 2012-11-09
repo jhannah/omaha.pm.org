@@ -1,0 +1,113 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [OT] &#45; subthread &#45; perl vs sed Re: [olug] Text search and Replace -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 25 Nov 2003 13:41:24 &#45;0600 -->
+<!--X-Message-Id: 6C8F60D0&#45;1F7F&#45;11D8&#45;A332&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 00af01c3b378$79d95700$4501a8c0@omaha.org -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [OT] - subthread - perl vs sed Re: [olug] Text search and Replace</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00261.html">Date Prev</a>][<a href="msg00263.html">Date Next</a>][<a href="msg00261.html">Thread Prev</a>][<a href="msg00264.html">Thread Next</a>][<a href="maillist.html#00262">Date Index</a>][<a href="threads.html#00262">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [OT] - subthread - perl vs sed Re: [olug] Text search and Replace</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Omaha Linux User Group &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [OT] - subthread - perl vs sed Re: [olug] Text search and Replace </li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 25 Nov 2003 13:41:55 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;00af01c3b378$79d95700$4501a8c0@omaha.org&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Tuesday, November 25, 2003, at 11:20 AM, Brian Roberson wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>While I am a huge fan of perl, I must say that it is overkill on 
+things like<br>
+this, say you had directory with 50,000 files... just think about 
+spawning<br>
+perl 50,000 time's vice sed plus the overhead that perl would add if 
+the<br>
+files where 10Mb+ in size. AFAIK - perl would load 10Mb into resident 
+mem<br>
+before even doing the substitution. sed uses the file control function 
+fseek<br>
+when you give it a filename instead of standard out.
+</tt></blockquote><tt><br>Blasphemer!  -grin-</tt><br>
+<br>
+<tt>   perl -i -e 's/foo/bar/g' myfiles*.txt</tt><br>
+<br>
+<tt>Does not spawn 50,000 perl's. There's just one perl whacking the 50,000 
+files. You could very well be right about 10MB of resident mem. But if 
+you don't have 10MB of memory free do you really have an appropriate 
+server for whacking 50,000 10MB+ files? -grin-</tt><br>
+<br>
+<tt>I'd take the time to benchmark the speed of &quot;perl -i&quot; vs. sed, but I'm 
+too lazy*.</tt><br>
+<br>
+<tt>Call me a zealot, but IMHO it's a good idea to learn Perl once rather 
+than learning sed _and_ awk. Learn one thing instead of two, plus you 
+can then do sooo much more than both combined. Ah, Perl. The Swiss Army 
+Chainsaw of text processors**.</tt><br>
+<br>
+<pre style="margin: 0em;">Jay Hannah
+Local Perl Zealot
+Omaha Perl Mongers: <a  href="http://omaha.pm.org">http://omaha.pm.org</a></pre><br>
+<tt>* ... and impatient, and full of hubris. -grin-<br>
+** ... and database manipulators, network service creator/consumers, 
+etc...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00261.html">Re: [olug] Text search and Replace</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00263.html">next meeting?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00261.html">Re: [olug] Text search and Replace</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00264.html">Fwd: Newsletter from O'Reilly UG Program, November 25</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00262"><strong>Date</strong></a></li>
+<li><a href="threads.html#00262"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

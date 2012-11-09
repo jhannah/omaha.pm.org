@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Help with a transpose script (included) -->
+<!--X-From-R13: "@vryfra, Oneba [" <nneba.z.avryfraNvagry.pbz> -->
+<!--X-Date: Thu, 29 Nov 2001 13:06:30 &#45;0600 -->
+<!--X-Message-Id: AA70E30319FAD411AC6E00A0C95D7ABD01DFF517@fmsmsx61.fm.intel.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Help with a transpose script (included)</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00166.html">Date Prev</a>][<a href="msg00168.html">Date Next</a>][<a href="msg00164.html">Thread Prev</a>][<a href="msg00168.html">Thread Next</a>][<a href="maillist.html#00167">Date Index</a>][<a href="threads.html#00167">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Help with a transpose script (included)</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>'&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Help with a transpose script (included)</li>
+<li><em>From</em>: &quot;Nielsen, Aaron M&quot; &lt;<a href="mailto:aaron.m.nielsen@DOMAIN.HIDDEN">aaron.m.nielsen@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 29 Nov 2001 11:03:25 -0800</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I'm working on large pattern data in column format and am using the
+following sub to transpose the file so I cant do pattern matching on
+columns.  I then call the transpose sub again to return the file to column
+format.  The problem I'm running into is that the code is very slow and
+thought it will finish on small patterns it dies on large ones (around
+10Meg).  Any ideas on more efficient transpose scripts or a more efficient
+way to match patterns on column data? 
+
+------------------------------------------------
+transpose($file,$file_transposed);
+
+sub transpose {
+
+    package transpose;
+    my (@ops) = @_;
+    my $linesm1 = undef;
+    my @line = undef;
+    my $j = undef;
+    my $i = undef;
+    open (IN, $ops[0]) || die &quot;1 $!\n&quot;;
+    open (OUT,&quot;&gt; $ops[1]&quot;) || die &quot;2 $!\n&quot;;
+    while ( &lt;IN&gt; ) {   
+	$j = 0;    
+	chomp;    
+	@_ = split //;      
+	for ( @_ ) {   
+	    if ( $j &gt; $linesm1 ) {          
+		$line[$j] = &quot; &quot; x $i;
+		$linesm1++;   
+	    }         
+	    $line[$j] .= $_;
+	    $j++; 
+	}  
+	for ( $j .. $linesm1 ) {  
+	    $line[$_] .= ' ';
+	}       
+	$i++; 
+    } 
+    for ( 0 .. $linesm1 ){
+	$line[$_] =~ s/(.)/$1/g;
+	print OUT &quot;$line[$_]\n&quot;;
+    }
+    close OUT;
+    close IN;
+}
+
+------------------------------------------------
+
+Thanks
+
+
+Aaron Nielsen                      PNG/CMO/PE&amp;TE
+                                                   503-712-1822
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00166.html">Re: mod_perl horror stories</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00168.html">FW: Help with a transpose script (included)</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00164.html">Qwest</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00168.html">FW: Help with a transpose script (included)</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00167"><strong>Date</strong></a></li>
+<li><a href="threads.html#00167"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

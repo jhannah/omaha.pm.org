@@ -1,0 +1,145 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Quick question. -->
+<!--X-From-R13: Bngevpx Fvzzvaf <cgvzzvafNvgq.fgreyvat.pbz> -->
+<!--X-Date: Thu, 8 Jun 2000 18:24:43 &#45;0400 (EDT) -->
+<!--X-Message-Id: 39401E21.9CDC24D1@itd.sterling.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.LNX.4.20.0006081220330.30227&#45;100000@moongate.net -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Quick question.</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00139.html">Date Prev</a>][<a href="msg00141.html">Date Next</a>][<a href="msg00138.html">Thread Prev</a>][<a href="msg00133.html">Thread Next</a>][<a href="maillist.html#00140">Date Index</a>][<a href="threads.html#00140">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Quick question.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>Subject</em>: Re: Quick question.</li>
+<li><em>From</em>: Patrick Timmins &lt;<a href="mailto:ptimmins@DOMAIN.HIDDEN">ptimmins@xxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 08 Jun 2000 17:28:49 -0500</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>, <a href="mailto:ptimmins@DOMAIN.HIDDEN">ptimmins@xxxxxxxxxx</a></li>
+<li><em>Organization</em>: Sterling Software</li>
+<li><em>References</em>: &lt;<a href="msg00138.html">Pine.LNX.4.20.0006081220330.30227-100000@moongate.net</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Drazak wrote:
+
+&gt; I have an referenced array that I can loop through and print out the
+&gt; values with this:
+&gt; 
+&gt; print @$_;
+&gt; 
+&gt; However, I just want the first three chars of the array.  Wrapping it
+&gt; with a substr just produces the value &quot;1&quot;, as does trying to assign the
+&gt; value to a new scalar.  I've been reading through perlref with no luck,
+&gt; and I left both of my Oreilly books at home.
+
+The first three characters of the array?  Your NOT thinking in 'C', are
+you ?!!!! :)
+
+Remember in Perl you can deal with a string as a single scaler value ...
+you don't have to put each character of the string into an array in
+order to deal with it. With your input in a string, you could get at the
+first three characters like this:
+
+#!/usr/bin/perl
+
+$string = 'Pattern';
+$str    = substr $string, 0, 3;
+print $str . &quot;\n&quot;;
+
+
+Another way, this time using a regular expression (again, assuming your
+input is in a scaler,  not an array):
+
+#!/usr/bin/perl
+
+$string = 'Pattern';
+($first,$second,$third) = ($string =~ /(.)(.)(.).*/);
+print $first . $second . $third . &quot;\n&quot;;
+
+
+But, to try to answer your question, using an array as input:
+
+#!/usr/bin/perl
+
+@arr = qw(P a t t e r n);
+# create our reference to the array, as you requested:
+$r_arr = \@arr;                       
+# to access the array itself, we'll have to de-reference it with the
+# &quot;@{ $r_arr }&quot;; then we'll take a slice of the de-referenced array
+# using the &quot;[0..2]&quot; :
+($first,$second,$third) = @{ $r_arr }[0..2];
+print $first . $second . $third .&quot;\n&quot;;
+
+
+Speaking of lazy, when are the Omaha Perl Mongers going to meet again
+... who wants to give a presentation ... or who wants to just meet to
+discuss Perl ??
+
+Any takers?
+
+Pat
+-- 
+$monger{Omaha}[0]
+Patrick Timmins
+ptimmins@xxxxxxxxxxxxxxxx
+pat.timmins@xxxxxxxxxxx
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00138" href="msg00138.html">Quick question.</a></strong>
+<ul><li><em>From:</em> Drazak</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00139.html">Re: Quick question.</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00141.html">Fw: Quick question.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00138.html">Quick question.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00133.html">Re: retrieving email with Perl</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00140"><strong>Date</strong></a></li>
+<li><a href="threads.html#00140"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

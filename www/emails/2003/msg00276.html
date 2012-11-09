@@ -1,0 +1,132 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: [olug] Subnet mask -->
+<!--X-From-R13: Xhfgva Vbcxvaf <wubcxvafNbzavubgryf.pbz> -->
+<!--X-Date: Tue, 16 Dec 2003 13:13:11 &#45;0600 -->
+<!--X-Message-Id: 20031216191049.GB27343@jhopkins.omnihotels.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: F9B47E10&#45;2F7F&#45;11D8&#45;8B38&#45;000A95E317B8@jays.net -->
+<!--X-Reference: 20031216131342.OLDT2432.lakemtao07.cox.net@bobnet01 -->
+<!--X-Reference: 52619.206.222.203.254.1071599735.squirrel@mail.linder.org -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: [olug] Subnet mask</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00275.html">Date Prev</a>][<a href="msg00277.html">Date Next</a>][<a href="msg00275.html">Thread Prev</a>][<a href="msg00277.html">Thread Next</a>][<a href="maillist.html#00276">Date Index</a>][<a href="threads.html#00276">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [olug] Subnet mask</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Daniel Linder &lt;<a href="mailto:dan@DOMAIN.HIDDEN">dan@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [olug] Subnet mask</li>
+<li><em>From</em>: Justin Hopkins &lt;<a href="mailto:jhopkins@DOMAIN.HIDDEN">jhopkins@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 16 Dec 2003 13:10:49 -0600</li>
+<li><em>Cc</em>: Bob McCoy &lt;<a href="mailto:bob@DOMAIN.HIDDEN">bob@xxxxxxxxx</a>&gt;, &quot;'Omaha Linux User Group'&quot; &lt;<a href="mailto:olug@DOMAIN.HIDDEN">olug@xxxxxxxx</a>&gt;,  <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>, <a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00275.html">52619.206.222.203.254.1071599735.squirrel@mail.linder.org</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00271.html">F9B47E10-2F7F-11D8-8B38-000A95E317B8@jays.net</a>&gt; &lt;<a href="msg00273.html">20031216131342.OLDT2432.lakemtao07.cox.net@bobnet01</a>&gt; &lt;<a href="msg00275.html">52619.206.222.203.254.1071599735.squirrel@mail.linder.org</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>User-agent</em>: Mutt/1.4.1i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Tue, Dec 16, 2003 at 12:35:35PM -0600, Daniel Linder wrote:
+&gt; Jay wrote:
+&gt; &gt; Subnets for that range:
+&gt; &gt; <a  href="http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93">http://jays.net/cgi-bin/ipr.pl?ip1=205.202.101.64&amp;ip2=205.202.101.93</a>
+&gt; &gt;
+&gt; &gt; Source code:
+&gt; &gt; <a  href="http://jays.net/ipr.pl.txt">http://jays.net/ipr.pl.txt</a>
+&gt; 
+&gt; Handy tool Jay, but could you have leveraged &quot;divide by 2&quot; and/or
+&gt; bit-shifting in Perl (never done that myself) rather than using &quot;X/log(2)&quot;
+&gt; mathmatics?  (My Calc and binary math are rusty right now, can't remember
+&gt; the relationships between those functions.)
+&gt; 
+&gt; Dan
+
+He probably could have. I remember when Jay wrote that thing a few years
+ago, and the subject of integers and bit-shift operations came up.
+I think its no mistake that an IPv4 address can be tightly represented
+as a 32-bit integer (just like an IPv6 can be tightly represented as a
+128-bit integer). I assume all of those highly optimized network devices
+do nothing but bitwise and/or/shift operations on their IP addresses to make
+their network operations lightning fast.
+
+For some reason, I came up with the log_base2() thing. Change-of-base logarithm
+rule from Calc:
+
+log_a(b) = log_x(b) / log_x(a)
+
+because the perl log function is base 10.
+
+log_2(b) = log_10(b) / log_10(2)
+
+I now wait for some genius of bit operations to thoroughly blow us away with
+an elegant solution.
+
+-- 
+Justin
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00277" href="msg00277.html">Re: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00271" href="msg00271.html">Re: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Jay Hannah</li></ul></li>
+<li><strong><a name="00273" href="msg00273.html">RE: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Bob McCoy</li></ul></li>
+<li><strong><a name="00275" href="msg00275.html">RE: [olug] Subnet mask</a></strong>
+<ul><li><em>From:</em> Daniel Linder</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00275.html">RE: [olug] Subnet mask</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00277.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00275.html">RE: [olug] Subnet mask</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00277.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00276"><strong>Date</strong></a></li>
+<li><a href="threads.html#00276"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

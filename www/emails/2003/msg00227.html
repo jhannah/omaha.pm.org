@@ -1,0 +1,204 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: RE: Daily Perl FAQ &#45; How do I extract URLs? -->
+<!--X-From-R13: "[vyyre, Epbgg Z (Aznun @rgjbexf)" <fpbgg.y.zvyyreNuc.pbz> -->
+<!--X-Date: Thu, 25 Sep 2003 11:21:31 &#45;0500 -->
+<!--X-Message-Id: 1F7C0C8F4BD7C54A8BC55012FEF3DF6D013DBCA6@omaexc11.americas.cpqcorp.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>RE: Daily Perl FAQ - How do I extract URLs?</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00226.html">Date Prev</a>][<a href="msg00228.html">Date Next</a>][<a href="msg00225.html">Thread Prev</a>][<a href="msg00223.html">Thread Next</a>][<a href="maillist.html#00227">Date Index</a>][<a href="threads.html#00227">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Daily Perl FAQ - How do I extract URLs?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Jay Hannah&quot; &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;, &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Daily Perl FAQ - How do I extract URLs?</li>
+<li><em>From</em>: &quot;Miller, Scott L (Omaha Networks)&quot; &lt;<a href="mailto:scott.l.miller@DOMAIN.HIDDEN">scott.l.miller@xxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 25 Sep 2003 11:21:23 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+<li><em>Thread-index</em>: AcODZ1Ed0WCaDAtYTvyI/U06OIF4vAAFNo9Q</li>
+<li><em>Thread-topic</em>: Daily Perl FAQ - How do I extract URLs?</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Well, I started from memory, then consulted the books to make sure I was
+explaining things correctly.  I even learned something in the process.
+I originally thought one had to use the \1 format in the replacement
+area of a substitution
+
+ie.  s/([a-z])([a-z])/\2\1/g;  #reverse every pair of lowercase letters
+
+But that's not true, they are only meaningful within the MATCH portion.
+And of course I had to play for a bit to make sure my examples actually
+worked, but all good programmers test things out before submitting them,
+right?
+
+I also re-learned about the /x option, which allows you to place
+whitespace within the regex, without the regex actually using said
+whitespace as part of the pattern.  If the /x isn't given, whitespace
+within the pattern must match or the pattern fails.
+
+The /s option, I had to just lookup, as the &quot;Treat as single line&quot; 
+explaination given in the camel book is a bit obtuse. What it means
+is that if you have multiple text lines in a string like:
+
+$_=&quot;This is a multiline string\nthat contains three lines\nseparated by the \\n construct\n&quot;;
+
+Without the /s, a match on metacharacter . will not match the newline's;
+with /s, it will. It becomes sort of a paragraph mode for searching. I'm
+not entirely sure if the ^ and $ metacharacters are affected, and if so 
+how.  The /m makes a string as above into a multi-line string, and does
+affect the ^ and $ behavior, but /sm seems oxymoronic to me, but I 
+haven't tested to see if they are actually mutually exclusive...
+
+-Scott
+
+
+
+
+-----Original Message-----
+From: Jay Hannah [<a  href="mailto:jay@xxxxxxxx">mailto:jay@xxxxxxxx</a>]
+Sent: Thursday, September 25, 2003 8:01 AM
+To: omaha-list@xxxxxxxxxxxxxxxxxxx
+Subject: Re: Daily Perl FAQ - How do I extract URLs?
+
+
+
+[The closed-book quiz continues. Reader beware: I'm spouting this stuff
+from memory, not from documentation. Open-book quizes are cheating, my
+teachers always said so. -grin-]
+
+&quot;Miller, Scott L (Omaha Networks)&quot; wrote:
+&gt; Ah, but $1 and \1 are not interchangeable, so 'preference' doesn't matter.
+&gt; \1 is used to match a duplicate parenthesized pattern _within_ a pattern, $1
+&gt; is used to refer to the match outside the pattern.
+
+Wow! Textbook answer and examples! Did you do that by memory or did you
+cheat? Bravo! -grin-
+
+From: ktegels@xxxxxxx [<a  href="mailto:ktegels@xxxxxxx">mailto:ktegels@xxxxxxx</a>]
+&gt; Isn't -n00 querying the permission bits? Anything in this directory?
+
+I don't think so. I don't know what the numbers are, but I believe -n
+wraps whatever &quot;program&quot; you provide as -e into:
+
+   while (&lt;&gt;) {
+      # Your -e here      
+   }
+
+Whereas -p wraps it into:
+
+   while (&lt;&gt;) {
+      # Your -e here      
+      print;
+   }
+
+So you can do things like this:
+
+------------
+jhannah@xxxxxxxx:~$ cal | perl -ne 'print &quot;$1\n&quot; if (/(\d{4})/)'
+2003
+jhannah@xxxxxxxx:~$ cal | perl -pe 'print &quot;$1\n&quot; if (/(\d{4})/)'
+2003
+   September 2003
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30
+------------
+
+(Not a very useful example, but it was quick. -grin-)
+
+I can't seem to quickly backwards-engineer what the digits do...
+
+------------
+jhannah@xxxxxxxx:~$ cal | perl -n00 -e 'print &quot;$1\n&quot; if (/(\d{4})/)'
+2003
+jhannah@xxxxxxxx:~$ cal | perl -n0 -e 'print &quot;$1\n&quot; if (/(\d{4})/)'
+2003
+jhannah@xxxxxxxx:~$ cal | perl -n100 -e 'print &quot;$1\n&quot; if (/(\d{4})/)'
+Unrecognized switch: -100  (-h will show valid options).
+jhannah@xxxxxxxx:~$ cal | perl -n000 -e 'print &quot;$1\n&quot; if (/(\d{4})/)'
+2003
+jhannah@xxxxxxxx:~$ cal | perl -n1000 -e 'print &quot;$1\n&quot; if (/(\d{4})/)'
+Unrecognized switch: -1000  (-h will show valid options).
+------------
+
+Jay is still clueless. Anyone know (without looking)?
+
+&gt; S is treat as Single String
+&gt; X is Extended RE.
+
+Really? What do those do? 
+
+j
+
+
+
+From: perlreply@xxxxxxxxxxxxxx
+&gt; How do I extract URLs?
+&gt;
+&gt;     A quick but imperfect approach is
+&gt;
+&gt;         #!/usr/bin/perl -n00
+&gt;         # qxurl - tchrist@xxxxxxxx
+&gt;         print &quot;$2\n&quot; while m{
+&gt;             &lt; \s*
+&gt;               A \s+ HREF \s* = \s* ([&quot;']) (.*?) \1
+&gt;             \s* &gt;
+&gt;         }gsix;
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00226.html">[Fwd: Daily Perl FAQ - What good is `\G' in a regular expression?]</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00228.html">Re: September 25-28</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00225.html">Re: Daily Perl FAQ - How do I extract URLs?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00223.html">FW: I've finally figured out how Jarkko intends to get 5.8.1 out ofthe door...</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00227"><strong>Date</strong></a></li>
+<li><a href="threads.html#00227"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

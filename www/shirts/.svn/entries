@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="16"
+   name=""
+   committed-date="2007-01-01T15:26:38.871629Z"
+   url="svn://jays.net/omaha.pm.org/shirts"
+   last-author="jhannah"
+   kind="dir"
+   uuid="4e9ccf72-f71f-0410-baa5-8aa43199659b"
+   repos="svn://jays.net/omaha.pm.org"
+   revision="18"/>
+<entry
+   committed-rev="15"
+   name="2006.xml"
+   text-time="2006-12-28T04:03:22.000000Z"
+   committed-date="2006-12-28T04:03:22.491252Z"
+   checksum="77f89201ff9af6cb32653b4ca4791760"
+   last-author="jhannah"
+   kind="file"
+   prop-time="2006-10-17T01:38:28.000000Z"/>
+<entry
+   committed-rev="16"
+   name="reports.pl"
+   text-time="2007-01-01T15:23:46.000000Z"
+   committed-date="2007-01-01T15:26:38.871629Z"
+   checksum="f541ba1d63f671cb6b059da23e780368"
+   last-author="jhannah"
+   kind="file"
+   prop-time="2006-10-17T01:38:28.000000Z"/>
+</wc-entries>

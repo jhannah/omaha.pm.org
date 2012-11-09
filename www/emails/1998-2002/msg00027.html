@@ -1,0 +1,106 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: The Perl Y2K Challenge -->
+<!--X-From-R13: Yrag Frtryf <xragNgrtryf.bet> -->
+<!--X-Date: Mon, 29 Mar 1999 10:19:28 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.LNX.4.04.9903290914520.27313&#45;100000@mojo.tegels.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>The Perl Y2K Challenge</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00026.html">Date Prev</a>][<a href="msg00028.html">Date Next</a>][<a href="msg00026.html">Thread Prev</a>][<a href="msg00028.html">Thread Next</a>][<a href="maillist.html#00027">Date Index</a>][<a href="threads.html#00027">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>The Perl Y2K Challenge</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: The Perl Y2K Challenge</li>
+<li><em>From</em>: Kent Tegels &lt;<a href="mailto:kent@DOMAIN.HIDDEN">kent@xxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 29 Mar 1999 09:24:17 -0600 (EST)</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I was recently asked to make sure all my Perl scripts were updated to Y2K.
+Really, I don't see what the problem is, I just run this script and it
+seems to fix everything.
+
+# No shebang for windows, duh
+@plfiles=glob(&quot;*.pl&quot;);
+foreach $f (@plfiles) {
+	open(inf,&quot;&lt;$f&quot;)||die($!);
+	$o = &quot;y2k.&quot;.$;
+	open(outf,&quot;&gt;$o&quot;)||die($!);
+	while(&lt;inf&gt;) {
+		s/y/k/g;
+		s/Y/K/g;
+		print outf;
+	}
+	close outf;
+	close inf;
+}
+exit;
+
+And all my Y to K problems were solved!
+
+Moral of the code:
+You know you're a geek when you write jokes in Perl.
+
+Kent
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00028" href="msg00028.html">Re: The Perl Y2K Challenge</a></strong>
+<ul><li><em>From:</em> Virtual Joe</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00026.html">MacPerlers</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00028.html">Re: The Perl Y2K Challenge</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00026.html">MacPerlers</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00028.html">Re: The Perl Y2K Challenge</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00027"><strong>Date</strong></a></li>
+<li><a href="threads.html#00027"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

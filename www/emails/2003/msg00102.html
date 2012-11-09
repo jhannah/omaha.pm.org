@@ -1,0 +1,132 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: [Fwd: Daily Perl FAQ &#45; How can I split a [character] delimited string except when inside] -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Thu, 12 Jun 2003 08:44:24 &#45;0500 -->
+<!--X-Message-Id: 3EE88291.7FFD1B4E@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[Fwd: Daily Perl FAQ - How can I split a [character] delimited string except when inside]</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00101.html">Date Prev</a>][<a href="msg00103.html">Date Next</a>][<a href="msg00106.html">Thread Prev</a>][<a href="msg00107.html">Thread Next</a>][<a href="maillist.html#00102">Date Index</a>][<a href="threads.html#00102">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Fwd: Daily Perl FAQ - How can I split a [character] delimited string except when inside]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: [Fwd: Daily Perl FAQ - How can I split a [character] delimited string except when inside]</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 12 Jun 2003 08:39:29 -0500</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+Wow. That's quite a regex. 
+
+regex junkies are like a whole other breed, aren't they? -grin- I'm only
+mildly addicted.
+
+I'd definately take the 2nd suggestion and give Text::ParseWords a shot!
+
+j
+
+
+
+-------- Original Message --------
+Subject: Daily Perl FAQ - How can I split a [character] delimited string
+except when inside
+Date: 8 Jun 2003 10:59:41 -0000
+From: perlreply@xxxxxxxxxxxxxx
+To: jay@xxxxxxxx
+
+
+Question:
+How can I split a [character] delimited string except when inside
+	[character]? (Comma-separated files)
+
+    Take the example case of trying to split a string that is comma-
+    separated into its different fields. (We'll pretend you said comma-
+    separated, not comma-delimited, which is different and almost never
+    what you mean.) You can't use `split(/,/)' because you shouldn't
+    split if the comma is inside quotes. For example, take a data line
+    like this:
+
+        SAR001,&quot;&quot;,&quot;Cimetrix, Inc&quot;,&quot;Bob Smith&quot;,&quot;CAM&quot;,N,8,1,0,7,&quot;Error,
+Core Dumped&quot;
+
+    Due to the restriction of the quotes, this is a fairly complex
+    problem. Thankfully, we have Jeffrey Friedl, author of a highly
+    recommended book on regular expressions, to handle these for us. He
+    suggests (assuming your string is contained in $text):
+
+         @new = ();
+         push(@new, $+) while $text =~ m{
+             &quot;([^\&quot;\\]*(?:\\.[^\&quot;\\]*)*)&quot;,?  # groups the phrase inside
+the quotes
+           | ([^,]+),?
+           | ,
+         }gx;
+         push(@new, undef) if substr($text,-1,1) eq ',';
+
+    If you want to represent quotation marks inside a quotation-mark-
+    delimited field, escape them with backslashes (eg, `&quot;like
+    \&quot;this\&quot;&quot;'. Unescaping them is a task addressed earlier in this
+    section.
+
+    Alternatively, the Text::ParseWords module (part of the standard
+    perl distribution) lets you say:
+
+        use Text::ParseWords;
+        @new = quotewords(&quot;,&quot;, 0, $text);
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00101.html">Re: [olug] Perl Debugger</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00103.html">RE: [olug] Perl Debugger</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00106.html">Re: [olug] Perl Debugger</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00107.html">Re: [olug] Unix Tip: USING PERL TO REVERSE</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00102"><strong>Date</strong></a></li>
+<li><a href="threads.html#00102"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

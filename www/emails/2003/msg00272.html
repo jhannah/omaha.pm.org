@@ -1,0 +1,152 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: ssl with perl -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 16 Dec 2003 01:33:55 &#45;0600 -->
+<!--X-Message-Id: 4D56F36B&#45;2F9A&#45;11D8&#45;B53D&#45;000A95E317B8@jays.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 000001c3c0bb$e4273d20$cd4a6540@amer.cisco.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: ssl with perl</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00271.html">Date Prev</a>][<a href="msg00273.html">Date Next</a>][<a href="msg00277.html">Thread Prev</a>][<a href="msg00278.html">Thread Next</a>][<a href="maillist.html#00272">Date Index</a>][<a href="threads.html#00272">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: ssl with perl</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:afenn@DOMAIN.HIDDEN">afenn@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: ssl with perl</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 16 Dec 2003 01:34:37 -0600</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;000001c3c0bb$e4273d20$cd4a6540@amer.cisco.com&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Friday, December 12, 2003, at 08:26 AM, Adam Fenn wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I know you're a perl freak, so I thought I might run this by you.? 
+I've written a spider to pull down info from my supplier's web page.? 
+When you hit their site from a browser, you end up in ssl because of 
+the action on the login form.? I've used http in my script instead, 
+because i know how, and it works.? However, things are getting a 
+little strange and I need to start using ssl like they intend it do.? 
+I don't know how to do ssl with perl.? I assume there is some ssl 
+module like lwp but I don' tknow what it is and my basic searching 
+hadn't found any thing.? I've included my stuff, if you want to take a 
+look at what I'm doing.? I'm not married to lwp, but it would be nice 
+if I didn't have to redo the whole thing by just finding some ssl add 
+on to lwp.? What am I missing?
+</tt></blockquote><tt><br>I Google'd and found (and trimmed) this below. I hope it helps,</tt><br>
+<br>
+<tt>j</tt><br>
+<br>
+<pre style="margin: 0em;"><br>From: Michael Budash &lt;mbudash@xxxxxxxxx&gt;
+Newsgroups: comp.lang.perl.misc
+Subject: Re: LWP and https
+Date: Mon, 11 Nov 2002 06:34:33 GMT</pre><br>
+<pre style="margin: 0em;"><br>In article &lt;3b7960ec.0211100527.501063e4@xxxxxxxxxxxxxxxxxx&gt;,
+ jason.alphonse@xxxxxxxxxxxxxxxxxx (Triniman) wrote:
+&gt; LWP doesn't currently support the HTTPS scheme.
+&gt;
+&gt; What you might want to check out is Net::SSLeay.
+&gt; Available on CPAN as per normal, it lets you do https requests.</pre><br>
+<pre style="margin: 0em;">that is utter nonsense. of course it supports https, although not alone
+as distributed. i have personally made it happen many times.</pre><br>
+<tt>'perldoc lwpcook' yields:</tt><br>
+<br>
+<pre style="margin: 0em;">HTTPS
+       URLs with https scheme are accessed in exactly the same
+       way as with http scheme, provided that an SSL interface
+       module for LWP has been properly installed (see the
+       README.SSL file found in the libwww-perl distribution for
+       more details).  If no SSL interface is installed for LWP
+       to use, then you will get &quot;501 Protocol scheme 'https' is
+       not supported&quot; errors when accessing such URLs.</pre><br>
+<pre style="margin: 0em;">       Here's an example of fetching and printing a WWW page
+       using SSL:</pre><br>
+<tt>         use LWP::UserAgent;</tt><br>
+<br>
+<tt>         my $ua = LWP::UserAgent-&gt;new;<br>
+         my $req = HTTP::Request-&gt;new(GET =&gt; 
+'<a  href="https://www.helsinki.fi/">https://www.helsinki.fi/</a>');<br>
+         my $res = $ua-&gt;request($req);<br>
+         if ($res-&gt;is_success) {<br>
+             print $res-&gt;as_string;<br>
+         } else {<br>
+             print &quot;Failed: &quot;, $res-&gt;status_line, &quot;\n&quot;;<br>
+         }</tt><br>
+<br>
+<tt><br>and the so-noted README.SSL yields:</tt><br>
+<br>
+<pre style="margin: 0em;">SSL SUPPORT
+-----------</pre><br>
+<pre style="margin: 0em;">The libwww-perl package has support for using SSL/TLSv1 with its HTTP
+client and server classes. This support makes it possible to access
+https schemed URLs with LWP. Because of the problematic status of
+encryption software in general and certain encryption algorithms in
+particular, in several countries, libwww-perl package doesn't include
+SSL functionality out-of-the-box.</pre><br>
+<pre style="margin: 0em;">Encryption support is obtained through the use of Crypt::SSLeay or
+IO::Socket::SSL, which can both be found from CPAN. While libwww-perl
+has &quot;plug-and-play&quot; support for both of these modules (as of v5.45),
+the recommended module to use is Crypt::SSLeay. In addition to
+bringing SSL support to the LWP package, IO::Socket::SSL can be used
+as an object oriented interface to SSL encrypted network sockets.</pre><br>
+<pre style="margin: 0em;">There is yet another SSL interface for perl called Net::SSLeay. It has
+a more complete SSL interface and can be used for web client
+programming among other things but doesn't directly support LWP.</pre><br>
+<pre style="margin: 0em;">The underlying SSL support in all of these modules is based on OpenSSL
+&lt;<a  href="http://www.openssl.org/">http://www.openssl.org/</a>&gt; (formerly SSLeay). For WWW-server side SSL
+support (e.g. CGI/FCGI scripts) in Apache see &lt;<a  href="http://www.modssl.org/">http://www.modssl.org/</a>&gt;.</pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00271.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00273.html">RE: [olug] Subnet mask</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00277.html">Re: [olug] Subnet mask</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00278.html">HTML::Template parameter problem</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00272"><strong>Date</strong></a></li>
+<li><a href="threads.html#00272"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

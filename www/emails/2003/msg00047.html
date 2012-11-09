@@ -1,0 +1,174 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: regex tips -->
+<!--X-From-R13: Xnl Vnaanu <wnlNwnlf.arg> -->
+<!--X-Date: Tue, 22 Apr 2003 16:23:35 &#45;0500 -->
+<!--X-Message-Id: Pine.LNX.4.33.0304221620030.3641&#45;100000@hannibal.mammoth.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>regex tips</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00046.html">Date Prev</a>][<a href="msg00048.html">Date Next</a>][<a href="msg00046.html">Thread Prev</a>][<a href="msg00048.html">Thread Next</a>][<a href="maillist.html#00047">Date Index</a>][<a href="threads.html#00047">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>regex tips</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: regex tips</li>
+<li><em>From</em>: Jay Hannah &lt;<a href="mailto:jay@DOMAIN.HIDDEN">jay@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 22 Apr 2003 16:23:33 -0500 (CDT)</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+A tip to a coworker today... I thought this might be interesting to some.
+
+j
+
+
+-------------------------------------
+
+Here's your change:
+
+[jhannah@xxxx admin]$ cvs diff -r1.32 -r1.33 index.pl
+RCS file: /cvs/source/specific/sguest/perl/www/admin/admin/index.pl,v
+3476,3477c3476,3477
+&lt;         if(($resfile1_hashref-&gt;{'gst_name'} =~ /^(\w+),\s*(\w+)/) ||
+&lt;            ($resfile1_hashref-&gt;{'gst_name'} =~ /^(\w+)\/(\w+)/))
+---
+&gt; if(($resfile1_hashref-&gt;{'gst_name'} =~ /^([\w|\s|-]+),\s*([\w|\s|-]+)/) ||
+&gt;    ($resfile1_hashref-&gt;{'gst_name'} =~ /^([\w|\s|-]+)\/([\w|\s|-]+)/))
+
+Tips:
+
+1) Pipes are literal inside square brackets.
+
+[a|b]      # Matches &quot;a&quot;, &quot;|&quot;, or &quot;b&quot;. Probably not what you meant.
+[a|b|c]    # The second &quot;|&quot; here is redundant.
+[ab]       # Matches &quot;a&quot; or &quot;b&quot;. This is probably what you meant to do.
+
+2) Dashes are only literal inside square brackets (character classes)
+sometimes. You should probably escape them unless you're extremely
+comfortable with the behavior:
+
+perldoc perlre:
+
+       Within a list, the &quot;-&quot; character specifies a range, so
+       that `a-z' represents all characters between &quot;a&quot; and &quot;z&quot;,
+       inclusive.  If you want either &quot;-&quot; or &quot;]&quot; itself to be a
+       member of a class, put it at the start of the list (possi
+       bly after a &quot;^&quot;), or escape it with a backslash.  &quot;-&quot; is
+       also taken literally when it is at the end of the list,
+       just before the closing &quot;]&quot;.  (The following all specify
+       the same class of three characters: `[-az]', `[az-]', and
+       `[a\-z]'.  All are different from `[a-z]', which specifies
+       a class containing twenty-six characters.)  Also, if you
+       try to use the character classes `\w', `\W', `\s', `\S',
+       `\d', or `\D' as endpoints of a range, that's not a range,
+       the &quot;-&quot; is understood literally.
+
+So
+
+   [\w|\s|-]+
+
+should be written as
+
+   [\w\s\-]+
+
+or
+
+   [\w -]+
+
+(if you're extremely comfortable.)
+
+I'm not sure what all patterns you're attempting to trap, but I suspect
+the entire phrase
+
+&gt; if(($resfile1_hashref-&gt;{'gst_name'} =~ /^([\w|\s|-]+),\s*([\w|\s|-]+)/) ||
+&gt;    ($resfile1_hashref-&gt;{'gst_name'} =~ /^([\w|\s|-]+)\/([\w|\s|-]+)/)) {
+&gt;    my ($first_name, $last_name) = ($2, $1);
+
+should be written as
+
+my ($last_name, $first_name) =
+   ($resfile1_hashref-&gt;{'gst_name'} =~ /^([\w -]+)[,\/]\s?([\w -]+)/);
+
+Here's a test program for you to pound on:
+
+----------------
+#!/usr/bin/perl
+
+s1(&quot;HANNAH, JAY&quot;);
+s1(&quot;HANNAH,JAY&quot;);
+s1(&quot;HANNAH/JAY&quot;);
+s1(&quot;HANNAH/ JAY&quot;);
+s1(&quot;HAN-NAH, JAY&quot;);
+s1(&quot;VON HAN-NAH, JAY-SEPH Junior&quot;);
+s1(&quot;VON HAN-NAH/JAY-SEPH Junior&quot;);
+
+sub s1 {
+   $_[0] =~ /^([\w -]+)[,\/]\s?([\w -]+)/;
+   print &quot;[$2][$1]\n&quot;;
+}
+----------------
+
+Which seems to do the right thing every time...?
+
+I hope that helps,
+
+j
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00046.html">[Fwd: Daily Perl FAQ - How do I efficiently match many regular expressions at once?]</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00048.html">RE: regex tips</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00046.html">[Fwd: Daily Perl FAQ - How do I efficiently match many regular expressions at once?]</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00048.html">RE: regex tips</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00047"><strong>Date</strong></a></li>
+<li><a href="threads.html#00047"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Does anyone use Threads? -->
+<!--X-From-R13: "Dba, Rvnar, &#38; Flyre Vnjxvaf" <eunjxvafNanivk.arg> -->
+<!--X-Date: Wed, 6 Oct 1999 22:20:29 &#45;0400 (EDT) -->
+<!--X-Message-Id: 01BF103C.628615E0@HAWK233 -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Does anyone use Threads?</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00094.html">Date Prev</a>][<a href="msg00096.html">Date Next</a>][<a href="msg00094.html">Thread Prev</a>][<a href="msg00096.html">Thread Next</a>][<a href="maillist.html#00095">Date Index</a>][<a href="threads.html#00095">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Does anyone use Threads?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Perl Mongers'&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Does anyone use Threads?</li>
+<li><em>From</em>: &quot;Ron, Diane, &amp; Tyler Hawkins&quot; &lt;<a href="mailto:rhawkins@DOMAIN.HIDDEN">rhawkins@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 6 Oct 1999 20:49:19 -0700</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Has anyone out there used threads in Perl?  I had to write a little server this week for a project at work and I used a forked model like I have previously.  But my curiosity has me thinking about trying out threads.  But first I'm going to have to recompile my Perl to use threads.
+
+I wrote a little server that just echos back what is sent (hopefully) using threads.  If anyone has used threads are notices anything wrong with this code, could you let me know.
+
+Any pointers would be appreciated.
+
+
+Ron Hawkins
+ron@xxxxxxxxxxx
+Homepage: <a  href="http://ron.hawkins.net/">http://ron.hawkins.net/</a>
+
+To some it's half empty.  To some it's half full.
+To me it's time for a beer run!
+
+
+~~~~~~~~~~ start of code ~~~~~~~~~~
+#!/usr/bin/perl
+#/ ************************************************************
+#/ * FILE: servtest.pl                                       *
+#/ * MODIFICATION DATE: 10/05/1999   9:40:59 pm   RWH        *
+#/ ***********************************************************
+
+use IO::Socket;
+use strict;
+
+use Config;
+$Config{usethreads} or die(&quot;No threads!&quot;);  ## will it work??
+
+$SIG{&quot;CHLD&quot;} = &quot;IGNORE&quot;;            ## don't let the children zombie
+
+my($host) = &quot;localhost&quot;;
+my($port) = &quot;20000&quot;;
+
+my($sock) = new IO::Socket::INET(
+          LocalHost =&gt; $host,
+          LocalPort =&gt; $port,
+          Proto =&gt; 'tcp',
+          Listen =&gt; 15,
+          Reuse =&gt; 1);
+die &quot;Socket could not be created. Reason: $!&quot; unless $sock;
+
+my($new_sock, $RetVal, $Pid, $Thr);
+
+    ######################################################
+    # main listen loop
+    ######################################################
+while ($new_sock = $sock-&gt;accept()) {
+  $new_sock-&gt;autoflush();
+
+  $Thr = Thread-&gt;new(\&amp;HandleReq, $new_sock);
+  $Thr-&gt;detach();
+  close($new_sock);                ## close the socket - if thread exit didn't
+}
+
+close($sock);
+
+#/ ***********************************************************
+#/ * NAME: HandleReq                                         *
+#/ * MODIFICATION DATE: 10/05/1999  09:21:02 PM   RWH :-)    *
+#/ ***********************************************************
+
+sub HandleReq()
+{
+  my($Client) = shift;
+  my($InStr);
+
+  $InStr = &lt;$Client&gt;;
+  printf($Client &quot;I read $InStr&quot;);       ## echo it back
+}
+~~~~~~~~~~ end of code ~~~~~~~~~~~
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00096" href="msg00096.html">Re: Does anyone use Threads?</a></strong>
+<ul><li><em>From:</em> Matt Arnold</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00094.html">Re: Winnt - is it a file or directory</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00096.html">Re: Does anyone use Threads?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00094.html">Re: Winnt - is it a file or directory</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00096.html">Re: Does anyone use Threads?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00095"><strong>Date</strong></a></li>
+<li><a href="threads.html#00095"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

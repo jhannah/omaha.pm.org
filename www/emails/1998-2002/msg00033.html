@@ -1,0 +1,162 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: The Perl Y2K Challenge -->
+<!--X-From-R13: "xrag grtryf" <xragNgrtryf.bet> -->
+<!--X-Date: Tue, 30 Mar 1999 08:32:05 &#45;0500 (EST) -->
+<!--X-Message-Id: 004201be7ab2$60f35640$020110ac@k.tegels.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: The Perl Y2K Challenge</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00032.html">Date Prev</a>][<a href="msg00034.html">Date Next</a>][<a href="msg00032.html">Thread Prev</a>][<a href="msg00029.html">Thread Next</a>][<a href="maillist.html#00033">Date Index</a>][<a href="threads.html#00033">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: The Perl Y2K Challenge</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Patrick Timmins&quot; &lt;<a href="mailto:pat_timmins@DOMAIN.HIDDEN">pat_timmins@xxxxxxxxxxxxxxxx</a>&gt;,       &quot;mongers&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: The Perl Y2K Challenge</li>
+<li><em>From</em>: &quot;kent tegels&quot; &lt;<a href="mailto:kent@DOMAIN.HIDDEN">kent@xxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 30 Mar 1999 07:36:56 -0600</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Errr.... Patrick, Good catch on the error, but actually I prefer:
+
+$o = &quot;y2k.&quot;.$f;
+
+For 50 bonus points what would $_ be in at that line?
+
+Since ever K is sacred (I'm an old Assembly language hack), only the Ys
+should be being replaced. I am missing something or is the dark side
+clouding my vision?
+
+keNT
+
+-----Original Message-----
+From: Patrick Timmins &lt;pat_timmins@xxxxxxxxxxxxxxxx&gt;
+To: mongers &lt;omaha-list@xxxxxxxxxxxxxxxxxxx&gt;
+Date: Tuesday, March 30, 1999 12:52 AM
+Subject: Re: The Perl Y2K Challenge
+
+
+&gt;Kent Tegels wrote:
+&gt;&gt;
+&gt;&gt; I was recently asked to make sure all my Perl scripts were updated to
+Y2K.
+&gt;&gt; Really, I don't see what the problem is, I just run this script and it
+&gt;&gt; seems to fix everything.
+&gt;&gt;
+&gt;&gt; # No shebang for windows, duh
+&gt;&gt; @plfiles=glob(&quot;*.pl&quot;);
+&gt;&gt; foreach $f (@plfiles) {
+&gt;&gt;         open(inf,&quot;&lt;$f&quot;)||die($!);
+&gt;&gt;         $o = &quot;y2k.&quot;.$;
+&gt;&gt;         open(outf,&quot;&gt;$o&quot;)||die($!);
+&gt;&gt;         while(&lt;inf&gt;) {
+&gt;&gt;                 s/y/k/g;
+&gt;&gt;                 s/Y/K/g;
+&gt;&gt;                 print outf;
+&gt;&gt;         }
+&gt;&gt;         close outf;
+&gt;&gt;         close inf;
+&gt;&gt; }
+&gt;&gt; exit;
+&gt;&gt;
+&gt;&gt; And all my Y to K problems were solved!
+&gt;
+&gt;Not quite. I got compilation errors, and decided that the problem way on
+&gt;line 5:
+&gt;$o = &quot;y2k.&quot;.$;
+&gt;             ^
+&gt;I changed this to:
+&gt;$o = &quot;y2k.&quot;.$_;
+&gt;             ^
+&gt;             added underscore
+&gt;
+&gt;and tested the script in a test directory. Unfortunately, I ran the
+&gt;script from the directory the script lived in. My new y2k.pl script had
+&gt;all of the y/Y's changed to k/K's ... something like this:
+&gt;
+&gt;# No shebang for windows, duh
+&gt;@plfiles=glob(&quot;*.pl&quot;);
+&gt;foreach $f (@plfiles) {
+&gt;        open(inf,&quot;&lt;$f&quot;)||die($!);
+&gt;        $o = &quot;k2k.&quot;.$_;
+&gt;        open(outf,&quot;&gt;$o&quot;)||die($!);
+&gt;        while(&lt;inf&gt;) {
+&gt;                s/k/k/g;
+&gt;                s/K/K/g;
+&gt;                print outf;
+&gt;        }
+&gt;        close outf;
+&gt;        close inf;
+&gt;}
+&gt;exit;
+&gt;
+&gt;
+&gt;I tried implementing a fix before running it recursively for my whole
+&gt;system, but I must have gotten mixed up, because now when I try to email
+&gt;Kent for help with my fix, I get returned email saying &quot;User Yent Tegels
+&gt;&lt;yent@xxxxxxxxxx&gt; not found :(
+&gt;
+&gt;... I thiny I ynow what the problem is, I'd liye to get a second opinion
+&gt;first.
+&gt;
+&gt;Pat
+&gt;--
+&gt;Patrick Timmins
+&gt;Sterling Software
+&gt;$monger{Omaha}[0]
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00032.html">Re: The Perl Y2K Challenge</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00034.html">FW: mod_perl book WAS Re: Y2k Compliant ?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00032.html">Re: The Perl Y2K Challenge</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00029.html">next meeting, date, topic</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00033"><strong>Date</strong></a></li>
+<li><a href="threads.html#00033"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

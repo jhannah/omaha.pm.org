@@ -1,0 +1,180 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Error message I can't get rid of. -->
+<!--X-From-R13: "Dba Vnjxvaf (unjxvaf.arg)" <ebaNunjxvaf.arg> -->
+<!--X-Date: Tue, 23 Nov 1999 11:02:01 &#45;0500 (EST) -->
+<!--X-Message-Id: 002a01bf35cc$ad351180$01c8a8c0@hawk233 -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 3839E812.17021EA0@inetnebr.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Error message I can't get rid of.</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00112.html">Date Prev</a>][<a href="msg00114.html">Date Next</a>][<a href="msg00112.html">Thread Prev</a>][<a href="msg00114.html">Thread Next</a>][<a href="maillist.html#00113">Date Index</a>][<a href="threads.html#00113">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Error message I can't get rid of.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;ktb&quot; &lt;<a href="mailto:xyf@DOMAIN.HIDDEN">xyf@xxxxxxxxxxxx</a>&gt;, &quot;mongers&quot; &lt;<a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Error message I can't get rid of.</li>
+<li><em>From</em>: &quot;Ron Hawkins (hawkins.net)&quot; &lt;<a href="mailto:ron@DOMAIN.HIDDEN">ron@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 23 Nov 1999 10:04:32 -0600</li>
+<li><em>References</em>: &lt;<a href="msg00112.html">3839E812.17021EA0@inetnebr.com</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I don't know if I have the answer or not.  I don't get a warning in DOS with
+this code. I don't have access to a UNIX box currently.  I assume this code
+is on a UNIX box from the &quot;\r&quot; test.
+
+There are two things I would try.
+
+One - Is the line &quot;chomp($SearchString = &lt;STDIN&gt;);&quot; the line that causes the
+error (line 26)?  Then the error looks like it's saying that what STDIN
+returned is not defined?  Could you break that into multiple lines:
+~~~~ snip ~~~~~
+    $SearchString = &lt;STDIN&gt;;
+    if (defined($SearchString)) {
+       chomp($SearchString);
+       if ($SearchString =~ /^\s/) { # Makes sure you don't add a space.
+        print &quot;Sorry you must enter a character.\n&quot;;
+       YESORNO ();
+     } elsif($SearchString eq &quot;&quot;) { #Give error if only hit return.
+       print &quot;You must enter a word.\n&quot;;
+      YESORNO ();
+     }
+   }
+   else {
+      print(&quot;You must enter a word\n&quot;);
+      YESORNO();
+   }
+~~~~ end snip ~~~~~~
+Then see if that makes a difference.
+
+Two - I see is that after the user enters a value you call &quot;chomp&quot; to strip
+off the carriage return.  Then later you check to see if the user entered
+only a carriage return.  That part of the code should never be TRUE, should
+it?  Would it make a difference if you changed you elseif statement to this
+&quot;} elsif($SearchString eq &quot;&quot;) { #Give error if only hit return.&quot; ?
+
+Hope one of these helps.  I would be curious to know the answer.
+
+Ron Hawkins
+ron@xxxxxxxxxxx
+
+----- Original Message -----
+From: ktb &lt;xyf@xxxxxxxxxxxx&gt;
+To: mongers &lt;omaha-list@xxxxxxxxxxxxxxxxxxx&gt;
+Sent: Monday, November 22, 1999 7:04 PM
+Subject: Error message I can't get rid of.
+
+
+Hi, I've been working on this little part of a search script and can't
+get around an error message.
+
+The relevant part of the code is below.  What I'm trying to do is make
+the program able to catch user error.  The &quot;if&quot; statement works fine.
+If someone entered a space at the beginning of a word it will exit to
+the subroutine YESORNO.  The second part keeps someone from entering
+just a return (when that happens without the &quot;elsif&quot; below the program
+cycles through the whole text file it is searching, which is large).  So
+this part of the code works but I get the following error when a match
+is successful:
+
+
+###
+Use of uninitialized value at ./DB2.pl line 26, &lt;STDIN&gt; chunk 1 (#1)
+
+    (W) An undefined value was used as if it were already defined.  It
+was
+    interpreted as a &quot;&quot; or a 0, but maybe it was a mistake.  To suppress
+this
+    warning assign an initial value to your variables.
+###
+
+
+How do I assign an initial value to this?  I tried assigning &quot;1&quot; to
+$SearchString and that didn't work.  I don't understand this at all.
+thanks,
+kent
+
+
+
+________________________________________________________________________
+&lt;snip&gt;
+
+print &quot;Enter string to search: &quot;;
+chomp($SearchString = &lt;STDIN&gt;);
+
+if($SearchString =~ /^\s/) { # Makes sure you don't add a space.
+    print &quot;Sorry you must enter a character.\n&quot;;
+
+YESORNO ();
+
+} elsif($SearchString eq /^\r/) { #Give error if only hit return.
+
+    print &quot;You must enter a word.\n&quot;;
+
+YESORNO ();
+
+}
+
+&lt;snip&gt;
+________________________________________________________________________
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00112" href="msg00112.html">Error message I can't get rid of.</a></strong>
+<ul><li><em>From:</em> ktb</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00112.html">Error message I can't get rid of.</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00114.html">how to detect which perl modules have been installed?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00112.html">Error message I can't get rid of.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00114.html">how to detect which perl modules have been installed?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00113"><strong>Date</strong></a></li>
+<li><a href="threads.html#00113"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>

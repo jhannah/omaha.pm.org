@@ -1,0 +1,62 @@
+[Last updated on: Mon Nov 30 20:54:54 1998]
+
+----------------------------------------------------------------------
+
+               The Omaha Perl Mongers Mailing List ! 
+		  omaha-list@happyfunball.pm.org
+
+Welcome to The Omaha Perl Mongers list: omaha-list@happyfunball.pm.org
+Please read and save this message for future reference.  This information
+was last updated on 11/30/1998 by $monger{Omaha}[0] a.k.a. Pat.
+
+The Basics
+
+The omaha-list@happyfunball.pm.org mailing list is an open, private,
+unmoderated mailing list that was created to provide a means of
+intercommunication for topics related to Perl and the Omaha Perl Mongers.
+The list is open in that anyone can subscribe, private in that only
+subscribers can send messages to the list, and unmoderated in that no
+human will filter or approve messages that are sent to the list from
+valid subscribers. Any or all of this could change, if the situation
+warrants it.
+
+The mailing list is currently not archived, but I do plan on getting
+this up shortly, so let's not call each other names here, as it will be
+recorded for posterity! Refer to the 'Acceptable Use' section below to
+see what else should be avoided.
+
+Acceptable Use
+
+Yes:
+* Discussion of Perl
+* Discussion of things related to Perl
+* Discussion of the Omaha Perl Mongers and their activities
+
+No:
+* Administrative requests (subscribe, unsubscribe, etc.)
+* Private messages to other subscribers
+* Personal attacks or flames on subscribers
+* Excessive or unnecessary profanity
+
+Administrivia
+
+The omaha-list@happyfunball.pm.org mailing list is run by Majordomo, a
+Perl (of course!) mailing list management program. To send messages to
+the other subscribers on the mailing list, you send them to
+omaha-list@happyfunball.pm.org. To change your subscription status, or
+to otherwise communicate with the list management program, you send mail
+to majordomo@happyfunball.pm.org. For example, to unsubscribe to the
+list, send the following command in the *body* of your message to
+majordomo@happyfunball.pm.org :
+
+unsubscribe omaha-list
+
+This will unsubscribe you from the list (assuming you sent the command from
+the same email account that you are unsubscribing from the list). If you
+send the unsubcribe command to omaha-list@happyfunball.pm.org instead of
+majordomo@happyfunball.pm.org, you will *not* be unsubscribed, the message
+will be sent to all subscribers of the list, and the esteem with which you
+are held in the eyes of your peers will fall .. so don't do that !
+
+If you have any questions, and need to communicate with a human, please
+contact the list owner at owner-omaha-list@happyfunball.pm.org !

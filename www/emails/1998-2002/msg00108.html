@@ -1,0 +1,128 @@
+<!-- MHonArc v2.6.2 -->
+<!--X-Subject: Re: Can't return with an error. -->
+<!--X-From-R13: Urbetr Dncc <tjeNbnfvf.abivn.arg> -->
+<!--X-Date: Mon, 15 Nov 1999 14:36:33 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.GSO.4.10.9911151327100.26543&#45;100000@oasis.novia.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 383057BB.397711E0@inetnebr.com -->
+<!--X-Head-End-->
+<!doctype html public "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>Re: Can't return with an error.</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00107.html">Date Prev</a>][<a href="msg00109.html">Date Next</a>][<a href="msg00107.html">Thread Prev</a>][<a href="msg00109.html">Thread Next</a>][<a href="maillist.html#00108">Date Index</a>][<a href="threads.html#00108">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Can't return with an error.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: ktb &lt;<a href="mailto:xyf@DOMAIN.HIDDEN">xyf@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Can't return with an error.</li>
+<li><em>From</em>: George Rapp &lt;<a href="mailto:gwr@DOMAIN.HIDDEN">gwr@xxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 15 Nov 1999 13:40:58 -0600 (CST)</li>
+<li><em>Cc</em>: <a href="mailto:omaha-list@DOMAIN.HIDDEN">omaha-list@xxxxxxxxxxxxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00105.html">383057BB.397711E0@inetnebr.com</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:owner-omaha-list@DOMAIN.HIDDEN">owner-omaha-list@xxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Mon, 15 Nov 1999, ktb wrote:
+
+&gt; Hi I've put together this little script to search a file and it works
+&gt; fine but I can't get it to print out a statement such as, &quot;Sorry match
+&gt; not successful.&quot; if in fact the search returns nothing.  At this point
+&gt; the program just exits if the search is not successful.
+&gt; 
+&gt; Here is the relavant piece of code, I will include the full program
+&gt; below:
+&gt; 
+&gt; #####
+&gt; while (&lt;BOTTLEFILE&gt;) {
+&gt;    if (/\Q$SearchString/i) {#If the search word is found.
+&gt;        print &quot;\n$_\n&quot;;   #..print the output.
+&gt; }
+&gt; }
+&gt; #####
+
+The problem is that the &quot;while (&lt;BOTTLEFILE&gt;)&quot; loop executes once for each
+line in BOTTLEFILE.  You want to issue an error if none of the lines
+match, but since the code inside the while loop is only looking at one
+line at a time, you don't have enough information yet to know if you
+should issue an error.  This decision needs to be made after you've looked
+at all the lines, thusly:
+
+$found_it = 0;  # this is optional, as $found_it starts out undefined
+                # the first time it's referenced anyway.
+while (&lt;BOTTLEFILE&gt;) {
+  if (/\Q$SearchString/i) {
+    $found_it = &quot;Yep&quot;;
+    print &quot;\n$_\n&quot;;
+  }
+}
+print &quot;No joy, dude.\n&quot; unless $found_it;
+
+(BTW, the \Q in your regexp doesn't really buy you anything.  You don't
+have any metacharacters in your search pattern that would be protected by
+\Q.
+
+George
+--
+           George Rapp  (Bellevue, NE)  Go 'Huskers!!!
+       Home: gwr@xxxxxxxxx    ICQ: 14583674  AIM: gwrboing
+  Work: grapp01@xxxxxxxxxxxxxxxxxxxxx (or) george.rapp@xxxxxxxx
+           Would a fly without wings be called a walk?
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00105" href="msg00105.html">Can't return with an error.</a></strong>
+<ul><li><em>From:</em> ktb</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00107.html">Re: Can't return with an error.</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00109.html">Re: Can't return with an error.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00107.html">Re: Can't return with an error.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00109.html">Re: Can't return with an error.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00108"><strong>Date</strong></a></li>
+<li><a href="threads.html#00108"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>
